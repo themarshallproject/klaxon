@@ -1,4 +1,10 @@
-
+@function twbs-font-path($path) {
+  @return font-path($path);
+}
+@function twbs-image-path($path) {
+  @return image-path($path);
+}
+$bootstrap-sass-asset-helper: true;
 
  // Core variables and mixins
 @import "bootstrap/variables";
