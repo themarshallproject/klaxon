@@ -163,7 +163,7 @@ DEPENDENCIES
   byebug
   jquery-rails
   pg (~> 0.15)
-  puma
+  puma (~> 3.2)
   rails (= 4.2.5.1)
   rspec-rails
   sass-rails (~> 5.0)

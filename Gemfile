@@ -11,7 +11,7 @@ gem 'turbolinks'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bcrypt', '~> 3.1.7'
-gem 'puma'
+gem 'puma', '~> 3.2'
 
 group :development, :test do
   gem 'byebug'
