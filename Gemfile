@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'puma', '~> 3.2'
+gem 'rails_12factor'
 
 gem 'simple_form', '~> 3.2'
 
