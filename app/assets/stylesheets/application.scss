@@ -57,3 +57,6 @@ $bootstrap-sass-asset-helper: true;
 @import "bootstrap/utilities";
 @import "bootstrap/responsive-utilities";
 
+// Overrides
+@import "static";
+
