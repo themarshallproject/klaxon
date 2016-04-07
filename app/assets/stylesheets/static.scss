@@ -13,11 +13,20 @@ a {
 
 a:hover, a:focus {
   color: #ff0b3a;
+  text-decoration: none;
   border-bottom: 2px solid #ff0b3a;
 }
 
 .nav > li > a:hover {
   background-color: transparent;
+}
+
+.navbar-toggle {
+  background-color: #ff0b3a !important;
+}
+
+.navbar-toggle .icon-bar {
+  background-color: white !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -35,6 +44,16 @@ h2 {font-size: 3.375em;}
 h3 {font-size: 2.25em;}
 
 h4 {font-size: 1.5em;}
+
+.table > thead > tr > th {
+  border-bottom: 2px solid #ff0b3a;
+}
+
+.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+  border-top: 1px solid #ff0b3a;
+  vertical-align: center;
+  padding: 8px 0;
+}
 
 .form-control {
   border-radius: 0 !important;
