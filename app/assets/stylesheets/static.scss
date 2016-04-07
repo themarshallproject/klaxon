@@ -11,6 +11,15 @@ a {
   color: #ff0b3a;
 }
 
+a:hover, a:focus {
+  color: #ff0b3a;
+  border-bottom: 2px solid #ff0b3a;
+}
+
+.nav > li > a:hover {
+  background-color: transparent;
+}
+
 h1, h2, h3, h4, h5, h6 {
   border-top: 0.2em solid #ff0b3a;
   padding-top: 10px;
@@ -33,6 +42,20 @@ h4 {font-size: 1.5em;}
   box-shadow: none;
   color: #ff0b3a;
 }
+
+.btn {
+  border-radius: 0 !important;
+  border: 1px solid #ff0b3a;
+  color: #ff0b3a;
+  border-color: #ff0b3a !important;
+}
+
+.btn:hover {
+  color: #fff !important;
+  background-color: #ff0b3a;
+  box-shadow: none;
+}
+
 
 *:focus {
   border-color: #ff0b3a !important;
