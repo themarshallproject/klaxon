@@ -15,6 +15,7 @@
         <li><a href="#about">Watching</a></li>
         <li><a href="#contact">Settings</a></li>
         <li><a href="#contact">Help</a></li>
+        <li><%= link_to "Logout", logout_path, method: :post %></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
@@ -206,24 +207,14 @@
         </tr>
       </thead>
       <tbody>
+        <% @users.each do |user| %>
         <tr>
-          <td><a href="#">Mark</a></td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td><button class="btn btn-default btn-block" type="submit">Edit</button></td>
+          <td><a href="#"><%= user.first_name %></a></td>
+          <td><%= user.last_name %></td>
+          <td><%= user.email %></td>
+          <td><%= link_to "Edit", edit_user_path(user), class: "btn btn-default btn-block" %></td>
         </tr>
-        <tr>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td><button class="btn btn-default btn-block" type="submit">Edit</button></td>
-        </tr>
-        <tr>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-          <td><button class="btn btn-default btn-block" type="submit">Edit</button></td>
-        </tr>
+        <% end %>
       </tbody>
     </table>
   </div>

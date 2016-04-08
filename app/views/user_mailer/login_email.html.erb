@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+<style>
+body {
+  background-color: #EEE;
+}
+p {
+  color: red;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+h1, p {
+  color: red;
+}
+.container {
+  background-color: #FFF;
+  width: 80%;
+  max-width: 500px;
+  padding: 30px;
+  margin: 30px;
+  margin: 0 auto;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Klaxon</h1>
+    <p>
+      To login to the site, click here: <%= link_to @url, @url %>.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </div>
+</body>
+</html>

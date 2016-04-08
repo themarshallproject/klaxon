@@ -1,0 +1,44 @@
+<div class="klax-section klax-topper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Login</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
+      </div>
+      <div class="col-md-6">
+        <!-- negative space -->
+      </div>
+    </div>
+  </div><!-- /.container -->
+</div>
+
+
+<div class="klax-section klax-spacer-lg">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <form class="form-horizontal" method="POST" action="<%= create_session_path %>">
+          <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+          <div class="form-group form-group-lg">
+            <label class="col-sm-1">Email</label>
+            <div class="col-sm-11">
+              <input name="email" class="form-control" type="text" id="formGroupInputLarge">
+            </div>
+          </div>
+          <div class="form-group form-group-lg">
+            <div class="col-md-9">
+              <!-- negative space -->
+            </div>
+            <div class="col-md-3">
+              <button class="btn btn-default btn-lg btn-block" type="submit">Save</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div><!-- /.container -->
+</div>
