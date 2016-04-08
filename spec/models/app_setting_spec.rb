@@ -9,12 +9,14 @@ RSpec.describe AppSetting, type: :model do
   end
 
   it "gets the default host if it's set" do
-    setting = AppSetting.where(key: 'default_host').first_or_create
-    setting.value = SecureRandom.hex
-    setting.save
+    test_host = SecureRandom.hex
+    setting = AppSetting.set_default_host(test_host)
 
     expect(AppSetting.default_host_exists?).to eq true
-    expect(AppSetting.default_host).to eq setting.value
+    expect(AppSetting.default_host).to eq test_host
+
+    rails_host = Rails.application.routes.default_url_options[:host]
+    expect(rails_host).to eq AppSetting.default_host
   end
 
 end
