@@ -10,9 +10,19 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_default_host
   def set_default_host
-    unless AppSetting.default_host_exists?
+    # determine the host we're running on, so we can generate urls for emails, etc
+    # keep this in an AppSetting (persisted) and pass to Rails when blank
+
+    host_setting_exists = AppSetting.default_host_exists?
+    unless host_setting_exists
       host = request.host_with_port
       AppSetting.set_default_host(host)
+    end
+
+    if Rails.application.routes.default_url_options[:host].blank? and host_setting_exists
+      host = AppSetting.default_host
+      Rails.logger.info "setting default_host to #{host}"
+      Rails.application.routes.default_url_options[:host] = host
     end
   end
 
