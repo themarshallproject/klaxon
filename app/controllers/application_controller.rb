@@ -8,6 +8,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  before_filter :set_default_host
+  def set_default_host
+    unless AppSetting.default_host_exists?
+      host = request.host_with_port
+      AppSetting.set_default_host(host)
+    end
+  end
+
   helper_method :current_user
   def current_user
     if defined? @current_user

@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'rack-cache'
 gem 'bcrypt', '~> 3.1.7'
 gem 'puma', '~> 3.2'
 gem 'rails_12factor'
@@ -19,6 +20,7 @@ gem 'simple_form', '~> 3.2'
 
 gem 'jwt'
 gem 'premailer-rails'
+gem 'postmark-rails', '~> 0.10.0'
 
 gem 'kramdown'
 
