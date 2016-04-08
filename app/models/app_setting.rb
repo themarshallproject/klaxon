@@ -19,7 +19,7 @@ class AppSetting < ActiveRecord::Base
   end
 
   def self.default_host
-    self.find_by(key: self.default_host_key)&.value
+    self.find_by(key: self.default_host_key)&.value.to_s
   end
 
 end
