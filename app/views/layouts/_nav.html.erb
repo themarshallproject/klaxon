@@ -1,0 +1,22 @@
+<nav class="navbar navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><b>Klaxon</b></a>
+    </div>
+    <div id="navbar pull-right" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="#">Feed</a></li>
+        <li><a href="#about">Watching</a></li>
+        <li><%= link_to "Users", users_path %></li>
+        <li><%= link_to "Help", help_path %></li>
+        <li><%= link_to "Logout", logout_path, method: :post %></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
