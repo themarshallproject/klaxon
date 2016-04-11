@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root 'static#index'
 
+  get '/help' => 'static#help', as: :help
+
   scope 'login' do
     get '/' => 'sessions#new', as: :login
     get '/token' => 'sessions#token', as: :token_session
