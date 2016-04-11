@@ -4,35 +4,89 @@
 <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 <style>
 body {
-  background-color: #EEE;
+  color: #ff0b3a;
+  padding: 30px;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 p {
-  color: red;
   font-size: 14px;
   line-height: 1.4em;
   word-wrap: break-word;
 }
-h1, p {
-  font-family: Helvetica, sans-serif;
-  color: red;
+
+h1, h2, h3, h4, h5, h6 {
+  border-top: 0.2em solid #ff0b3a;
+  padding-top: 10px;
 }
-.container {
-  background-color: #FFF;
-  width: 80%;
-  max-width: 500px;
-  padding: 30px;
-  margin: 30px;
-  margin: 0 auto;
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 5.063em;
 }
+
+h2 {font-size: 3.375em;}
+
+h3 {font-size: 2.25em;}
+
+h4 {font-size: 1.5em;}
+
+.klax-app-name {
+  padding-bottom: 50px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.klax-button {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33333;
+  border: 1px solid #ff0b3a;
+  display: block;
+  text-align: center;
+}
+
+.klax-button:hover, .klax-button:hover a {
+  background-color: #ff0b3a;
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+.klax-button {
+  text-decoration: none !important;
+}
+
+.klax-lead {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.4;
+  font-size: 21px;
+}
+
+.klax-fine-print {
+  margin-top: 30px;
+  font-size: 12px;
+}
+
+a {
+  color: #ff0b3a;
+}
+
 </style>
 </head>
 <body>
   <div class="container">
-    <h1>Klaxon</h1>
-    <p>
-      To login to the site, click here: <%= link_to @url, @url %>.
-    </p>
-    <p>Thanks for joining and have a great day!</p>
+    <div class="klax-app-name">
+      Klaxon
+    </div>
+    <h2>Welcome</h2>
+
+    <p class="klax-lead">Thanks for joining and have a great day! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
+
+    <p><a class="klax-button" href="<%= @url %>">Login</a></p>
+
+    <p class="klax-fine-print">You're recieving this email because you have a <a href="https://newsklaxon.org">Klaxon account.</a></p>
   </div>
 </body>
 </html>
