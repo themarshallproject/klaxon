@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe AppSetting, type: :model do
 
-  it "returns false if no app_setting" do
+  it "returns false/empty if no app_setting" do
     AppSetting.where(key: 'default_host').delete_all
     expect(AppSetting.default_host_exists?).to eq false
     expect(AppSetting.default_host).to eq ''
