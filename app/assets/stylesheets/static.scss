@@ -90,6 +90,13 @@ h4 {font-size: 1.5em;}
 
 }
 
+.jumbotron {
+  border: 1px solid #ff0b3a;
+  border-top-width: 15px;
+  border-radius: 0 !important;
+  background-color: transparent;
+}
+
 // custom
 
 .klax-topper {
@@ -108,6 +115,9 @@ h4 {font-size: 1.5em;}
   padding-bottom: 2vh;
 }
 
+.klax-no-border {
+  border: 0;
+}
 
 // login & marketing
 
