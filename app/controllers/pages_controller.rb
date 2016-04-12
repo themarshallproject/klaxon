@@ -23,9 +23,10 @@ class PagesController < ApplicationController
   # POST /pages
   def create
     @page = Page.new(page_params)
+    @page.user = current_user
 
     if @page.save
-      redirect_to @page, notice: 'Page was successfully created.'
+      redirect_to pages_url, notice: 'Page was successfully created.'
     else
       render :new
     end
@@ -34,7 +35,7 @@ class PagesController < ApplicationController
   # PATCH/PUT /pages/1
   def update
     if @page.update(page_params)
-      redirect_to @page, notice: 'Page was successfully updated.'
+      redirect_to pages_url, notice: 'Page was successfully updated.'
     else
       render :edit
     end
@@ -54,6 +55,6 @@ class PagesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def page_params
-      params.require(:page).permit(:name, :url, :css_selector, :user_id)
+      params.require(:page).permit(:name, :url, :css_selector)
     end
 end

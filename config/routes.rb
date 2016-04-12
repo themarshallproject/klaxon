@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :pages
   resources :users
+
+  scope 'watching' do
+    resources :pages
+  end
 
   root 'static#index'
 
