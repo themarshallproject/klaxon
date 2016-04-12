@@ -38,6 +38,7 @@
       <thead>
         <tr>
           <th>Name</th>
+          <th>Created</th>
           <th>Location</th>
           <th>Selector</th>
           <th>Creator</th>
@@ -49,7 +50,8 @@
         <% @pages.each do |page| %>
         <tr>
           <td><%= page.name %></td>
-          <td style="word-wrap: break-word; white-space: normal;"><%= page.url %></td>
+          <td><%= page.created_at %></td>
+          <td><%= page.url %></td>
           <td><%= page.css_selector %></td>
           <td><%= page.user_id %></td>
           <td><%= link_to 'Edit', edit_page_path(page), class: "btn btn-default btn-block" %></td>

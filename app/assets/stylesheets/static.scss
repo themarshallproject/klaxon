@@ -68,6 +68,12 @@ h4 {font-size: 1.5em;}
   vertical-align: center;
   // padding: 8px 0;
   padding-left: 0;
+  word-wrap: break-word !important;
+  white-space: normal !important;
+}
+
+table tbody tr td:last-child, table thead tr td:last-child  {
+  padding-right: 0 !important;
 }
 
 .form-control {
