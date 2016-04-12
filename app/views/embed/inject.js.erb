@@ -1,0 +1,61 @@
+(function() {
+  if (window._klaxonInject === true) {
+    alert("The Klaxon bookmarklet already injected on this page");
+    return;
+  } else {
+    window._klaxonInject = true;
+  }
+
+  var cssPath = function (el) {
+    // https://stackoverflow.com/questions/3620116/get-css-path-from-dom-element
+    var path = [];
+    while (
+      (el.nodeName.toLowerCase() != 'body') &&
+      (el = el.parentNode) &&
+      path.unshift(el.nodeName.toLowerCase() +
+        (el.id ? '#' + el.id : '') +
+        (el.className ? '.' + el.className.replace(/\s+/g, ".") : ''))
+    );
+    return path;//.join(" > ");
+  }
+
+  var iframeEl = document.createElement('iframe');
+  iframeEl.setAttribute('src', '<%= @iframe_url %>');
+  iframeEl.setAttribute('data-url', document.location.href);
+  iframeEl.setAttribute('frameborder', 0);
+
+  iframeEl.style.top = '0px';
+  iframeEl.style.right = '0px';
+  iframeEl.style.width = '300px';
+  iframeEl.style.height = (window.innerHeight)+'px';
+  iframeEl.style.position = 'fixed';
+  iframeEl.style.zIndex = 2147483647; // max 32-bit int
+
+  document.body.appendChild(iframeEl);
+
+  var updatePath = function(path) {
+    console.log(path);
+    for(var i=1,l=path.length; i<=l; i++) {
+      var selector = path.slice(0, i).join(" ");
+      var text = document.querySelector(selector).innerText;
+      console.log(selector, text.length);
+    // console.log(e)
+    }
+
+  }
+
+  window.addEventListener('mousemove', function() {
+    var x = event.clientX;
+    var y = event.clientY;
+    var el = document.elementFromPoint(x, y);
+    el.style.backgroundColor = 'red';
+    (function(_el) {
+      setTimeout(function() {
+        _el.style.backgroundColor = 'transparent';
+      }, 1000);
+    })(el);
+
+    updatePath(cssPath(el));
+  });
+
+})();
