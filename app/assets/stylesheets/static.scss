@@ -82,6 +82,21 @@ h4 {font-size: 1.5em;}
   outline: none !important;
 }
 
+.dropdown a {
+  border: none;
+}
+
+.dropdown-menu {
+
+}
+
+.jumbotron {
+  border: 1px solid #ff0b3a;
+  border-top-width: 15px;
+  border-radius: 0 !important;
+  background-color: transparent;
+}
+
 // custom
 
 .klax-topper {
@@ -98,5 +113,44 @@ h4 {font-size: 1.5em;}
 
 .klax-spacer-sm {
   padding-bottom: 2vh;
+}
+
+.klax-no-border {
+  border: 0;
+}
+
+// login & marketing
+
+.klax-hero {
+  margin-top: -50px;
+  padding-top: 50px;
+  background-color: #ff0b3a;
+  height: 100vh;
+  min-height: 900px;
+  color: #fff;
+  .form-group-lg .form-control {
+    height: 45px;
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff !important;
+  }
+  .btn {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #fff !important;
+  }
+  .btn:hover {
+    background-color: white;
+    color: #ff0b3a !important;
+  }
+  p, h1 {
+    text-align: center;
+  }
+  .klax-lead {
+    margin-top: 28vh;
+  }
+  .klax-footer p {
+    margin-bottom: 0;
+  }
 }
 

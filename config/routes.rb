@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root 'static#index'
 
   get '/help' => 'static#help', as: :help
+  get '/feed' => 'static#index', as: :feed
 
   scope 'login' do
     get '/' => 'sessions#new', as: :login
