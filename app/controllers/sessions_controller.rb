@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
     if user.nil?
-      render text: "Could Not Find User" and return false
+      redirect_to unknown_user_path and return false
     end
 
     payload = {
@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
       cookies.signed[:user_id] = { value: user.id, expires: 7.days.from_now, httponly: true }
       redirect_to root_path
     else
-      render status: 422, text: "Invalid Login Token"
+      redirect_to unknown_user_path
     end
   end
 
