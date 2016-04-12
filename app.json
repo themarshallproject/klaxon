@@ -1,43 +1,29 @@
 {
-  "name": "Small Sharp Tool",
-  "description": "This app does one little thing, and does it well.",
+  "name": "Klaxon",
+  "description": "Watch webpages for newsworthy changes.",
   "keywords": [
-    "productivity",
-    "HTML5",
-    "scalpel"
   ],
   "website": "https://github.com/themarshallproject/klaxon",
   "repository": "https://github.com/themarshallproject/klaxon",
   "logo": "tktk",
-  "success_url": "/welcome",
+  "success_url": "/",
   "scripts": {
     "postdeploy": "bundle exec rake db:migrate"
   },
   "env": {
-    "RACK_ENV": "production",
-    "RAILS_ENV": "production",
-    "SECRET_TOKEN": {
-      "description": "A secret key for verifying the integrity of signed cookies.",
+    "SECRET_KEY_BASE": {
+      "description": "A secret key for verifying the integrity of signed cookies and JWTs.",
       "generator": "secret"
-    },
-    "WEB_CONCURRENCY": {
-      "description": "The number of processes to run.",
-      "value": "2"
     }
   },
   "formation": {
     "web": {
-      "quantity": 2,
-      "size": "Performance-M"
+      "quantity": 1,
+      "size": "free"
     }
   },
   "image": "heroku/ruby",
   "addons": [
     "postmark:10k"
-  ],
-  "buildpacks": [
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-ruby.git"
-    }
   ]
 }
