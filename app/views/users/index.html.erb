@@ -35,7 +35,7 @@
       <tbody>
         <% @users.each do |user| %>
         <tr>
-          <td><a href="#"><%= user.first_name %></a></td>
+          <td><%= user.first_name %></td>
           <td><%= user.last_name %></td>
           <td><%= user.email %></td>
           <td><%= link_to "Edit", edit_user_path(user), class: "btn btn-default btn-block" %></td>

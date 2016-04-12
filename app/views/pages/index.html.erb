@@ -1,6 +1,68 @@
+
+<div class="klax-topper">
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="klax-no-border">Watch Your First Item</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
+      <p><a class="btn btn-lg" href="#" role="button">Drag Me to Your Bookmarks</a></p>
+    </div>
+  </div>
+</div>
+
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Pages</h1>
+<div class="klax-section klax-topper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Watching</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
+      </div>
+      <div class="col-md-3">
+        <!-- negative space -->
+      </div>
+      <div class="col-md-3">
+        <%= link_to 'Temporary New Button', new_page_path, class: 'btn btn-default btn-lg btn-block' %>
+      </div>
+    </div>
+  </div><!-- /.container -->
+</div>
+
+<div class="klax-section klax-spacer-lg">
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Location</th>
+          <th>Selector</th>
+          <th>Creator</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @pages.each do |page| %>
+        <tr>
+          <td><%= page.name %></td>
+          <td style="word-wrap: break-word; white-space: normal;"><%= page.url %></td>
+          <td><%= page.css_selector %></td>
+          <td><%= page.user_id %></td>
+          <td><%= link_to 'Edit', edit_page_path(page), class: "btn btn-default btn-block" %></td>
+          <td><%= link_to 'Delete', page, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-block" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!-- <h1>Listing Pages</h1>
 
 <table>
   <thead>
@@ -26,8 +88,6 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table> -->
 
-<br>
-
-<%= link_to 'New Page', new_page_path %>
+<!-- <%= link_to 'New Page', new_page_path %> -->

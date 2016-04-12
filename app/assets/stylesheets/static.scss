@@ -9,6 +9,7 @@ body {
 
 a {
   color: #ff0b3a;
+  border-bottom: 2px solid #ff0b3a;
 }
 
 a:hover, a:focus {
@@ -16,6 +17,19 @@ a:hover, a:focus {
   text-decoration: none;
   border-bottom: 2px solid #ff0b3a;
 }
+
+.navbar a {
+  border-bottom: 0;
+}
+
+.navbar a:hover {
+  border-bottom: 2px solid #ff0b3a !important;
+}
+
+.dropdown a:hover {
+  border-bottom: 0 !important;
+}
+
 
 .nav > li > a:hover {
   background-color: transparent;
@@ -52,7 +66,8 @@ h4 {font-size: 1.5em;}
 .table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
   border-top: 1px solid #ff0b3a;
   vertical-align: center;
-  padding: 8px 0;
+  // padding: 8px 0;
+  padding-left: 0;
 }
 
 .form-control {
