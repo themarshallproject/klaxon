@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @page.name %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @page.url %>
+</p>
+
+<p>
+  <strong>Css selector:</strong>
+  <%= @page.css_selector %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @page.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_page_path(@page) %> |
+<%= link_to 'Back', pages_path %>
