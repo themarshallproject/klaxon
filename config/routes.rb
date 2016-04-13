@@ -1,14 +1,23 @@
 Rails.application.routes.draw do
 
-  resources :pages
-  resources :users
-
   root 'static#index'
+
+  scope '/watching' do
+    get '/' => 'watching#index', as: :watching
+    resources :pages
+  end
+
+  scope '/embed' do
+    get 'inject' => 'embed#inject'
+    get 'iframe' => 'embed#iframe'
+  end
 
   get '/help' => 'static#help', as: :help
   get '/feed' => 'static#index', as: :feed
 
-  scope 'login' do
+  resources :users
+
+  scope '/login' do
     get '/' => 'sessions#new', as: :login
     get '/token' => 'sessions#token', as: :token_session
     post '/' => 'sessions#create', as: :create_session

@@ -1,4 +1,3 @@
-
 <div class="klax-topper">
   <div class="container">
     <div class="jumbotron">
@@ -8,8 +7,6 @@
     </div>
   </div>
 </div>
-
-<p id="notice"><%= notice %></p>
 
 <div class="klax-section klax-topper">
   <div class="container">
@@ -53,7 +50,7 @@
           <td><%= page.name %></td>
           <td><%= page.domain.truncate(40) %></td>
           <td><code><%= page.css_selector %></code></td>
-          <td><%= page.user_id %></td>
+          <td><%= page&.user&.first_name %></td>
           <td><%= link_to 'Edit', edit_page_path(page), class: "btn btn-default btn-block" %></td>
           <td><%= link_to 'Delete', page, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-block" %></td>
         </tr>
@@ -62,33 +59,3 @@
     </table>
   </div>
 </div>
-
-<!-- <h1>Listing Pages</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Url</th>
-      <th>Css selector</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @pages.each do |page| %>
-      <tr>
-        <td><%= page.name %></td>
-        <td><%= page.url %></td>
-        <td><%= page.css_selector %></td>
-        <td><%= page.user_id %></td>
-        <td><%= link_to 'Show', page %></td>
-        <td><%= link_to 'Edit', edit_page_path(page) %></td>
-        <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table> -->
-
-<!-- <%= link_to 'New Page', new_page_path %> -->

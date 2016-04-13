@@ -1,0 +1,56 @@
+<!doctype>
+<html>
+<head>
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  border-left: 2px solid rgba(0, 0, 0, 0.5);
+  background: #FEFEFE;
+  padding: 20px;
+  font-family: Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.3em;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+</style>
+</head>
+<body>
+
+  <h2>Klaxon</h2>
+
+  <p id="path-preview">Waiting...</p>
+
+  <script>
+  // var url = window.frameElement.getAttribute('data-url');
+  // console.log('inside the iframe! url='+url);
+
+  var handleClick = function() {
+    console.log('click');
+  }
+
+  var handleUpdatePath = function(path) {
+    var lis = path.map(function(li) { return "<li>"+li+"</li>" });
+    document.querySelector('#path-preview').innerHTML = "<ul>"+lis.join("\n")+"</ul>"
+  }
+
+  window.addEventListener("message", function(e) {
+    var origin = e.origin;
+    var data = JSON.parse(e.data);
+
+    if (data.event === 'click') {
+      handleClick();
+    }
+    if (data.event === 'updatePath') {
+      handleUpdatePath(data.value);
+    }
+  }, false)
+  </script>
+
+</body>
+</html>

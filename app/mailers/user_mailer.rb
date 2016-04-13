@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  def login_email(user: user, token: token)
+  def login_email(user: nil, token: nil)
     @user = user
     @url = token_session_url(token: token)
     mail(to: @user.email, subject: 'Log in to Klaxon')
