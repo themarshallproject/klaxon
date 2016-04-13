@@ -6,9 +6,8 @@ class Page < ActiveRecord::Base
   end
 
   def domain
-    Addressable::URI.parse(self.url.to_s)
-      .host
-      .gsub(/^www\./, '')
+    host = Addressable::URI.parse(self.url.to_s).host.to_s
+    host.gsub(/^www\./, '')
   end
 
 end
