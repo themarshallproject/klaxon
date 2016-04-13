@@ -1,12 +1,16 @@
 (function() {
+  var iframeURL = "<%= @iframe_url %>";
+  var postMessageDomain = "<%= root_url %>";
+
   if (window._klaxonInject === true) {
     alert("The Klaxon bookmarklet already injected on this page");
     return;
   } else {
     window._klaxonInject = true;
+    console.log('[klaxon booted]');
   }
 
-  var cssPath = function (el) {
+  var cssPath = function(el) {
     // https://stackoverflow.com/questions/3620116/get-css-path-from-dom-element
     var path = [];
     while (
@@ -16,46 +20,62 @@
         (el.id ? '#' + el.id : '') +
         (el.className ? '.' + el.className.replace(/\s+/g, ".") : ''))
     );
-    return path;//.join(" > ");
+    return path;
   }
 
-  var iframeEl = document.createElement('iframe');
-  iframeEl.setAttribute('src', '<%= @iframe_url %>');
-  iframeEl.setAttribute('data-url', document.location.href);
-  iframeEl.setAttribute('frameborder', 0);
+  var iframe = document.createElement('iframe');
+  var src = iframeURL + "#" + encodeURIComponent(document.location.href);
+  iframe.setAttribute('src', src);
+  iframe.setAttribute('frameborder', 0);
 
-  iframeEl.style.top = '0px';
-  iframeEl.style.right = '0px';
-  iframeEl.style.width = '300px';
-  iframeEl.style.height = (window.innerHeight)+'px';
-  iframeEl.style.position = 'fixed';
-  iframeEl.style.zIndex = 2147483647; // max 32-bit int
+  iframe.style.top = '0px';
+  iframe.style.right = '0px';
+  iframe.style.width = '300px';
+  iframe.style.height = (window.innerHeight)+'px';
+  iframe.style.position = 'fixed';
+  iframe.style.zIndex = 2147483647; // max 32-bit int
 
-  document.body.appendChild(iframeEl);
+  document.body.appendChild(iframe);
 
+  var postMessage = function(data) {
+    iframe.contentWindow.postMessage(JSON.stringify(data), postMessageDomain);
+  }
+
+  var currentPath = [];
   var updatePath = function(path) {
-    console.log(path);
-    for(var i=1,l=path.length; i<=l; i++) {
-      var selector = path.slice(0, i).join(" ");
-      var text = document.querySelector(selector).innerText;
-      console.log(selector, text.length);
-    // console.log(e)
-    }
+    currentPath = path;
+    postMessage({ event: 'updatePath', value: path })
+
+
+    // for(var i=1,l=path.length; i<=l; i++) {
+    //   var selector = path.slice(0, i).join(" ");
+    //   var text = document.querySelector(selector).innerText;
+    //   console.log(selector, text.length);
+    // // console.log(e)
+    // }
 
   }
+
+  window.addEventListener('click', function() {
+   postMessage({ event: 'click' });
+  });
 
   window.addEventListener('mousemove', function() {
     var x = event.clientX;
     var y = event.clientY;
     var el = document.elementFromPoint(x, y);
-    el.style.backgroundColor = 'red';
+    el.style.backgroundColor = '#ff0b3a';
     (function(_el) {
       setTimeout(function() {
         _el.style.backgroundColor = 'transparent';
-      }, 1000);
+      }, 200);
     })(el);
 
     updatePath(cssPath(el));
   });
+
+  // window.addEventListener('message', function(e) {
+  //   console.log('message from', e);
+  // }, false);
 
 })();
