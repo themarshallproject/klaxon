@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'static#index'
+  root 'static#feed'
 
   scope '/watching' do
     get '/' => 'watching#index', as: :watching
@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   end
 
   get '/help' => 'static#help', as: :help
-  get '/feed' => 'static#index', as: :feed
+  get '/feed' => 'static#feed', as: :feed
+  get '/diff' => 'static#index', as: :diff
 
   resources :users do
     get  '/invite' => 'users#invite', as: :invite

@@ -14,4 +14,7 @@ class StaticController < ApplicationController
   def unknown_user
   end
 
+  def feed
+  end
+
 end
