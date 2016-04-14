@@ -15,11 +15,11 @@ RSpec.describe LoginToken, type: :model do
   it "fails if the SECRET_KEY_BASE changes" do
     token = LoginToken.create(user: @user)
     ENV['SECRET_KEY_BASE'] = SecureRandom.hex
-    expect { LoginToken.decode(token: token) }.to raise_error
+    expect { LoginToken.decode(token: token) }.to raise_error(JWT::VerificationError)
   end
 
   it "fails for a bad token" do
-    expect { LoginToken.decode(token: "weird-token") }.to raise_error
+    expect { LoginToken.decode(token: "weird-token") }.to raise_error(JWT::DecodeError)
   end
 
 end
