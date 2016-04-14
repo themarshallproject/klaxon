@@ -5,6 +5,9 @@
   </div>
 </div>
 
+<% bookmarklet_js = "javascript:(function(){document.body.appendChild(document.createElement('script')).src='#{inject_url()}';})();" %>
+
+<a class="btn btn-lg" href="<%= bookmarklet_js %>" role="button">Klaxon</a>
 
 <div class="klax-section klax-spacer-lg">
   <div class="container">
