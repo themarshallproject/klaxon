@@ -1,14 +1,128 @@
 <%= simple_form_for(@page, wrapper: :inline_form, html: { class: 'form-inline' }) do |f| %>
-  <%= f.error_notification %>
+<%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :url %>
-    <%= f.input :css_selector %>
-    <%= f.input :user_id %>
-  </div>
+<div class="klax-section klax-spacer-lg">
+  <div class="container">
+    <div class="row klax-spacer-md">
+      <div class="col-md-12">
+        <h4>Details</h4>
+      </div>
+    </div>
+    <div class="row">
+      <form class="form-horizontal">
+        <div class="form-group form-group-lg">
+          <label class="col-sm-1">Title</label>
+          <div class="col-sm-11">
+            <%= f.input :name, label: false, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group form-group-lg">
+          <label class="col-sm-1">Site</label>
+          <div class="col-sm-11">
+            <%= f.input :url, label: false, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group form-group-lg">
+          <label class="col-sm-1">Selector</label>
+          <div class="col-sm-11">
+            <%= f.input :css_selector, label: false, class: 'form-control' %>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div><!-- /.container -->
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+<div class="klax-section klax-spacer-lg">
+  <div class="container">
+    <div class="row klax-spacer-md">
+      <div class="col-md-12">
+        <h4>Notifications</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 klax-spacer-md">
+        <h5>Email Subscriptions</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="">
+            Ivar Vong
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="">
+            Tom Meagher
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="">
+            Bill Keller
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="">
+            Gabriel Dance
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3 klax-spacer-md">
+        <h5>Slack</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="">
+            #general
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="">
+            #klaxon
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3 klax-spacer-md">
+        <h5>Twitter</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="">
+            @ivarvong
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="">
+            @ultracasual
+          </label>
+        </div>
+      </div>
+      <div class="col-md-3 klax-spacer-md">
+        <h5>RSS</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="">
+            Enabled
+          </label>
+        </div>
+      </div>
+    </div>
+  </div><!-- /.container -->
+</div>
+
+<div class="klax-section klax-spacer-lg">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.button :submit, label: 'Save', class: "btn btn-default btn-lg btn-block" %>
+      </div>
+    </div>
+  </div><!-- /.container -->
+</div>
+
 <% end %>
