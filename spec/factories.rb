@@ -6,4 +6,8 @@ FactoryGirl.define do
     sequence(:email)      { |n| "first-#{n}@domain.com" }
   end
 
+  factory :page, class: Page do
+
+  end
+
 end
