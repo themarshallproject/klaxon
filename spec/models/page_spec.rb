@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Page, type: :model do
 
   before :all do
-    # TODO: seal this HTTP request off with VCR, similar
+    # TODO: seal this HTTP request off with VCR/similar
     @page = create(:page, url: "https://www.themarshallproject.org", css_selector: "body")
   end
 

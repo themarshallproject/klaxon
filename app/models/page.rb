@@ -11,13 +11,19 @@ class Page < ActiveRecord::Base
   end
 
   def current_html
-    logger.info "Downloading url=#{self.url}"
-    dirty = Net::HTTP.get URI(self.url)
-    SafeString.coerce(dirty)
+    if self.url.blank?
+      return ''
+    end
+
+    @html ||= begin
+      logger.info "downloading url=#{self.url} for page.id=#{self.id}"
+      dirty = Net::HTTP.get(URI(self.url.to_s))
+      SafeString.coerce(dirty)
+    end
   end
 
   def document
-    Nokogiri::HTML current_html
+    Nokogiri::HTML(current_html)
   end
 
   def match_text
@@ -30,6 +36,10 @@ class Page < ActiveRecord::Base
 
   def hash
     Digest::SHA256.hexdigest(match_text)
+  end
+
+  def scrape
+    puts "current hash for #{self.url} is #{self.hash}"
   end
 
 end
