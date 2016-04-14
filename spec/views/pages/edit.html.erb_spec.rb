@@ -8,6 +8,7 @@ RSpec.describe "pages/edit", type: :view do
       :css_selector => "MyText",
       :user_id => 1
     ))
+    @users = []
   end
 
   it "renders the edit page form" do
@@ -21,7 +22,6 @@ RSpec.describe "pages/edit", type: :view do
 
       assert_select "textarea#page_css_selector[name=?]", "page[css_selector]"
 
-      assert_select "input#page_user_id[name=?]", "page[user_id]"
     end
   end
 end

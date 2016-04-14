@@ -14,10 +14,12 @@ class PagesController < ApplicationController
   # GET /pages/new
   def new
     @page = Page.new
+    @users = []
   end
 
   # GET /pages/1/edit
   def edit
+    @users = User.all
   end
 
   # POST /pages

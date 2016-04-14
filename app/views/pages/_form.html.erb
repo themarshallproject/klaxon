@@ -9,7 +9,6 @@
       </div>
     </div>
     <div class="row">
-      <form class="form-horizontal">
         <div class="form-group form-group-lg">
           <label class="col-sm-1">Title</label>
           <div class="col-sm-11">
@@ -28,7 +27,6 @@
             <%= f.input :css_selector, label: false, class: 'form-control' %>
           </div>
         </div>
-      </form>
     </div>
   </div><!-- /.container -->
 </div>
@@ -44,30 +42,16 @@
       <div class="col-md-3 klax-spacer-md">
         <h5>Email Subscriptions</h5>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="">
-            Ivar Vong
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="">
-            Tom Meagher
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="">
-            Bill Keller
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="">
-            Gabriel Dance
-          </label>
-        </div>
+
+        <% @users.each do |user| %>
+          <div class="checkbox">
+            <label>
+            <input type="checkbox" name="page[email_subscriptions][]" value="<%= user.id %>">
+              <%= user.display_name %>
+            </label>
+          </div>
+        <% end %>
+
       </div>
       <div class="col-md-3 klax-spacer-md">
         <h5>Slack</h5>

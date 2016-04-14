@@ -16,7 +16,10 @@ Rails.application.routes.draw do
   get '/feed' => 'static#feed', as: :feed
   get '/diff' => 'static#index', as: :diff
 
-  resources :users
+  resources :users do
+    get  '/invite' => 'users#invite', as: :invite
+    post '/invite' => 'users#create_invite', as: :create_invite
+  end
 
   scope '/login' do
     get '/' => 'sessions#new', as: :login
