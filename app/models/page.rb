@@ -1,5 +1,6 @@
 class Page < ActiveRecord::Base
   belongs_to :user
+  has_many :page_snapshots
 
   def to_param
     [id, self.name.parameterize].join('-')
@@ -39,6 +40,7 @@ class Page < ActiveRecord::Base
   end
 
   def scrape
+    # TODO
     puts "current hash for #{self.url} is #{self.hash}"
   end
 

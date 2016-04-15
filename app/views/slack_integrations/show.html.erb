@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Channel:</strong>
+  <%= @slack_integration.channel %>
+</p>
+
+<p>
+  <strong>Webhook url:</strong>
+  <%= @slack_integration.webhook_url %>
+</p>
+
+<%= link_to 'Edit', edit_slack_integration_path(@slack_integration) %> |
+<%= link_to 'Back', slack_integrations_path %>

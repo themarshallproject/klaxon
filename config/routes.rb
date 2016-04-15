@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'integrations/index'
+
   root 'static#feed'
 
   scope '/watching' do
@@ -10,6 +12,11 @@ Rails.application.routes.draw do
   scope '/embed' do
     get 'inject' => 'embed#inject'
     get 'iframe' => 'embed#iframe'
+  end
+
+  scope '/integrations' do
+    get '/' => 'integrations#index'
+    resources :slack, as: 'slack_integrations', controller: 'slack_integrations'
   end
 
   get '/help' => 'static#help', as: :help

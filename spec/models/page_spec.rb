@@ -20,4 +20,9 @@ RSpec.describe Page, type: :model do
     expect(@page.hash.length).to be == 64
   end
 
+  it "has snapshots" do
+    page = create(:page, :with_snapshots, snapshot_count: 1)
+    expect(page.page_snapshots.length).to eq 1
+  end
+
 end
