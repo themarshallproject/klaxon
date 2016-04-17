@@ -1,12 +1,20 @@
 Rails.application.routes.draw do
 
-  get 'integrations/index'
+  scope 'api' do
+    get 'subscriptions' => 'api#subscriptions', as: :api_subscriptions
+    get 'users' => 'api#users', as: :api_users
+    get 'pages' => 'api#pages', as: :api_pages
+    get 'stats' => 'api#stats', as: :api_stats
+  end
 
   root 'static#feed'
 
   scope '/watching' do
     get '/' => 'watching#index', as: :watching
-    resources :pages
+
+    resources :pages do
+      get '/latest-change' => 'pages#latest_change', on: :member
+    end
   end
 
   scope '/embed' do
@@ -15,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   scope '/integrations' do
-    get '/' => 'integrations#index'
+    get '/' => 'integrations#index', as: :integrations
     resources :slack, as: 'slack_integrations', controller: 'slack_integrations'
   end
 

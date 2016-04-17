@@ -1,6 +1,11 @@
 class Page < ActiveRecord::Base
   belongs_to :user
   has_many :page_snapshots
+  has_many :email_subscriptions
+
+  attr_accessor :subscriptions
+  after_create :update_subscriptions
+  after_save :update_subscriptions
 
   def to_param
     [id, self.name.parameterize].join('-')
@@ -11,7 +16,7 @@ class Page < ActiveRecord::Base
     host.gsub(/^www\./, '')
   end
 
-  def current_html
+  def html
     if self.url.blank?
       return ''
     end
@@ -24,7 +29,7 @@ class Page < ActiveRecord::Base
   end
 
   def document
-    Nokogiri::HTML(current_html)
+    Nokogiri::HTML(html)
   end
 
   def match_text
@@ -42,6 +47,31 @@ class Page < ActiveRecord::Base
   def scrape
     # TODO
     puts "current hash for #{self.url} is #{self.hash}"
+  end
+
+  def current
+    {
+      html: html,
+      hash: hash,
+    }
+  end
+
+  def update_subscriptions
+    # REFACTOR
+    ActiveRecord::Base.transaction do
+      Subscription.where(watching: self).destroy_all
+
+      subscriptions.to_a.each do |subscription|
+        model, id = subscription.split(':') # TODO
+        if model == 'user'
+          User.find(id).subscribe(self)
+        elsif model == 'slack'
+          SlackIntegration.find(id).subscribe(self)
+        else
+          raise "unknown subscription type"
+        end
+      end
+    end
   end
 
 end

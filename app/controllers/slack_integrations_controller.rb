@@ -24,7 +24,7 @@ class SlackIntegrationsController < ApplicationController
     @slack_integration = SlackIntegration.new(slack_integration_params)
 
     if @slack_integration.save
-      redirect_to @slack_integration, notice: 'Slack integration was successfully created.'
+      redirect_to integrations_path, notice: 'Slack integration was successfully created.'
     else
       render :new
     end
@@ -33,7 +33,7 @@ class SlackIntegrationsController < ApplicationController
   # PATCH/PUT /slack_integrations/1
   def update
     if @slack_integration.update(slack_integration_params)
-      redirect_to @slack_integration, notice: 'Slack integration was successfully updated.'
+      redirect_to integrations_path, notice: 'Slack integration was successfully updated.'
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class SlackIntegrationsController < ApplicationController
   # DELETE /slack_integrations/1
   def destroy
     @slack_integration.destroy
-    redirect_to slack_integrations_url, notice: 'Slack integration was successfully destroyed.'
+    redirect_to integrations_path, notice: 'Slack integration was successfully destroyed.'
   end
 
   private

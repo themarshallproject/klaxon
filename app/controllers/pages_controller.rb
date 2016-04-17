@@ -1,6 +1,10 @@
 class PagesController < ApplicationController
   before_action :authorize
-  before_action :set_page, only: [:show, :edit, :update, :destroy]
+  before_action :set_page, only: [:show, :edit, :update, :destroy, :latest_change]
+
+  def latest_change
+    render text: 'redirect generated here'
+  end
 
   # GET /pages
   def index
@@ -14,12 +18,14 @@ class PagesController < ApplicationController
   # GET /pages/new
   def new
     @page = Page.new
-    @users = []
+    @users = User.all
+    @slack_integrations = SlackIntegration.all
   end
 
   # GET /pages/1/edit
   def edit
     @users = User.all
+    @slack_integrations = SlackIntegration.all
   end
 
   # POST /pages
@@ -57,6 +63,6 @@ class PagesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def page_params
-      params.require(:page).permit(:name, :url, :css_selector)
+      params.require(:page).permit(:name, :url, :css_selector, subscriptions: [])
     end
 end

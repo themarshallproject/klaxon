@@ -28,4 +28,8 @@ class User < ActiveRecord::Base
     Subscription.where(watcher: self, watching: watchable).destroy_all
   end
 
+  def is_subscribed_to?(watchable)
+    Subscription.where(watcher: self, watching: watchable).exists?
+  end
+
 end

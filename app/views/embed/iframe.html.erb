@@ -22,13 +22,16 @@ ul {
 </head>
 <body>
 
+<%= Page.all.to_json %>
+
   <h2>Klaxon</h2>
 
   <p id="path-preview">Waiting...</p>
 
   <script>
-  // var url = window.frameElement.getAttribute('data-url');
-  // console.log('inside the iframe! url='+url);
+
+  var url = decodeURIComponent(window.location.hash.replace('#', ''));
+  console.log('url from hash', url);
 
   var handleClick = function() {
     console.log('click');
@@ -43,10 +46,11 @@ ul {
     var origin = e.origin;
     var data = JSON.parse(e.data);
 
-    if (data.event === 'click') {
+    if (data.event === 'metadata') {
+
+    } else if (data.event === 'click') {
       handleClick();
-    }
-    if (data.event === 'updatePath') {
+    } else if (data.event === 'updatePath') {
       handleUpdatePath(data.value);
     }
   }, false)

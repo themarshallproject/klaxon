@@ -41,12 +41,12 @@
     <div class="row">
       <div class="col-md-3 klax-spacer-md">
         <h5>Email Subscriptions</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
+        <p>Who should get an email when this page changes?</p>
 
         <% @users.each do |user| %>
           <div class="checkbox">
             <label>
-            <input type="checkbox" name="page[email_subscriptions][]" value="<%= user.id %>">
+              <%= check_box_tag "page[subscriptions][]", "user:#{user.id}", user.is_subscribed_to?(@page) %>
               <%= user.display_name %>
             </label>
           </div>
@@ -55,45 +55,24 @@
       </div>
       <div class="col-md-3 klax-spacer-md">
         <h5>Slack</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="">
-            #general
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="">
-            #klaxon
-          </label>
-        </div>
+        <p>Which Slack channels should be notified?</p>
+
+        <% @slack_integrations.each do |slack| %>
+          <div class="checkbox">
+            <label>
+              <%= check_box_tag "page[subscriptions][]", "slack:#{slack.id}", slack.is_subscribed_to?(@page) %>
+              <%= slack.channel %>
+            </label>
+          </div>
+        <% end %>
       </div>
-      <div class="col-md-3 klax-spacer-md">
+      <div class="col-md-3 klax-spacer-md disabled">
         <h5>Twitter</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="">
-            @ivarvong
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="">
-            @ultracasual
-          </label>
-        </div>
+        <p>TKTK</p>
       </div>
-      <div class="col-md-3 klax-spacer-md">
+      <div class="col-md-3 klax-spacer-md disabled">
         <h5>RSS</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="">
-            Enabled
-          </label>
-        </div>
+        <p>TKTK</p>
       </div>
     </div>
   </div><!-- /.container -->

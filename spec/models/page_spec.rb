@@ -8,7 +8,7 @@ RSpec.describe Page, type: :model do
   end
 
   it "can download a webpage" do
-    expect(@page.current_html.length).to be > 1000
+    expect(@page.html.length).to be > 1000
   end
 
   it "can extract a match text and match html" do
