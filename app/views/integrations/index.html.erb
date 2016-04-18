@@ -1,18 +1,55 @@
-<div class="container">
 
-<h2>Slack</h2>
-
-<%= link_to "New Slack Integration", new_slack_integration_path, class: 'btn' %><br>
-
-<h4>Existing:</h4>
-<ul>
-<% @slack_integrations.each do |integration| %>
-  <li><%= link_to integration.channel, edit_slack_integration_path(integration) %></li>
-<% end %>
-</ul>
-
-<h2>Twitter</h2>
-
-<p>TKTK</p>
-
+<div class="klax-section klax-topper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Integrations</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
+      </div>
+       <div class="col-md-3">
+      </div>
+      <div class="col-md-3">
+      </div>
+    </div>
+  </div><!-- /.container -->
 </div>
+
+
+<div class="klax-topper">
+  <div class="container">
+  	<h4 style="margin-top: 0;" class="klax-spacer-md">Slack</h4>
+  	<div class="row">
+      <div class="col-md-6">
+      </div>
+       <div class="col-md-3">
+      </div>
+      <div class="col-md-3">
+      	<%= link_to "Creete Slack Integration", new_slack_integration_path,class: 'btn btn-default btn-lg btn-block' %>
+      </div>
+  </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Channel</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @slack_integrations.each do |integration| %>
+        <tr>
+          <td><%= integration.channel %></td>
+          <td><%= link_to "Edit", edit_slack_integration_path(integration),class: 'btn btn-default btn-block' %>
+</td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+
