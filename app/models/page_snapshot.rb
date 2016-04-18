@@ -1,7 +1,6 @@
 class PageSnapshot < ActiveRecord::Base
   belongs_to :page
   validates :page, presence: true
-
   validates :sha2_hash, presence: true, uniqueness: true
 
   def document
@@ -17,7 +16,11 @@ class PageSnapshot < ActiveRecord::Base
   end
 
   def previous
-
+    PageSnapshot.where('created_at < ?', self.created_at).order('created_at DESC').first
   end
+
+  # def change
+  #   Change.where(before: previous, after: self).first_or_create
+  # end
 
 end

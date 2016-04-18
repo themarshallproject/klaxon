@@ -19,13 +19,12 @@ class LoginToken
 
     begin
       payload, _config = JWT.decode(token, self.secret_key, 'HS256')
-    rescue
+    rescue JWT::ExpiredSignature
       return false
     end
 
     user_id = payload['data']['user_id']
-    User.find_by(id: user_id)
-
+    return User.find_by(id: user_id)
   end
 
 end
