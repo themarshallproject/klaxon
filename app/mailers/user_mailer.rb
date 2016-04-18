@@ -1,5 +1,4 @@
 class UserMailer < ApplicationMailer
-
   layout 'user_mailer'
 
   def login_email(user: nil)
