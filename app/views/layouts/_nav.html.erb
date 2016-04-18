@@ -1,0 +1,31 @@
+<nav class="navbar navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <svg style="padding-top: 2px;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="23px" height="20px" viewBox="0 0 100 86.9" enable-background="new 0 0 100 86.9" xml:space="preserve"><g><path id="logo-no-fill" fill="none" d="M38.5,33.7c-2.6-12.6-1.8-19.5-1.8-19.5S23.8,54.4,54.3,76.7c-3.1-6-5.6-11.7-7.7-16.9c5.4-2.3,8-9.3,5.7-16.2C50.1,36.9,44.1,32.7,38.5,33.7z"/><polygon fill="none" points="79.3,39.2 79.3,39.2 79.3,39.2 "/><path fill="#FF0B3A" d="M33.2,5.9c-20,34.4-10.7,30.4-21.6,34.2C8.4,41.2,4,43.6,2,46.3C-3,53,1.2,71,15.1,71.7c21,1,4.2-2,35.9,13C94.6,105.4,53.7-29.4,33.2,5.9z M46.5,59.8c2.1,5.3,4.6,10.9,7.7,16.9C23.8,54.4,36.7,14.2,36.7,14.2s-0.8,6.9,1.8,19.5c5.6-1,11.6,3.2,13.8,9.9C54.5,50.5,51.9,57.5,46.5,59.8z"/><path fill="#FF0B3A" d="M78.7,11.2l-1.9-1.1c-1.1-0.7-2.7-0.3-3.4,0.9l-4.6,7.7c-0.7,1.2-0.3,2.7,0.9,3.4l1.9,1.1c0.4,0.2,0.8,0.4,1.3,0.4c0.9,0,1.7-0.5,2.1-1.2l4.6-7.7C80.2,13.4,79.8,11.9,78.7,11.2z"/><path fill="#FF0B3A" d="M99.8,33.6l-0.5-2.1c-0.2-0.8-1-1.7-2.6-1.7c-0.4,0-0.9,0.1-1.3,0.2L78.9,34c-0.7,0.2-1.9,0.6-2.5,1.6L76,36.5l0.7,2.9c0.1,0.4,0.6,1.7,2.6,1.7c0.4,0,0.9-0.1,1.3-0.2L97,36.8C99.5,36.2,100.1,34.7,99.8,33.6z M79.3,39.2L79.3,39.2L79.3,39.2L79.3,39.2z"/><path fill="#FF0B3A" d="M90.5,58.4l-7.7-4.7c-1.1-0.7-2.7-0.3-3.4,0.8l-1.1,1.9c-0.7,1.2-0.3,2.7,0.9,3.4l7.7,4.7c0.4,0.2,0.8,0.4,1.3,0.4c0.9,0,1.7-0.5,2.1-1.2l1.1-1.9c0.3-0.6,0.4-1.2,0.3-1.9C91.4,59.3,91,58.8,90.5,58.4z"/></g></svg>
+        <b>Klaxon</b></a>
+    </div>
+    <div id="navbar pull-right" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><%= link_to "Feed", root_path %></li>
+        <li><a href="<%= pages_path %>">Watching</a></li>
+        <li><a href="<%= help_path %>">Help</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "Users", users_path %></li>
+            <li><%= link_to "Integrations", integrations_path %></li>
+            <li role="separator" class="divider"></li>
+            <li><%= link_to "Logout", logout_path, method: :post %></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>

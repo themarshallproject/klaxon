@@ -1,0 +1,2 @@
+module SlackIntegrationsHelper
+end

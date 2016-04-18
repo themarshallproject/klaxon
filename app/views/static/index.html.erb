@@ -1,221 +1,146 @@
-<nav class="navbar navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#"><b>Klaxon</b></a>
-    </div>
-    <div id="navbar pull-right" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="#">Feed</a></li>
-        <li><a href="#about">Watching</a></li>
-        <li><a href="#contact">Settings</a></li>
-        <li><a href="#contact">Help</a></li>
-        <li><%= link_to "Logout", logout_path, method: :post %></li>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div>
-</nav>
-
 
 <div class="klax-section klax-topper">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1>Editing an Existing Klaxon</h1>
+        <h1>Compare Changes</h1>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
-      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
+      <p class="lead"><b>Report on the Investigation of the Ferguson Police Department</b> has changed 60 times since Wednesday, July 3, 2015, the date which Tom Meagher began watching it.</p>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-3">
         <!-- negative space -->
+      </div>
+      <div class="col-md-3">
+        <%= link_to 'Compare Versions', new_user_path, class: 'btn btn-default btn-lg btn-block' %>
+        <%= link_to 'Go to Source', new_user_path, class: 'btn btn-default btn-lg btn-block' %>
+        <%= link_to 'Edit', new_user_path, class: 'btn btn-default btn-lg btn-block' %>
       </div>
     </div>
   </div><!-- /.container -->
+</div>
+
+<div class="klax-section klax-spacer-lg">
+  <div class="container klax-spacer-md">
+    <div class="row klax-spacer-md">
+      <div class="col-md-12">
+        <h4>Viewing change <code>398x030s</code> from April 2 <small>in comparison with <code>sas303s</code> from April 1</small></h4>
+      </div>
+    </div>
+        <form class="form-horizontal" method="POST" action="<%= create_session_path %>">
+        <div class="form-group form-group-lg">
+          <label class="col-sm-1">What changed?</label>
+          <div class="col-md-11">
+            <div class="input-group">
+              <input name="email" class="form-control" type="text" id="formGroupInputLarge" style="height: 45px;">
+              <span class="input-group-btn">
+                <button class="btn btn-default btn-lg" type="submit">Save</button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </form>
+  </div>
+  <div class="diff">
+    <ul>
+      <li class="unchanged" data-line="1"><span>            TBA&lt;/span&gt;&lt;br /&gt;</span></li>
+      <li class="unchanged" data-line="2"><span>        &lt;span class=&quot;style8&quot;&gt;Scheduled Execution:&lt;/span&gt;&lt;span class=&quot;style5&quot;&gt;&amp;nbsp;</span></li>
+      <li class="del" data-line="3"><del>       &lt;/span&gt;&lt;span class=&quot;style8&quot;&gt;March 2<strong>3</strong>, 2016&lt;/span&gt;&lt;/p&gt;</del></li>
+      <li class="ins" data-line="3"><ins>       &lt;/span&gt;&lt;span class=&quot;style8&quot;&gt;March 2<strong>6</strong>, 2016&lt;/span&gt;&lt;/p&gt;</ins></li>
+      <li class="unchanged" data-line="4"><span>            &lt;p&gt;&lt;span class=&quot;style8&quot;&gt;Name&lt;/span&gt;:&amp;nbsp; &lt;span class=&quot;style4&quot;&gt;</span></li>
+      <li class="unchanged" data-line="5"><span>        &lt;span style=&quot;mso-tab-count:2&quot;&gt;&lt;strong&gt;Gregory Lott&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;/strong&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</span></li>
+      <li class="unchanged"><span>        &lt;span class=&quot;style8&quot;&gt;Scheduled Execution:&lt;/span&gt;&lt;span class=&quot;style5&quot;&gt;&amp;nbsp;</span></li>
+      <li class="unchanged"><span>        &lt;/span&gt;&lt;span class=&quot;style8&quot;&gt;July 19, 2017&lt;/span&gt;&lt;/p&gt;</span></li>
+      <li class="del"><del>           &lt;h4&gt;2018&lt;/h4&gt;</del></li>
+      <li class="del"><del>           &lt;p&gt;&lt;span class=&quot;style8&quot;&gt;Name&lt;/span&gt;:&amp;nbsp; &lt;span class=&quot;style4&quot;&gt;</del></li>
+      <li class="del"><del>       &lt;span style=&quot;mso-tab-count:2&quot;&gt;&lt;strong&gt;David A. Sneed&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/strong&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</del></li>
+      <li class="del"><del>       &lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;style8&quot;&gt;Inmate Number&lt;/span&gt;:&amp;nbsp; </del></li>
+      <li class="del"><del>           A192-040&lt;br /&gt;</del></li>
+      <li class="del"><del>       &lt;span class=&quot;style8&quot;&gt;County:&lt;/span&gt;&lt;span class=&quot;style5&quot;&gt;&amp;nbsp;</del></li>
+      <li class="del"><del>       &lt;/span&gt;&lt;span class=&quot;style8&quot;&gt;Stark&lt;/span&gt;&lt;br /&gt;</del></li>
+      <li class="del"><del>       &lt;span class=&quot;style8&quot;&gt;Clemency Hearing:&lt;/span&gt;&lt;span class=&quot;style3&quot;&gt; </del></li>
+      <li class="del"><del>           TBA&lt;/span&gt;&lt;br /&gt;</del></li>
+      <li class="del"><del>       &lt;span class=&quot;style8&quot;&gt;Scheduled Execution:&lt;/span&gt;&lt;span class=&quot;style5&quot;&gt;&amp;nbsp;</del></li>
+      <li class="del"><del>       &lt;/span&gt;&lt;span class=&quot;style8&quot;&gt;August 1, 2018&lt;/span&gt;&lt;/p&gt;</del></li>
+      <li class="del"><del>           &lt;p&gt;&lt;span class=&quot;style8&quot;&gt;Name&lt;/span&gt;:&amp;nbsp; &lt;span class=&quot;style4&quot;&gt;</del></li>
+      <li class="del"><del>       &lt;span style=&quot;mso-tab-count:2&quot;&gt;&lt;strong&gt;James Derrick O&amp;#39;Neal&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/strong&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</del></li>
+      <li class="del"><del>       &lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;style8&quot;&gt;Inmate Number&lt;/span&gt;:&amp;nbsp; </del></li>
+      <li class="del"><del>           A325-132&lt;br /&gt;</del></li>
+      <li class="del"><del>       &lt;span class=&quot;style8&quot;&gt;County:&lt;/span&gt;&lt;span class=&quot;style5&quot;&gt;&amp;nbsp;</del></li>
+      <li class="del"><del>       &lt;/span&gt;&lt;span class=&quot;style8&quot;&gt;Hamilton&lt;/span&gt;&lt;br /&gt;</del></li>
+      <li class="del"><del>       &lt;span class=&quot;style8&quot;&gt;Clemency Hearing:&lt;/span&gt;&lt;span class=&quot;style3&quot;&gt; </del></li>
+      <li class="del"><del>           TBA&lt;/span&gt;&lt;br /&gt;</del></li>
+      <li class="del"><del>       &lt;span class=&quot;style8&quot;&gt;Scheduled Execution:&lt;/span&gt;&lt;span class=&quot;style5&quot;&gt;&amp;nbsp;</del></li>
+      <li class="del"><del>       &lt;/span&gt;&lt;span class=&quot;style8&quot;&gt;October 10, 2018&lt;/span&gt;&lt;/p&gt;</del></li>
+      <li class="del"><del>           &lt;h4&gt;2019&lt;/h4&gt;</del></li>
+      <li class="del"><del>           &lt;p&gt;&lt;span class=&quot;style8&quot;&gt;Name&lt;/span&gt;:&amp;nbsp; &lt;span class=&quot;style4&quot;&gt;</del></li>
+      <li class="del"><del>       &lt;span style=&quot;mso-tab-count:2&quot;&gt;&lt;strong&gt;Elwood Hubert Jones&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/strong&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</del></li>
+      <li class="del"><del>       &lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;style8&quot;&gt;Inmate Number&lt;/span&gt;:&amp;nbsp; </del></li>
+      <li class="del"><del>           A339-441&lt;br /&gt;</del></li>
+      <li class="del"><del>       &lt;span class=&quot;style8&quot;&gt;County:&lt;/span&gt;&lt;span class=&quot;style5&quot;&gt;&amp;nbsp;</del></li>
+      <li class="del"><del>       &lt;/span&gt;&lt;span class=&quot;style8&quot;&gt;Hamilton&lt;/span&gt;&lt;br /&gt;</del></li>
+      <li class="del"><del>       &lt;span class=&quot;style8&quot;&gt;Clemency Hearing:&lt;/span&gt;&lt;span class=&quot;style3&quot;&gt; </del></li>
+      <li class="del"><del>           TBA&lt;/span&gt;&lt;br /&gt;</del></li>
+      <li class="del"><del>       &lt;span class=&quot;style8&quot;&gt;Scheduled Execution:&lt;/span&gt;&lt;span class=&quot;style5&quot;&gt;&amp;nbsp;</del></li>
+      <li class="del"><del>       &lt;/span&gt;&lt;span class=&quot;style8&quot;&gt;January 9, 2019&lt;/span&gt;&lt;/p&gt;</del></li>
+      <li class="del"><del>           &lt;p&gt;&lt;span class=&quot;style8&quot;&gt;Name&lt;/span&gt;:&amp;nbsp; &lt;span class=&quot;style4&quot;&gt;</del></li>
+      <li class="del"><del>       &lt;span style=&quot;mso-tab-count:2&quot;&gt;&lt;strong&gt;Archie J. Dixon&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/strong&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</del></li>
+      <li class="del"><del>       &lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;style8&quot;&gt;Inmate Number&lt;/span&gt;:&amp;nbsp; </del></li>
+      <li class="del"><del>           A325-702&lt;br /&gt;</del></li>
+      <li class="del"><del>       &lt;span class=&quot;style8&quot;&gt;County:&lt;/span&gt;&lt;span class=&quot;style5&quot;&gt;&amp;nbsp;</del></li>
+      <li class="del"><del>       &lt;/span&gt;&lt;span class=&quot;style8&quot;&gt;Lucas&lt;/span&gt;&lt;br /&gt;</del></li>
+      <li class="del"><del>       &lt;span class=&quot;style8&quot;&gt;Clemency Hearing:&lt;/span&gt;&lt;span class=&quot;style3&quot;&gt; </del></li>
+      <li class="del"><del>           TBA&lt;/span&gt;&lt;br /&gt;</del></li>
+      <li class="del"><del>       &lt;span class=&quot;style8&quot;&gt;Scheduled Execution:&lt;/span&gt;&lt;span class=&quot;style5&quot;&gt;&amp;nbsp;</del></li>
+      <li class="del"><del>       &lt;/span&gt;&lt;span class=&quot;style8&quot;&gt;March 20, 2019&lt;/span&gt;&lt;/p&gt;</del></li>
+      <li class="del"><del>           &lt;p&gt;&lt;span class=&quot;style8&quot;&gt;Name&lt;/span&gt;:&amp;nbsp; &lt;span class=&quot;style4&quot;&gt;</del></li>
+      <li class="del"><del>       &lt;span style=&quot;mso-tab-count:2&quot;&gt;&lt;strong&gt;Timothy J. Hoffner&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/strong&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</del></li>
+      <li class="del"><del>       &lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;style8&quot;&gt;Inmate Number&lt;/span&gt;:&amp;nbsp; </del></li>
+      <li class="del"><del>           A315-988&lt;br /&gt;</del></li>
+      <li class="del"><del>       &lt;span class=&quot;style8&quot;&gt;County:&lt;/span&gt;&lt;span class=&quot;style5&quot;&gt;&amp;nbsp;</del></li>
+      <li class="del"><del>       &lt;/span&gt;&lt;span class=&quot;style8&quot;&gt;Lucas&lt;/span&gt;&lt;br /&gt;</del></li>
+      <li class="del"><del>       &lt;span class=&quot;style8&quot;&gt;Clemency Hearing:&lt;/span&gt;&lt;span class=&quot;style3&quot;&gt; </del></li>
+      <li class="del"><del>           TBA&lt;/span&gt;&lt;br /&gt;</del></li>
+      <li class="del"><del>       &lt;span class=&quot;style8&quot;&gt;Scheduled Execution:&lt;/span&gt;&lt;span class=&quot;style5&quot;&gt;&amp;nbsp;</del></li>
+      <li class="del"><del>       &lt;/span&gt;&lt;span class=&quot;style8&quot;&gt;May 29, 2019&lt;/span&gt;&lt;/p&gt;</del></li>
+      <li class="unchanged"><span>            &lt;p&gt;&amp;nbsp;&lt;/p&gt;</span></li>
+      <li class="unchanged"><span>        &lt;a href=&quot;#main&quot;&gt;[Back to top]&lt;/a&gt;</span></li>
+      <li class="unchanged"><span>  &lt;div id=&quot;footer_updated&quot;&gt;</span></li>
+      <li class="unchanged"><span>  &lt;p&gt;Last Updated: &lt;em&gt;</span></li>
+      <li class="del"><del>   &lt;!-- #BeginEditable &quot;footer_updated&quot; --&gt;<strong>June 9</strong>, 2015</del></li>
+      <li class="ins"><ins>   &lt;!-- #BeginEditable &quot;footer_updated&quot; --&gt;<strong>March 17</strong>, 2015</ins></li>
+      <li class="unchanged"><span>    &lt;!-- #EndEditable --&gt;</span></li>
+      <li class="unchanged"><span>  &lt;/em&gt;&lt;/p&gt;</span></li>
+    </ul>
+  </div>
 </div>
 
 <div class="klax-section klax-spacer-lg">
   <div class="container">
     <div class="row klax-spacer-md">
       <div class="col-md-12">
-        <h4>Details</h4>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <form class="form-horizontal">
-          <div class="form-group form-group-lg">
-            <label class="col-sm-1">Name</label>
-            <div class="col-sm-11">
-              <input class="form-control" type="text" id="formGroupInputLarge">
-            </div>
-          </div>
-          <div class="form-group form-group-lg">
-            <label class="col-sm-1">Location</label>
-            <div class="col-sm-11">
-              <input class="form-control" type="text" id="formGroupInputLarge">
-            </div>
-          </div>
-          <div class="form-group form-group-lg">
-            <label class="col-sm-1">Selector</label>
-            <div class="col-sm-11">
-              <input class="form-control" type="text" id="formGroupInputLarge">
-            </div>
-          </div>
-          <div class="form-group form-group-lg">
-            <div class="col-md-9">
-              <!-- negative space -->
-            </div>
-            <div class="col-md-3">
-              <button class="btn btn-default btn-lg btn-block" type="submit">Save</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div><!-- /.container -->
-</div>
-
-<div class="klax-section klax-spacer-lg">
-  <div class="container">
-    <div class="row klax-spacer-md">
-      <div class="col-md-12">
-        <h4>Notifications</h4>
+        <h4>Activity</h4>
       </div>
     </div>
     <div class="row">
       <div class="col-md-3 klax-spacer-md">
-        <h5>Email Subscriptions</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="">
-            Ivar Vong
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="">
-            Tom Meagher
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="">
-            Bill Keller
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="">
-            Gabriel Dance
-          </label>
-        </div>
+        <h2>150</h2>
+        <p class="lead">total times the item has changed since you started watching it, which was Wednesday, May 26, 2016.</p>
       </div>
       <div class="col-md-3 klax-spacer-md">
-        <h5>Slack</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="">
-            #general
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="">
-            #klaxon
-          </label>
-        </div>
+        <h2>99.8%</h2>
+        <p class="lead">is the average amount of the item that changes.</p>
       </div>
       <div class="col-md-3 klax-spacer-md">
-        <h5>Twitter</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="">
-            @ivarvong
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="">
-            @ultracasual
-          </label>
-        </div>
+        <h2>Six</h2>
+        <p class="lead">days, roughly, between each change. We anticipate the next change will occur on Tuesday, February 9, 2017 at about 7:15 p.m.</p>
       </div>
       <div class="col-md-3 klax-spacer-md">
-        <h5>RSS</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="">
-            Enabled
-          </label>
-        </div>
+        <h2>12</h2>
+        <p class="lead">days since the last change was captured on Wednesday, February 1, 2016 at 5:30 p.m.</p>
       </div>
     </div>
   </div><!-- /.container -->
-</div>
-
-<div class="klax-section klax-spacer-lg">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <button type="button" class="btn btn-default btn-lg btn-block">Save</button>
-      </div>
-    </div>
-  </div><!-- /.container -->
-</div>
-
-<div class="klax-section klax-topper">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h1>Users</h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
-      </div>
-      <div class="col-md-3">
-        <!-- negative space -->
-      </div>
-      <div class="col-md-3">
-        <button class="btn btn-default btn-lg btn-block" type="submit">Create a New User</button>
-      </div>
-    </div>
-  </div><!-- /.container -->
-</div>
-
-<div class="klax-section klax-spacer-lg">
-  <div class="container">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Email</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
-        <tr>
-          <td><a href="#"><%= user.first_name %></a></td>
-          <td><%= user.last_name %></td>
-          <td><%= user.email %></td>
-          <td><%= link_to "Edit", edit_user_path(user), class: "btn btn-default btn-block" %></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
 </div>

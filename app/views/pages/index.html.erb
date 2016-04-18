@@ -1,0 +1,65 @@
+<% bookmarklet_js = "javascript:(function(){document.body.appendChild(document.createElement('script')).src='#{inject_url()}';})();" %>
+
+<!-- <div class="klax-topper">
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="klax-no-border">Watch Your First Item</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
+      <p><a class="btn btn-lg" href="<%= bookmarklet_js %>" role="button">Add to Klaxon</a></p>
+    </div>
+  </div>
+</div> -->
+
+<div class="klax-section klax-topper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Watching</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
+      </div>
+      <div class="col-md-3">
+        <!-- negative space -->
+      </div>
+      <div class="col-md-3">
+        <%= link_to 'Temporary New Button', new_page_path, class: 'btn btn-default btn-lg btn-block' %>
+      </div>
+    </div>
+  </div><!-- /.container -->
+</div>
+
+<div class="klax-section klax-spacer-lg">
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Created</th>
+          <th>Name</th>
+          <th>Site</th>
+          <th>Selector</th>
+          <th>Creator</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @pages.each do |page| %>
+        <tr>
+          <td><%= page.created_at.strftime("%m/%d/%Y at %I:%M%p") %></td>
+          <td><%= page.name %></td>
+          <td><%= page.domain.truncate(40) %></td>
+          <td><code><%= page.css_selector %></code></td>
+          <td><%= page&.user&.display_name %></td>
+          <td><%= link_to "Latest Change", latest_change_page_path(page), class: "btn btn-default btn-block" %></td>
+          <td><%= link_to 'Edit', edit_page_path(page), class: "btn btn-default btn-block" %></td>
+          <td><%= link_to 'Delete', page, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-block" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
