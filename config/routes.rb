@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
     resources :pages do
       get '/latest-change' => 'pages#latest_change', on: :member
+      get '/snapshots' => 'pages#snapshots', on: :member
     end
   end
 
