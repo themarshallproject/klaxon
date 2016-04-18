@@ -54,8 +54,12 @@
           <td><%= page.domain.truncate(40) %></td>
           <td><code><%= page.css_selector %></code></td>
           <td><%= page&.user&.display_name %></td>
-          <% disabled = page.page_snapshots.count < 2 %>
-          <td><%= link_to "Latest Change", latest_change_page_path(page), class: "btn btn-default btn-block", disabled: disabled %></td>
+
+          <td>
+            <% if page.page_snapshots.count > 1 %>
+              <%= link_to "Latest Change", latest_change_page_path(page), class: "btn btn-default btn-block" %>
+            <% end %>
+          </td>
           <td><%= link_to 'Edit', edit_page_path(page), class: "btn btn-default btn-block" %></td>
           <td><%= link_to 'Delete', page, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-block" %></td>
         </tr>
