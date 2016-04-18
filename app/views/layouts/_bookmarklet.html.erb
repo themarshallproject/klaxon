@@ -3,9 +3,13 @@
 <div class="klax-topper">
   <div class="container">
     <div class="jumbotron">
+    <% if @current_user.pages.empty? %>
       <h1 class="klax-no-border" style="padding-top: 0;">Watch Your First Item</h1>
+     <% end %>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
       <a class="btn btn-lg" href="<%= bookmarklet_js %>" role="button">Add to Klaxon</a>
     </div>
   </div>
 </div>
+
+
