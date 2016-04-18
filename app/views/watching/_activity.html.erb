@@ -1,7 +1,10 @@
   <h4 style="margin-top: 0;" class="klax-spacer-md">Activity</h4>
 
   <h2 style="margin-top: 0;"><%= PageSnapshot.count %></h2>
-  <p class="lead klax-spacer-sm">total times changes since you first started using Klaxon which was <%= Page.order('created_at DESC').first.created_at.strftime("%A, %B %d, %Y") %>.</p>
+
+  <% # TODO: refactor %>
+  <% first_use = Page.order('created_at DESC').first.created_at.strftime("%A, %B %d, %Y") rescue '??' %>
+  <p class="lead klax-spacer-sm">total times changes since you first started using Klaxon which was <%= first_use %>.</p>
 
   <h2><%= Page.count %></h2>
   <p class="lead klax-spacer-sm">items, either web pages or files, being watched by <%= User.count %> users.</p>
