@@ -1,5 +1,5 @@
 (function() {
-  var iframeURL = "<%= @iframe_url %>";
+  var editorURL = "<%= @iframe_url %>";
   var postMessageDomain = "<%= root_url %>";
 
   if (window._klaxonInject === true) {
@@ -23,19 +23,18 @@
     return path;
   }
 
+  var src = editorURL + "#" + encodeURIComponent(document.location.href);
   var iframe = document.createElement('iframe');
-  var src = iframeURL + "#" + encodeURIComponent(document.location.href);
   iframe.setAttribute('src', src);
   iframe.setAttribute('frameborder', 0);
-
   iframe.style.top = '0px';
   iframe.style.right = '0px';
   iframe.style.width = '300px';
   iframe.style.height = (window.innerHeight)+'px';
   iframe.style.position = 'fixed';
   iframe.style.zIndex = 2147483647; // max 32-bit int
-
   document.body.appendChild(iframe);
+  // var iframe = window.open(src, "Klaxon", "width=200,height=200");
 
   var postMessage = function(data) {
     iframe.contentWindow.postMessage(JSON.stringify(data), postMessageDomain);

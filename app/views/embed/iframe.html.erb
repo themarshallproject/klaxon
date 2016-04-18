@@ -22,19 +22,28 @@ ul {
 </head>
 <body>
 
-<%= Page.all.to_json %>
-
   <h2>Klaxon</h2>
 
-  <p id="path-preview">Waiting...</p>
+  <p id="path-preview">Waiting for events...</p>
 
   <script>
 
   var url = decodeURIComponent(window.location.hash.replace('#', ''));
   console.log('url from hash', url);
 
+  var mouseState = 'hover';
+  var toggleMouseState = function() {
+    if (mouseState === 'hover') {
+      mouseState = 'edit';
+    } else {
+      mouseState = 'hover';
+    }
+
+  }
+
   var handleClick = function() {
-    console.log('click');
+    toggleMouseState();
+    console.log('mouseState', mouseState)
   }
 
   var handleUpdatePath = function(path) {

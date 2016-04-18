@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   before_action :authorize
-  before_action :set_page, only: [:show, :edit, :update, :destroy, :latest_change]
+  before_action :set_page, only: [:show, :edit, :update, :destroy, :latest_change, :changes]
 
   def latest_change
     change = @page.latest_change
@@ -9,6 +9,10 @@ class PagesController < ApplicationController
     else
       redirect_to edit_page_url(@page), notice: 'Not enough snapshots to diff.'
     end
+  end
+
+  def snapshots
+    @snapshots = @page.page_snapshots
   end
 
   # GET /pages

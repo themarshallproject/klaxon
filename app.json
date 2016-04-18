@@ -6,7 +6,7 @@
   "repository": "https://github.com/themarshallproject/klaxon",
   "success_url": "/",
   "scripts": {
-    "postdeploy": "bundle exec rake db:migrate"
+    "postdeploy": "bundle exec rake db:migrate && bundle exec rake users:create_admin"
   },
   "env": {
     "SECRET_KEY_BASE": {
