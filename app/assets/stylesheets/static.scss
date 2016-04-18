@@ -22,10 +22,6 @@ a:hover, a:focus {
   border-bottom: 0;
 }
 
-// .navbar a:hover {
-//   border-bottom: 2px solid #ff0b3a !important;
-// }
-
 .dropdown a:hover {
   border-bottom: 0 !important;
 }
@@ -135,7 +131,6 @@ table tbody tr td:last-child, table thead tr td:last-child  {
 
 .jumbotron {
   border: 1px solid #ff0b3a;
-  border-top-width: 15px;
   border-radius: 0 !important;
   background-color: transparent;
 }

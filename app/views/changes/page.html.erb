@@ -2,18 +2,18 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1>Compare Changes</h1>
+        <h1>Comparing Snapshots</h1>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
-        <p class="lead"><b><%= @page.name %></b> has changed <%= @snapshots.count %> times since <%= @page.created_at.strftime("%A, %B %d, %Y at %H:%M") %>, the date which <%= @page.user.display_name %> began watching it.</p>
+        <p class="lead">Below are two versions, also called snapshots, of <b><%= @page.name %></b> which has changed <%= @snapshots.count %> times since <%= @page.created_at.strftime("%A, %B %d, %Y at %H:%M") %> when <%= @page.user.display_name %> began watching it.</p>
       </div>
       <div class="col-md-3">
         <!-- negative space -->
       </div>
       <div class="col-md-3">
-        <%= link_to 'Compare Versions', '#', class: 'btn btn-default btn-lg btn-block' %>
+        <%= link_to 'Compare Past Snapshot', '#', class: 'btn btn-default btn-lg btn-block' %>
         <%= link_to 'Go to Source', @page.url, class: 'btn btn-default btn-lg btn-block' %>
         <%= link_to 'Edit', edit_page_path(@page), class: 'btn btn-default btn-lg btn-block' %>
       </div>
@@ -25,8 +25,8 @@
   <div class="container klax-spacer-md">
     <div class="row klax-spacer-md">
       <div class="col-md-12">
-        <h4>Viewing snapshot <code><%= @after.sha2_hash.last(8) %></code> from <%= @after.created_at.strftime("%A, %B %d, %Y at %H:%M") %>
-        <small>in comparison with <code><%= @before.sha2_hash.last(8) %></code> from <%= @before.created_at.strftime("%A, %B %d, %Y at %H:%M") %></small></h4>
+        <h4>Comparing snapshots <code><%= @after.sha2_hash.last(8) %></code> and <code><%= @before.sha2_hash.last(8) %></code></h4>
+        <p>Created on <%= @after.created_at.strftime("%A, %B %d, %Y at %H:%M") %> and <%= @before.created_at.strftime("%A, %B %d, %Y at %H:%M") %> respectively.</p>
       </div>
     </div>
         <form class="form-horizontal" method="POST" action="">
