@@ -14,7 +14,7 @@
       "generator": "secret"
     },
     "ADMIN_EMAILS": {
-      "description": "A comma-seperated list of emails that are administrators. You need at least one.",
+      "description": "A comma-seperated list of emails that are administrators. You need at least one."
     }
   },
   "formation": {
@@ -25,7 +25,7 @@
   },
   "image": "heroku/ruby",
   "addons": [
-    "postmark:10k",
+    "sendgrid:starter",
     "scheduler:standard"
   ]
 }
