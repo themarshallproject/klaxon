@@ -7,7 +7,7 @@
     </div>
     <div class="row">
       <div class="col-md-6">
-      <p class="lead"><b><%= @page.name %></b> has changed <%= @snapshots.count %> times since TK <%= @page.created_at %> TK, the date which <%= @page.user.display_name %> began watching it.</p>
+      <p class="lead"><b><%= @page.name %></b> has changed <%= @snapshots.count %> times since <%= @page.created_at.strftime("%A, %B %d, %Y at %H:%M") %>, the date which <%= @page.user.display_name %> began watching it.</p>
       </div>
       <div class="col-md-3">
         <!-- negative space -->
@@ -25,8 +25,8 @@
   <div class="container klax-spacer-md">
     <div class="row klax-spacer-md">
       <div class="col-md-12">
-        <h4>Viewing snapshot <code><%= @after.sha2_hash.last(8) %></code> from <%= @after.created_at %>
-        <small>in comparison with <code><%= @before.sha2_hash.last(8) %></code> from <%= @before.created_at %></small></h4>
+        <h4>Viewing snapshot <code><%= @after.sha2_hash.last(8) %></code> from <%= @after.created_at.strftime("%A, %B %d, %Y at %H:%M") %>
+        <small>in comparison with <code><%= @before.sha2_hash.last(8) %></code> from <%= @before.created_at.strftime("%A, %B %d, %Y at %H:%M") %></small></h4>
       </div>
     </div>
         <form class="form-horizontal" method="POST" action="">
@@ -58,19 +58,19 @@
     <div class="row">
       <div class="col-md-3 klax-spacer-md">
         <h2><%= @snapshots.count %></h2>
-        <p class="lead">total times the item has changed since you started watching it, which was <%= @page.created_at %>.</p>
+        <p class="lead">total times the item has changed since you started watching it, which was <%= @page.created_at.strftime("%A, %B %d, %Y at %H:%M") %>.</p>
       </div>
       <div class="col-md-3 klax-spacer-md">
-        <h2>TKTK</h2>
+        <h2>45%</h2>
         <p class="lead">is the average amount of the item that changes.</p>
       </div>
       <div class="col-md-3 klax-spacer-md">
-        <h2>TKTK</h2>
-        <p class="lead">TK, roughly, between each change. We anticipate the next change will occur on TKTK</p>
+        <h2>~2 hours</h2>
+        <p class="lead">amount of time, roughly, between each change. We anticipate the next change will occur on Xxxxxx.</p>
       </div>
       <div class="col-md-3 klax-spacer-md">
         <h2><%= time_ago_in_words @before.created_at %></h2>
-        <p class="lead">since the last change was captured at <%= @before.created_at %></p>
+        <p class="lead">since the last change was captured at <%= @before.created_at.strftime("%A, %B %d, %Y at %H:%M") %></p>
       </div>
     </div>
   </div><!-- /.container -->
