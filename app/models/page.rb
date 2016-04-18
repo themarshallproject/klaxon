@@ -72,4 +72,14 @@ class Page < ActiveRecord::Base
     Change.where(before: before, after: after).first_or_create
   end
 
+  def snapshot_time_deltas
+    snapshots = self.page_snapshots.order('created_at ASC').select(:created_at)
+
+    snapshots.map{ |snapshot|
+      snapshot.created_at.utc.to_i
+    }.each_cons(2).map{ |before, after|
+      after - before
+    }
+  end
+
 end

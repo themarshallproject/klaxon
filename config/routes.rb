@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     resources :pages do
       get '/latest-change' => 'pages#latest_change', on: :member
       get '/snapshots' => 'pages#snapshots', on: :member
+      get '/setup-compare' => 'pages#setup_compare', on: :member, as: :setup_compare
+      get '/compare/:before_id/:after_id' => 'pages#compare', on: :member
     end
   end
 

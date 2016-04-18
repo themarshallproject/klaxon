@@ -1,0 +1,81 @@
+<div class="klax-section klax-topper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Compare Snapshots</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+      <p class="lead">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
+      </div>
+      <div class="col-md-3">
+        <!-- negative space -->
+      </div>
+      <div class="col-md-3">
+      </div>
+    </div>
+  </div><!-- /.container -->
+</div>
+
+<div class="klax-section klax-spacer-lg">
+  <div class="container">
+    <%= form_tag setup_compare_page_path, method: :get %>
+
+    <%= submit_tag "Compare" %>
+
+      <div class="row">
+        <div class="col-md-6">
+          <h4 class="klax-spacer-md">Select the Older Version</h4>
+
+          <% @snapshots.each do |snapshot| %>
+          <div class="row klax-spacer-sm"><!-- row -->
+            <div class="col-md-3">
+              <div class="radio" style="margin: 0;">
+                <label>
+                  <input type="radio" name="before" value="<%= snapshot.id %>">
+                  <code><%= snapshot.sha2_hash.first(8) %></code>
+                </label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <p><%= snapshot.created_at %></p>
+            </div>
+            <div class="col-md-5">
+              <p><b>tktk</b></p>
+            </div>
+          </div><!-- end row -->
+          <% end %>
+        </div>
+
+
+        <div class="col-md-6">
+          <h4 class="klax-spacer-md">Select the Newer Version</h4>
+
+          <% @snapshots.each do |snapshot| %>
+          <div class="row klax-spacer-sm"><!-- row -->
+            <div class="col-md-3">
+              <div class="radio" style="margin: 0;">
+                <label>
+                  <input type="radio" name="after" value="<%= snapshot.id %>">
+                  <code><%= snapshot.sha2_hash.first(8) %></code>
+                </label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <p><%= snapshot.created_at %></p>
+            </div>
+            <div class="col-md-5">
+              <p><b>tktk</b></p>
+            </div>
+          </div><!-- end row -->
+          <% end %>
+
+        </div>
+      </div>
+
+    </form>
+  </div><!-- /.container -->
+</div>
+

@@ -13,7 +13,7 @@
         <!-- negative space -->
       </div>
       <div class="col-md-3">
-        <%= link_to 'Compare Past Snapshot', '#', class: 'btn btn-default btn-lg btn-block' %>
+        <%= link_to 'Compare Past Snapshots', snapshots_page_path(@page), class: 'btn btn-default btn-lg btn-block' %>
         <%= link_to 'Go to Source', @page.url, class: 'btn btn-default btn-lg btn-block' %>
         <%= link_to 'Edit', edit_page_path(@page), class: 'btn btn-default btn-lg btn-block' %>
       </div>
@@ -25,7 +25,7 @@
   <div class="container klax-spacer-md">
     <div class="row klax-spacer-md">
       <div class="col-md-12">
-        <h4>Comparing snapshots <code><%= @after.sha2_hash.last(8) %></code> and <code><%= @before.sha2_hash.last(8) %></code></h4>
+        <h4>Comparing snapshots <code><%= @after.display_hash %></code> and <code><%= @before.display_hash %></code></h4>
         <p>Created on <%= @after.created_at.strftime("%A, %B %d, %Y at %H:%M") %> and <%= @before.created_at.strftime("%A, %B %d, %Y at %H:%M") %> respectively.</p>
       </div>
     </div>
@@ -66,6 +66,7 @@
       </div>
       <div class="col-md-3 klax-spacer-md">
         <h2>~2 hours</h2>
+        <%= @page.snapshot_time_deltas.to_json %><br>
         <p class="lead">amount of time, roughly, between each change. We anticipate the next change will occur on Xxxxxx.</p>
       </div>
       <div class="col-md-3 klax-spacer-md">
