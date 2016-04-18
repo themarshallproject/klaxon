@@ -1,0 +1,12 @@
+<%= simple_form_for(@slack_integration) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :channel %>
+    <%= f.input :webhook_url %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

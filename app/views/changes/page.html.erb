@@ -1,0 +1,77 @@
+<div class="klax-section klax-topper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Compare Changes</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+      <p class="lead"><b><%= @page.name %></b> has changed <%= @snapshots.count %> times since TK <%= @page.created_at %> TK, the date which <%= @page.user.display_name %> began watching it.</p>
+      </div>
+      <div class="col-md-3">
+        <!-- negative space -->
+      </div>
+      <div class="col-md-3">
+        <%= link_to 'Compare Versions', '#', class: 'btn btn-default btn-lg btn-block' %>
+        <%= link_to 'Go to Source', @page.url, class: 'btn btn-default btn-lg btn-block' %>
+        <%= link_to 'Edit', edit_page_path(@page), class: 'btn btn-default btn-lg btn-block' %>
+      </div>
+    </div>
+  </div><!-- /.container -->
+</div>
+
+<div class="klax-section klax-spacer-lg">
+  <div class="container klax-spacer-md">
+    <div class="row klax-spacer-md">
+      <div class="col-md-12">
+        <h4>Viewing change <code><%= @after.sha2_hash.last(8) %></code> from <%= @after.created_at %>
+        <small>in comparison with <code><%= @before.sha2_hash.last(8) %></code> from <%= @before.created_at %></small></h4>
+      </div>
+    </div>
+        <form class="form-horizontal" method="POST" action="">
+        <div class="form-group form-group-lg">
+          <label class="col-sm-1">What changed?</label>
+          <div class="col-md-11">
+            <div class="input-group">
+              <input name="email" class="form-control" type="text" id="formGroupInputLarge" style="height: 45px;">
+              <span class="input-group-btn">
+                <button class="btn btn-default btn-lg" type="submit">Save</button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </form>
+  </div>
+
+  <%= raw Diffy::Diff.new(@before.match_text, @after.match_text).to_s(:html_simple) %>
+
+</div>
+
+<div class="klax-section klax-spacer-lg">
+  <div class="container">
+    <div class="row klax-spacer-md">
+      <div class="col-md-12">
+        <h4>Activity</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 klax-spacer-md">
+        <h2><%= @snapshots.count %></h2>
+        <p class="lead">total times the item has changed since you started watching it, which was <%= @page.created_at %>.</p>
+      </div>
+      <div class="col-md-3 klax-spacer-md">
+        <h2>TKTK</h2>
+        <p class="lead">is the average amount of the item that changes.</p>
+      </div>
+      <div class="col-md-3 klax-spacer-md">
+        <h2>TKTK</h2>
+        <p class="lead">TK, roughly, between each change. We anticipate the next change will occur on TKTK</p>
+      </div>
+      <div class="col-md-3 klax-spacer-md">
+        <h2><%= time_ago_in_words @before.created_at %></h2>
+        <p class="lead">since the last change was captured at <%= @before.created_at %></p>
+      </div>
+    </div>
+  </div><!-- /.container -->
+</div>

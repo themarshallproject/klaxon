@@ -1,0 +1,43 @@
+<%= simple_form_for(@user) do |f| %>
+  <%= f.error_notification %>
+
+<div class="klax-section klax-spacer-lg">
+  <div class="container">
+    <div class="row klax-spacer-md">
+      <div class="col-md-12">
+        <h4>Details</h4>
+      </div>
+    </div>
+    <div class="row">
+      <form class="form-horizontal">
+        <div class="form-group form-group-lg">
+          <label class="col-sm-1">First</label>
+          <div class="col-sm-11">
+            <%= f.input :first_name, label: false, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group form-group-lg">
+          <label class="col-sm-1">Last</label>
+          <div class="col-sm-11">
+            <%= f.input :last_name, label: false, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group form-group-lg">
+          <label class="col-sm-1">Email</label>
+          <div class="col-sm-11">
+            <%= f.input :email, label: false, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group form-group-lg">
+          <div class="col-md-9">
+            <!-- negative space -->
+          </div>
+          <div class="col-md-3">
+            <%= f.button :submit, class: "btn btn-default btn-lg btn-block" %>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div><!-- /.container -->
+</div>
+<% end %>

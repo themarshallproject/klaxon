@@ -1,0 +1,29 @@
+{
+  "name": "Klaxon",
+  "description": "Watch webpages for newsworthy changes.",
+  "keywords": [
+  ],
+  "website": "https://github.com/themarshallproject/klaxon",
+  "repository": "https://github.com/themarshallproject/klaxon",
+  "logo": "tktk",
+  "success_url": "/",
+  "scripts": {
+    "postdeploy": "bundle exec rake db:migrate"
+  },
+  "env": {
+    "SECRET_KEY_BASE": {
+      "description": "A secret key for verifying the integrity of signed cookies and JWTs.",
+      "generator": "secret"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "image": "heroku/ruby",
+  "addons": [
+    "postmark:10k"
+  ]
+}

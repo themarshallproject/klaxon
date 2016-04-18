@@ -1,0 +1,18 @@
+<div class="container">
+
+<h2>Slack</h2>
+
+<%= link_to "New Slack Integration", new_slack_integration_path, class: 'btn' %><br>
+
+<h4>Existing:</h4>
+<ul>
+<% @slack_integrations.each do |integration| %>
+  <li><%= link_to integration.channel, edit_slack_integration_path(integration) %></li>
+<% end %>
+</ul>
+
+<h2>Twitter</h2>
+
+<p>TKTK</p>
+
+</div>

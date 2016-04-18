@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Slack Integrations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Channel</th>
+      <th>Webhook url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @slack_integrations.each do |slack_integration| %>
+      <tr>
+        <td><%= slack_integration.channel %></td>
+        <td><%= slack_integration.webhook_url %></td>
+        <td><%= link_to 'Show', slack_integration %></td>
+        <td><%= link_to 'Edit', edit_slack_integration_path(slack_integration) %></td>
+        <td><%= link_to 'Destroy', slack_integration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Slack integration', new_slack_integration_path %>
