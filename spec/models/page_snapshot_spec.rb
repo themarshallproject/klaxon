@@ -8,8 +8,7 @@ RSpec.describe PageSnapshot, type: :model do
   end
 
   it "is valid with a page" do
-    page = create(:page)
-    snapshot = PageSnapshot.new(page: page)
+    snapshot = create(:page_snapshot)
     expect(snapshot.valid?).to be true
   end
 

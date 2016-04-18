@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160415181940) do
+ActiveRecord::Schema.define(version: 20160417212750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,12 +42,14 @@ ActiveRecord::Schema.define(version: 20160415181940) do
 
   create_table "page_snapshots", force: :cascade do |t|
     t.integer  "page_id"
-    t.text     "s3_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "sha2_hash"
+    t.text     "html"
   end
 
   add_index "page_snapshots", ["page_id"], name: "index_page_snapshots_on_page_id", using: :btree
+  add_index "page_snapshots", ["sha2_hash"], name: "index_page_snapshots_on_sha2_hash", using: :btree
 
   create_table "pages", force: :cascade do |t|
     t.text     "name"

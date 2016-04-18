@@ -1,6 +1,6 @@
 <% bookmarklet_js = "javascript:(function(){document.body.appendChild(document.createElement('script')).src='#{inject_url()}';})();" %>
 
-<div class="klax-topper">
+<!-- <div class="klax-topper">
   <div class="container">
     <div class="jumbotron">
       <h1 class="klax-no-border">Watch Your First Item</h1>
@@ -8,7 +8,7 @@
       <p><a class="btn btn-lg" href="<%= bookmarklet_js %>" role="button">Add to Klaxon</a></p>
     </div>
   </div>
-</div>
+</div> -->
 
 <div class="klax-section klax-topper">
   <div class="container">
@@ -53,7 +53,7 @@
           <td><%= page.name %></td>
           <td><%= page.domain.truncate(40) %></td>
           <td><code><%= page.css_selector %></code></td>
-          <td><%= page&.user&.first_name %></td>
+          <td><%= page&.user&.display_name %></td>
           <td><%= link_to "Latest Change", latest_change_page_path(page), class: "btn btn-default btn-block" %></td>
           <td><%= link_to 'Edit', edit_page_path(page), class: "btn btn-default btn-block" %></td>
           <td><%= link_to 'Delete', page, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-block" %></td>

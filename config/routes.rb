@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 
+  root 'watching#feed'
+
   scope 'api' do
     get 'subscriptions' => 'api#subscriptions', as: :api_subscriptions
     get 'users' => 'api#users', as: :api_users
     get 'pages' => 'api#pages', as: :api_pages
     get 'stats' => 'api#stats', as: :api_stats
   end
-
-  root 'static#feed'
 
   scope '/watching' do
     get '/' => 'watching#index', as: :watching
@@ -16,6 +16,8 @@ Rails.application.routes.draw do
       get '/latest-change' => 'pages#latest_change', on: :member
     end
   end
+
+  get '/page-change/:change_id' => 'changes#page', as: :page_change
 
   scope '/embed' do
     get 'inject' => 'embed#inject'
@@ -28,7 +30,6 @@ Rails.application.routes.draw do
   end
 
   get '/help' => 'static#help', as: :help
-  get '/feed' => 'static#feed', as: :feed
   get '/diff' => 'static#index', as: :diff
 
   resources :users do

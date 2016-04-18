@@ -1,0 +1,24 @@
+<div class="klax-spacer-md klax-feed-item">
+  <div class="row">
+    <div class="col-md-3">
+      <p><small><%= change.created_at %></small></p>
+    </div>
+    <div class="col-md-6">
+        <p class="lead">
+          <%= link_to page_change_path(change) do %>
+            <%= change.after.page.name %> changed
+          <% end %>
+        </p>
+    </div>
+    <div class="col-md-3">
+        <p><small>
+          Created by <b><%= change.after.page.user.display_name rescue '?' %></b>
+        </small></p>
+        <p><small>
+          <%= link_to "Go to Source", change.after.page.url %>
+          &nbsp;&nbsp;&nbsp;
+          <%= link_to "Edit", edit_page_path(change.after.page) %>
+        </small></p>
+    </div>
+  </div>
+</div>

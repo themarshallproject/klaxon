@@ -21,6 +21,7 @@ gem 'simple_form', '~> 3.2'
 gem 'jwt'
 gem 'premailer-rails'
 gem 'postmark-rails', '~> 0.10.0'
+gem 'diffy'
 
 gem 'kramdown'
 

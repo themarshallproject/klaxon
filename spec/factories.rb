@@ -2,6 +2,7 @@ FactoryGirl.define do
 
   factory :page_snapshot do
     page { create(:page) }
+    sequence(:sha2_hash) { |n| "#{n}-fake-#{SecureRandom.hex}" }
   end
 
   factory :subscription do

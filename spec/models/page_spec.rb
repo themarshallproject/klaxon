@@ -17,7 +17,7 @@ RSpec.describe Page, type: :model do
   end
 
   it "can calculate the hash of a page" do
-    expect(@page.hash.length).to be == 64
+    expect(@page.sha2_hash.length).to be == 64
   end
 
   it "has snapshots" do

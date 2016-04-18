@@ -5,7 +5,7 @@ class Page < ActiveRecord::Base
 
   attr_accessor :subscriptions
   after_create :update_subscriptions
-  after_save :update_subscriptions
+  after_save   :update_subscriptions
 
   def to_param
     [id, self.name.parameterize].join('-')
@@ -40,20 +40,8 @@ class Page < ActiveRecord::Base
     document.css(self.css_selector).to_html
   end
 
-  def hash
+  def sha2_hash
     Digest::SHA256.hexdigest(match_text)
-  end
-
-  def scrape
-    # TODO
-    puts "current hash for #{self.url} is #{self.hash}"
-  end
-
-  def current
-    {
-      html: html,
-      hash: hash,
-    }
   end
 
   def update_subscriptions
@@ -72,6 +60,16 @@ class Page < ActiveRecord::Base
         end
       end
     end
+  end
+
+  def latest_change
+    before, after = PageSnapshot.where(page: self).order('created_at DESC').limit(2).reverse
+
+    if before.nil? or after.nil?
+      return false
+    end
+
+    Change.where(before: before, after: after).first_or_create
   end
 
 end

@@ -3,7 +3,12 @@ class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy, :latest_change]
 
   def latest_change
-    render text: 'redirect generated here'
+    change = @page.latest_change
+    if change
+      redirect_to page_change_path(change)
+    else
+      redirect_to edit_page_url(@page), notice: 'Not enough snapshots to diff.'
+    end
   end
 
   # GET /pages
