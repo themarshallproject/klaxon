@@ -25,6 +25,7 @@
   },
   "image": "heroku/ruby",
   "addons": [
+    "heroku-postgresql:hobby-dev",
     "sendgrid:starter",
     "scheduler:standard"
   ]
