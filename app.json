@@ -4,7 +4,6 @@
   "keywords": [],
   "website": "https://github.com/themarshallproject/klaxon",
   "repository": "https://github.com/themarshallproject/klaxon",
-  "logo": "",
   "success_url": "/",
   "scripts": {
     "postdeploy": "bundle exec rake db:migrate"
