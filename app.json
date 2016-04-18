@@ -12,6 +12,9 @@
     "SECRET_KEY_BASE": {
       "description": "A secret key for verifying the integrity of signed cookies and JWTs.",
       "generator": "secret"
+    },
+    "ADMIN_EMAILS": {
+      "description": "A comma-seperated list of emails that are administrators. You need at least one.",
     }
   },
   "formation": {
