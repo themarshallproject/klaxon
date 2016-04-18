@@ -1,0 +1,10 @@
+  <h4 style="margin-top: 0;" class="klax-spacer-md">Activity</h4>
+
+  <h2 style="margin-top: 0;"><%= PageSnapshot.count %></h2>
+  <p>total times changes since you started watching, which was <%= Page.order('created_at DESC').first.created_at %>.</p>
+
+  <h2><%= Page.count %></h2>
+  <p>pages being watched.</p>
+
+  <h2>TK%</h2>
+  <p>total times the item has changed since you started watching it, which was Wednesday, May 26, 2016.</p>

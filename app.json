@@ -1,11 +1,10 @@
 {
   "name": "Klaxon",
   "description": "Watch webpages for newsworthy changes.",
-  "keywords": [
-  ],
+  "keywords": [],
   "website": "https://github.com/themarshallproject/klaxon",
   "repository": "https://github.com/themarshallproject/klaxon",
-  "logo": "tktk",
+  "logo": "",
   "success_url": "/",
   "scripts": {
     "postdeploy": "bundle exec rake db:migrate"
@@ -24,6 +23,7 @@
   },
   "image": "heroku/ruby",
   "addons": [
-    "postmark:10k"
+    "postmark:10k",
+    "scheduler:standard"
   ]
 }
