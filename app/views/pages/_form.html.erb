@@ -12,19 +12,19 @@
         <div class="form-group form-group-lg">
           <label class="col-sm-1">Title</label>
           <div class="col-sm-11">
-            <%= f.input :name, label: false, class: 'form-control' %>
+            <%= f.input :name, label: false, class: 'form-control', as: :string %>
           </div>
         </div>
         <div class="form-group form-group-lg">
           <label class="col-sm-1">Site</label>
           <div class="col-sm-11">
-            <%= f.input :url, label: false, class: 'form-control' %>
+            <%= f.input :url, label: false, class: 'form-control', as: :string %>
           </div>
         </div>
         <div class="form-group form-group-lg">
           <label class="col-sm-1">Selector</label>
           <div class="col-sm-11">
-            <%= f.input :css_selector, label: false, class: 'form-control' %>
+            <%= f.input :css_selector, label: false, class: 'form-control', as: :string %>
           </div>
         </div>
     </div>
