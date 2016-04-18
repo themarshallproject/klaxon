@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: ENV['FROM_EMAIL']
+  default from: 'no-reply@newsklaxon.org'
   layout 'mailer'
 end
