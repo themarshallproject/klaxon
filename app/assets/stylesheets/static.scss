@@ -22,10 +22,6 @@ a:hover, a:focus {
   border-bottom: 0;
 }
 
-// .navbar a:hover {
-//   border-bottom: 2px solid #ff0b3a !important;
-// }
-
 .dropdown a:hover {
   border-bottom: 0 !important;
 }
@@ -135,7 +131,6 @@ table tbody tr td:last-child, table thead tr td:last-child  {
 
 .jumbotron {
   border: 1px solid #ff0b3a;
-  border-top-width: 15px;
   border-radius: 0 !important;
   background-color: transparent;
 }
@@ -195,7 +190,6 @@ small {
   white-space: nowrap;
 }
 .diff li {
-  padding: 1px 40px;
   text-decoration: none !important;
   width: 100%;
 }
@@ -208,21 +202,35 @@ small {
 .diff .ins {
   background-color: rgba(0,255,0, 0.2);
 }
-.diff .del:before {
-  content: attr(data-line) " -";
-  padding-right: 20px;
+
+.diff .ins ins {
+  text-decoration: none !important;
 }
-.diff .ins:before {
-  content: attr(data-line) " +";
-  padding-right: 20px;
+
+.diff a:hover {
+  background-color: black !important;
+  color: white !important;
 }
-.diff .unchanged:before {
-  content: attr(data-line) " ";
-  padding-right: 26px;
+
+.klax-line {
+  width: 20px;
+  text-align: right;
+  margin-right: 25px;
+  display: inline-block;
 }
-.diff li:hover {
-  background-color: #111;
-  color: #fff;
+
+.klax-line-selected, .klax-line-selected a {
+  background-color: #ff0b3a !important;
+  color: #fff !important;
+}
+
+.diff a {
+  padding: 1px 40px;
+  display: block;
+  position: relative;
+  width: 100%;
+  color: black;
+  border-bottom: 0;
 }
 
 // login & marketing

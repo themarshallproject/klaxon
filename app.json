@@ -1,19 +1,20 @@
 {
   "name": "Klaxon",
   "description": "Watch webpages for newsworthy changes.",
-  "keywords": [
-  ],
+  "keywords": [],
   "website": "https://github.com/themarshallproject/klaxon",
   "repository": "https://github.com/themarshallproject/klaxon",
-  "logo": "tktk",
   "success_url": "/",
   "scripts": {
-    "postdeploy": "bundle exec rake db:migrate"
+    "postdeploy": "bundle exec rake db:migrate && bundle exec rake users:create_admin"
   },
   "env": {
     "SECRET_KEY_BASE": {
       "description": "A secret key for verifying the integrity of signed cookies and JWTs.",
       "generator": "secret"
+    },
+    "ADMIN_EMAILS": {
+      "description": "A comma-seperated list of emails that are administrators. You need at least one."
     }
   },
   "formation": {
@@ -24,6 +25,8 @@
   },
   "image": "heroku/ruby",
   "addons": [
-    "postmark:10k"
+    "heroku-postgresql:hobby-dev",
+    "sendgrid:starter",
+    "scheduler:standard"
   ]
 }

@@ -1,5 +1,5 @@
 (function() {
-  var iframeURL = "<%= @iframe_url %>";
+  var editorURL = "<%= @iframe_url %>";
   var postMessageDomain = "<%= root_url %>";
 
   if (window._klaxonInject === true) {
@@ -8,6 +8,31 @@
   } else {
     window._klaxonInject = true;
     console.log('[klaxon booted]');
+  }
+
+  var getCanonicalURL = function() {
+    var og = null, linkRel = null, urlBar = null;
+
+    try {
+      og = document.querySelector("meta[property='og:url']").getAttribute("content");
+    } catch(e) { }
+
+    try {
+      linkRel = document.querySelector("link[rel='canonical']").getAttribute("href");
+    } catch(e) { }
+
+    urlBar  = window.location.href;
+
+    if (og) {
+      console.log("using og:url");
+      return og;
+    }
+    if (linkRel) {
+      console.log("using link[rel=canonical]")
+      return linkRel;
+    }
+    console.log("no meta tag for canonical, using url as provided")
+    return urlBar;
   }
 
   var cssPath = function(el) {
@@ -23,19 +48,18 @@
     return path;
   }
 
+  var src = editorURL + "?url=" + encodeURIComponent(getCanonicalURL());
   var iframe = document.createElement('iframe');
-  var src = iframeURL + "#" + encodeURIComponent(document.location.href);
   iframe.setAttribute('src', src);
   iframe.setAttribute('frameborder', 0);
-
   iframe.style.top = '0px';
   iframe.style.right = '0px';
   iframe.style.width = '300px';
   iframe.style.height = (window.innerHeight)+'px';
   iframe.style.position = 'fixed';
   iframe.style.zIndex = 2147483647; // max 32-bit int
-
   document.body.appendChild(iframe);
+  // var iframe = window.open(src, "Klaxon", "width=200,height=200");
 
   var postMessage = function(data) {
     iframe.contentWindow.postMessage(JSON.stringify(data), postMessageDomain);

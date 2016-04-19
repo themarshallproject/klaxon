@@ -19,27 +19,44 @@ ul {
   padding: 0;
 }
 </style>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
 <body>
 
-<%= Page.all.to_json %>
-
   <h2>Klaxon</h2>
 
-  <p id="path-preview">Waiting...</p>
+  Name: <%= @page.name %>
+
+
+  <%= link_to "Edit In App", edit_page_url(@page), target: '_blank' %>
+
+  <p id="path-preview">Waiting for events...</p>
 
   <script>
 
-  var url = decodeURIComponent(window.location.hash.replace('#', ''));
-  console.log('url from hash', url);
+  window.pageID = <%= @page.id %>;
+
+  var mouseState = 'hover';
+  var toggleMouseState = function() {
+    if (mouseState === 'hover') {
+      mouseState = 'edit';
+    } else {
+      mouseState = 'hover';
+    }
+
+  }
 
   var handleClick = function() {
-    console.log('click');
+    toggleMouseState();
+    console.log('mouseState', mouseState)
   }
 
   var handleUpdatePath = function(path) {
+    if (mouseState !== 'hover') {
+      return true;
+    }
     var lis = path.map(function(li) { return "<li>"+li+"</li>" });
-    document.querySelector('#path-preview').innerHTML = "<ul>"+lis.join("\n")+"</ul>"
+    document.querySelector('#path-preview').innerHTML = "<ul>"+lis.join("\n")+"</ul>";
   }
 
   window.addEventListener("message", function(e) {
@@ -53,7 +70,22 @@ ul {
     } else if (data.event === 'updatePath') {
       handleUpdatePath(data.value);
     }
-  }, false)
+  }, false);
+
+  $('body').on('click', 'li', function() {
+    var $li = $(this);
+    var selector = $li.text();
+    console.log($li, selector)
+    $.post("<%= embed_update_page_selector_url %>", {
+      authenticity_token: "<%= form_authenticity_token %>",
+      id: window.pageID,
+      css_selector: selector
+    }).done(function(data) {
+      console.log(data, data.id);
+      window.pageID = data.id;
+    });
+  });
+
   </script>
 
 </body>

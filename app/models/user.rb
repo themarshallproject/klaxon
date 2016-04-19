@@ -32,4 +32,9 @@ class User < ActiveRecord::Base
     Subscription.where(watcher: self, watching: watchable).exists?
   end
 
+  def send_notification(change)
+    puts "user#send_notification"
+    ChangeMailer.page(change: change, user: self).deliver_later
+  end
+
 end

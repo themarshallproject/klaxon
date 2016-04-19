@@ -1,12 +1,39 @@
 <%= simple_form_for(@slack_integration) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :channel %>
-    <%= f.input :webhook_url %>
-  </div>
+<div class="klax-section klax-spacer-lg">
+  <div class="container">
+    <div class="row klax-spacer-md">
+      <div class="col-md-12">
+        <h4>Details</h4>
+      </div>
+    </div>
+    <div class="row">
+      <form class="form-horizontal">
+        <div class="form-group form-group-lg">
+          <label class="col-sm-1">Channel</label>
+          <div class="col-sm-11">
+            <%= f.input :channel, label: false, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group form-group-lg">
+          <label class="col-sm-1">Webhook</label>
+          <div class="col-sm-11">
+            <%= f.input :webhook_url, label: false, class: 'form-control' %>
+          </div>
+        </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+        <div class="form-group form-group-lg">
+          <div class="col-md-9">
+            <!-- negative space -->
+          </div>
+          <div class="col-md-3">
+            <%= f.button :submit, class: "btn btn-default btn-lg btn-block" %>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div><!-- /.container -->
+</div>
+
 <% end %>

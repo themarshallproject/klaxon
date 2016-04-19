@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     get 'users' => 'api#users', as: :api_users
     get 'pages' => 'api#pages', as: :api_pages
     get 'stats' => 'api#stats', as: :api_stats
+
+    scope 'embed' do
+      post 'page' => 'api#embed_find_page', as: :embed_find_page
+      post 'page/update-selector' => 'api#embed_update_page_selector', as: :embed_update_page_selector
+    end
   end
 
   scope '/watching' do
@@ -14,10 +19,14 @@ Rails.application.routes.draw do
 
     resources :pages do
       get '/latest-change' => 'pages#latest_change', on: :member
+      get '/snapshots' => 'pages#snapshots', on: :member
+      get '/setup-compare' => 'pages#setup_compare', on: :member, as: :setup_compare
+      get '/compare/:before_id/:after_id' => 'pages#compare', on: :member
     end
   end
 
   get '/page-change/:change_id' => 'changes#page', as: :page_change
+  post '/changes/resend/:id' => 'changes#resend', as: :resend_change_notifications
 
   scope '/embed' do
     get 'inject' => 'embed#inject'
@@ -30,7 +39,7 @@ Rails.application.routes.draw do
   end
 
   get '/help' => 'static#help', as: :help
-  get '/diff' => 'static#index', as: :diff
+  get '/choose-snapshot' => 'static#index', as: :diff
 
   resources :users do
     get  '/invite' => 'users#invite', as: :invite
