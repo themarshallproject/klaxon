@@ -33,7 +33,7 @@
             <div class="col-md-3">
               <div class="radio" style="margin: 0;">
                 <label>
-                  <input class="klax-js-snapshot" type="radio" name="before" data-index="<%= index %>" data-type="before" value="<%= snapshot.id %>">
+                  <input class="klax-js-snapshot-before" type="radio" name="before" data-index="<%= index %>" value="<%= snapshot.id %>">
                   <code><%= snapshot.sha2_hash.first(8) %></code>
                 </label>
               </div>
@@ -57,7 +57,7 @@
             <div class="col-md-3">
               <div class="radio" style="margin: 0;">
                 <label>
-                  <input class="klax-js-snapshot" type="radio" name="after" data-index="<%= index %>" data-type="after" value="<%= snapshot.id %>">
+                  <input class="klax-js-snapshot-after" type="radio" name="after" data-index="<%= index %>" value="<%= snapshot.id %>" style="display: none;">
                   <code><%= snapshot.sha2_hash.first(8) %></code>
                 </label>
               </div>
