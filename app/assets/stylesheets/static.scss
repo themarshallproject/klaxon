@@ -190,7 +190,6 @@ small {
   white-space: nowrap;
 }
 .diff li {
-  padding: 1px 40px;
   text-decoration: none !important;
   width: 100%;
 }
@@ -207,21 +206,31 @@ small {
 .diff .ins ins {
   text-decoration: none !important;
 }
-.diff .del:before {
-  content: attr(data-line) " -";
-  padding-right: 20px;
+
+.diff a:hover {
+  background-color: black !important;
+  color: white !important;
 }
-.diff .ins:before {
-  content: attr(data-line) " +";
-  padding-right: 20px;
+
+.klax-line {
+  width: 20px;
+  text-align: right;
+  margin-right: 25px;
+  display: inline-block;
 }
-.diff .unchanged:before {
-  content: attr(data-line) " ";
-  padding-right: 26px;
+
+.klax-line-selected, .klax-line-selected a {
+  background-color: #ff0b3a !important;
+  color: #fff !important;
 }
-.diff li:hover {
-  background-color: #111;
-  color: #fff;
+
+.diff a {
+  padding: 1px 40px;
+  display: block;
+  position: relative;
+  width: 100%;
+  color: black;
+  border-bottom: 0;
 }
 
 // login & marketing
