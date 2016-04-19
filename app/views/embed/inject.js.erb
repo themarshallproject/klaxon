@@ -10,6 +10,23 @@
     console.log('[klaxon booted]');
   }
 
+  var getCanonicalURL = function() {
+    var og      = document.querySelector("meta[property='og:url']").getAttribute("content");
+    var linkRel = document.querySelector("link[rel='canonical']").getAttribute("href");
+    var urlBar  = window.location.href;
+
+    if (og) {
+      console.log("using og:url");
+      return og;
+    }
+    if (linkRel) {
+      console.log("using link[rel=canonical]")
+      return linkRel;
+    }
+    console.log("no meta tag for canonical, using url as provided")
+    return urlBar;
+  }
+
   var cssPath = function(el) {
     // https://stackoverflow.com/questions/3620116/get-css-path-from-dom-element
     var path = [];
@@ -23,7 +40,7 @@
     return path;
   }
 
-  var src = editorURL + "#" + encodeURIComponent(document.location.href);
+  var src = editorURL + "?url=" + encodeURIComponent(getCanonicalURL());
   var iframe = document.createElement('iframe');
   iframe.setAttribute('src', src);
   iframe.setAttribute('frameborder', 0);

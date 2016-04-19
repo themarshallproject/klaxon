@@ -58,6 +58,8 @@
   </div>
   <h2>Change</h2>
 
+  <%= link_to "View Change", page_change_url(@change) %>
+
   <div class="diff">
     <%= raw Diffy::Diff.new(@change.before.match_text, @change.after.match_text, context: 2).to_s(:html_simple) %>
   </div>
