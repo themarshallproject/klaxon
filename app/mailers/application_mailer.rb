@@ -1,4 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'no-reply@newsklaxon.org'
+  # TODO consider http://stackoverflow.com/a/8106387
+  default from: 'Klaxon <no-reply@newsklaxon.org>'
   layout 'mailer'
 end
