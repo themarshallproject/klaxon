@@ -87,12 +87,12 @@ a {
 
   <h2>Klaxon</h2>
 
-  <h2><%= @page.name %></h2>
   <p><%= link_to "Save and Edit", edit_page_url(@page), class:"klax-button", target: '_blank' %></p>
 
-  <p id="path-preview"></p>
   <p id="status"></p>
-  <p id="match-text"></p>
+  <p id="path-preview"></p>
+  <code id="selector"></code>
+  <textarea id="match-text"></textarea>
 
 </div>
 
@@ -117,6 +117,7 @@ a {
 
   var handleUpdatePath = function(path) {
     currentSelector = path.join(' ');
+    document.querySelector('#selector').innerText = currentSelector;
   }
 
   window.addEventListener("message", function(e) {
