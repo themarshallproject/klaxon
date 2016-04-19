@@ -78,3 +78,29 @@
   </div><!-- /.container -->
 </div>
 
+<script>
+
+$(document).ready(function() {
+  $(".klax-js-snapshot-before[data-index='0']").attr("disabled","");
+  $(".klax-js-snapshot-before[data-index='1']").click();
+  $(".klax-js-snapshot-after[data-index='0']").show().click();
+  $(".klax-js-snapshot-before").click(function(){
+    console.log("wow!");
+    var index = $(this).data("index");
+    $(".klax-js-snapshot-after").each(function(){
+      var thisIndex = $(this).data("index");
+      if (index <= thisIndex) {
+        $(this).attr("disabled","");
+        $(this).css("display","none");
+      } else {
+        $(this).css("display","block");
+        $(this).removeAttr("disabled","");
+        if (thisIndex == (index - 1)) {
+          $(this).click();
+        }
+      }
+    });
+  });
+});
+
+</script>
