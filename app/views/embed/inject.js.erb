@@ -68,6 +68,10 @@
   document.body.appendChild(iframe);
   // var iframe = window.open(src, "Klaxon", "width=200,height=200");
 
+  var styles = document.createElement('style');
+  document.body.appendChild(styles);
+
+
   var postMessage = function(data) {
     iframe.contentWindow.postMessage(JSON.stringify(data), postMessageDomain);
   }
@@ -75,38 +79,32 @@
   var currentPath = [];
   var updatePath = function(path) {
     currentPath = path;
-    postMessage({ event: 'updatePath', value: path })
 
+    var selector = path.join(" ");
+    var css = selector + " { background-color: rgba(255, 11, 58, 0.2); }";
+    console.log(css)
+    styles.innerHTML = css;
 
-    // for(var i=1,l=path.length; i<=l; i++) {
-    //   var selector = path.slice(0, i).join(" ");
-    //   var text = document.querySelector(selector).innerText;
-    //   console.log(selector, text.length);
-    // // console.log(e)
-    // }
-
+    var matchText = document.querySelector(selector).innerText;;
+    postMessage({ event: 'updatePath', value: path, matchText: matchText })
   }
 
   window.addEventListener('click', function() {
-   postMessage({ event: 'click' });
+    postMessage({ event: 'click' });
   });
 
   window.addEventListener('mousemove', function() {
     var x = event.clientX;
     var y = event.clientY;
     var el = document.elementFromPoint(x, y);
-    el.style.backgroundColor = '#ff0b3a';
-    (function(_el) {
-      setTimeout(function() {
-        _el.style.backgroundColor = 'transparent';
-      }, 200);
-    })(el);
+    // el.style.backgroundColor = '#ff0b3a';
+    // (function(_el) {
+    //   setTimeout(function() {
+    //     _el.style.backgroundColor = 'transparent';
+    //   }, 200);
+    // })(el);
 
     updatePath(cssPath(el));
   });
-
-  // window.addEventListener('message', function(e) {
-  //   console.log('message from', e);
-  // }, false);
 
 })();

@@ -7,7 +7,7 @@
     </div>
     <div class="row">
       <div class="col-md-6">
-        <p class="lead">Below are two versions of <b><%= @page.name %></b> which has changed <%= @snapshots.count %> times since <%= @page.created_at.strftime("%A, %B %d, %Y") %> when <%= @page.user.display_name %> began watching it.</p>
+        <p class="lead">Below are two versions of <b><%= @page&.name %></b> which has changed <%= @snapshots&.count %> times since <%= @page.created_at.strftime("%A, %B %d, %Y") %> when <%= @page&.user&.display_name %> began watching it.</p>
       </div>
       <div class="col-md-3">
         <!-- negative space -->
@@ -64,14 +64,14 @@
         <p class="lead">is the average amount of the item that changes.</p>
       </div>
       <div class="col-md-3 klax-spacer-md">
-        <h2>TK</h2>
-        <!-- <%= @page.snapshot_time_deltas.to_json %><br> --> 
+        <h2>TK hours</h2>
+        <!-- <%= @page.snapshot_time_deltas.to_json %><br> -->
         <p class="lead">amount of time, roughly, between each change. We anticipate the next change will occur on Xxxxxx.</p>
       </div>
       <div class="col-md-3 klax-spacer-md">
         <h2><%= time_ago_in_words @before.created_at %></h2>
         <p class="lead">since the last change was captured at <%= @before.created_at.strftime("%A, %B %d, %Y at %H:%M") %></p>
-        <!-- <%= link_to "Resend Notifications", resend_change_notifications_path(@change), method: :post %>--> 
+        <!-- <%= link_to "Resend Notifications", resend_change_notifications_path(@change), method: :post %>-->
       </div>
     </div>
   </div><!-- /.container -->
@@ -83,7 +83,7 @@ $(".diff li").each(function(i){
   var contents = $(this).html();
   var contents = "<a class=\"klax-line-anchor\" name=\"" + (i + 1) + "\"></a><a data-line=\"" + (i + 1) + "\" href=\"#" + (i + 1) + "\"><div class=\"klax-line\">" + (i + 1) + "</div>" + contents + "</a>";
   $(this).html(contents);
-}); 
+});
 var hash = window.location.hash.substr(1);
 $(".diff a[data-line="+hash+"]").addClass("klax-line-selected");
 $(".diff a").click(function(){

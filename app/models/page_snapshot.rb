@@ -19,10 +19,6 @@ class PageSnapshot < ActiveRecord::Base
     PageSnapshot.where('created_at < ?', self.created_at).order('created_at DESC').first
   end
 
-  # def change
-  #   Change.where(before: previous, after: self).first_or_create
-  # end
-
   def parent
     page
   end

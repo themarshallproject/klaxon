@@ -1,5 +1,6 @@
 class Page < ActiveRecord::Base
   belongs_to :user
+
   has_many :page_snapshots
   has_many :email_subscriptions
 
