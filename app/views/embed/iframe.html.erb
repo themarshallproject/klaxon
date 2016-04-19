@@ -7,30 +7,115 @@ html, body {
   padding: 0;
 }
 body {
-  border-left: 2px solid rgba(0, 0, 0, 0.5);
-  background: #FEFEFE;
-  padding: 20px;
-  font-family: Helvetica, sans-serif;
+  color: #ff0b3a;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  border-left: 5px solid #ff0b3a;
+  padding: 40px;
   font-size: 14px;
+  background-color: #ffffff;
   line-height: 1.3em;
 }
-ul {
-  margin: 0;
-  padding: 0;
+
+p {
+  font-size: 14px;
+  line-height: 1.4em;
+  word-wrap: break-word;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  border-top: 0.2em solid #ff0b3a;
+  padding-top: 10px;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 5.063em;
+}
+
+h2 {font-size: 3.375em;}
+
+h3 {font-size: 2.25em;}
+
+h4 {font-size: 1.5em;}
+
+ul {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  -webkit-padding-start: 0;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.klax-app-name {
+  padding-bottom: 50px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.klax-button {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33333;
+  border: 1px solid #ff0b3a;
+  display: block;
+  text-align: center;
+}
+
+.klax-button:hover, .klax-button:hover a {
+  background-color: #ff0b3a;
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+.klax-button {
+  text-decoration: none !important;
+}
+
+.klax-lead {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.4;
+  font-size: 21px;
+}
+
+.klax-fine-print {
+  margin-top: 30px;
+  font-size: 12px;
+}
+a {
+  color: #ff0b3a;
+}
+
 </style>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
 <body>
 
-  <h2>Klaxon</h2>
+  <div class="container">
 
-  Name: <%= @page.name %>
+    <div class="klax-app-name">
+      Klaxon
+    </div>
 
+    <h2><%= @page.name %></h2>
 
-  <%= link_to "Edit In App", edit_page_url(@page), target: '_blank' %>
+    <p id="path-preview"></p>
 
-  <p id="path-preview">Waiting for events...</p>
+    <p class="klax-lead"><b></b>Hover over an item on the page and select it.</p>
+
+    <p><%= link_to "Save and Edit", edit_page_url(@page), class:"klax-button", target: '_blank' %></p>
+  </div>
 
   <script>
 
