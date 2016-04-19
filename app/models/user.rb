@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   end
 
   def send_notification(change)
-    puts "user#send_notification"
+    puts "user#send_notification #{self.email}"
     ChangeMailer.page(change: change, user: self).deliver_later
   end
 

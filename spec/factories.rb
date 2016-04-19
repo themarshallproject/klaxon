@@ -9,6 +9,8 @@ FactoryGirl.define do
   end
 
   factory :slack_integration do
+    channel "#klaxon"
+    webhook_url "http://test-webhook.com/test-webhook"
   end
 
   factory :change do
@@ -21,6 +23,7 @@ FactoryGirl.define do
   end
 
   factory :page do
+    name "nyt homepage"
     url "http://www.nytimes.com/"
     css_selector "h2.story-heading"
 
