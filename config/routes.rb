@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/page-change/:change_id' => 'changes#page', as: :page_change
+  get '/changes/page/:change_id' => 'changes#page', as: :page_change
   post '/changes/resend/:id' => 'changes#resend', as: :resend_change_notifications
 
   scope '/embed' do

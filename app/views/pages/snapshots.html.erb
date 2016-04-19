@@ -42,7 +42,7 @@
               <p><%= snapshot.created_at %></p>
             </div>
             <div class="col-md-5">
-              <p><b>tktk</b></p>
+              <p><b></b></p>
             </div>
           </div><!-- end row -->
           <% end %>
@@ -66,7 +66,7 @@
               <p><%= snapshot.created_at %></p>
             </div>
             <div class="col-md-5">
-              <p><b>tktk</b></p>
+              <p><b></b></p>
             </div>
           </div><!-- end row -->
           <% end %>
@@ -84,7 +84,6 @@ $(".klax-js-snapshot-before[data-index='0']").attr("disabled","");
 $(".klax-js-snapshot-before[data-index='1']").click();
 $(".klax-js-snapshot-after[data-index='0']").show().click();
 $(".klax-js-snapshot-before").click(function(){
-  console.log("wow!");
   var index = $(this).data("index");
   $(".klax-js-snapshot-after").each(function(){
     var thisIndex = $(this).data("index");

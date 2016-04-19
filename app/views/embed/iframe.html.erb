@@ -7,119 +7,40 @@ html, body {
   padding: 0;
 }
 body {
-  color: #ff0b3a;
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
-  border-left: 5px solid #ff0b3a;
-  padding: 40px;
+  border-left: 2px solid rgba(0, 0, 0, 0.5);
+  background: #FEFEFE;
+  padding: 20px;
+  font-family: Helvetica, sans-serif;
   font-size: 14px;
-  background-color: #ffffff;
   line-height: 1.3em;
 }
-
-p {
-  font-size: 14px;
-  line-height: 1.4em;
-  word-wrap: break-word;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  border-top: 0.2em solid #ff0b3a;
-  padding-top: 10px;
-}
-
-h1 {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: 5.063em;
-}
-
-h2 {font-size: 3.375em;}
-
-h3 {font-size: 2.25em;}
-
-h4 {font-size: 1.5em;}
-
 ul {
-  -webkit-margin-before: 0;
-  -webkit-margin-after: 0;
-  -webkit-margin-start: 0;
-  -webkit-margin-end: 0;
-  -webkit-padding-start: 0;
+  margin: 0;
+  padding: 0;
 }
-
-li {
-  margin-bottom: 5px;
+#match-text {
+  font-size: 10px;
 }
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.klax-app-name {
-  padding-bottom: 50px;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.klax-button {
-  padding: 10px 16px;
-  font-size: 18px;
-  line-height: 1.33333;
-  border: 1px solid #ff0b3a;
-  display: block;
-  text-align: center;
-}
-
-.klax-button:hover, .klax-button:hover a {
-  background-color: #ff0b3a;
-  color: #ffffff !important;
-  text-decoration: none;
-}
-
-.klax-button {
-  text-decoration: none !important;
-}
-
-.klax-lead {
-  margin-bottom: 20px;
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 1.4;
-  font-size: 21px;
-}
-
-.klax-fine-print {
-  margin-top: 30px;
-  font-size: 12px;
-}
-a {
-  color: #ff0b3a;
-}
-
 </style>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
 <body>
 
-  <div class="container">
+  <h2>Klaxon</h2>
 
-    <div class="klax-app-name">
-      Klaxon
-    </div>
+  Name: <%= @page.name %>
 
-    <h2><%= @page.name %></h2>
 
-    <p id="path-preview"></p>
+  <%= link_to "Edit In App", edit_page_url(@page), target: '_blank' %>
 
-    <p class="klax-lead"><b></b>Hover over an item on the page and select it.</p>
-
-    <p><%= link_to "Save and Edit", edit_page_url(@page), class:"klax-button", target: '_blank' %></p>
-  </div>
+  <p id="path-preview"></p>
+  <p id="status"></p>
+  <p id="match-text"></p>
 
   <script>
 
   window.pageID = <%= @page.id %>;
+  var currentSelector = 'body';
 
   var mouseState = 'hover';
   var toggleMouseState = function() {
@@ -132,16 +53,11 @@ a {
   }
 
   var handleClick = function() {
-    toggleMouseState();
-    console.log('mouseState', mouseState)
+    updateSelector(currentSelector);
   }
 
   var handleUpdatePath = function(path) {
-    if (mouseState !== 'hover') {
-      return true;
-    }
-    var lis = path.map(function(li) { return "<li>"+li+"</li>" });
-    document.querySelector('#path-preview').innerHTML = "<ul>"+lis.join("\n")+"</ul>";
+    currentSelector = path.join(' ');
   }
 
   window.addEventListener("message", function(e) {
@@ -154,22 +70,27 @@ a {
       handleClick();
     } else if (data.event === 'updatePath') {
       handleUpdatePath(data.value);
+      document.querySelector("#match-text").innerText = data.matchText;
     }
   }, false);
 
-  $('body').on('click', 'li', function() {
-    var $li = $(this);
-    var selector = $li.text();
-    console.log($li, selector)
+  var updateSelector = function(selector) {
+    console.log('updating selector', selector);
+    var el = document.querySelector('#status');
+    el.innerText = "Saving....";
     $.post("<%= embed_update_page_selector_url %>", {
       authenticity_token: "<%= form_authenticity_token %>",
       id: window.pageID,
       css_selector: selector
-    }).done(function(data) {
-      console.log(data, data.id);
-      window.pageID = data.id;
+    }).success(function(data) {
+      el.innerText = "Done!"
+      setTimeout(function() {
+        el.innerText = "";
+      }, 1000);
+    }).fail(function() {
+      el.innerText = "Error saving.";
     });
-  });
+  };
 
   </script>
 
