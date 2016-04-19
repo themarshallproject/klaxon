@@ -36,9 +36,11 @@ class SlackIntegration < ActiveRecord::Base
     page_name = change&.after&.page&.name
     text = "#{page_name} changed #{page_change_url(change)}"
 
+    icon_url = URI.join(root_url, ActionController::Base.helpers.asset_path("klaxon-logo-100px.png")).to_s
+
     payload = {
-      "name": "Klaxon",
-      "icon_url": ActionController::Base.helpers.asset_url("klaxon-logo-100px.png"),
+      "username": "Klaxon",
+      "icon_url": icon_url,
       "channel": self.channel,
       "text": text,
     }
