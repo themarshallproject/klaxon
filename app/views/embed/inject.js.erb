@@ -11,9 +11,17 @@
   }
 
   var getCanonicalURL = function() {
-    var og      = document.querySelector("meta[property='og:url']").getAttribute("content");
-    var linkRel = document.querySelector("link[rel='canonical']").getAttribute("href");
-    var urlBar  = window.location.href;
+    var og = null, linkRel = null, urlBar = null;
+
+    try {
+      og = document.querySelector("meta[property='og:url']").getAttribute("content");
+    } catch(e) { }
+
+    try {
+      linkRel = document.querySelector("link[rel='canonical']").getAttribute("href");
+    } catch(e) { }
+
+    urlBar  = window.location.href;
 
     if (og) {
       console.log("using og:url");
