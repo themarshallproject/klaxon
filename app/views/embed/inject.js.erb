@@ -89,7 +89,8 @@
     postMessage({ event: 'updatePath', value: path, matchText: matchText })
   }
 
-  window.addEventListener('click', function() {
+  window.addEventListener('click', function(e) {
+    e.preventDefault();
     postMessage({ event: 'click' });
   });
 
