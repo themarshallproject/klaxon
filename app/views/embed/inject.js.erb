@@ -23,7 +23,7 @@
     return path;
   }
 
-  var src = editorURL + "#" + encodeURIComponent(document.location.href);
+  var src = editorURL + "?url=" + encodeURIComponent(document.location.href);
   var iframe = document.createElement('iframe');
   iframe.setAttribute('src', src);
   iframe.setAttribute('frameborder', 0);
