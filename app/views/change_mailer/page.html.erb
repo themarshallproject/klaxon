@@ -38,7 +38,7 @@
   </div>
   <h2>Something Changed</h2>
 
-  <p class="klax-lead"><b><%= @page.name %></b> changed. It has changed <b><%= @page.page_snapshots.count %></b> since Klaxon started monitoring it on <b><%= @page.created_at.strftime("%A, %B %d, %Y") %>.</b></p>
+  <p class="klax-lead"><b><%= @page.name %></b> changed. It has changed <b><%= @page.page_snapshots.count %></b> times since Klaxon started monitoring it on <b><%= @page.created_at.strftime("%A, %B %d, %Y") %>.</b></p>
 
   <p><a class="klax-button" style="margin-bottom: 50px;" href="<%= page_change_url(@change) %>">View this Snapshot</a></p>
 

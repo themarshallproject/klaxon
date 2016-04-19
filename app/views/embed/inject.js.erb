@@ -1,9 +1,16 @@
 (function() {
+  var appRoot = "<%= root_url %>";
   var editorURL = "<%= @iframe_url %>";
   var postMessageDomain = "<%= root_url %>";
 
+  var currentURL = window.location.href;
+  if (currentURL.indexOf(appRoot) >= 0) {
+    alert("Drag this bookmarklet into your browser toolbar.");
+    return false;
+  }
+
   if (window._klaxonInject === true) {
-    alert("The Klaxon bookmarklet already injected on this page");
+    alert("The Klaxon bookmarklet already injected on this page.");
     return;
   } else {
     window._klaxonInject = true;
