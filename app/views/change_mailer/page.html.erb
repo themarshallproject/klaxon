@@ -1,7 +1,6 @@
 <style>
 .diff {
   color: #000000;
-  padding: 40px 0;
   background-color: rgba(150,150,150, 0.1);
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   font-size: 90%;
@@ -13,13 +12,10 @@
   -webkit-margin-start: 0;
   -webkit-margin-end: 0;
   -webkit-padding-start: 0;
-  overflow: scroll;
-  white-space: nowrap;
 }
 .diff li {
-  padding: 1px 40px;
   text-decoration: none !important;
-  width: 100%;
+  padding: 10px;
 }
 .diff del {
   text-decoration: none !important;
@@ -34,31 +30,17 @@
 .diff .ins ins {
   text-decoration: none !important;
 }
-.diff .del:before {
-  content: attr(data-line) " -";
-  padding-right: 20px;
-}
-.diff .ins:before {
-  content: attr(data-line) " +";
-  padding-right: 20px;
-}
-.diff .unchanged:before {
-  content: attr(data-line) " ";
-  padding-right: 26px;
-}
-.diff li:hover {
-  background-color: #111;
-  color: #fff;
-}
 </style>
 
 <div class="container">
     <div class="klax-app-name">
     Klaxon
   </div>
-  <h2>Change</h2>
+  <h2>Something Changed</h2>
 
-  <%= link_to "View Change", page_change_url(@change) %>
+  <p class="klax-lead"><b><%= @page.name %></b> changed. It has changed <b><%= @page.page_snapshots.count %></b> since Klaxon started monitoring it on <b><%= @page.created_at.strftime("%A, %B %d, %Y") %>.</b></p>
+
+  <p><a class="klax-button" style="margin-bottom: 50px;" href="<%= page_change_url(@change) %>">View this Snapshot</a></p>
 
   <div class="diff">
     <%= raw Diffy::Diff.new(@change.before.match_text, @change.after.match_text, context: 2).to_s(:html_simple) %>
