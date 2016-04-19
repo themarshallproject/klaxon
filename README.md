@@ -4,10 +4,80 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/themarshallproject/klaxon/tree/master)
 
-### Alerting journalists to changes on the web
+## Alerting journalists to changes on the web
 
 Klaxon is a Ruby on Rails app that enables reporters and editors to monitor scores of websites for newsworthy changes. When it finds something new on one of the pages or files it's watching, it emails an alert and pings a Slack channel.
 
 Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories.
 
-We plan to release Klaxon as a free and open-source application for other newsrooms to employ. If you'd like to use Klaxon and be notified when it is released, great. If you are comfortable with Rails and want to contribute to Klaxon's development, even better. Either way, [let us know](http://goo.gl/forms/P6TE5b1eOh) so we can get in touch.
+
+## Setting up your Klaxon
+
+Klaxon is open source software built in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), a nonprofit investigative news organization covering the American criminal justice system. In our small shop, we regularly juggle the demands of the daily news grind with building the tools we need to pursue journalism.  We want other journalists to benefit from Klaxon and to help improve us it, but keep these caveats in mind and use it at your own risk.
+
+Klaxon was made to tackle a very specific need, and thus it won’t solve every problem. It was created by a team of three, Ivar Vong, Andy Rossback and Tom Meagher, and it is subject to the kind of shortcomings any young, small side project might encounter. It may break unexpectedly. It may miss a change in a website, or an email might not fire off correctly. Still, we’ve found it immensely useful in our daily reporting. 
+
+Our team will keep hacking on Klaxon in spare moments, and we plan to keep it humming for our own use. But we think this project has the potential to help just about any newsroom. For it to succeed and to evolve, it will depend on the contributions from other journalist-developers. We are excited about the prospect of building a community around this project to help maintain it. So when you spot the inevitable bug, please let us know. And if you’d like to [help us make this better](CONTRIBUTING.md), or add new functionality to it, we’d love to have your help.
+
+### Getting started
+One of our goals for Klaxon is to make it as easy as possible for reporters and editors without tech backgrounds to use and to set up. Getting your own Klaxon running in your newsroom will require you to run a handful of instructions one time through the help of online services Heroku and Github. We use [Heroku](https://heroku.com/) to deploy software in The Marshall Project newsroom. We think it makes some of the tedious work of running servers a lot easier to deal with, so we designed Klaxon to be easily deployable on Heroku. (If you’d like to run this in your newsroom’s preferred server setup — say using Docker or a generic Linux machine — we encourage you to do so, and to send it back to us, with documentation, [in a pull request](CONTRIBUTING.md).) So first, you’ll need to [create an account with Heroku](https://signup.heroku.com/), if you don’t already have one.
+
+### How much will this cost?
+It should be free to get started with Klaxon on Heroku, but if you start using it a lot, you may need to pay a small amount to keep it running. Out of the box with Heroku, for free you’ll get:
+
+* 12,000 emails per month with SendGrid
+* 10,000 records of changes in your Postgres database
+* Your web interface available 18 hours a day
+* Checks of each of your watched sites every 10 minutes with Heroku’s Scheduler.
+
+If you find your newsroom hitting the limits of these free tiers, you can pay to expand them. To send up to 40,000 emails a month, you can upgrade your Sendgrid add-on in Heroku for $9.95 a month. If you need to store more records in your database, you can pay $9 a month for up to 10 million rows. And if you need your web interface running around the clock, you can upgrade your Heroku dyno from the Free to the Hobby level for $7 a month. Some of these won’t be necessary, particularly in smaller newsrooms, but it’s good to know.
+
+If you want to track files with Klaxon, you’ll have to set up an account with Amazon Web Services’ Simple Storage Service (S3). If you are tracking a few dozen files on the web that update irregularly, it should cost you pennies each month. (More on this option to come…)
+
+### Let’s do this
+If you have a Heroku account and you’re ready to go, it’s time to click on this button: [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
+You must be logged into your Heroku account, and it will take you to a page to configure your new app in Heroku’s dashboard. First, give your app a name in the first box. While this is technically optional, this will also double as the URL for your Klaxon instance, so think carefully about it for a moment. Try maybe an abbreviation for your newsroom with a hyphen and the word klaxon, like “wp-klaxon” or “sl-klaxon”. This will become a URL as https://sl-klaxon.herokuapp.com/
+
+Scroll down to the “* Admin_emails” field, add a comma-separated list of email addresses for your newsroom’s Klaxon administrators. These administrators will be able to create accounts for any user in your organization, as well as configure various Klaxons and integrations with services like Slack.
+
+Click the big purple “Deploy for Free” button. If you haven’t given Heroku your credit card yet, it will ask you for your information now. As long as you’re on the free settings, it won’t charge you, but Heroku wants to be prepared in case you change tiers. After that, give Heroku a few minutes for the app to build. 
+
+When you see this message:
+
+![](docs/deploying.png)
+
+...you’re almost done. 
+
+Click on the button that says “Manage App”. This takes you behind the scenes of the various components powering your Klaxon. On this resources screen, click on the link for “Heroku Scheduler,” which will take you a new screen where you must add the very important piece. The scheduler is what runs every 10 minutes to actually check all the sites and pages you’re watching. Click the long, purple ‘Add new job” button. In the text box next to the dollar sign, type the words “rake check:all” with the colon and without the quotes. Under “Frequency,” change it from “Daily” to “Every 10 minutes”. Click the purple “Save” button and your scheduler item should look like this:
+
+![](docs/scheduler.png)
+
+Now, at the top of the scheduler page, click the link that is the name of your app (“sl-klaxon”). This will take you to your Klaxon’s login screen on the web. 
+
+![](docs/login_screen.png)
+
+Type the admin email address that you gave the Heroku dashboard earlier into the text box and hit the “Login” button. You’ll then be redirected to a page that says an email has been sent to you. Check your inbox. This may take a minute or two to arrive.
+
+In the email, click the “Go to Dashboard” button. You’re now authenticated in the system and can access your Klaxon.
+Configuring your Klaxon
+Once you’re logged in, you should see the main page that will fill up in the coming days with the feed of all of your Klaxon updates. Now, you want to go add other users in your newsroom to the system. Click the “Settings” button in the upper right corner, and select “Users” from the menu.
+
+On the right side of the page, click the “Create New User” button. Add the reporter’s first and last name and email address, and she will get an email allowing her into the Klaxon. Now, finally, you and your users can start adding web pages you want Klaxon to watch.
+
+You’re all set for email notifications. If you’d like to also receive alerts through Slack, you can set that up now too. (If you want alerts from other services, [we welcome pull requests](CONTRIBUTING.md)) Click on the “Settings” button in the upper right corner of the page and choose “Integrations” from the menu. On the Integrations page, click the “Create Slack Integration” button. You can add an integration for any number of channels in your newsroom’s Slack. For each one, you just have to set up an Incoming Webhook. In Slack, click on the dropdown arrow in the upper left corner and choose “Apps & Integrations” from the menu. This will open a new window in your browser for you to search the Slack app directory. In the search box, type “Incoming Webhooks” and choose that option when it pops up. If you already have webhooks, you’ll see a button next to your Slack organization’s name that says “Configure.” Otherwise, click the green button that says “Install”.
+
+Now, choose the channel that you want the Klaxon alerts to go to from the dropdown menu. We’d recommend that you not send them to #General, but maybe create a new channel called #Klaxon. After you create or choose your channel, click the green button that says “Add Incoming Webhooks Integration”. Near the top of the next screen, you should see a red URL next to the label “Webhook URL”. Copy that URL and switch over to your browser window with Klaxon in it. Paste the URL into the box labeled “Webhook URL,” and type the name of the channel you want your Slack alerts to go to into the “Channel” box (this should be the same channel name you used in Slack when you created the integration). Now click the “Create Slack Integration Button”. Now you should be all set. If you want to have the ability to send Klaxon alerts to other channels, for specific reporting teams or for certain projects, you can repeat this process.
+
+How do I upgrade when changes come to Klaxon?
+When we release major changes to Klaxon, we’ll make an announcement to [our Google Group email list](https://groups.google.com/forum/#!forum/news-klaxon-users). At that point, you’ll likely want to adopt those in your system as well. To do that, you’ll need to fork our repo to your own Github account to receive the updates, and then you can use Heroku’s dashboard to push the changes to your application. 
+
+If you don’t already have an account at [Github.com](https://github.com/), now is a good time to set one up (don’t worry, it’s free). This has the added benefit of giving you access [to comment on the issues](https://github.com/themarshallproject/klaxon/issues) our community is working on developing. Once you’re logged into Github with your new account, go to [the repo for the Klaxon project](https://github.com/themarshallproject/klaxon) and click the “Fork” button. This copies our code into a separate version under your Github account that you can tie to your Klaxon instance running on Heroku’s servers.
+
+Now, go to [https://dashboard.heroku.com](https://dashboard.heroku.com/) and choose your application (remember, the one you named when you first set up Klaxon, probably sl-klaxon or something similar if you followed our advice above). From the menu of options at the top of the page, click on the “Deploy” button. Look for section called “Deployment method,” which should be the second from the top of the Deploy page.
+
+You should see three buttons. Click the one in the middle that says “Github Connect With Github”. The options at the bottom of the page will change. Now, click the gray button that says “Connect To Github”. It will pop up a new window to log you into Github, if you aren’t already. In that window, click the “Authorize Application” button. The popup window should now close itself. 
+
+On the Heroku page, in the “Connect to Github” section at the bottom, type ‘klaxon’ into the search box next to your Github username. Click the “Search” button. Next, click the “Connect” button next to the name of your forked repo that pops up below. Finally, click “Enable Automatic Deploys” button in the “Automatic deploys” section. This ties your Heroku server to your Github account, so that every time you merge updates into your forked version of the Klaxon repository, they will automatically go live on your server with the latest updates.
+
+Finally, a note on pulling updates through Github.com from our repo to your forked copy. (More TK)
