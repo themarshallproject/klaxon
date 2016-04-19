@@ -2,13 +2,13 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1>Compare Snapshots</h1>
+        <h1>All Snapshots</h1>
       </div>
     </div>
     <div class="row">
       <div class="col-md-6">
       <p class="lead">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
+        Below are all of the snapshots, or versions, of <b><%= @page.name %></b> going back to <%= @page.created_at.strftime("%A, %B %d, %Y at %H:%M") %>. Start by selecting an older version, then select a newer version to compare it against.</p>
       </div>
       <div class="col-md-3">
         <!-- negative space -->
