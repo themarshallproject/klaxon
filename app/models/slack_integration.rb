@@ -19,4 +19,8 @@ class SlackIntegration < ActiveRecord::Base
     Subscription.where(watcher: self, watching: watchable).exists?
   end
 
+  def send_notification(change)
+    puts "sending slack sending slack notification for #{change}"
+  end
+
 end

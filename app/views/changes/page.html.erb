@@ -72,6 +72,7 @@
       <div class="col-md-3 klax-spacer-md">
         <h2><%= time_ago_in_words @before.created_at %></h2>
         <p class="lead">since the last change was captured at <%= @before.created_at.strftime("%A, %B %d, %Y at %H:%M") %></p>
+        <%= link_to "Resend Notifications", resend_change_notifications_path(@change), method: :post %>
       </div>
     </div>
   </div><!-- /.container -->

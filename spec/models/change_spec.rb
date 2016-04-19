@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Change, type: :model do
+  include ActiveJob::TestHelper
 
-  it "is the edge between page_snapshots (easy case -- things in order)" do
+  it "is the edge between page_snapshots (happy path, already sorteda)" do
     page = create(:page, :with_snapshots, snapshot_count: 2)
     snapshots = page.page_snapshots
     expect(snapshots.count).to eq 2
@@ -21,4 +22,14 @@ RSpec.describe Change, type: :model do
     expect(change).to be_valid
   end
 
+  it "sends email notifications for subscriptions on change creation" do
+    page = create(:page, :with_snapshots, snapshot_count: 2)
+    user = create(:user)
+
+    user.subscribe(page)
+
+    Change.check
+
+    assert_enqueued_jobs 1
+  end
 end

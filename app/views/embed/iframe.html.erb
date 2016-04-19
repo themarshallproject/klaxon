@@ -19,6 +19,7 @@ ul {
   padding: 0;
 }
 </style>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
 <body>
 
@@ -27,6 +28,8 @@ ul {
   <p id="path-preview">Waiting for events...</p>
 
   <script>
+
+  window.pageID = null;
 
   var url = decodeURIComponent(window.location.hash.replace('#', ''));
   console.log('url from hash', url);
@@ -48,7 +51,7 @@ ul {
 
   var handleUpdatePath = function(path) {
     var lis = path.map(function(li) { return "<li>"+li+"</li>" });
-    document.querySelector('#path-preview').innerHTML = "<ul>"+lis.join("\n")+"</ul>"
+    document.querySelector('#path-preview').innerHTML = "<ul>"+lis.join("\n")+"</ul>";
   }
 
   window.addEventListener("message", function(e) {
@@ -62,7 +65,30 @@ ul {
     } else if (data.event === 'updatePath') {
       handleUpdatePath(data.value);
     }
-  }, false)
+  }, false);
+
+  $.post("<%= embed_find_page_url %>", {
+    authenticity_token: "<%= form_authenticity_token %>",
+    url: url
+  }).done(function(data) {
+    console.log(data, data.id);
+    window.pageID = data.id;
+  });
+
+  $('body').on('click', 'li', function() {
+    var $li = $(this);
+    var selector = $li.innerHTML;
+    console.log(selector)
+    $.post("<%= embed_update_page_selector_url %>", {
+      authenticity_token: "<%= form_authenticity_token %>",
+      id: window.pageID,
+      css_selector: selector
+    }).done(function(data) {
+      console.log(data, data.id);
+      window.pageID = data.id;
+    });
+  });
+
   </script>
 
 </body>
