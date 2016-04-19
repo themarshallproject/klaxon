@@ -203,6 +203,10 @@ small {
 .diff .ins {
   background-color: rgba(0,255,0, 0.2);
 }
+
+.diff .ins ins {
+  text-decoration: none !important;
+}
 .diff .del:before {
   content: attr(data-line) " -";
   padding-right: 20px;

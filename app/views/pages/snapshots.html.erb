@@ -14,6 +14,8 @@
         <!-- negative space -->
       </div>
       <div class="col-md-3">
+        <%= form_tag setup_compare_page_path, method: :get %>
+        <%= submit_tag "Compare", class: "btn btn-default btn-lg btn-block" %>
       </div>
     </div>
   </div><!-- /.container -->
@@ -21,20 +23,17 @@
 
 <div class="klax-section klax-spacer-lg">
   <div class="container">
-    <%= form_tag setup_compare_page_path, method: :get %>
-
-    <%= submit_tag "Compare" %>
 
       <div class="row">
         <div class="col-md-6">
           <h4 class="klax-spacer-md">Select the Older Version</h4>
 
-          <% @snapshots.each do |snapshot| %>
+          <% @snapshots.each_with_index do |snapshot, index| %>
           <div class="row klax-spacer-sm"><!-- row -->
             <div class="col-md-3">
               <div class="radio" style="margin: 0;">
                 <label>
-                  <input type="radio" name="before" value="<%= snapshot.id %>">
+                  <input class="klax-js-snapshot-before" type="radio" name="before" data-index="<%= index %>" value="<%= snapshot.id %>">
                   <code><%= snapshot.sha2_hash.first(8) %></code>
                 </label>
               </div>
@@ -53,12 +52,12 @@
         <div class="col-md-6">
           <h4 class="klax-spacer-md">Select the Newer Version</h4>
 
-          <% @snapshots.each do |snapshot| %>
+          <% @snapshots.each_with_index do |snapshot, index| %>
           <div class="row klax-spacer-sm"><!-- row -->
             <div class="col-md-3">
               <div class="radio" style="margin: 0;">
                 <label>
-                  <input type="radio" name="after" value="<%= snapshot.id %>">
+                  <input class="klax-js-snapshot-after" type="radio" name="after" data-index="<%= index %>" value="<%= snapshot.id %>" style="display: none;">
                   <code><%= snapshot.sha2_hash.first(8) %></code>
                 </label>
               </div>
@@ -79,3 +78,29 @@
   </div><!-- /.container -->
 </div>
 
+<script>
+
+$(document).ready(function() {
+  $(".klax-js-snapshot-before[data-index='0']").attr("disabled","");
+  $(".klax-js-snapshot-before[data-index='1']").click();
+  $(".klax-js-snapshot-after[data-index='0']").show().click();
+  $(".klax-js-snapshot-before").click(function(){
+    console.log("wow!");
+    var index = $(this).data("index");
+    $(".klax-js-snapshot-after").each(function(){
+      var thisIndex = $(this).data("index");
+      if (index <= thisIndex) {
+        $(this).attr("disabled","");
+        $(this).css("display","none");
+      } else {
+        $(this).css("display","block");
+        $(this).removeAttr("disabled","");
+        if (thisIndex == (index - 1)) {
+          $(this).click();
+        }
+      }
+    });
+  });
+});
+
+</script>
