@@ -20,6 +20,7 @@ gem 'simple_form', '~> 3.2'
 
 gem 'jwt'
 gem 'premailer-rails'
+gem 'httparty'
 
 gem 'diffy'
 gem 'kramdown'
@@ -30,6 +31,7 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'factory_girl_rails', '~> 4.0'
   gem 'database_cleaner'
+  gem 'webmock'
 end
 
 group :development do

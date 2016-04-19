@@ -1,4 +1,8 @@
-<% bookmarklet_js = "javascript:(function(){document.body.appendChild(document.createElement('script')).src='#{inject_url()}';})();" %>
+<% if @changes.empty? %>
+
+<%= render partial:'layouts/bookmarklet' %>
+
+<% else %>
 
 <div class="klax-section klax-topper">
   <div class="container">
@@ -9,7 +13,7 @@
     </div>
     <div class="row">
       <div class="col-md-6">
-      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p>
+      <p class="lead">Below is a quick look at everything Klaxon is monitoring for your organization, even those you don’t subscribe to. Each line represents a change to an item, known as a “snapshot.” </p>
       </div>
       <div class="col-md-3">
 
@@ -17,7 +21,6 @@
     </div>
   </div><!-- /.container -->
 </div>
-
 <div class="klax-section">
   <div class="container">
     <div class="row">
@@ -37,3 +40,5 @@
     </div>
   </div>
 </div>
+
+<% end %>
