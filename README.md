@@ -2,7 +2,7 @@
 
 [![Circle CI](https://circleci.com/gh/themarshallproject/klaxon.svg?style=svg)](https://circleci.com/gh/themarshallproject/klaxon)
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/themarshallproject/klaxon/tree/master)
 
 ### Alerting journalists to changes on the web
 
