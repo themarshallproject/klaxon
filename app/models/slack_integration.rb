@@ -44,7 +44,6 @@ class SlackIntegration < ActiveRecord::Base
     }
 
     SlackNotification.perform(self.webhook_url, payload)
-
     return payload
   end
 
