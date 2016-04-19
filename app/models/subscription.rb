@@ -5,8 +5,8 @@ class Subscription < ActiveRecord::Base
   belongs_to :watching, polymorphic: true
   validates :watching, presence: true
 
-  def notify!(change)
-    Notification.send(subscription: self, change: change)
+  def send_notification(change)
+    watcher.send_notification(change)
   end
 
 end

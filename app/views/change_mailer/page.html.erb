@@ -1,0 +1,65 @@
+<style>
+.diff {
+  color: #000000;
+  padding: 40px 0;
+  background-color: rgba(150,150,150, 0.1);
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 90%;
+}
+.diff ul {
+  list-style-type: none;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  -webkit-padding-start: 0;
+  overflow: scroll;
+  white-space: nowrap;
+}
+.diff li {
+  padding: 1px 40px;
+  text-decoration: none !important;
+  width: 100%;
+}
+.diff del {
+  text-decoration: none !important;
+}
+.diff .del {
+  background-color: rgba(255,11,58, 0.2);
+}
+.diff .ins {
+  background-color: rgba(0,255,0, 0.2);
+}
+
+.diff .ins ins {
+  text-decoration: none !important;
+}
+.diff .del:before {
+  content: attr(data-line) " -";
+  padding-right: 20px;
+}
+.diff .ins:before {
+  content: attr(data-line) " +";
+  padding-right: 20px;
+}
+.diff .unchanged:before {
+  content: attr(data-line) " ";
+  padding-right: 26px;
+}
+.diff li:hover {
+  background-color: #111;
+  color: #fff;
+}
+</style>
+
+<div class="container">
+    <div class="klax-app-name">
+    Klaxon
+  </div>
+  <h2>Change</h2>
+
+  <div class="diff">
+    <%= raw Diffy::Diff.new(@change.before.match_text, @change.after.match_text, context: 2).to_s(:html_simple) %>
+  </div>
+
+</div>

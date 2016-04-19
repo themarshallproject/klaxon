@@ -5,7 +5,7 @@ namespace :users do
     emails.each do |email|
       email.strip!
       User.where(email: email).first_or_create do |user|
-        puts "ENV['ADMIN_EMAILS']: creating user email=#{user.email}"
+        puts "ENV['ADMIN_EMAILS']: creating user with email='#{user.email}'"
       end
     end
   end

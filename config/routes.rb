@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     get 'users' => 'api#users', as: :api_users
     get 'pages' => 'api#pages', as: :api_pages
     get 'stats' => 'api#stats', as: :api_stats
+
+    scope 'embed' do
+      post 'page' => 'api#embed_find_page', as: :embed_find_page
+      post 'page/update-selector' => 'api#embed_update_page_selector', as: :embed_update_page_selector
+    end
   end
 
   scope '/watching' do
@@ -21,6 +26,7 @@ Rails.application.routes.draw do
   end
 
   get '/page-change/:change_id' => 'changes#page', as: :page_change
+  post '/changes/resend/:id' => 'changes#resend', as: :resend_change_notifications
 
   scope '/embed' do
     get 'inject' => 'embed#inject'

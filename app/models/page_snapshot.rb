@@ -23,4 +23,8 @@ class PageSnapshot < ActiveRecord::Base
   #   Change.where(before: previous, after: self).first_or_create
   # end
 
+  def parent
+    page
+  end
+
 end

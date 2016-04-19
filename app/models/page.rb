@@ -8,7 +8,7 @@ class Page < ActiveRecord::Base
   after_save   :update_subscriptions
 
   def to_param
-    [id, self.name.parameterize].join('-')
+    [id, self.name.to_s.parameterize].join('-')
   end
 
   def domain
@@ -63,13 +63,13 @@ class Page < ActiveRecord::Base
   end
 
   def latest_change
-    before, after = PageSnapshot.where(page: self).order('created_at DESC').limit(2).reverse
+    after, before = PageSnapshot.where(page: self).order('created_at DESC').first(2)
 
     if before.nil? or after.nil?
       return false
     end
 
-    Change.where(before: before, after: after).first_or_create
+    Change.where(before: before, after: after).first_or_create # TODO extract
   end
 
   def snapshot_time_deltas
