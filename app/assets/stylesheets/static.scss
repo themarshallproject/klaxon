@@ -233,6 +233,17 @@ small {
   border-bottom: 0;
 }
 
+.klax-line-anchor {
+  padding:0 !important;
+}
+
+.klax-line-anchor {
+  display: block; 
+  position: relative; 
+  top: -50vh; 
+  visibility: hidden;
+}
+
 // login & marketing
 
 .klax-hero {
