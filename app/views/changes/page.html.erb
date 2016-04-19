@@ -80,18 +80,16 @@
 
 <script>
 
-$(function() {
-    $(".diff li").each(function(i){
-      var contents = $(this).html();
-      var contents = "<a class=\"klax-line-anchor\" name=\"" + (i + 1) + "\"></a><a href=\"#" + (i + 1) + "\"><div class=\"klax-line\" data-line=\"" + (i + 1) + "\">" + (i + 1) + "</div>" + contents + "</a>";
-      $(this).html(contents);
-    }); 
-    var hash = window.location.hash.substr(1);
-    $(".diff a[name="+hash+"]").addClass("klax-line-selected");
-    $(".diff a").click(function(){
-      $(".diff a").removeClass("klax-line-selected");
-      $(this).addClass("klax-line-selected");
-    });
+$(".diff li").each(function(i){
+  var contents = $(this).html();
+  var contents = "<a class=\"klax-line-anchor\" name=\"" + (i + 1) + "\"></a><a href=\"#" + (i + 1) + "\"><div class=\"klax-line\" data-line=\"" + (i + 1) + "\">" + (i + 1) + "</div>" + contents + "</a>";
+  $(this).html(contents);
+}); 
+var hash = window.location.hash.substr(1);
+$(".diff a[name="+hash+"]").addClass("klax-line-selected");
+$(".diff a").click(function(){
+  $(".diff a").removeClass("klax-line-selected");
+  $(this).addClass("klax-line-selected");
 });
 
 </script>
