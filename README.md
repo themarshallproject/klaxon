@@ -80,4 +80,12 @@ You should see three buttons. Click the one in the middle that says “Github Co
 
 On the Heroku page, in the “Connect to Github” section at the bottom, type ‘klaxon’ into the search box next to your Github username. Click the “Search” button. Next, click the “Connect” button next to the name of your forked repo that pops up below. Finally, click “Enable Automatic Deploys” button in the “Automatic deploys” section. This ties your Heroku server to your Github account, so that every time you merge updates into your forked version of the Klaxon repository, they will automatically go live on your server with the latest updates.
 
-Finally, a note on pulling updates through Github.com from our repo to your forked copy. (More TK)
+Finally, a note on pulling updates through Github.com from our repo to your forked copy.
+
+When an update is announced on the Google Group, you can go to your forked version of the repo Github and click the green “New Pull Request” button. On the basefork dropdown on the left, click and select your repo. Then click the “compare across forks” link and change the “head fork” on the dropdown menu to “marshallproject/klaxon”. Make sure both the branches are set to “master” (they should already be). Below that, a green checkbox and the words “Able to merge” should appear. If they do, click the green “Create Pull Request” button. Give this pull request a title. You might want to say “Merging Klaxon release 0.9.1” or whatever the new version number is and click the “Create Pull Request” button again.
+
+You should then get a response that looks like this:
+
+![](docs/merge_pr.png)
+
+If it does, and everything is green, you’re good to go. Just click the “Merge pull request” button then click the “Confirm merge” button and that’s that. 
