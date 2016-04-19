@@ -7,7 +7,7 @@
     </div>
     <div class="row">
       <div class="col-md-6">
-        <p class="lead">Below are two versions, also called snapshots, of <b><%= @page.name %></b> which has changed <%= @snapshots.count %> times since <%= @page.created_at.strftime("%A, %B %d, %Y at %H:%M") %> when <%= @page.user.display_name %> began watching it.</p>
+        <p class="lead">Below are two versions of <b><%= @page.name %></b> which has changed <%= @snapshots.count %> times since <%= @page.created_at.strftime("%A, %B %d, %Y") %> when <%= @page.user.display_name %> began watching it. These snapshots were created on <b><%= @after.created_at.strftime("%A, %B %d, %Y at %H:%M") %></b> and <b><%= @before.created_at.strftime("%A, %B %d, %Y at %H:%M") %></b> respectively.</p>
       </div>
       <div class="col-md-3">
         <!-- negative space -->
@@ -25,8 +25,7 @@
   <div class="container klax-spacer-md">
     <div class="row klax-spacer-md">
       <div class="col-md-12">
-        <h4>Comparing snapshots <code><%= @after.display_hash %></code> and <code><%= @before.display_hash %></code></h4>
-        <p>Created on <%= @after.created_at.strftime("%A, %B %d, %Y at %H:%M") %> and <%= @before.created_at.strftime("%A, %B %d, %Y at %H:%M") %> respectively.</p>
+        <h4>Snapshots <code><%= @after.display_hash %></code> and <code><%= @before.display_hash %></code></h4>
       </div>
     </div>
         <form class="form-horizontal" method="POST" action="">
