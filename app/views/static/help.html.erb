@@ -1,4 +1,16 @@
 <style>
+
+.klax-help {
+  font-size: 16px;
+  line-height: 1.6em;
+}
+
+.klax-help h1, .klax-help h2, .klax-help h3, .klax-help h4, .klax-help h5, .klax-help h6 {
+  margin-top: 60px;
+  margin-bottom: 25px; 
+}
+
+
 @media (min-width: 768px) {
   .lead svg {
     width: 17px;
@@ -27,8 +39,12 @@
   </div><!-- /.container -->
 </div>
 
-<!-- <div class="klax-topper">
+<div class="klax-topper klax-help">
   <div class="container">
-  <%= @html.html_safe %>
+    <div class="row">
+      <div class="col-md-8">
+        <%= @html.html_safe %>
+      </div>
+    </div>
   </div>
-</div> -->
+</div>
