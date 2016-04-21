@@ -78,13 +78,20 @@ Rails.application.configure do
 
   # config.action_mailer.delivery_method = :postmark
   # config.action_mailer.postmark_settings = { :api_token => ENV['POSTMARK_API_TOKEN'] }
+
+  provider = ENV["SMTP_PROVIDER"].upcase || "SENDGRID"
+  address   = ENV["#{provider}_ADDRESS"] || "smtp.sendgrid.net"
+  user_name = ENV["#{provider}_USERNAME"]
+  password  = ENV["#{provider}_PASSWORD"]
+  domain  = ENV["#{provider}_DOMAIN"] || "heroku.com"
+
   ActionMailer::Base.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
+    :address        => address,
     :port           => '587',
     :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'heroku.com',
+    :user_name      => user_name,
+    :password       => password,
+    :domain         => domain,
     :enable_starttls_auto => true
   }
 end
