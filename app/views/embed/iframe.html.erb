@@ -97,7 +97,7 @@ a {
   <div class="klax-app-name">Klaxon</div>
   <p class="klax-lead">Hover over the page and click the item you want to watch. Preview it below to make sure you’ve selected the correct item.</p>
 
-  <p><%= link_to "Save and Edit", edit_page_url(@page), class:"klax-button", target: '_blank' %></p>
+  <p><%= link_to "Save and Edit", edit_page_url(@page).gsub('http://', 'https://'), class:"klax-button", target: '_blank' %></p>
 
   <p id="status"></p>
   <p id="path-preview"></p>
@@ -151,7 +151,7 @@ a {
     console.log('updating selector', selector);
     var el = document.querySelector('#status');
     el.innerText = "Saving....";
-    $.post("<%= embed_update_page_selector_url %>", {
+    $.post("<%= embed_update_page_selector_url.gsub('http://', 'https://') %>", {
       authenticity_token: "<%= form_authenticity_token %>",
       id: window.pageID,
       css_selector: selector
