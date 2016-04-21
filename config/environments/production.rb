@@ -79,11 +79,11 @@ Rails.application.configure do
   # config.action_mailer.delivery_method = :postmark
   # config.action_mailer.postmark_settings = { :api_token => ENV['POSTMARK_API_TOKEN'] }
 
-  provider = ENV["SMTP_PROVIDER"].upcase || "SENDGRID"
+  provider  = (ENV["SMTP_PROVIDER"] || "SENDGRID").to_s
   address   = ENV["#{provider}_ADDRESS"] || "smtp.sendgrid.net"
   user_name = ENV["#{provider}_USERNAME"]
   password  = ENV["#{provider}_PASSWORD"]
-  domain  = ENV["#{provider}_DOMAIN"] || "heroku.com"
+  domain    = ENV["#{provider}_DOMAIN"] || "heroku.com"
 
   ActionMailer::Base.smtp_settings = {
     :address        => address,
