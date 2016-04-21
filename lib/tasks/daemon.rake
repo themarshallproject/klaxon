@@ -1,4 +1,4 @@
-task :daemon do
+task :daemon => :environment do
   while 1
     puts "checking"
     Rake::Task["check:all"].reenable
