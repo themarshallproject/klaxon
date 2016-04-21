@@ -19,6 +19,4 @@ test:
 
 production:
   <<: *default
-  database: klaxon_production
-  username: klaxon
-  password: <%= ENV['KLAXON_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
