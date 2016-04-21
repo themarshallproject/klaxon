@@ -94,7 +94,7 @@
     postMessage({ event: 'click' });
   });
 
-  window.addEventListener('mousemove', function() {
+  window.addEventListener('mousemove', function(event) {
     var x = event.clientX;
     var y = event.clientY;
     var el = document.elementFromPoint(x, y);
