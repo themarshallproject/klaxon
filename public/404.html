@@ -1,67 +1,100 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  body {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
-
-  div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
-
-  div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-
-  h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Klaxon</title>
 </head>
-
 <body>
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
-    </div>
-    <p>If you are the application owner check the logs for more information.</p>
+
+<style>
+
+body {
+  color: #ff0b3a;
+  padding: 30px;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+p {
+  font-size: 14px;
+  line-height: 1.4em;
+  word-wrap: break-word;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  border-top: 0.2em solid #ff0b3a;
+  padding-top: 10px;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 5.063em;
+}
+
+h2 {font-size: 3.375em;}
+
+h3 {font-size: 2.25em;}
+
+h4 {font-size: 1.5em;}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.klax-app-name {
+  padding-bottom: 50px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.klax-button {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33333;
+  border: 1px solid #ff0b3a;
+  display: block;
+  text-align: center;
+}
+
+.klax-button:hover, .klax-button:hover a {
+  background-color: #ff0b3a;
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+.klax-button {
+  text-decoration: none !important;
+}
+
+.klax-lead {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.4;
+  font-size: 21px;
+}
+
+.klax-fine-print {
+  margin-top: 30px;
+  font-size: 12px;
+}
+
+a {
+  color: #ff0b3a;
+}
+
+</style>
+
+<div class="container">
+   <div class="klax-app-name">
+    Klaxon
   </div>
+  <h1>404</h1>
+
+  <p class="klax-lead">We’re sorry. We cannot find the page you’re looking for. <a href="/">Go home?</a></p>
+
+</div>
+
 </body>
 </html>
