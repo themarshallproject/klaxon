@@ -1,4 +1,4 @@
-# Klaxon
+![](docs/klaxon_hero.png)
 
 [![Circle CI](https://circleci.com/gh/themarshallproject/klaxon.svg?style=svg)](https://circleci.com/gh/themarshallproject/klaxon)
 
@@ -15,7 +15,7 @@ Built and refined in the newsroom of [The Marshall Project](https://www.themarsh
 
 Klaxon is open source software built in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), a nonprofit investigative news organization covering the American criminal justice system. In our small shop, we regularly juggle the demands of the daily news grind with building the tools we need to pursue journalism.  We want other journalists to benefit from Klaxon and to help improve us it, but keep these caveats in mind and use it at your own risk.
 
-Klaxon was made to tackle a very specific need, and thus it won’t solve every problem. It was created by a team of three, Ivar Vong, Andy Rossback and Tom Meagher, and it is subject to the kind of shortcomings any young, small side project might encounter. It may break unexpectedly. It may miss a change in a website, or an email might not fire off correctly. Still, we’ve found it immensely useful in our daily reporting. 
+Klaxon was made to tackle a very specific need, and thus it won’t solve every problem. It was created by a team of three, Ivar Vong, Andy Rossback and Tom Meagher, and it is subject to the kind of shortcomings any young, small side project might encounter. It may break unexpectedly. It may miss a change in a website, or an email might not fire off correctly. Still, we’ve found it immensely useful in our daily reporting.
 
 Our team will keep hacking on Klaxon in spare moments, and we plan to keep it humming for our own use. But we think this project has the potential to help just about any newsroom. For it to succeed and to evolve, it will depend on the contributions from other journalist-developers. We are excited about the prospect of building a community around this project to help maintain it. So when you spot the inevitable bug, please let us know. And if you’d like to [help us make this better](CONTRIBUTING.md), or add new functionality to it, we’d love to have your help.
 
@@ -43,19 +43,19 @@ You must be logged into your Heroku account, and it will take you to a page to c
 
 Scroll down to the “* Admin_emails” field, add a comma-separated list of email addresses for your newsroom’s Klaxon administrators. These administrators will be able to create accounts for any user in your organization, as well as configure various Klaxons and integrations with services like Slack.
 
-Click the big purple “Deploy for Free” button. If you haven’t given Heroku your credit card yet, it will ask you for your information now. As long as you’re on the free settings, it won’t charge you, but Heroku wants to be prepared in case you change tiers. After that, give Heroku a few minutes for the app to build. 
+Click the big purple “Deploy for Free” button. If you haven’t given Heroku your credit card yet, it will ask you for your information now. As long as you’re on the free settings, it won’t charge you, but Heroku wants to be prepared in case you change tiers. After that, give Heroku a few minutes for the app to build.
 
 When you see this message:
 
 ![](docs/deploying.png)
 
-...you’re almost done. 
+...you’re almost done.
 
 Click on the button that says “Manage App”. This takes you behind the scenes of the various components powering your Klaxon. On this resources screen, click on the link for “Heroku Scheduler,” which will take you a new screen where you must add the very important piece. The scheduler is what runs every 10 minutes to actually check all the sites and pages you’re watching. Click the long, purple ‘Add new job” button. In the text box next to the dollar sign, type the words “rake check:all” with the colon and without the quotes. Under “Frequency,” change it from “Daily” to “Every 10 minutes”. Click the purple “Save” button and your scheduler item should look like this:
 
 ![](docs/scheduler.png)
 
-Now, at the top of the scheduler page, click the link that is the name of your app (“sl-klaxon”). This will take you to your Klaxon’s login screen on the web. 
+Now, at the top of the scheduler page, click the link that is the name of your app (“sl-klaxon”). This will take you to your Klaxon’s login screen on the web.
 
 ![](docs/login_screen.png)
 
@@ -75,17 +75,17 @@ Now, choose the channel that you want the Klaxon alerts to go to from the dropdo
 
 ### Applying upgrades as the project develops
 
-When we release major changes to Klaxon, we’ll make an announcement to [our Google Group email list](https://groups.google.com/forum/#!forum/news-klaxon-users). At that point, you’ll likely want to adopt those in your system as well. To do that, you’ll need to fork our repo to your own Github account to receive the updates, and then you can use Heroku’s dashboard to push the changes to your application. 
+When we release major changes to Klaxon, we’ll make an announcement to [our Google Group email list](https://groups.google.com/forum/#!forum/news-klaxon-users). At that point, you’ll likely want to adopt those in your system as well. To do that, you’ll need to fork our repo to your own Github account to receive the updates, and then you can use Heroku’s dashboard to push the changes to your application.
 
 If you don’t already have an account at [Github.com](https://github.com/), now is a good time to set one up (don’t worry, it’s free). This has the added benefit of giving you access [to comment on the issues](https://github.com/themarshallproject/klaxon/issues) our community is working on developing. Once you’re logged into Github with your new account, go to [the repo for the Klaxon project](https://github.com/themarshallproject/klaxon) and click the “Fork” button. This copies our code into a separate version under your Github account that you can tie to your Klaxon instance running on Heroku’s servers.
 
 Now, go to [https://dashboard.heroku.com](https://dashboard.heroku.com/) and choose your application (remember, the one you named when you first set up Klaxon, probably sl-klaxon or something similar if you followed our advice above). From the menu of options at the top of the page, click on the “Deploy” button. Look for section called “Deployment method,” which should be the second from the top of the Deploy page.
 
-You should see three buttons. Click the one in the middle that says “Github Connect With Github”. The options at the bottom of the page will change. Now, click the gray button that says “Connect To Github”. It will pop up a new window to log you into Github, if you aren’t already. In that window, click the “Authorize Application” button. The popup window should now close itself. 
+You should see three buttons. Click the one in the middle that says “Github Connect With Github”. The options at the bottom of the page will change. Now, click the gray button that says “Connect To Github”. It will pop up a new window to log you into Github, if you aren’t already. In that window, click the “Authorize Application” button. The popup window should now close itself.
 
 On the Heroku page, in the “Connect to Github” section at the bottom, type ‘klaxon’ into the search box next to your Github username. Click the “Search” button. Next, click the “Connect” button next to the name of your forked repo that pops up below. Finally, click “Enable Automatic Deploys” button in the “Automatic deploys” section. This ties your Heroku server to your Github account, so that every time you merge updates into your forked version of the Klaxon repository, they will automatically go live on your server with the latest updates. You'll only have to do all of this one time to set up the pipeline.
 
-Finally, each time an update is announced on the Google Group, you can go to your forked version of the repo on Github and click the green “New Pull Request” button to pull the changes from our master repo. 
+Finally, each time an update is announced on the Google Group, you can go to your forked version of the repo on Github and click the green “New Pull Request” button to pull the changes from our master repo.
 
 On the "basefork" dropdown on the left, click and select your repo. Then click the “compare across forks” link and change the “head fork” on the dropdown menu to “marshallproject/klaxon”. Make sure both the branches are set to “master” (they should already be). Below that, a green checkbox and the words “Able to merge” should appear. If they do, click the green “Create Pull Request” button. Give this pull request a title. You might want to say “Merging Klaxon release 0.9.1” or whatever the new version number is and click the “Create Pull Request” button again.
 
@@ -93,4 +93,4 @@ You should then get a response that looks like this:
 
 ![](docs/merge_pr.png)
 
-If it does, and everything is green, you’re good to go. Just click the “Merge pull request” button then click the “Confirm merge” button and that’s that. 
+If it does, and everything is green, you’re good to go. Just click the “Merge pull request” button then click the “Confirm merge” button and that’s that.
