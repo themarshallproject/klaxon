@@ -1,6 +1,6 @@
-![](docs/klaxon_hero.png)
-
 [![Circle CI](https://circleci.com/gh/themarshallproject/klaxon.svg?style=svg)](https://circleci.com/gh/themarshallproject/klaxon)
+
+[![](docs/klaxon_hero.png)](https://newsklaxon.org)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/themarshallproject/klaxon/tree/master)
 
@@ -37,7 +37,9 @@ If you find your newsroom hitting the limits of these free tiers, you can pay to
 If you want to track files with Klaxon, you’ll have to set up an account with Amazon Web Services’ Simple Storage Service (S3). If you are tracking a few dozen files on the web that update irregularly, it should cost you pennies each month. (More on this option to come…)
 
 ### Let’s do this
-If you have a Heroku account and you’re ready to go, it’s time to click on this button: [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+If you have a Heroku account and you’re ready to go, it’s time to click on this button:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 You must be logged into your Heroku account, and it will take you to a page to configure your new app in Heroku’s dashboard. First, give your app a name in the first box. While this is technically optional, this will also double as the URL for your Klaxon instance, so think carefully about it for a moment. Try maybe an abbreviation for your newsroom with a hyphen and the word klaxon, like “wp-klaxon” or “sl-klaxon”. This will become a URL as https://sl-klaxon.herokuapp.com/
 
