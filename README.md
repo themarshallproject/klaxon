@@ -1,8 +1,4 @@
-[![Circle CI](https://circleci.com/gh/themarshallproject/klaxon.svg?style=svg)](https://circleci.com/gh/themarshallproject/klaxon)
-
 [![](docs/klaxon_hero.png)](https://newsklaxon.org)
-
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/themarshallproject/klaxon/tree/master)
 
 ## Alerting journalists to changes on the web
 
@@ -10,6 +6,9 @@ Klaxon is a Ruby on Rails app that enables reporters and editors to monitor scor
 
 Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories.
 
+[![Circle CI](https://circleci.com/gh/themarshallproject/klaxon.svg?style=svg)](https://circleci.com/gh/themarshallproject/klaxon)
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/themarshallproject/klaxon/tree/master)
 
 ## Setting up your Klaxon
 
