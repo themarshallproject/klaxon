@@ -39,7 +39,6 @@ Rails.application.routes.draw do
   end
 
   get '/help' => 'static#help', as: :help
-  get '/choose-snapshot' => 'static#index', as: :diff
 
   resources :users do
     get  '/invite' => 'users#invite', as: :invite
