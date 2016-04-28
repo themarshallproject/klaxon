@@ -1,3 +1,5 @@
+[![](docs/klaxon_hero.png)](https://newsklaxon.org)
+
 # CONTRIBUTING
 
 Klaxon is open source software built in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), a nonprofit investigative news organization covering the American criminal justice system. In our small shop, we regularly juggle the demands of the daily news grind with building the tools we need to pursue journalism.  We want other journalists to benefit from Klaxon and to help improve us it, but keep these caveats in mind and use it at your own risk.
