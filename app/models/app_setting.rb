@@ -21,4 +21,12 @@ class AppSetting < ActiveRecord::Base
     self.find_by(key: self.default_host_key)&.value.to_s
   end
 
+  def self.mailer_from_address
+    if ENV['MAILER_FROM_ADDRESS'].present?
+      ENV['MAILER_FROM_ADDRESS']
+    else
+      'Klaxon <no-reply@newsklaxon.org>'
+    end
+  end
+
 end

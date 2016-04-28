@@ -19,4 +19,13 @@ RSpec.describe AppSetting, type: :model do
     expect(rails_host).to eq AppSetting.default_host
   end
 
+  it "has a default mailer from email address" do
+    expect(AppSetting.mailer_from_address).to eq 'Klaxon <no-reply@newsklaxon.org>'
+  end
+
+  it "can have a custom mailer from email address" do
+    ENV['MAILER_FROM_ADDRESS'] = "other-email"
+    expect(AppSetting.mailer_from_address).to eq "other-email"
+  end
+
 end
