@@ -41,4 +41,13 @@ class ApiController < ApplicationController
     end
   end
 
+  def page_preview
+    page = Page.new(url: params[:url], css_selector: params[:css_selector])
+    render json: {
+      url: page.url,
+      css_selector: page.css_selector,
+      match_text: page.match_text
+    }
+  end
+
 end

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
       post 'page' => 'api#embed_find_page', as: :embed_find_page
       post 'page/update-selector' => 'api#embed_update_page_selector', as: :embed_update_page_selector
     end
+
+    get '/page-preview' => 'api#page_preview', as: :api_page_preview
   end
 
   scope '/watching' do
