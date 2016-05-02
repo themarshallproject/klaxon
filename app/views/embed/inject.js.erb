@@ -73,7 +73,9 @@
 
 
   var postMessage = function(data) {
-    iframe.contentWindow.postMessage(JSON.stringify(data), postMessageDomain);
+    var json = JSON.stringify(data);
+    // console.log('host sending', json);
+    iframe.contentWindow.postMessage(json, postMessageDomain);
   }
 
   var currentPath = [];
@@ -89,22 +91,15 @@
     postMessage({ event: 'updatePath', value: path, matchText: matchText })
   }
 
-  window.addEventListener('click', function(e) {
-    e.preventDefault();
+  window.addEventListener('click', function(evt) {
+    evt.preventDefault();
     postMessage({ event: 'click' });
   });
 
-  window.addEventListener('mousemove', function(event) {
-    var x = event.clientX;
-    var y = event.clientY;
+  window.addEventListener('mousemove', function(evt) {
+    var x = evt.clientX;
+    var y = evt.clientY;
     var el = document.elementFromPoint(x, y);
-    // el.style.backgroundColor = '#ff0b3a';
-    // (function(_el) {
-    //   setTimeout(function() {
-    //     _el.style.backgroundColor = 'transparent';
-    //   }, 200);
-    // })(el);
-
     updatePath(cssPath(el));
   });
 
