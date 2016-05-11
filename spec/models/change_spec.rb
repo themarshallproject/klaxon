@@ -18,12 +18,14 @@ RSpec.describe Change, type: :model do
     snapshots = page.page_snapshots
     expect(snapshots.count).to eq 2
 
-    change = Change.new(before: snapshots.first, after: snapshots.first)
+    change = Change.new(before: snapshots.last, after: snapshots.first)
     expect(change).to be_valid
   end
 
   it "sends email notifications for subscriptions on change creation" do
-    page = create(:page, :with_snapshots, snapshot_count: 2)
+    page = create(:page, :with_snapshots, snapshot_count: 5)
+    expect(page.snapshot_count).to be > 2 # make sure we're checking for multiple-snapshots issues
+
     user = create(:user)
 
     user.subscribe(page)
@@ -32,4 +34,6 @@ RSpec.describe Change, type: :model do
 
     assert_enqueued_jobs 1
   end
+
+
 end
