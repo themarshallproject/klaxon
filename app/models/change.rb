@@ -18,11 +18,10 @@ class Change < ActiveRecord::Base
   end
 
   def self.check
-    # TODO: extract?
     Page.all.each do |page|
-      page.page_snapshots.all.each_cons(2) do |before, after|
-        Change.where(before: before, after: after).first_or_create
-      end
+      # if we have multiple snapshots, only notify for the change between the last two
+      before, after = page.page_snapshots.order('created_at ASC').last(2)
+      Change.where(before: before, after: after).first_or_create
     end
   end
 

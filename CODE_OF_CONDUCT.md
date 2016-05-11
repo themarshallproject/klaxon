@@ -1,3 +1,5 @@
+[![](docs/klaxon_hero.png)](https://newsklaxon.org)
+
 # Klaxon Contributor Code of Conduct
 
 ## Our Pledge
