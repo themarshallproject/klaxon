@@ -24,7 +24,7 @@ RSpec.describe Change, type: :model do
 
   it "sends email notifications for subscriptions on change creation" do
     page = create(:page, :with_snapshots, snapshot_count: 5)
-    expect(page.snapshot_count).to be > 2 # make sure we're checking for multiple-snapshots issues
+    expect(page.page_snapshots.count).to be > 2 # make sure we're checking for multiple-snapshots issues
 
     user = create(:user)
 
