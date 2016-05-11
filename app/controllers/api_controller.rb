@@ -22,16 +22,15 @@ class ApiController < ApplicationController
     }
   end
 
-  def embed_find_page
+  def embed_find_page # POST request
     page = Page.where(url: params[:url]).first_or_create do |page|
       page.user = current_user
-      page.save
     end
 
     render json: page
   end
 
-  def embed_update_page_selector
+  def embed_update_page_selector  # POST request
     page = Page.find_by(id: params[:id])
     page.css_selector = params[:css_selector]
     if page.save
@@ -39,6 +38,15 @@ class ApiController < ApplicationController
     else
       render json: {}, status: 422
     end
+  end
+
+  def page_preview
+    page = Page.new(url: params[:url], css_selector: params[:css_selector])
+    render json: {
+      url: page.url,
+      css_selector: page.css_selector,
+      match_text: page.match_text
+    }
   end
 
 end
