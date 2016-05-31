@@ -5,5 +5,5 @@ begin
     Rails.application.routes.default_url_options[:host] = host
   end
 rescue
-  puts "failed to set default_host, reason: #{$!}"
+  Rails.logger.error "[ERROR] Failed to set default_host. This is expected if this is the very first app deploy."
 end
