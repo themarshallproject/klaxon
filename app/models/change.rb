@@ -20,8 +20,11 @@ class Change < ActiveRecord::Base
   def self.check
     Page.all.each do |page|
       # if we have multiple snapshots, only notify for the change between the last two
-      before, after = page.page_snapshots.order('created_at ASC').last(2)
-      Change.where(before: before, after: after).first_or_create
+      most_recent = page.page_snapshots.order('created_at DESC').first
+      Change.where(
+        before: most_recent.previous,
+        after:  most_recent
+      ).first_or_create
     end
   end
 

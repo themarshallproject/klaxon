@@ -22,17 +22,23 @@ RSpec.describe Change, type: :model do
     expect(change).to be_valid
   end
 
-  it "sends email notifications for subscriptions on change creation" do
-    page = create(:page, :with_snapshots, snapshot_count: 5)
-    expect(page.page_snapshots.count).to be > 2 # make sure we're checking for multiple-snapshots issues
-
+  it "sends email notification for subscriptions on new snapshots" do
     user = create(:user)
+    page = create(:page, :with_snapshots, snapshot_count: 5)
+    expect(page.page_snapshots.count).to be > 2 # make sure we're testing for multiple-snapshots issues
 
+    # set up the subscriptions. users get emails for new changes
     user.subscribe(page)
 
+    # perform
     Change.check
 
-    assert_enqueued_jobs 1
+    expect_before, expect_after = page.page_snapshots.order('created_at DESC').last(2)
+    last_change = Change.order('created_at DESC').first
+    expect(last_change.before).to eq expect_before
+    expect(last_change.after).to  eq expect_after
+
+    assert_enqueued_jobs 1 # (and not more than 1)
   end
 
 
