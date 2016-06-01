@@ -8,8 +8,13 @@ RSpec.describe PageSnapshot, type: :model do
   end
 
   it "is valid with a page" do
-    snapshot = create(:page_snapshot)
+    snapshot = create(:page_snapshot) # the factory creates a page
     expect(snapshot.valid?).to be true
+  end
+
+  it "is is invalid without a page" do
+    snapshot = PageSnapshot.create
+    expect(snapshot.valid?).to be false
   end
 
   it "can query the (directly) previous snapshot" do

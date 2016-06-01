@@ -5,7 +5,9 @@ class Change < ActiveRecord::Base
   validate :correct_ordering
   def correct_ordering
     # delegate order checking to the attached models
-    before.created_at < after.created_at
+    if before.created_at > after.created_at
+      errors.add(:after, "'after' must be created_at after 'before'")
+    end
   end
 
   # TODO: service object should manage creating changes and notifications, after_create for now
