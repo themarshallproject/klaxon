@@ -5,7 +5,9 @@ class Change < ActiveRecord::Base
   validate :correct_ordering
   def correct_ordering
     # delegate order checking to the attached models
-    before.created_at < after.created_at
+    if before.created_at > after.created_at
+      errors.add(:after, "'after' must be created_at after 'before'")
+    end
   end
 
   # TODO: service object should manage creating changes and notifications, after_create for now
@@ -18,11 +20,13 @@ class Change < ActiveRecord::Base
   end
 
   def self.check
-    # TODO: extract?
     Page.all.each do |page|
-      page.page_snapshots.all.each_cons(2) do |before, after|
-        Change.where(before: before, after: after).first_or_create
-      end
+      # if we have multiple snapshots, only notify for the change between the last two
+      most_recent = page.page_snapshots.order('created_at DESC').first
+      Change.where(
+        before: most_recent.previous,
+        after:  most_recent
+      ).first_or_create
     end
   end
 
