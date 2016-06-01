@@ -32,6 +32,9 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'factory_girl_rails', '~> 4.0'
   gem 'database_cleaner'
+end
+
+group :test do
   gem 'webmock'
 end
 

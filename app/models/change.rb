@@ -1,6 +1,9 @@
 class Change < ActiveRecord::Base
   belongs_to :before, polymorphic: true
-  belongs_to :after,  polymorphic: true
+  validates  :before, presence: true
+
+  belongs_to :after, polymorphic: true
+  validates  :after, presence: true
 
   validate :correct_ordering
   def correct_ordering
@@ -22,10 +25,16 @@ class Change < ActiveRecord::Base
   def self.check
     Page.all.each do |page|
       # if we have multiple snapshots, only notify for the change between the last two
-      most_recent = page.page_snapshots.order('created_at DESC').first
+
+      current = page.page_snapshots.order('created_at DESC').first
+
+      if current.previous.nil?
+        next
+      end
+
       Change.where(
-        before: most_recent.previous,
-        after:  most_recent
+        before: current.previous,
+        after:  current
       ).first_or_create
     end
   end
