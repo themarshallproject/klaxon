@@ -1,11 +1,16 @@
 class Change < ActiveRecord::Base
   belongs_to :before, polymorphic: true
-  belongs_to :after,  polymorphic: true
+  validates  :before, presence: true
+
+  belongs_to :after, polymorphic: true
+  validates  :after, presence: true
 
   validate :correct_ordering
   def correct_ordering
     # delegate order checking to the attached models
-    before.created_at < after.created_at
+    if before.created_at > after.created_at
+      errors.add(:after, "'after' must be created_at after 'before'")
+    end
   end
 
   # TODO: service object should manage creating changes and notifications, after_create for now
@@ -18,11 +23,19 @@ class Change < ActiveRecord::Base
   end
 
   def self.check
-    # TODO: extract?
     Page.all.each do |page|
-      page.page_snapshots.all.each_cons(2) do |before, after|
-        Change.where(before: before, after: after).first_or_create
+      # if we have multiple snapshots, only notify for the change between the last two
+
+      current = page.page_snapshots.order('created_at DESC').first
+
+      if current.previous.nil?
+        next
       end
+
+      Change.where(
+        before: current.previous,
+        after:  current
+      ).first_or_create
     end
   end
 
