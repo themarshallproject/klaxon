@@ -28,8 +28,12 @@ RSpec.describe Change, type: :model do
 
     expect(snapshots.count).to eq 2
 
-    change = Change.new(before: snapshots.last, after: snapshots.first)
-    expect(change).to be_invalid
+    change = Change.create(before: snapshots.last, after: snapshots.first)
+    # expect(change).to be_invalid
+
+    Change.check
+
+    assert_enqueued_jobs 0
   end
 
   it "sends email notification for subscriptions on new snapshots" do
