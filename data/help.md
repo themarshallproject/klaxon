@@ -1,0 +1,51 @@
+## How Klaxon works
+
+Klaxon allows you and your newsroom to monitor a wide range of websites and get notified—by email or Slack messages—when they change. After a one-time setup, anytime you’re on a site you want to watch, you can use the “Add to Klaxon” bookmarklet to add it to the system and specify which part of the page you care about. When the site changes, you’ll get a notice. And if you want to step back through each stage of the site’s evolution, you can explore its history on the “[Watching](/watching/pages)” page.
+
+## The Feed
+
+[The Feed](/) is the list of the latest snapshots of each page the users in your newsroom are following. This is a good place to see what’s new in the system and to discover and subscribe to Klaxons that other reporters or editors have found useful.
+Watch a page
+When you first visit Klaxon, at the top of the page, you’ll see a huge box that says “Watch Your First Item.” Underneath that, you’ll see a button that says “Add to Klaxon.” Drag that button to the bookmarks bar on your browser. That then becomes a bookmarklet that will help you tag any page on the web to watch it in Klaxon.
+
+As you browse the web, when you find a page you want to monitor in Klaxon, just hit the “Add to Klaxon” bookmarklet. A new box will pop up on the right side of the browser window. Klaxon archives a snapshot of the website you’re watching every time it changes. But most modern websites have a lot of things happening on a page that you probably don’t care about. This box will help you tell Klaxon *which* part of the page you’re really interested in watching, so you’ll only get alerts when that section changes. To tell Klaxon where to look, hover your mouse over different sections of the page. Notice how each section is highlighted in red when you hover. This is one indicator to help Klaxon home in on the right area.
+
+![](/assets/bookmarklet.png)
+
+When you think you have it and the correct section of the page—say the list of Supreme Court decisions, or the latest documents in next year’s state budget—click the mouse. Now, look under the “Save and Edit” box in the Klaxon window, and you’ll notice it says “Done!” That means that Klaxon has saved this page to start watching it for you.
+
+Before you close the window though, see the red box under the heading “Content Preview?” That shows you what information is captured in the section of the page you selected. If the words you see in the red box don’t match what you’re hoping to monitor, you might have chosen the wrong part of the page. Not to worry, you can hover and click on any different section of the page until you get the right area selected and saved. 
+
+For the last step, you’ll want to click the ‘Save and Edit’ button, which will bring you back to Klaxon so you can give this page a name (like a slug) in the system.
+
+## What you’re watching
+
+The “[Watching](/watching/pages)” page displays a list of the individual pages that your newsroom is monitoring (as opposed to a chronological stream of the latest updates as seen in the [Feed](/)). 
+
+To change the name or URL of any of the Klaxons you’ve created or to adjust their notification settings, simply click the “Edit” button next to the appropriate page. You can also click into each to view the differences of each snapshot the system has collected since you added it to Klaxon.
+
+To see what’s updated on each page, you can click the “Latest change” button. This brings you to a comparison of the most recent two snapshots of the page. Anything that was added to the page is highlighted in green. Anything that was removed from the page is in red. It can take a little bit of practice to become accustomed to looking at the page’s underlying HTML in this manner. If you’re subscribed to get emails about the Klaxon for this page, you’ll also receive an email for this difference in the email every time the page changes.
+
+To make it easier to keep track of what’s significant about each change and to spare your colleagues from having to parse it themselves, you can add a note to it. Near the top of the page, looking for the text box next to the words “What’s changed”. You can put your note in that box, say “Candidate X’s name removed from the council minutes” and hit “Save.” Now that note will be visible with that snapshot in the system or when it shows up in the Feed, tipping others that it’s worth taking a look.
+
+## Understand what’s changed on a page
+
+Sometimes you want to see how the current version of a site compares to a version that you captured, say, six months ago. Because Klaxon stores each snapshot it finds of a site, this is fairly easy to do. You can reach the history of snapshots in a couple of ways. If it’s a site someone else in your newsroom is following, from the Feed, click on the latest snapshot you see for your site, which would say something like “GA Sec’y of State changed” or “The Marshall Project changed”. If it’s a site you added to Klaxon, from the “Watching” page, click on the “Latest snapshot” button next the site you want to explore. Either of these routes takes you to the most recent snapshot for that site. 
+
+Now, click the “Past snapshots” button in the upper right corner. This takes you to a list of every snapshot Klaxon has captured of the site in question.
+
+![](/assets/compare_versions.png)
+
+First, select the “older” version from the left column that you want to be the basis of comparison. Then, in the right column, select the “newer” snapshot from the list. Finally, click the compare button. This takes you to a new page to compare the snapshots. The difference between the two pages will be displayed just as it is in the “Latest snapshot” page: additions to the site will be highlighted in green, deletions will be marked in red. Using the “Past snapshots” list, you can step through every change, one at a time, to find the update you’re looking for.  When you find what you’re looking for, add a note in the “What’s Changed” field to make it easier to find later when you need it. 
+
+## How to add notifications to a Slack channel
+
+Click on the “Settings” button in the upper right corner of the page and choose “Integrations” from the menu. On the Integrations page, click the “Create Slack Integration” button. You can add an integration for any number of channels in your newsroom’s Slack. For each one, you just have to set up an Incoming Webhook. In Slack, click on the dropdown arrow in the upper left corner and choose “Apps & Integrations” from the menu. This will open a new window in your browser for you to search the Slack app directory. In the search box, type “Incoming Webhooks” and choose that option when it pops up. If you already have webhooks, you’ll see a button next to your Slack organization’s name that says “Configure.” Otherwise, click the green button that says “Install”.
+
+Now, choose the channel that you want the Klaxon alerts to go to from the dropdown menu. We’d recommend that you not send them to #General, but maybe create a new channel called #Klaxon. After you create or choose your channel, click the green button that says “Add Incoming Webhooks Integration”. Near the top of the next screen, you should see a red URL next to the label “Webhook URL”. Copy that URL and switch over to your browser window with Klaxon in it. Paste the URL into the box labeled “Webhook URL,” and type the name of the channel you want your Slack alerts to go to into the “Channel” box (this should be the same channel name you used in Slack when you created the integration). Now click the “Create Slack Integration Button”. Now you should be all set. If you want to have the ability to send Klaxon alerts to other channels, for specific reporting teams or for certain projects, you can repeat this process.
+
+## About Klaxon
+
+Klaxon is a tool that enables journalists and researchers to monitor scores of websites for noteworthy changes. When it finds something new on one of the pages it's watching, it emails an alert and pings a Slack channel.
+
+Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/#.2N8GFLsI0), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. The public release of this free and open source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/). With feedback or suggestions, contact us here: To help improve Klaxon for other users, whether you’re a coder or not, read [our guide to how you can contribute to the project.](https://github.com/themarshallproject/klaxon/blob/master/CONTRIBUTING.md)
