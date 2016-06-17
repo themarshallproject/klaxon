@@ -33,12 +33,8 @@ class Change < ActiveRecord::Base
 
       current = page.page_snapshots.order('created_at DESC').first
 
-      # if current.nil? or current.previous.nil?
-      #   next
-      # end
-
       Change.where(
-        before: current&.previous,
+        before: current&.previous, # this can pass nil, but it will be throw an error if so
         after:  current
       ).first_or_create
     end
