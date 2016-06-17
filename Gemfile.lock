@@ -43,6 +43,8 @@ GEM
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
     byebug (8.2.2)
+    codeclimate-test-reporter (0.5.2)
+      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -60,6 +62,7 @@ GEM
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
     diffy (3.1.0)
+    docile (1.1.5)
     dotenv (2.1.1)
     erubis (2.7.0)
     execjs (2.6.0)
@@ -216,6 +219,11 @@ GEM
     simple_form (3.2.1)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
+    simplecov (0.11.2)
+      docile (~> 1.1.0)
+      json (~> 1.8)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     sinatra (1.4.7)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -257,6 +265,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   byebug
+  codeclimate-test-reporter
   database_cleaner
   diffy
   dotenv
