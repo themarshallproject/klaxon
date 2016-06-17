@@ -32,7 +32,12 @@ group :development, :test do
   gem 'guard-rspec', require: false
   gem 'factory_girl_rails', '~> 4.0'
   gem 'database_cleaner'
+  gem 'sinatra'
+end
+
+group :test do
   gem 'webmock'
+  gem 'codeclimate-test-reporter', require: nil
 end
 
 group :development do
