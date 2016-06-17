@@ -1,8 +1,7 @@
 class Page < ActiveRecord::Base
   belongs_to :user
 
-  has_many :page_snapshots
-  has_many :email_subscriptions
+  has_many :page_snapshots, dependent: :destroy
 
   attr_accessor :subscriptions
   after_create :update_subscriptions

@@ -28,12 +28,9 @@ RSpec.describe Change, type: :model do
 
     expect(snapshots.count).to eq 2
 
-    change = Change.create(before: snapshots.last, after: snapshots.first)
-    # expect(change).to be_invalid
-
-    Change.check
-
-    assert_enqueued_jobs 0
+    expect {
+        Change.create!(before: snapshots.last, after: snapshots.first)
+    }.to raise_error(ActiveRecord::RecordInvalid)
   end
 
   it "sends email notification for subscriptions on new snapshots" do
@@ -41,7 +38,7 @@ RSpec.describe Change, type: :model do
     page = create(:page, :with_snapshots, snapshot_count: 5)
     expect(page.page_snapshots.count).to be > 2 # make sure we're testing for multiple-snapshots issues
 
-    # set up the subscriptions. users get emails for new changes
+    # set up the subscriptions. users get emails for new changes.
     user.subscribe(page)
 
     # perform
@@ -58,7 +55,7 @@ RSpec.describe Change, type: :model do
   it "doesnt send anything if there is only one snapshot for a page" do
     user = create(:user)
     page = create(:page, :with_snapshots, snapshot_count: 1)
-    expect(page.page_snapshots.count).to be 1 # make sure we're testing for multiple-snapshots issues
+    expect(page.page_snapshots.count).to be 1
 
     # set up the subscriptions. users get emails for new changes
     user.subscribe(page)
@@ -66,7 +63,7 @@ RSpec.describe Change, type: :model do
     # perform
     Change.check
 
-    assert_enqueued_jobs 0 # (and not more than 1)
+    assert_enqueued_jobs 0
   end
 
 end

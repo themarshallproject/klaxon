@@ -3,6 +3,10 @@ class PageSnapshot < ActiveRecord::Base
   validates :page, presence: true
   validates :sha2_hash, presence: true
 
+  after_destroy do |record|
+    Change.destroy_related(record)
+  end
+
   def document
     Nokogiri::HTML(html)
   end

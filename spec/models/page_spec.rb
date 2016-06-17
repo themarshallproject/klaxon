@@ -28,4 +28,15 @@ RSpec.describe Page, type: :model do
     expect(page.page_snapshots.length).to eq 1
   end
 
+  it "deletes associated snapshots and changes upon deletion" do
+    page = create(:page, :with_snapshots, snapshot_count: 3)
+    page_id = page.id
+
+    expect(page.page_snapshots.count).to eq 3
+    expect { Change.check }.to change { Change.count }.by(1)
+    expect { page.destroy }.to change { Change.count }.by(-1)
+
+    expect(PageSnapshot.where(page_id: page_id).count).to eq 0
+  end
+
 end
