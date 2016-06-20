@@ -18,7 +18,9 @@
   }
 
   var getCanonicalURL = function() {
-    var og = null, linkRel = null, urlBar = null;
+    var og = null;
+    var linkRel = null;
+    var urlBar = null;
 
     try {
       og = document.querySelector("meta[property='og:url']").getAttribute("content");
@@ -28,7 +30,7 @@
       linkRel = document.querySelector("link[rel='canonical']").getAttribute("href");
     } catch(e) { }
 
-    urlBar  = window.location.href;
+    urlBar = window.location.href;
 
     if (og) {
       console.log("using og:url");
@@ -64,31 +66,36 @@
   iframe.style.width = '300px';
   iframe.style.height = (window.innerHeight)+'px';
   iframe.style.position = 'fixed';
-  iframe.style.zIndex = 2147483647; // max 32-bit int
+  iframe.style.zIndex = 2147483647; // just a big number, hopefully big enough
   document.body.appendChild(iframe);
   // var iframe = window.open(src, "Klaxon", "width=200,height=200");
 
   var styles = document.createElement('style');
+  styles.setAttribute('id', 'klaxon-css-inject');
   document.body.appendChild(styles);
-
 
   var postMessage = function(data) {
     var json = JSON.stringify(data);
-    // console.log('host sending', json);
     iframe.contentWindow.postMessage(json, postMessageDomain);
+  }
+
+  var lastElement = function(arr) {
+    return arr[arr.length-1];
   }
 
   var currentPath = [];
   var updatePath = function(path) {
     currentPath = path;
 
-    var selector = path.join(" ");
-    var css = selector + " { background-color: rgba(255, 11, 58, 0.2); }";
-    console.log(css)
+    // var selector = path.join(" ");
+    var selector = lastElement(path);
+
+    var css = selector + " { background-color: rgba(255, 11, 58, 0.3); }";
+    console.log(css);
     styles.innerHTML = css;
 
     var matchText = document.querySelector(selector).innerText;;
-    postMessage({ event: 'updatePath', value: path, matchText: matchText })
+    postMessage({ event: 'updatePath', value: selector, matchText: matchText })
   }
 
   window.addEventListener('click', function(evt) {

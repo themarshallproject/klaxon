@@ -1,7 +1,7 @@
 class PageSnapshot < ActiveRecord::Base
   belongs_to :page
   validates :page, presence: true
-  validates :sha2_hash, presence: true, uniqueness: true
+  validates :sha2_hash, presence: true
 
   def document
     Nokogiri::HTML(html)
@@ -21,6 +21,10 @@ class PageSnapshot < ActiveRecord::Base
 
   def parent
     page
+  end
+
+  def blank_match_text?
+    self.match_text.blank?
   end
 
 end
