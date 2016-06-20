@@ -16,11 +16,11 @@ class PageSnapshot < ActiveRecord::Base
   end
 
   def previous
-    PageSnapshot.where('created_at < ?', self.created_at).order('created_at DESC').first
+    parent.page_snapshots.where('created_at < ?', self.created_at).order('created_at DESC').first
   end
 
   def parent
-    page
+    self.page
   end
 
   def blank_match_text?
