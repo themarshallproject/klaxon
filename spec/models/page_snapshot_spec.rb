@@ -18,14 +18,23 @@ RSpec.describe PageSnapshot, type: :model do
   end
 
   it "can query the (directly) previous snapshot" do
-    snapshot1 = create(:page_snapshot, created_at: 3.minutes.ago)
-    snapshot2 = create(:page_snapshot, created_at: 2.minutes.ago)
-    snapshot3 = create(:page_snapshot, created_at: 1.minutes.ago)
-    snapshot4 = create(:page_snapshot, created_at: 0.minutes.ago)
+    page1 = create(:page)
+    page2 = create(:page)
 
-    expect(snapshot2.previous).to eq snapshot1
-    expect(snapshot3.previous).to eq snapshot2
-    expect(snapshot4.previous).to eq snapshot3
+    snapshot1 = create(:page_snapshot, page: page1, created_at: 5.minutes.ago)
+    snapshot2 = create(:page_snapshot, page: page2, created_at: 4.minutes.ago)
+    snapshot3 = create(:page_snapshot, page: page1, created_at: 3.minutes.ago)
+    snapshot4 = create(:page_snapshot, page: page2, created_at: 2.minutes.ago)
+    snapshot5 = create(:page_snapshot, page: page2, created_at: 1.minutes.ago)
+    snapshot6 = create(:page_snapshot, page: page1, created_at: 0.minutes.ago)
+
+    expect(snapshot3.previous).to eq snapshot1
+
+    expect(snapshot5.previous).to eq snapshot4
+    expect(snapshot6.previous).to eq snapshot3
+
+    expect(snapshot1.siblings).to eq [snapshot3, snapshot6]
+    expect(snapshot2.siblings).to eq [snapshot4, snapshot5]
   end
 
 end
