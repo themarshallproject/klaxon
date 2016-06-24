@@ -53,19 +53,23 @@
         <% end %>
 
       </div>
-      <div class="col-md-3 klax-spacer-md">
-        <h5>Slack</h5>
-        <p>Which of the Slack channels that you’ve added should get notification when this item changes?</p>
 
-        <% @slack_integrations.each do |slack| %>
-          <div class="checkbox">
-            <label>
-              <%= check_box_tag "page[subscriptions][]", "slack:#{slack.id}", slack.is_subscribed_to?(@page) %>
-              <%= slack.channel %>
-            </label>
-          </div>
-        <% end %>
-      </div>
+      <% if @slack_integrations.present? %>
+
+        <div class="col-md-3 klax-spacer-md">
+          <h5>Slack</h5>
+          <p>Which of the Slack channels that you’ve added should get notification when this item changes?</p>
+
+          <% @slack_integrations.each do |slack| %>
+            <div class="checkbox">
+              <label>
+                <%= check_box_tag "page[subscriptions][]", "slack:#{slack.id}", slack.is_subscribed_to?(@page) %>
+                <%= slack.channel %>
+              </label>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
       <div class="col-md-3 klax-spacer-md disabled">
 <!--         <h5>Twitter</h5>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p> -->

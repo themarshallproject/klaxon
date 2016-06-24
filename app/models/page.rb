@@ -73,6 +73,10 @@ class Page < ActiveRecord::Base
     Change.where(before: before, after: after).first_or_create # TODO extract
   end
 
+  def most_recent_snapshot
+    self.page_snapshots.order('created_at ASC').last
+  end
+
   def snapshot_time_deltas
     snapshots = self.page_snapshots.order('created_at ASC').select(:created_at)
 
@@ -81,6 +85,22 @@ class Page < ActiveRecord::Base
     }.each_cons(2).map{ |before, after|
       after - before
     }
+  end
+
+  def calculate_median(array)
+    sorted = array.sort
+    length = sorted.length
+    (sorted[(length - 1) / 2] + sorted[length / 2]) / 2
+  end
+
+  def snapshot_next_change
+    last_snap = most_recent_snapshot.created_at.utc.to_i
+    predicted_snap = last_snap + calculate_median(snapshot_time_deltas) - Time.now.utc.to_i
+  end
+
+  def predicted_snapshot
+    median_delta_seconds = calculate_median(snapshot_time_deltas)
+    median_delta_seconds.seconds.from_now + most_recent_snapshot.created_at.utc.to_i
   end
 
 end
