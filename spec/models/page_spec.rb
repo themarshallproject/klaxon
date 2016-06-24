@@ -28,4 +28,16 @@ RSpec.describe Page, type: :model do
     expect(page.page_snapshots.length).to eq 1
   end
 
+  it "strips whitespace from urls" do
+    url = "http://nytimes.com"
+    page = create(:page, url:  " "+url+" ")
+    expect(page.url).to eq url
+  end
+
+  it "gracefully handles parsing an invalid uri" do
+    weird_url = " bad:///site.com"
+    page = build(:page, url: weird_url) # our sanitizer is on a before_save, which is not trigger for build here
+    expect(page.domain).to eq weird_url
+  end
+
 end

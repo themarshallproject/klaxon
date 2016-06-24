@@ -7,6 +7,11 @@ class Change < ActiveRecord::Base
 
   validate :correct_ordering
   def correct_ordering
+    if before.nil? or after.nil?
+      # let this be caught by the presence validation, rather than fail at the `created_at` call below
+      return
+    end
+
     # delegate order checking to the attached models
     if before.created_at > after.created_at
       errors.add(:after, "'after' must be created_at after 'before'")
@@ -28,12 +33,8 @@ class Change < ActiveRecord::Base
 
       current = page.page_snapshots.order('created_at DESC').first
 
-      if current.previous.nil?
-        next
-      end
-
       Change.where(
-        before: current.previous,
+        before: current&.previous,
         after:  current
       ).first_or_create
     end
