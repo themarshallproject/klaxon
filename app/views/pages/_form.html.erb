@@ -54,8 +54,12 @@
 
       </div>
 
-      <% if @slack_integrations.present? %>
+      <% if @slack_integrations.empty? %>
 
+        <div class="col-md-3 klax-spacer-md">
+          <h5>Slack</h5>
+          <p>It looks like you haven't configured any Slack notifications yet, would you like to? <%= link_to "Go to settings.", integrations_path %>
+      <% else %>
         <div class="col-md-3 klax-spacer-md">
           <h5>Slack</h5>
           <p>Which of the Slack channels that you’ve added should get notification when this item changes?</p>
