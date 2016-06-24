@@ -8,6 +8,8 @@ class Page < ActiveRecord::Base
   after_create :update_subscriptions
   after_save   :update_subscriptions
 
+  before_save :sanitize
+
   def to_param
     [id, self.name.to_s.parameterize].join('-')
   end
@@ -15,6 +17,8 @@ class Page < ActiveRecord::Base
   def domain
     host = Addressable::URI.parse(self.url.to_s).host.to_s
     host.gsub(/^www\./, '')
+  rescue
+    self.url
   end
 
   def html
@@ -43,6 +47,10 @@ class Page < ActiveRecord::Base
 
   def sha2_hash
     Digest::SHA256.hexdigest(match_text)
+  end
+
+  def sanitize
+    self.url = url.strip
   end
 
   def update_subscriptions
@@ -74,6 +82,8 @@ class Page < ActiveRecord::Base
   end
 
   def snapshot_time_deltas
+    # returns an array of ints. these are time deltas (in seconds) between snapshot creation
+
     snapshots = self.page_snapshots.order('created_at ASC').select(:created_at)
 
     snapshots.map{ |snapshot|
