@@ -42,6 +42,8 @@
 
   <p><a class="klax-button" style="margin-bottom: 50px;" href="<%= page_change_url(@change) %>">View this Snapshot</a></p>
 
+  <p><%= link_to "View Source Page", @page.url, class: "klax-button", style: "margin-bottom: 50px;" %></p>
+
   <div class="diff">
     <%= raw Diffy::Diff.new(@change.before.match_text, @change.after.match_text, context: 2).to_s(:html_simple) %>
   </div>
