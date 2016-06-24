@@ -58,7 +58,7 @@ RSpec.describe Change, type: :model do
   it "doesnt send anything if there is only one snapshot for a page" do
     user = create(:user)
     page = create(:page, :with_snapshots, snapshot_count: 1)
-    expect(page.page_snapshots.count).to be 1 # make sure we're testing for multiple-snapshots issues
+    expect(page.page_snapshots.count).to be 1
 
     # set up the subscriptions. users get emails for new changes
     user.subscribe(page)
@@ -66,7 +66,7 @@ RSpec.describe Change, type: :model do
     # perform
     Change.check
 
-    assert_enqueued_jobs 0 # (and not more than 1)
+    assert_enqueued_jobs 0 # (and not more than 0)
   end
 
 end
