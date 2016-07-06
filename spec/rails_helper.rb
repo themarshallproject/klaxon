@@ -1,3 +1,6 @@
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -6,8 +9,36 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 
+require 'capybara/rspec'
+require 'capybara/rails'
+require 'capybara/poltergeist'
+Capybara.register_driver :poltergeist_debug do |app|
+  Capybara::Poltergeist::Driver.new(app, {
+    inspector: true,
+    js_errors: true,
+  })
+end
+Capybara.javascript_driver = :poltergeist_debug
+
+
+
+# Forces all threads to share the same connection. This works on
+# Capybara because it starts the web server in a thread.
+# https://github.com/railscasts/391-testing-javascript-with-phantomjs/blob/master/checkout-after/spec/support/share_db_connection.rb
+class ActiveRecord::Base
+  mattr_accessor :shared_connection
+  @@shared_connection = nil
+  def self.connection
+    @@shared_connection || retrieve_connection
+  end
+end
+ActiveRecord::Base.shared_connection = ActiveRecord::Base.connection
+# end shared_connection AR hack
+
+
+
 require 'webmock/rspec'
-# WebMock.disable_net_connect!(allow_localhost: true)
+WebMock.disable_net_connect!(allow_localhost: true)
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -34,12 +65,11 @@ Rails.application.routes.default_url_options[:host] = "test.dev"
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
+  config.include Capybara::DSL
   config.include FactoryGirl::Syntax::Methods
 
   config.use_transactional_fixtures = false
+  config.order = :random
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
@@ -52,23 +82,6 @@ RSpec.configure do |config|
     end
   end
 
-  # RSpec Rails can automatically mix in different behaviours to your tests
-  # based on their file location, for example enabling you to call `get` and
-  # `post` in specs under `spec/controllers`.
-  #
-  # You can disable this behaviour by removing the line below, and instead
-  # explicitly tag your specs with their type, e.g.:
-  #
-  #     RSpec.describe UsersController, :type => :controller do
-  #       # ...
-  #     end
-  #
-  # The different available types are documented in the features, such as in
-  # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
-
-  # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
-  # arbitrary gems may also be filtered via:
-  # config.filter_gems_from_backtrace("gem name")
 end

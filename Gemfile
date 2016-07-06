@@ -33,6 +33,9 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'database_cleaner'
   gem 'sinatra'
+
+  gem 'capybara'
+  gem 'poltergeist'
 end
 
 group :test do
