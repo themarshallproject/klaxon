@@ -13,6 +13,11 @@ class Change < ActiveRecord::Base
     end
 
     # delegate order checking to the attached models
+    if before.nil? or after.nil?
+      # let this be caught by the presence validation, rather than fail at the `created_at` call below
+      return
+    end
+
     if before.created_at > after.created_at
       errors.add(:after, "'after' must be created_at after 'before'")
     end
@@ -34,10 +39,15 @@ class Change < ActiveRecord::Base
       current = page.page_snapshots.order('created_at DESC').first
 
       Change.where(
-        before: current&.previous,
+        before: current&.previous, # this can pass nil, but it will be throw an error if so
         after:  current
       ).first_or_create
     end
+  end
+
+  def self.destroy_related(record)
+    self.where(before: record).destroy_all
+    self.where(after: record).destroy_all
   end
 
 end
