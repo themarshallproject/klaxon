@@ -4,7 +4,7 @@
 
 Klaxon is a Ruby on Rails app that enables reporters and editors to monitor scores of websites for newsworthy changes. When it finds something new on one of the pages or files it's watching, it emails an alert and pings a Slack channel.
 
-Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories.
+Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. [If you need help using Klaxon once it's already been set up, [you can find it here.](https://github.com/themarshallproject/klaxon/blob/master/data/help.md)]
 
 [![Circle CI](https://circleci.com/gh/themarshallproject/klaxon.svg?style=svg)](https://circleci.com/gh/themarshallproject/klaxon)
 
