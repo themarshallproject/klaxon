@@ -28,4 +28,27 @@ RSpec.describe Page, type: :model do
     expect(page.page_snapshots.length).to eq 1
   end
 
+  it "strips whitespace from urls" do
+    url = "http://nytimes.com"
+    page = create(:page, url:  " "+url+" ")
+    expect(page.url).to eq url
+  end
+
+  it "gracefully handles parsing an invalid uri" do
+    weird_url = " bad:///site.com"
+    page = build(:page, url: weird_url) # our sanitizer is on a before_save, which is not trigger for build here
+    expect(page.domain).to eq weird_url
+  end
+
+  it "deletes associated snapshots and changes upon deletion" do
+    page = create(:page, :with_snapshots, snapshot_count: 3)
+    page_id = page.id
+
+    expect(page.page_snapshots.count).to eq 3
+    expect { Change.check }.to change { Change.count }.by(1)
+    expect { page.destroy }.to change { Change.count }.by(-1)
+
+    expect(PageSnapshot.where(page_id: page_id).count).to eq 0
+  end
+
 end
