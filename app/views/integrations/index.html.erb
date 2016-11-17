@@ -29,6 +29,14 @@
       	<%= link_to "Create Slack Integration", new_slack_integration_path,class: 'btn btn-default btn-lg btn-block' %>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-9">
+          <h4 style="margin-top: 0;" class="klax-spacer-md">SQS</h4>
+      </div>
+      <div class="col-md-3">
+        <%= link_to "Create SQS Integration", new_sqs_integration_path,class: 'btn btn-default btn-lg btn-block' %>
+      </div>
+    </div>    
     <% if @slack_integrations.present? %>
     <table class="table">
       <thead>
@@ -48,6 +56,26 @@
       </tbody>
     </table>
     <% end %>
+    <% if @sqs_integrations.present? %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Queue URL</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @sqs_integrations.each do |integration| %>
+        <tr>
+          <td><%= integration.queue_url %></td>
+          <td><%= link_to "Edit", edit_sqs_integration_path(integration),class: 'btn btn-default btn-block pull-right', style: "max-width: 136px !important;" %>
+        </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% end %>
+
 
   </div>
 </div>

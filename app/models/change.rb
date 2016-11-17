@@ -30,6 +30,10 @@ class Change < ActiveRecord::Base
     subscriptions.all.map do |subscription|
       subscription.send_notification(self)
     end
+
+    # unlike people and slack channels, there are no "subscriptions" to SQS integrations,
+    # instead, all changes are sent to the queue -- allowing the consumer to choose which to act on
+    SqsIntegration.all.each{|sqs_integration| sqs_integration.send_notification(self) }
   end
 
   def self.check

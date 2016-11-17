@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.0'
+ruby '~> 2.3.0'
 
 gem 'rails', '4.2.5.1'
 gem 'pg', '~> 0.15'
@@ -25,6 +25,9 @@ gem 'httparty'
 
 gem 'diffy'
 gem 'kramdown'
+
+# only used for alerting SQS. 
+gem 'aws-sdk', '~> 2.0'
 
 group :development, :test do
   gem 'byebug'
