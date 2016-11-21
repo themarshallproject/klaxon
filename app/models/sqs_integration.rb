@@ -11,7 +11,7 @@ class SqsIntegration < ActiveRecord::Base
   include Rails.application.routes.url_helpers
 
   def send_notification(change)
-    puts "slack_integration#send_notification #{self.queue_url}"
+    puts "sqs_integration#send_notification #{self.queue_url}"
 
     page_name = change&.after&.page&.name
     text = "#{page_name} changed #{change&.after&.page&.url}"

@@ -27,6 +27,3 @@ class SqsNotification
     end
   end
 end
-
-
-
