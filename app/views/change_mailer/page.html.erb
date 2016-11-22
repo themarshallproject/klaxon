@@ -43,9 +43,11 @@
   <p><a class="klax-button" style="margin-bottom: 50px;" href="<%= page_change_url(@change) %>">View this Snapshot</a></p>
 
   <p><%= link_to "View Source Page", @page.url, class: "klax-button", style: "margin-bottom: 50px;" %></p>
-
   <div class="diff">
     <%= raw Diffy::Diff.new(@change.before.match_text, @change.after.match_text, context: 2).to_s(:html_simple) %>
   </div>
 
+  <h4>Beta feature:</h4>
+  <p><%= link_to "View Screenshots of Changed Page", "http://major-changes.adm.prd.newsdev.nytimes.com/#{@page.url}" %>
+  <p>If you can't find the screenshots at that link, ask Jeremy Merrill or Will Davis for help. We're still testing this feature, so there are probably some bugs to work out.</p>
 </div>
