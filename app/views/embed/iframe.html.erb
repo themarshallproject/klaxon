@@ -87,6 +87,15 @@ a {
   font-size: 14px;
   padding: 20px;
 }
+
+#klax-close-bookmarklet {
+  color: #a0a0a0;
+  float: right;
+  font-size: 18px;
+}
+#klax-close-bookmarklet:hover {
+  color: #ff0b3a;
+}
 </style>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
@@ -94,6 +103,7 @@ a {
 
 <div class="container">
 
+  <div id="klax-close-bookmarklet">✖</div>
   <div class="klax-app-name">Klaxon</div>
   <p class="klax-lead">Hover over the page and click the item you want to watch. Preview it below to make sure you’ve selected the correct item.</p>
 
@@ -171,6 +181,10 @@ a {
     });
   };
 
+  var closeKlaxonBookmarklet = function() {
+    parent.window.postMessage("close_klaxon_bookmarklet", "*");
+  }
+  document.getElementById("klax-close-bookmarklet").addEventListener('click', closeKlaxonBookmarklet, false);
   </script>
 
 </body>
