@@ -3,7 +3,7 @@ FROM ruby:2.3.1
 # throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
 
-ENV KUBERNETES_SECRET_ENV_VERSION=0.0.1
+ENV KUBERNETES_SECRET_ENV_VERSION=0.0.2
 RUN \
 mkdir -p /etc/secret-volume && \
 cd /usr/local/bin && \
