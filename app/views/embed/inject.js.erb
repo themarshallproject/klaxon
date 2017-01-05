@@ -60,6 +60,7 @@
   var src = editorURL + "?url=" + encodeURIComponent(getCanonicalURL());
   var iframe = document.createElement('iframe');
   iframe.setAttribute('src', src);
+  iframe.setAttribute('id', 'klaxon-bookmarklet-iframe');
   iframe.setAttribute('frameborder', 0);
   iframe.style.top = '0px';
   iframe.style.right = '0px';
@@ -105,22 +106,47 @@
   // });
 
   window.addEventListener('click', function(evt) {
-    evt.preventDefault();
-    var x = evt.clientX;
-    var y = evt.clientY;
-    var el = document.elementFromPoint(x, y);
-    updatePath(cssPath(el));
-    postMessage({ event: 'click' });
+    if (window._klaxonInject === tr ue) {
+      evt.preventDefault();
+      var x = evt.clientX;
+      var y = evt.clientY;
+      var el = document.elementFromPoint(x, y);
+      updatePath(cssPath(el));
+      postMessage({ event: 'click' });
+    }
   });
 
+  window.addEventListener('mousemove', function(evt) {
+    if (window._klaxonInject === true) {
+      var x = evt.clientX;
+      var y = evt.clientY;
+      var el = document.elementFromPoint(x, y);
+      updatePath(cssPath(el));
+    }
+  });
+                        
   // window.addEventListener('mousemove', function(evt) {
-  //   var x = evt.clientX;
-  //   var y = evt.clientY;
-  //   var el = document.elementFromPoint(x, y);
-  //   var selector = lastElement(cssPath(el));
-  //   var css = selector + " { background-color: rgba(0, 11, 58, 0.3); }";
-  //   console.log(css);
-  //   styles.innerHTML = css;
+  //   if (window._klaxonInject === true) {
+  //     var x = evt.clientX;
+  //     var y = evt.clientY;
+  //     var el = document.elementFromPoint(x, y);
+  //     var selector = lastElement(cssPath(el));
+  //     var css = selector + " { background-color: rgba(0, 11, 58, 0.3); }";
+  //     console.log(css);
+  //     styles.innerHTML = css;
+  //   }
   // });
 
+  var receiveMessage = function(event){
+   if (event.data=="close_klaxon_bookmarklet"){
+      var iframe = document.getElementById('klaxon-bookmarklet-iframe');
+      iframe.parentNode.removeChild(iframe);
+      var style = document.getElementById('klaxon-css-inject');
+      style.parentNode.removeChild(style);
+      console.log("Closed Klaxon Bookmarklet")
+      window._klaxonInject = false;
+   }
+  }
+
+  window.addEventListener("message", receiveMessage, false);
 })();
