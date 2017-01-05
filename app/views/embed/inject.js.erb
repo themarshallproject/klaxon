@@ -69,6 +69,7 @@
   iframe.style.position = 'fixed';
   iframe.style.zIndex = 2147483647; // just a big number, hopefully big enough
   document.body.appendChild(iframe);
+  document.body.setAttribute('cursor', 'grab')
   // var iframe = window.open(src, "Klaxon", "width=200,height=200");
 
   var styles = document.createElement('style');
@@ -99,9 +100,18 @@
     postMessage({ event: 'updatePath', value: selector, matchText: matchText })
   }
 
+  // window.addEventListener('click', function(evt) {
+  //   evt.preventDefault();
+  //   postMessage({ event: 'click' });
+  // });
+
   window.addEventListener('click', function(evt) {
-    if (window._klaxonInject === true) {
+    if (window._klaxonInject === tr ue) {
       evt.preventDefault();
+      var x = evt.clientX;
+      var y = evt.clientY;
+      var el = document.elementFromPoint(x, y);
+      updatePath(cssPath(el));
       postMessage({ event: 'click' });
     }
   });
@@ -114,6 +124,18 @@
       updatePath(cssPath(el));
     }
   });
+                        
+  // window.addEventListener('mousemove', function(evt) {
+  //   if (window._klaxonInject === true) {
+  //     var x = evt.clientX;
+  //     var y = evt.clientY;
+  //     var el = document.elementFromPoint(x, y);
+  //     var selector = lastElement(cssPath(el));
+  //     var css = selector + " { background-color: rgba(0, 11, 58, 0.3); }";
+  //     console.log(css);
+  //     styles.innerHTML = css;
+  //   }
+  // });
 
   var receiveMessage = function(event){
    if (event.data=="close_klaxon_bookmarklet"){

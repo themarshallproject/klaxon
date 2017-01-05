@@ -17,7 +17,7 @@ class PagesController < ApplicationController
 
   def setup_compare
     # TODO extract this
-    snapshots = @page.page_snapshots.where(id: [params[:before], params[:after]]).order('created_at ASC').select(:id)
+    snapshots = @page.page_snapshots.where(id: [params[:before], params[:after]]).order('created_at ASC').last(2) # TODO: this needs an integration test
     change = Change.where(before: snapshots.first, after: snapshots.last).first_or_create
     redirect_to page_change_path(change)
   end

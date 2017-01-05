@@ -15,7 +15,7 @@
         <!-- negative space -->
       </div>
       <div class="col-md-3">
-        <%= link_to 'Watch an Item', new_page_path, class: 'btn btn-default btn-lg btn-block' %>
+        <%= link_to 'Manually Watch an Item', new_page_path, class: 'btn btn-default btn-lg btn-block' %>
       </div>
     </div>
   </div><!-- /.container -->
@@ -33,6 +33,7 @@
           <th>Creator</th>
           <th></th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -45,6 +46,7 @@
           <td><%= page&.user&.display_name %></td>
           <td><% if page.page_snapshots.count > 1 %><%= link_to "Latest Change", latest_change_page_path(page), class: "btn btn-default btn-block" %><% end %></td>
           <td><%= link_to 'Edit', edit_page_path(page), class: "btn btn-default btn-block" %></td>
+          <td><td><%= link_to 'Delete', page, method: :delete, data: { confirm: 'Are you sure? This will delete all snapshots and changes associated with this page. There is no undo.' }, class: "btn btn-default btn-block" %></td>
         </tr>
         <% end %>
       </tbody>

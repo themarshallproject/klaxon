@@ -1,12 +1,13 @@
 class Page < ActiveRecord::Base
   belongs_to :user
 
-  has_many :page_snapshots
-  has_many :email_subscriptions
+  has_many :page_snapshots, dependent: :destroy
 
   attr_accessor :subscriptions
   after_create :update_subscriptions
   after_save   :update_subscriptions
+
+  before_save :sanitize
 
   def to_param
     [id, self.name.to_s.parameterize].join('-')
@@ -15,6 +16,8 @@ class Page < ActiveRecord::Base
   def domain
     host = Addressable::URI.parse(self.url.to_s).host.to_s
     host.gsub(/^www\./, '')
+  rescue
+    self.url
   end
 
   def html
@@ -45,6 +48,10 @@ class Page < ActiveRecord::Base
     Digest::SHA256.hexdigest(match_text)
   end
 
+  def sanitize
+    self.url = url.strip
+  end
+
   def update_subscriptions
     # REFACTOR
     ActiveRecord::Base.transaction do
@@ -73,7 +80,13 @@ class Page < ActiveRecord::Base
     Change.where(before: before, after: after).first_or_create # TODO extract
   end
 
+  def most_recent_snapshot
+    self.page_snapshots.order('created_at ASC').last
+  end
+
   def snapshot_time_deltas
+    # returns an array of ints. these are time deltas (in seconds) between snapshot creation
+
     snapshots = self.page_snapshots.order('created_at ASC').select(:created_at)
 
     snapshots.map{ |snapshot|
@@ -81,6 +94,22 @@ class Page < ActiveRecord::Base
     }.each_cons(2).map{ |before, after|
       after - before
     }
+  end
+
+  def calculate_median(array)
+    sorted = array.sort
+    length = sorted.length
+    (sorted[(length - 1) / 2] + sorted[length / 2]) / 2
+  end
+
+  def snapshot_next_change
+    last_snap = most_recent_snapshot.created_at.utc.to_i
+    predicted_snap = last_snap + calculate_median(snapshot_time_deltas) - Time.now.utc.to_i
+  end
+
+  def predicted_snapshot
+    median_delta_seconds = calculate_median(snapshot_time_deltas)
+    median_delta_seconds.seconds.from_now + most_recent_snapshot.created_at.utc.to_i
   end
 
 end

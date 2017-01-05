@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>SQS Queue url:</strong>
+  <%= @sqs_integration.queue_url %>
+</p>
+
+<%= link_to 'Edit', edit_sqs_integration_path(@sqs_integration) %> |
+<%= link_to 'Back', sqs_integrations_path %>
