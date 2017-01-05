@@ -13,6 +13,10 @@ FactoryGirl.define do
     webhook_url "http://test-webhook.com/test-webhook"
   end
 
+  factory :sqs_integration do
+    queue_url "https://sqs.us-east-1.amazonaws.com/1234567890/klaxon-sqs-q-test"
+  end  
+
   factory :change do
   end
 
