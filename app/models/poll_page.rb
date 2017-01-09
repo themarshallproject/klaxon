@@ -19,7 +19,12 @@ class PollPage
 
   def self.perform_all
     Page.all.shuffle.each do |page|
-      self.perform(page: page)
+      begin
+        self.perform(page: page)
+      rescue StandardError => e
+        puts "Pollpage.perform had an error on #{page.url}: #{e}"
+        puts e.backtrace
+      end
     end
   end
 end
