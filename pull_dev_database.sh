@@ -9,5 +9,5 @@ echo "Downloading backup ..."
 curl -o ./backups/dev-latest.dump `heroku pg:backups public-url --app klaxon-dev`
 
 echo " ----- "
-echo "Restoring backup to endrun_development"
+echo "Restoring backup to klaxon_development"
 /Applications/Postgres.app/Contents/Versions/9.3/bin/pg_restore --verbose --clean --no-acl --no-owner -h localhost -U `whoami` -d klaxon_development ./backups/dev-latest.dump
