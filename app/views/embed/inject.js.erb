@@ -96,7 +96,7 @@
     console.log(css);
     styles.innerHTML = css;
 
-    var matchText = document.querySelector(selector).innerText;;
+    var matchText = document.querySelector(selector).innerText;
     postMessage({ event: 'updatePath', value: selector, matchText: matchText })
   }
 
@@ -139,7 +139,6 @@
 
   var receiveMessage = function(event){
    if (event.data=="close_klaxon_bookmarklet"){
-      var iframe = document.getElementById('klaxon-bookmarklet-iframe');
       iframe.parentNode.removeChild(iframe);
       var style = document.getElementById('klaxon-css-inject');
       style.parentNode.removeChild(style);
