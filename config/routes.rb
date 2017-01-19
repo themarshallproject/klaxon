@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   scope '/integrations' do
     get '/' => 'integrations#index', as: :integrations
     resources :slack, as: 'slack_integrations', controller: 'slack_integrations'
-    resources :sqs, as: 'sqs_integrations', controller: 'sqs_integrations'    
+    resources :sqs, as: 'sqs_integrations', controller: 'sqs_integrations'
   end
 
   get '/help' => 'static#help', as: :help

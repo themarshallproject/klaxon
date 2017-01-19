@@ -273,6 +273,27 @@ small {
 }
 
 // login & marketing
+.login-page {
+  .navbar-fixed-top {
+    background-color: transparent;
+  }
+
+  .navbar a {
+    color: #fff;
+  }
+
+  .navbar-header svg path {
+    fill: #fff;
+  }
+
+  .navbar-toggle, .navbar-nav {
+    display: none;
+  }
+
+  #logo-no-fill {
+    fill: none;
+  }
+}
 
 .klax-hero {
   margin-top: -50px;
