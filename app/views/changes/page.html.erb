@@ -43,7 +43,7 @@
       </form>
   </div>
 
-  <%= raw Diffy::Diff.new(@before.match_text, @after.match_text, context: 2).to_s(:html_simple) %>
+  <%= raw Diffy::Diff.new(@before.match_text, @after.match_text, context: 2).to_s(:html) %>
 
 </div>
 
