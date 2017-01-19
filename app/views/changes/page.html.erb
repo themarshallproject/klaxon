@@ -55,19 +55,15 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-3 klax-spacer-md">
+      <div class="col-md-4 klax-spacer-md">
         <h2><%= @page.page_snapshots.count %></h2>
         <p class="lead">total times the item has changed since you started watching it, which was <%= @page.created_at.strftime("%A, %B %d, %Y at %H:%M") %>.</p>
       </div>
-      <div class="col-md-3 klax-spacer-md">
-        <h2>TK%</h2>
-        <p class="lead">is the average amount of the item that changes.</p>
-      </div>
-      <div class="col-md-3 klax-spacer-md">
+      <div class="col-md-4 klax-spacer-md">
         <h2><%= distance_of_time_in_words(@page.calculate_median(@page.snapshot_time_deltas)) %></h2>
         <p class="lead">amount of time, roughly, between each change. We anticipate the next change will occur on <%= @page.predicted_snapshot.strftime("%A, %B %d, %Y at %H:%M") %>.</p>
       </div>
-      <div class="col-md-3 klax-spacer-md">
+      <div class="col-md-4 klax-spacer-md">
         <h2><%= time_ago_in_words @page.page_snapshots.last.created_at %></h2>
         <p class="lead">since the last change was captured at <%= @page.page_snapshots.last.created_at.strftime("%A, %B %d, %Y at %H:%M") %></p>
       </div>
