@@ -26,6 +26,10 @@ a:hover, a:focus {
   border-bottom: 0 !important;
 }
 
+.navbar-fixed-top {
+  background-color: #fff;
+}
+
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
   background-color:  rgba(255,11,58, 0.1);
 }
