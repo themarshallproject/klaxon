@@ -95,5 +95,14 @@
     </div>
   </div><!-- /.container -->
 </div>
-
 <% end %>
+
+<div class="klax-section klax-spacer-lg">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-md-offset-9">
+        <%= link_to 'Delete Page Forever', @page, method: :delete, data: { confirm: 'Are you sure? This will delete all snapshots and changes associated with this page. There is no undo.' }, class: "btn btn-default btn-block btn-danger" %>
+      </div>
+    </div>
+  </div><!-- /.container -->
+</div>

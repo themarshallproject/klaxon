@@ -90,11 +90,19 @@ table tbody tr td:last-child, table thead tr td:last-child  {
 }
 
 .btn:hover {
-  color: #fff !important;
+  color: #fff;
   background-color: #ff0b3a;
   box-shadow: none;
 }
 
+.btn-danger {
+  color: #fff;
+}
+
+.btn-danger:hover {
+  color: #ff0b3a;
+  background-color: #fff;
+}
 
 *:focus {
   border-color: #ff0b3a !important;
