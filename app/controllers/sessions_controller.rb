@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
   def new
+    # Allow the login page to display in the bookmarklet iframe
+    response.headers.delete "X-Frame-Options"
   end
 
   def create
