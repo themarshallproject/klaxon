@@ -48,5 +48,4 @@ class Change < ActiveRecord::Base
     self.where(before: record).destroy_all
     self.where(after: record).destroy_all
   end
-
 end
