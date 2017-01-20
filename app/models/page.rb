@@ -104,7 +104,7 @@ class Page < ActiveRecord::Base
 
   def predicted_snapshot
     median_delta_seconds = calculate_median(snapshot_time_deltas)
-    median_delta_seconds.seconds.from_now + most_recent_snapshot.created_at.utc.to_i
+    Time.at(median_delta_seconds.seconds + most_recent_snapshot.created_at.to_i)
   end
 
 end
