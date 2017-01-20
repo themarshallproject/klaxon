@@ -28,19 +28,19 @@
         <h4>Snapshots from <code class="klax-code-after"><%= @after.created_at.strftime("%A, %B %d, %Y at %H:%M") %></code> and <code class="klax-code-before"><%= @before.created_at.strftime("%A, %B %d, %Y at %H:%M") %></code></h4>
       </div>
     </div>
-        <form class="form-horizontal" method="POST" action="">
-        <div class="form-group form-group-lg">
-          <label class="col-sm-1">What changed?</label>
-          <div class="col-md-11">
-            <div class="input-group">
-              <input name="email" class="form-control" type="text" id="formGroupInputLarge" style="height: 45px;">
-              <span class="input-group-btn">
-                <button class="btn btn-default btn-lg" type="submit">Save</button>
-              </span>
-            </div>
+    <%= simple_form_for(@change, html: { class: 'horizontal-form' }) do |f| %>
+      <div class="form-group form-group-lg">
+        <label class="col-sm-1">What changed?</label>
+        <div class="col-md-11">
+          <div class="input-group">
+            <%= f.text_field :summary, label: false, class: 'form-control' %>
+            <span class="input-group-btn">
+              <%= f.button :submit, 'Save', class: "btn btn-default btn-lg btn-block form-control" %>
+            </span>
           </div>
         </div>
-      </form>
+      </div>
+    <% end %>
   </div>
 
   <%= raw Diffy::Diff.new(@before.match_text, @after.match_text, context: 2).to_s(:html) %>
