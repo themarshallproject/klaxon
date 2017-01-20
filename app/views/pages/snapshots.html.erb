@@ -1,50 +1,50 @@
-<div class="klax-section klax-topper">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h1>All Snapshots</h1>
+<%= form_tag setup_compare_page_path, method: :get do %>
+  <div class="klax-section klax-topper">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>All Snapshots</h1>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-      <p class="lead">
-        Below are all of the snapshots, or versions, of <b><%= @page.name %></b> going back to <%= @page.created_at.strftime("%A, %B %d, %Y at %H:%M") %>. Start by selecting an older version, then select a newer version to compare it against.</p>
+      <div class="row">
+        <div class="col-md-6">
+          <p class="lead">
+            Below are all of the snapshots, or versions, of <b><%= @page.name %></b> going back to <%= @page.created_at.strftime("%A, %B %d, %Y at %H:%M") %>. Start by selecting an older version, then select a newer version to compare it against.</p>
+        </div>
+        <div class="col-md-3">
+          <!-- negative space -->
+        </div>
+        <div class="col-md-3">
+          <%= submit_tag "Compare", class: "btn btn-default btn-lg btn-block" %>
+        </div>
       </div>
-      <div class="col-md-3">
-        <!-- negative space -->
-      </div>
-      <div class="col-md-3">
-        <%= form_tag setup_compare_page_path, method: :get %>
-        <%= submit_tag "Compare", class: "btn btn-default btn-lg btn-block" %>
-      </div>
-    </div>
-  </div><!-- /.container -->
-</div>
+    </div><!-- /.container -->
+  </div>
 
-<div class="klax-section klax-spacer-lg">
-  <div class="container">
+  <div class="klax-section klax-spacer-lg">
+    <div class="container">
 
       <div class="row">
         <div class="col-md-6">
           <h4 class="klax-spacer-md">Select the Older Version</h4>
 
           <% @snapshots.each_with_index do |snapshot, index| %>
-          <div class="row klax-spacer-sm"><!-- row -->
-            <div class="col-md-3">
-              <div class="radio" style="margin: 0;">
-                <label>
-                  <input class="klax-js-snapshot-before" type="radio" name="before" data-index="<%= index %>" value="<%= snapshot.id %>">
-                  <code><%= snapshot.sha2_hash.first(8) %></code>
-                </label>
+            <div class="row klax-spacer-sm"><!-- row -->
+              <div class="col-md-3">
+                <div class="radio" style="margin: 0;">
+                  <label>
+                    <input class="klax-js-snapshot-before" type="radio" name="before" data-index="<%= index %>" value="<%= snapshot.id %>">
+                    <code><%= snapshot.sha2_hash.first(8) %></code>
+                  </label>
+                </div>
               </div>
-            </div>
-            <div class="col-md-3">
-              <p><%= snapshot.created_at %></p>
-            </div>
-            <div class="col-md-5">
-              <p><b></b></p>
-            </div>
-          </div><!-- end row -->
+              <div class="col-md-3">
+                <p><%= snapshot.created_at %></p>
+              </div>
+              <div class="col-md-5">
+                <p><b></b></p>
+              </div>
+            </div><!-- end row -->
           <% end %>
         </div>
 
@@ -53,51 +53,52 @@
           <h4 class="klax-spacer-md">Select the Newer Version</h4>
 
           <% @snapshots.each_with_index do |snapshot, index| %>
-          <div class="row klax-spacer-sm"><!-- row -->
-            <div class="col-md-3">
-              <div class="radio" style="margin: 0;">
-                <label>
-                  <input class="klax-js-snapshot-after" type="radio" name="after" data-index="<%= index %>" value="<%= snapshot.id %>" style="display: none;">
-                  <code><%= snapshot.sha2_hash.first(8) %></code>
-                </label>
+            <div class="row klax-spacer-sm"><!-- row -->
+              <div class="col-md-3">
+                <div class="radio" style="margin: 0;">
+                  <label>
+                    <input class="klax-js-snapshot-after" type="radio" name="after" data-index="<%= index %>" value="<%= snapshot.id %>" style="display: none;">
+                    <code><%= snapshot.sha2_hash.first(8) %></code>
+                  </label>
+                </div>
               </div>
-            </div>
-            <div class="col-md-3">
-              <p><%= snapshot.created_at %></p>
-            </div>
-            <div class="col-md-5">
-              <p><b></b></p>
-            </div>
-          </div><!-- end row -->
+              <div class="col-md-3">
+                <p><%= snapshot.created_at %></p>
+              </div>
+              <div class="col-md-5">
+                <p><b></b></p>
+              </div>
+            </div><!-- end row -->
           <% end %>
 
         </div>
       </div>
-
-    </form>
-  </div><!-- /.container -->
-</div>
+    </div><!-- /.container -->
+  </div>
+<% end %><!-- form_tag -->
 
 <script>
 
-$(".klax-js-snapshot-before[data-index='0']").attr("disabled","");
-$(".klax-js-snapshot-before[data-index='1']").click();
-$(".klax-js-snapshot-after[data-index='0']").show().click();
-$(".klax-js-snapshot-before").click(function(){
-  var index = $(this).data("index");
-  $(".klax-js-snapshot-after").each(function(){
-    var thisIndex = $(this).data("index");
-    if (index <= thisIndex) {
-      $(this).attr("disabled","");
-      $(this).css("display","none");
-    } else {
-      $(this).css("display","block");
-      $(this).removeAttr("disabled","");
-      if (thisIndex == (index - 1)) {
-        $(this).click();
-      }
-    }
+  $(document).ready(function() {
+    $(".klax-js-snapshot-before[data-index='0']").attr("disabled","");
+    $(".klax-js-snapshot-before[data-index='1']").click();
+    $(".klax-js-snapshot-after[data-index='0']").show().click();
+    $(".klax-js-snapshot-before").click(function(){
+      var index = $(this).data("index");
+      $(".klax-js-snapshot-after").each(function(){
+        var thisIndex = $(this).data("index");
+        if (index <= thisIndex) {
+          $(this).attr("disabled","");
+          $(this).css("display","none");
+        } else {
+          $(this).css("display","block");
+          $(this).removeAttr("disabled","");
+          if (thisIndex == (index - 1)) {
+            $(this).click();
+          }
+        }
+      });
+    });
   });
-});
 
 </script>
