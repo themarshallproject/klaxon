@@ -49,10 +49,10 @@
     var path = [];
     while (
       (el.nodeName.toLowerCase() != 'body') &&
-      (el = el.parentNode) &&
-      path.unshift(el.nodeName.toLowerCase() +
-        (el.id ? '#' + el.id : '') +
-        (el.className ? '.' + el.className.replace(/\s+/g, ".") : ''))
+        (el = el.parentNode) &&
+        path.unshift(el.nodeName.toLowerCase() +
+          (el.id ? '#' + el.id : '') +
+            (el.className ? '.' + el.className.replace(/\s+/g, ".") : ''))
     );
     return path;
   }
@@ -86,13 +86,15 @@
   }
 
   var currentPath = [];
+  var savedSelector;
   var updatePath = function(path) {
     currentPath = path;
 
     // var selector = path.join(" ");
     var selector = lastElement(path);
 
-    var css = selector + " { background-color: rgba(255, 11, 58, 0.3); }";
+    var css = selector + " { background-color: rgba(255, 11, 58, 0.3); }\n";
+    css += savedSelector + " { background-color: rgba(58, 255, 11, 0.3); }\n";
     console.log(css);
     styles.innerHTML = css;
 
@@ -106,7 +108,9 @@
       var x = evt.clientX;
       var y = evt.clientY;
       var el = document.elementFromPoint(x, y);
-      updatePath(cssPath(el));
+      var selector = cssPath(el);
+      updatePath(selector);
+      savedSelector = lastElement(selector);
       postMessage({ event: 'click' });
     }
   });
@@ -121,13 +125,16 @@
   });
 
   var receiveMessage = function(event){
-   if (event.data=="close_klaxon_bookmarklet"){
+    if (event.data == 'close_klaxon_bookmarklet'){
       iframe.parentNode.removeChild(iframe);
       var style = document.getElementById('klaxon-css-inject');
       style.parentNode.removeChild(style);
       console.log("Closed Klaxon Bookmarklet")
       window._klaxonInject = false;
-   }
+    } else if (event.data.type == 'update_saved_selector') {
+      savedSelector = event.data.selector;
+      console.log('Updating saved selector', event.data.selector)
+    }
   }
 
   window.addEventListener("message", receiveMessage, false);
