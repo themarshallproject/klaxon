@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing SQS Integrations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Queue url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sqs_integrations.each do |sqs_integration| %>
+      <tr>
+        <td><%= sqs_integration.queue_url %></td>
+        <td><%= link_to 'Show', sqs_integration %></td>
+        <td><%= link_to 'Edit', edit_sqs_integration_path(sqs_integration) %></td>
+        <td><%= link_to 'Destroy', sqs_integration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New SQS integration', new_sqs_integration_path %>

@@ -95,3 +95,15 @@ You should then get a response that looks like this:
 ![](docs/merge_pr.png)
 
 If it does, and everything is green, you’re good to go. Just click the “Merge pull request” button then click the “Confirm merge” button and that’s that.
+
+### Acknowledgements
+The core contributors to Klaxon have been Ivar Vong, Andy Rossback, Tom Meagher and Gabe Isman.
+
+We've been grateful for additional contributions to the project from:
+
+* Ryan Murphy
+* Jeremy Merrill
+* Emily Hopkins
+* Ari Shapell
+
+We also owe thanks to Knight-Mozilla [OpenNews](https://opennews.org/), which supported the initial public release of this free and open source software.

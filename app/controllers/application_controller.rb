@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :authorize
   def authorize
     unless current_user.present?
-      redirect_to login_path and return false
+      redirect_to login_path(return_to: request.original_url) and return false
     end
   end
 

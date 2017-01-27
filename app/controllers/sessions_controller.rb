@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
   def new
+    # Allow the login page to display in the bookmarklet iframe
+    response.headers.delete "X-Frame-Options"
   end
 
   def create
@@ -9,6 +11,8 @@ class SessionsController < ApplicationController
     end
 
     UserMailer.login_email(user: user).deliver_later
+    # Allow the login page to display in the bookmarklet iframe
+    response.headers.delete "X-Frame-Options"
   end
 
   def token

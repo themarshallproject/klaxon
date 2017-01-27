@@ -1,0 +1,33 @@
+<%= simple_form_for(@sqs_integration) do |f| %>
+  <%= f.error_notification %>
+
+<div class="klax-section klax-spacer-lg">
+  <div class="container">
+    <div class="row klax-spacer-md">
+      <div class="col-md-12">
+        <h4>Details</h4>
+      </div>
+    </div>
+    <div class="row">
+      <form class="form-horizontal">
+        <div class="form-group form-group-lg">
+          <label class="col-sm-1">Queue URL</label>
+          <div class="col-sm-11">
+            <%= f.input :queue_url, label: false, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group form-group-lg">
+          <div class="col-md-9">
+            <!-- negative space -->
+          </div>
+          <div class="col-md-3">
+            <%= f.button :submit, "Create SQS Integration", class: "btn btn-default btn-lg btn-block" %>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div><!-- /.container -->
+</div>
+
+<% end %>

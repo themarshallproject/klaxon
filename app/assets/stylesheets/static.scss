@@ -26,6 +26,10 @@ a:hover, a:focus {
   border-bottom: 0 !important;
 }
 
+.navbar-fixed-top {
+  background-color: #fff;
+}
+
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
   background-color:  rgba(255,11,58, 0.1);
 }
@@ -90,11 +94,19 @@ table tbody tr td:last-child, table thead tr td:last-child  {
 }
 
 .btn:hover {
-  color: #fff !important;
+  color: #fff;
   background-color: #ff0b3a;
   box-shadow: none;
 }
 
+.btn-danger {
+  color: #fff;
+}
+
+.btn-danger:hover {
+  color: #ff0b3a;
+  background-color: #fff;
+}
 
 *:focus {
   border-color: #ff0b3a !important;
@@ -187,7 +199,7 @@ small {
   -webkit-margin-end: 0;
   -webkit-padding-start: 0;
   overflow: scroll;
-  white-space: nowrap;
+  white-space: wrap;
 }
 .diff li {
   text-decoration: none !important;
@@ -212,13 +224,6 @@ small {
   color: white !important;
 }
 
-.klax-line {
-  width: 20px;
-  text-align: right;
-  margin-right: 25px;
-  display: inline-block;
-}
-
 .klax-line-selected, .klax-line-selected a {
   background-color: #ff0b3a !important;
   color: #fff !important;
@@ -237,7 +242,7 @@ small {
 }
 
 .diff a {
-  padding: 1px 40px;
+  padding: 0 40px;
   display: block;
   position: relative;
   width: 100%;
@@ -250,13 +255,38 @@ small {
 }
 
 .klax-line-anchor {
-  display: block; 
-  position: relative; 
-  top: -50vh; 
+  display: block;
+  position: relative;
+  top: -50vh;
   visibility: hidden;
 }
 
+.navbar-toggle {
+  display: none;
+}
+
 // login & marketing
+.login-page {
+  .navbar-fixed-top {
+    background-color: transparent;
+  }
+
+  .navbar a {
+    color: #fff;
+  }
+
+  .navbar-header svg path {
+    fill: #fff;
+  }
+
+  .navbar-toggle, .navbar-nav {
+    display: none;
+  }
+
+  #logo-no-fill {
+    fill: none;
+  }
+}
 
 .klax-hero {
   margin-top: -50px;
@@ -285,6 +315,18 @@ small {
   }
   .klax-lead {
     margin-top: 31vh;
+  }
+}
+
+@media (min-width: $screen-tablet) {
+  .mobile-only {
+    display: none;
+  }
+}
+
+@media (max-width: $screen-tablet) {
+  .desktop-only {
+    display: none;
   }
 }
 
