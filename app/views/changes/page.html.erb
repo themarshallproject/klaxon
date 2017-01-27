@@ -56,7 +56,7 @@
     </div>
     <div class="row">
       <div class="col-md-4 klax-spacer-md">
-        <h2><%= @page.page_snapshots.count %></h2>
+        <h2><%= [0, @page.page_snapshots.count - 1].max %></h2>
         <p class="lead">total times the item has changed since you started watching it, which was <%= @page.created_at.strftime("%A, %B %d, %Y at %H:%M") %>.</p>
       </div>
       <div class="col-md-4 klax-spacer-md">
