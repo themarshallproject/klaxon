@@ -107,4 +107,7 @@ class Page < ActiveRecord::Base
     Time.at(median_delta_seconds.seconds + most_recent_snapshot.created_at.to_i)
   end
 
+  def num_changes
+    [0, self.page_snapshots.count - 1].max
+  end
 end

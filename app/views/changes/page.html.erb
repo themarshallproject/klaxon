@@ -7,7 +7,7 @@
     </div>
     <div class="row">
       <div class="col-md-6">
-        <p class="lead">Below are two versions of <b><%= @page&.name %></b> which has changed <%= @snapshots&.count %> times since <%= @page.created_at.strftime("%A, %B %d, %Y") %> when <%= @page&.user&.display_name %> began watching it.</p>
+        <p class="lead">Below are two versions of <b><%= @page&.name || @page&.url %></b> which has changed <%= @page.num_changes %> times since <%= @page.created_at.strftime("%A, %B %d, %Y") %> when <%= @page&.user&.display_name || 'someone' %> began watching it.</p>
       </div>
       <div class="col-md-3">
         <!-- negative space -->
@@ -70,7 +70,7 @@
     </div>
     <div class="row">
       <div class="col-md-4 klax-spacer-md">
-        <h2><%= [0, @page.page_snapshots.count - 1].max %></h2>
+        <h2><%= @page.num_changes %></h2>
         <p class="lead">total times the item has changed since you started watching it, which was <%= @page.created_at.strftime("%A, %B %d, %Y at %H:%M") %>.</p>
       </div>
       <div class="col-md-4 klax-spacer-md">
