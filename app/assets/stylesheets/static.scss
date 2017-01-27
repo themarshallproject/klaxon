@@ -184,6 +184,12 @@ small {
   padding-top: 3vh;
 }
 
+.diff-container {
+  .col-sm-6 {
+    padding: 0;
+  }
+}
+
 .diff {
   color: #000000;
   padding: 40px 0;
@@ -322,6 +328,18 @@ small {
   }
   .klax-lead {
     margin-top: 31vh;
+  }
+}
+
+@media (min-width: $screen-tablet) {
+  .mobile-only {
+    display: none;
+  }
+}
+
+@media (max-width: $screen-tablet) {
+  .desktop-only {
+    display: none;
   }
 }
 
