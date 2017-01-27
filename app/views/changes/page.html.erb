@@ -25,7 +25,7 @@
   <div class="container klax-spacer-md">
     <div class="row klax-spacer-md">
       <div class="col-md-12">
-        <h4>Snapshots from <code class="klax-code-after"><%= @after.created_at.strftime("%A, %B %d, %Y at %H:%M") %></code> and <code class="klax-code-before"><%= @before.created_at.strftime("%A, %B %d, %Y at %H:%M") %></code></h4>
+        <h4>Snapshots from <code class="klax-code-after"><%= @after.created_at.strftime("%A, %B %d, %Y at %H:%M") %></code> and <code class="klax-code-before"><%= @before.updated_at.strftime("%A, %B %d, %Y at %H:%M") %></code></h4>
       </div>
     </div>
     <%= simple_form_for(@change, html: { class: 'horizontal-form' }) do |f| %>
