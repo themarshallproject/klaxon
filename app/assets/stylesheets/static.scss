@@ -205,11 +205,12 @@ small {
   -webkit-margin-end: 0;
   -webkit-padding-start: 0;
   overflow: scroll;
-  white-space: nowrap;
+  whitespace: pre-wrap;
 }
 .diff li {
   text-decoration: none !important;
   width: 100%;
+  padding: 2px 0;
 }
 .diff del {
   text-decoration: none !important;
@@ -228,13 +229,6 @@ small {
 .diff a:hover {
   background-color: black !important;
   color: white !important;
-}
-
-.klax-line {
-  width: 20px;
-  text-align: right;
-  margin-right: 25px;
-  display: inline-block;
 }
 
 .klax-line-selected, .klax-line-selected a {
