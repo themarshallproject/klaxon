@@ -43,22 +43,11 @@
     <% end %>
   </div>
 
-  <% diff = Diffy::SplitDiff.new(@before.match_text, @after.match_text, context: 2, format: :html) %>
   <div class="desktop-only container diff-container klax-spacer-md">
     <div class="row klax-spacer-md">
-      <div class="col-sm-6">
-        <%= raw diff.left %>
-      </div>
-      <div class="col-sm-6">
-        <%= raw diff.right %>
-      </div>
+      <%= raw Diffy::Diff.new(@before.match_text, @after.match_text, context: 2).to_s(:html) %>
     </div>
   </div>
-
-  <div class="mobile-only">
-    <%= raw Diffy::Diff.new(@before.match_text, @after.match_text, context: 2).to_s(:html) %>
-  </div>
-
 </div>
 
 <div class="klax-section klax-spacer-lg">

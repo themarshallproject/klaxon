@@ -184,12 +184,6 @@ small {
   padding-top: 3vh;
 }
 
-.diff-container {
-  .col-sm-6 {
-    padding: 0;
-  }
-}
-
 .diff {
   color: #000000;
   padding: 40px 0;
@@ -205,12 +199,11 @@ small {
   -webkit-margin-end: 0;
   -webkit-padding-start: 0;
   overflow: scroll;
-  white-space: nowrap;
+  white-space: wrap;
 }
 .diff li {
   text-decoration: none !important;
-  height: 18px;
-  line-height: 18px;
+  width: 100%;
 }
 .diff del {
   text-decoration: none !important;
