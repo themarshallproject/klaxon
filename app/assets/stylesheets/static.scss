@@ -205,12 +205,10 @@ small {
   -webkit-margin-end: 0;
   -webkit-padding-start: 0;
   overflow: scroll;
-  whitespace: pre-wrap;
+  white-space: nowrap;
 }
 .diff li {
   text-decoration: none !important;
-  width: 100%;
-  padding: 2px 0;
 }
 .diff del {
   text-decoration: none !important;
@@ -249,7 +247,7 @@ small {
 }
 
 .diff a {
-  padding: 1px 40px;
+  padding: 0 40px;
   display: block;
   position: relative;
   width: 100%;
