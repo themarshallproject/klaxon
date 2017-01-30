@@ -7,11 +7,6 @@ class Change < ActiveRecord::Base
 
   validate :correct_ordering
   def correct_ordering
-    if before.nil? or after.nil?
-      # let this be caught by the presence validation, rather than fail at the `created_at` call below
-      return
-    end
-
     # delegate order checking to the attached models
     if before.nil? or after.nil?
       # let this be caught by the presence validation, rather than fail at the `created_at` call below
@@ -53,5 +48,4 @@ class Change < ActiveRecord::Base
     self.where(before: record).destroy_all
     self.where(after: record).destroy_all
   end
-
 end

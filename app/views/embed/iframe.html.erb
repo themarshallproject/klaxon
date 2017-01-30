@@ -75,6 +75,11 @@ h4 {font-size: 1.5em;}
   margin-top: 30px;
   font-size: 12px;
 }
+.saved-selector {
+  background-color: rgba(58, 255, 11, 0.3);
+  color: #000;
+  padding: 5px;
+}
 a {
   color: #ff0b3a;
 }
@@ -87,6 +92,15 @@ a {
   font-size: 14px;
   padding: 20px;
 }
+
+#klax-close-bookmarklet {
+  color: #a0a0a0;
+  float: right;
+  font-size: 18px;
+}
+#klax-close-bookmarklet:hover {
+  color: #ff0b3a;
+}
 </style>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </head>
@@ -94,10 +108,11 @@ a {
 
 <div class="container">
 
+  <div id="klax-close-bookmarklet">✖</div>
   <div class="klax-app-name">Klaxon</div>
   <p class="klax-lead">Hover over the page and click the item you want to watch. Preview it below to make sure you’ve selected the correct item.</p>
 
-  <p><%= link_to "Save and Edit", edit_page_url(@page).gsub('http://', 'https://'), class:"klax-button", target: '_blank' %></p>
+  <p><%= link_to "Edit Page", edit_page_url(@page).gsub('http://', 'https://'), class:"klax-button", target: '_blank' %></p>
 
   <p id="status"></p>
   <p id="path-preview"></p>
@@ -106,13 +121,16 @@ a {
   <textarea id="match-text"></textarea>
   <p class="klax-lead">Selector Preview</p>
   <p id="selector" class="klax-fine-print"></p>
+  <p class="klax-lead">Saved Selector</p>
+  <p id="saved-selector" class="saved-selector klax-fine-print"><%= @page.css_selector %></p>
 
 </div>
 
-  <script>
+<script>
 
   window.pageID = <%= @page.id %>;
   var currentSelector = 'body';
+  var savedSelector = "<%= @page.css_selector %>";
 
   var mouseState = 'hover';
   var toggleMouseState = function() {
@@ -121,7 +139,6 @@ a {
     } else {
       mouseState = 'hover';
     }
-
   }
 
   var handleClick = function() {
@@ -162,16 +179,29 @@ a {
       id: window.pageID,
       css_selector: selector
     }).success(function(data) {
-      el.innerText = "Done!"
+      el.innerText = "Saved!"
       setTimeout(function() {
         el.innerText = "";
-      }, 1000);
+      }, 10000);
+      document.querySelector('#saved-selector').innerText = data.css_selector;
     }).fail(function() {
       el.innerText = "Error saving.";
     });
   };
 
-  </script>
+  var closeKlaxonBookmarklet = function() {
+    parent.window.postMessage("close_klaxon_bookmarklet", "*");
+  }
+  document.getElementById("klax-close-bookmarklet").addEventListener('click', closeKlaxonBookmarklet, false);
+
+  if (savedSelector) {
+    console.log(savedSelector);
+    parent.window.postMessage({
+      type: 'update_saved_selector',
+      selector: savedSelector
+    }, '*');
+  }
+</script>
 
 </body>
 </html>

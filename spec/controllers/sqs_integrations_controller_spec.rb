@@ -31,7 +31,7 @@ RSpec.describe SqsIntegrationsController, type: :controller do
 
   let(:invalid_attributes) {
     {
-      queue_url: "http://sqs.us-east-1.amazonaws.com/1234567890/fake-klaxon-sqs" # note not HTTP
+      queue_url: "http://sqs.us-east-1.amazonaws.com/1234567890/fake-klaxon-sqs" # note not HTTPS
     }
   }
 
@@ -107,14 +107,17 @@ RSpec.describe SqsIntegrationsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {
+          queue_url: "https://sqs.us-east-1.amazonaws.com/1234567890/new-fake-klaxon-sqs"
+        }
       }
 
       it "updates the requested sqs_integration" do
         sqs_integration = SqsIntegration.create! valid_attributes
         put :update, {:id => sqs_integration.to_param, :sqs_integration => new_attributes}, valid_session
         sqs_integration.reload
-        skip("Add assertions for updated state")
+        expect(sqs_integration.queue_url).to eq(new_attributes[:queue_url])
+        expect(sqs_integration).to be_persisted
       end
 
       it "assigns the requested sqs_integration as @sqs_integration" do
@@ -159,5 +162,4 @@ RSpec.describe SqsIntegrationsController, type: :controller do
       expect(response).to redirect_to(integrations_path)
     end
   end
-
 end

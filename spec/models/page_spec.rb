@@ -36,8 +36,10 @@ RSpec.describe Page, type: :model do
 
   it "gracefully handles parsing an invalid uri" do
     weird_url = " bad:///site.com"
-    page = build(:page, url: weird_url) # our sanitizer is on a before_save, which is not trigger for build here
+    page = build(:page, url: weird_url) # our sanitizer is on before_save, which does not run here
     expect(page.domain).to eq weird_url
+    page.save
+    expect(page.domain).to eq ''
   end
 
   it "deletes associated snapshots and changes upon deletion" do

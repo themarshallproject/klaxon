@@ -6,7 +6,7 @@
     <div class="col-md-6">
         <p class="lead">
           <%= link_to page_change_path(change) do %>
-            <%= change.after.page.name %> changed
+            <%= change.after.page.name || truncate(change.after.page.url) %> changed
           <% end %>
         </p>
     </div>

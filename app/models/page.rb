@@ -102,14 +102,12 @@ class Page < ActiveRecord::Base
     (sorted[(length - 1) / 2] + sorted[length / 2]) / 2
   end
 
-  def snapshot_next_change
-    last_snap = most_recent_snapshot.created_at.utc.to_i
-    predicted_snap = last_snap + calculate_median(snapshot_time_deltas) - Time.now.utc.to_i
-  end
-
   def predicted_snapshot
     median_delta_seconds = calculate_median(snapshot_time_deltas)
-    median_delta_seconds.seconds.from_now + most_recent_snapshot.created_at.utc.to_i
+    Time.at(median_delta_seconds.seconds + most_recent_snapshot.created_at.to_i)
   end
 
+  def num_changes
+    [0, self.page_snapshots.count - 1].max
+  end
 end

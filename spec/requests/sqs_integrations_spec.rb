@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "SqsIntegrations", type: :request do
   describe "GET /sqs_integrations" do
-    it "works! (now write some real specs)" do
+    it "works!" do
       get sqs_integrations_path
       expect(response).to have_http_status(200)
     end
