@@ -3,8 +3,8 @@
   <h2 style="margin-top: 0;"><%= PageSnapshot.count %></h2>
 
   <% # TODO: refactor %>
-  <% first_use = Page.order('created_at DESC').first.created_at.strftime("%A, %B %d, %Y") rescue '??' %>
-  <p class="lead klax-spacer-sm">total times changes since you first started using Klaxon which was <%= first_use %>.</p>
+  <% first_use = Page.order('created_at DESC').last.created_at.strftime("%A, %B %d, %Y") rescue '??' %>
+  <p class="lead klax-spacer-sm">total changes since you first started using Klaxon which was <%= first_use %>.</p>
 
   <h2><%= Page.count %></h2>
   <p class="lead klax-spacer-sm">pages being watched for changes.</p>
