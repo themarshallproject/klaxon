@@ -19,7 +19,12 @@ class PollPage
 
   def self.perform_all
     Page.all.shuffle.each do |page|
-      self.perform(page: page)
+      begin
+        self.perform(page: page)
+      rescue
+        # TODO: send notifications about failed updates?
+        puts "Failed to update page #{page.id}"
+      end
     end
   end
 end

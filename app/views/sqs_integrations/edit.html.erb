@@ -1,0 +1,22 @@
+<div class="klax-section klax-topper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Editing SQS Integration</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+      <p class="lead">Integrations allow you to push alerts to various platforms. For now, Klaxon supports Slack and Amazon SQS. We hope to add more in the future. If you’re interested in helping, <a href="https://github.com/themarshallproject/klaxon">visit our repo.</a></p>
+      </div>
+      <div class="col-md-3">
+        <!-- negative space -->
+      </div>
+      <div class="col-md-3">
+        <%= link_to 'Delete? It’s Permanent.', @sqs_integration, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-lg btn-block" %>
+      </div>
+    </div>
+  </div><!-- /.container -->
+</div>
+
+<%= render 'form' %>
