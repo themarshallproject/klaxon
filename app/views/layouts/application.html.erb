@@ -4,11 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Klaxon</title>
+
+  <% if current_user.present? %>
+    <script>
+      window.klaxonUser = <%= current_user.to_json.html_safe %>;
+    </script>
+  <% end %>
+
+  <script>
+    window.klaxonReturnUrl = "<%= params[:return_to] %>";
+  </script>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= yield(:body_classes) %>">
 
 <%= render partial: 'layouts/nav' %>
 
