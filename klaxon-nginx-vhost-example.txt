@@ -26,5 +26,4 @@ server {
    allow all;
    deny all;
  }
-
 }
