@@ -1,14 +1,16 @@
-## How Klaxon works
+## How Klaxon work
 
-Klaxon allows you and your newsroom to monitor a wide range of websites and get notified—by email or Slack messages—when they change. After a one-time setup, anytime you’re on a site you want to watch, you can use the “Add to Klaxon” bookmarklet to add it to the system and specify which part of the page you care about. When the site changes, you’ll get a notice. And if you want to step back through each stage of the site’s evolution, you can explore its history on the “[Watching](/watching/pages)” page.
+Klaxon is a tool that enables journalists and researchers to monitor scores of websites for noteworthy changes. When it finds something new on one of the pages it's watching, it emails an alert and pings a Slack channel.
+
+When you first visit Klaxon, at the top of the page, you’ll see a huge box that says “Watch Your First Item.” 
+Underneath that, you’ll see a button that says “Add to Klaxon.” Drag that button to the bookmarks bar on your browser. 
+
+After a one-time setup, anytime you’re on a site you want to watch, you can use the “Add to Klaxon” bookmarklet to add it to the system and specify which part of the page you want to monitor. When the site changes, you’ll get a notice. And if you want to step back through each stage of the site’s evolution, you can explore its history on the “[Watching](/watching/pages)” page.
+
 
 ## The Feed
 
-[The Feed](/) is the list of the latest snapshots of each page the users in your newsroom are following. This is a good place to see what’s new in the system and to discover and subscribe to Klaxons that other reporters or editors have found useful.
-Watch a page
-When you first visit Klaxon, at the top of the page, you’ll see a huge box that says “Watch Your First Item.” Underneath that, you’ll see a button that says “Add to Klaxon.” Drag that button to the bookmarks bar on your browser. That then becomes a bookmarklet that will help you tag any page on the web to watch it in Klaxon.
-
-As you browse the web, when you find a page you want to monitor in Klaxon, just hit the “Add to Klaxon” bookmarklet. A new box will pop up on the right side of the browser window. Klaxon archives a snapshot of the website you’re watching every time it changes. But most modern websites have a lot of things happening on a page that you probably don’t care about. This box will help you tell Klaxon *which* part of the page you’re really interested in watching, so you’ll only get alerts when that section changes. To tell Klaxon where to look, hover your mouse over different sections of the page. Notice how each section is highlighted in red when you hover. This is one indicator to help Klaxon home in on the right area.
+When you find a page you want to monitor just hit the “Add to Klaxon” bookmarklet. Clicking on the bookmark will open a popup on the right side of the browser window. This box will help you tell Klaxon *which* part of the page you’re really interested in watching, so you’ll only get alerts when that section changes. To tell Klaxon where to look, hover your mouse over different sections of the page. Notice how each section is highlighted in red when you hover. This is one indicator to help Klaxon home in on the right area.
 
 ![](/assets/bookmarklet.png)
 
@@ -16,9 +18,11 @@ When you think you have it and the correct section of the page—say the list of
 
 Before you close the window though, see the red box under the heading “Content Preview?” That shows you what information is captured in the section of the page you selected. If the words you see in the red box don’t match what you’re hoping to monitor, you might have chosen the wrong part of the page. Not to worry, you can hover and click on any different section of the page until you get the right area selected and saved. 
 
-For the last step, you’ll want to click the ‘Save and Edit’ button, which will bring you back to Klaxon so you can give this page a name (like a slug) in the system.
+For the last step, you’ll want to click the ‘Save and Edit’ button, which will bring you back to Klaxon so you can give this page a name (like a slug) in the system and include tags.
 
-## What you’re watching
+In [the Feed](/) you'll find a list of recent snapshots of pages people in your newsroom are following. This is a good place to see what’s new in the system and to discover and subscribe to Klaxons that other reporters or editors find useful.
+
+## What you're watching
 
 The “[Watching](/watching/pages)” page displays a list of the individual pages that your newsroom is monitoring (as opposed to a chronological stream of the latest updates as seen in the [Feed](/)). 
 
@@ -46,6 +50,6 @@ Now, choose the channel that you want the Klaxon alerts to go to from the dropdo
 
 ## About Klaxon
 
-Klaxon is a tool that enables journalists and researchers to monitor scores of websites for noteworthy changes. When it finds something new on one of the pages it's watching, it emails an alert and pings a Slack channel.
-
 Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/#.2N8GFLsI0), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. The public release of this free and open source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/). With feedback or suggestions, contact us with the form below. To help improve Klaxon for other users, whether you’re a coder or not, read [our guide to how you can contribute to the project.](https://github.com/themarshallproject/klaxon/blob/master/CONTRIBUTING.md)
+
+
