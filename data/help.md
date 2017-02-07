@@ -1,16 +1,14 @@
 ## How Klaxon work
 
-Klaxon is a tool that enables journalists and researchers to monitor scores of websites for noteworthy changes. When it finds something new on one of the pages it's watching, it emails an alert and pings a Slack channel.
+Klaxon is a tool that enables journalists and researchers to monitor scores of websites for noteworthy changes. When it finds something new on one of the pages it's watching, it saves a versin of it, known as a "snapshot" of the page, and emails an alert and pings a Slack channel.
 
-When you first visit Klaxon, at the top of the page, you’ll see a huge box that says “Watch Your First Item.” 
-Underneath that, you’ll see a button that says “Add to Klaxon.” Drag that button to the bookmarks bar on your browser. 
+#Bookmark Set-Up
 
-After a one-time setup, anytime you’re on a site you want to watch, you can use the “Add to Klaxon” bookmarklet to add it to the system and specify which part of the page you want to monitor. When the site changes, you’ll get a notice. And if you want to step back through each stage of the site’s evolution, you can explore its history on the “[Watching](/watching/pages)” page.
+Working with Klaxon requires the one-time setup of a bookmarklet. Once the bookmarklet is added to your browser, clicking on it will allow you to save a page onto Klaxon. 
 
+To add the bookmarket, visit the Klaxon website. The first time you visit you'll notice a box that says “Watch Your First Item.” Underneath that, you’ll see a button that says “Add to Klaxon.” Click and drag that button to the bookmarks bar on your browser. Now anytime you’re on a site you want follow through Klaxon, you can click on the bookmarklet *without having to leave the site*. This works similary to services like Digg and Pinterest. 
 
-## The Feed
-
-When you find a page you want to monitor just hit the “Add to Klaxon” bookmarklet. Clicking on the bookmark will open a popup on the right side of the browser window. This box will help you tell Klaxon *which* part of the page you’re really interested in watching, so you’ll only get alerts when that section changes. To tell Klaxon where to look, hover your mouse over different sections of the page. Notice how each section is highlighted in red when you hover. This is one indicator to help Klaxon home in on the right area.
+Clicking on the bookmark will open a popup on the right side of the browser window. As you move your mouse around the page, different sections are highlighted. Web pages have images, files, tables and text that live in specific sections of the  HTLM document. With your mouse, you are selecting a table (tr), paragraph (p), headline (h2) or the whole body of text (body). These selectors tell Klaxon *which* part of the page to follow, so you’ll only get alerts when that specific section changes.
 
 ![](/assets/bookmarklet.png)
 
@@ -20,17 +18,28 @@ Before you close the window though, see the red box under the heading “Content
 
 For the last step, you’ll want to click the ‘Save and Edit’ button, which will bring you back to Klaxon so you can give this page a name (like a slug) in the system and include tags.
 
-In [the Feed](/) you'll find a list of recent snapshots of pages people in your newsroom are following. This is a good place to see what’s new in the system and to discover and subscribe to Klaxons that other reporters or editors find useful.
 
-## What you're watching
+## The Feed
 
-The “[Watching](/watching/pages)” page displays a list of the individual pages that your newsroom is monitoring (as opposed to a chronological stream of the latest updates as seen in the [Feed](/)). 
+In [the Feed](/) you'll find a list of recent snapshots of pages people in your newsroom are following. This is a good place to see what’s new in the system and to discover and subscribe to Klaxons that other reporters or editors find useful. These links are in order of most recent changes. You will also get a team summary of how many changes have been monitored, the number of pages the team is following and how many users are using Klaxon. 
+
+If you want to step back through each stage of the site’s evolution, you can explore its history on the “[Watching](/watching/pages)” page.
+
+## Watching
+
+The “[Watching](/watching/pages)” page displays a list of the all pages that your newsroom is monitoring (as opposed to a chronological stream of the latest updates as seen in the [Feed](/)). In watching you can also change settings and add tags. 
 
 To change the name or URL of any of the Klaxons you’ve created or to adjust their notification settings, simply click the “Edit” button next to the appropriate page. You can also click into each to view the differences of each snapshot the system has collected since you added it to Klaxon.
 
 To see what’s updated on each page, you can click the “Latest change” button. This brings you to a comparison of the most recent two snapshots of the page. Anything that was added to the page is highlighted in green. Anything that was removed from the page is in red. It can take a little bit of practice to become accustomed to looking at the page’s underlying HTML in this manner. If you’re subscribed to get emails about the Klaxon for this page, you’ll also receive an email for this difference in the email every time the page changes.
 
 To make it easier to keep track of what’s significant about each change and to spare your colleagues from having to parse it themselves, you can add a note to it. Near the top of the page, looking for the text box next to the words “What’s changed”. You can put your note in that box, say “Candidate X’s name removed from the council minutes” and hit “Save.” Now that note will be visible with that snapshot in the system or when it shows up in the Feed, tipping others that it’s worth taking a look.
+
+#Adding Klaxon Manually
+
+In the “[Watching](/watching/pages)” page you can also manually add sites to monitor if you already know which HTML-selector you want to follow or are having difficulty with the bookmarklet. 
+
+Click on "Manually Watch and Item" on the right side of the heading. This will take you to directly to the Edit page for links. Here you can include the Title, link to the site and the specific selector(s) you want to focus on. 
 
 ## Understand what’s changed on a page
 
