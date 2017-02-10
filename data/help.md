@@ -1,18 +1,18 @@
 ## How Klaxon work
 
-Klaxon is a tool that enables journalists and researchers to monitor scores of websites for noteworthy changes. When it finds something new on one of the pages it's watching, it saves a versin of it, known as a "snapshot" of the page, and emails an alert and pings a Slack channel.
+Klaxon is a tool that enables journalists and researchers to monitor scores of websites for noteworthy changes. When it finds something new on one of the pages it's watching, it saves a version of it, known as a "snapshot,” and emails an alert and pings a Slack channel.
 
 #Bookmark Set-Up
 
-Working with Klaxon requires the one-time setup of a bookmarklet. Once the bookmarklet is added to your browser, clicking on it will allow you to save a page onto Klaxon. 
+Working with Klaxon requires the one-time setup of a bookmarklet. Once the bookmarklet is added to your browser, clicking on it will allow you to save a page. 
 
-To add the bookmarket, visit the Klaxon website. The first time you visit you'll notice a box that says “Watch Your First Item.” Underneath that, you’ll see a button that says “Add to Klaxon.” Click and drag that button to the bookmarks bar on your browser. Now anytime you’re on a site you want follow through Klaxon, you can click on the bookmarklet *without having to leave the site*. This works similary to services like Digg and Pinterest. 
+To add the bookmarklet, visit the Klaxon website. The first time you visit you'll notice a box that says “Watch Your First Item.” Underneath that, you’ll see a button that says “Add to Klaxon.” Click and drag that button to the bookmarks bar on your browser. Now anytime you’re on a site you want follow through Klaxon, you can click on the bookmarklet *without having to leave the site*. This works similarly to services like Digg and Pinterest. 
 
-Clicking on the bookmark will open a popup on the right side of the browser window. As you move your mouse around the page, different sections are highlighted. Web pages have images, files, tables and text that live in specific sections of the  HTLM document. With your mouse, you are selecting a table (tr), paragraph (p), headline (h2) or the whole body of text (body). These selectors tell Klaxon *which* part of the page to follow, so you’ll only get alerts when that specific section changes.
+Clicking on the bookmark will open a popup on the right side of the browser window. As you move your mouse around the page, different sections are highlighted. Web pages have images, files, tables and text that live in specific sections of the  HTLM document. With your mouse, you can selecting a table (tr), paragraph (p), headline (h2) or the whole body of text (body). These selectors tell Klaxon *which* part of the page to follow, so you’ll only get alerts when that specific section changes.
 
 ![](/assets/bookmarklet.png)
 
-When you think you have it and the correct section of the page—say the list of Supreme Court decisions, or the latest documents in next year’s state budget—click the mouse. Now, look under the “Save and Edit” box in the Klaxon window, and you’ll notice it says “Done!” That means that Klaxon has saved this page to start watching it for you.
+When you think you have highlighted the correct section of the page—say the list of Supreme Court decisions, or the latest documents in next year’s state budget—click the mouse. Now, look under the “Save and Edit” box in the Klaxon window, and you’ll notice it says “Done!” That means that Klaxon has saved this page and will start watching it for you.
 
 Before you close the window though, see the red box under the heading “Content Preview?” That shows you what information is captured in the section of the page you selected. If the words you see in the red box don’t match what you’re hoping to monitor, you might have chosen the wrong part of the page. Not to worry, you can hover and click on any different section of the page until you get the right area selected and saved. 
 
@@ -60,5 +60,4 @@ Now, choose the channel that you want the Klaxon alerts to go to from the dropdo
 ## About Klaxon
 
 Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/#.2N8GFLsI0), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. The public release of this free and open source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/). With feedback or suggestions, contact us with the form below. To help improve Klaxon for other users, whether you’re a coder or not, read [our guide to how you can contribute to the project.](https://github.com/themarshallproject/klaxon/blob/master/CONTRIBUTING.md)
-
 
