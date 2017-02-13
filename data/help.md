@@ -1,6 +1,6 @@
-## How Klaxon work
+## How Klaxon works
 
-Klaxon is a tool that enables journalists and researchers to monitor scores of websites for noteworthy changes. When it finds something new on one of the pages it's watching, it saves a version of it, known as a "snapshot,” and emails an alert and pings a Slack channel.
+Klaxon is a tool that enables journalists and researchers to monitor scores of websites for noteworthy changes. When it finds something new on one of the pages it's watching, it saves a version of it, or a "snapshot,” and emails an alert and pings a Slack channel.
 
 #Bookmark Set-Up
 
@@ -8,7 +8,7 @@ Working with Klaxon requires the one-time setup of a bookmarklet. Once the bookm
 
 To add the bookmarklet, visit the Klaxon website. The first time you visit you'll notice a box that says “Watch Your First Item.” Underneath that, you’ll see a button that says “Add to Klaxon.” Click and drag that button to the bookmarks bar on your browser. Now anytime you’re on a site you want follow through Klaxon, you can click on the bookmarklet *without having to leave the site*. This works similarly to services like Digg and Pinterest. 
 
-Clicking on the bookmark will open a popup on the right side of the browser window. As you move your mouse around the page, different sections are highlighted. Web pages have images, files, tables and text that live in specific sections of the  HTLM document. With your mouse, you can selecting a table (tr), paragraph (p), headline (h2) or the whole body of text (body). These selectors tell Klaxon *which* part of the page to follow, so you’ll only get alerts when that specific section changes.
+Clicking on the bookmark will open a popup on the right side of your browser window. As you move your mouse around the page, different sections are highlighted. Web pages have images, files, tables and text that live in specific sections of the HTML document. With your mouse, you can select a table row (tr), paragraph (p), headline (h2) or the whole body of text (body). These selectors tell Klaxon *which* part of the page to follow, so you’ll only get alerts when that specific section changes. To tell Klaxon where to look, hover your mouse over different sections of the page. Notice how each section is highlighted in red when you hover. This is one indicator to help Klaxon home in on the right area.
 
 ![](/assets/bookmarklet.png)
 
@@ -16,7 +16,7 @@ When you think you have highlighted the correct section of the page—say the li
 
 Before you close the window though, see the red box under the heading “Content Preview?” That shows you what information is captured in the section of the page you selected. If the words you see in the red box don’t match what you’re hoping to monitor, you might have chosen the wrong part of the page. Not to worry, you can hover and click on any different section of the page until you get the right area selected and saved. 
 
-For the last step, you’ll want to click the ‘Save and Edit’ button, which will bring you back to Klaxon so you can give this page a name (like a slug) in the system and include tags.
+For the last step, you’ll want to click the ‘Save and Edit’ button, which will bring you back to Klaxon so you can give this page a name (like a slug) in the system.
 
 
 ## The Feed
@@ -27,7 +27,7 @@ If you want to step back through each stage of the site’s evolution, you can e
 
 ## Watching
 
-The “[Watching](/watching/pages)” page displays a list of the all pages that your newsroom is monitoring (as opposed to a chronological stream of the latest updates as seen in the [Feed](/)). In watching you can also change settings and add tags. 
+The “[Watching](/watching/pages)” page displays a list of all the pages that your newsroom is monitoring (as opposed to a chronological stream of the latest updates as seen in the [Feed](/)). Here you can also change settings for individual pages. 
 
 To change the name or URL of any of the Klaxons you’ve created or to adjust their notification settings, simply click the “Edit” button next to the appropriate page. You can also click into each to view the differences of each snapshot the system has collected since you added it to Klaxon.
 
@@ -37,9 +37,9 @@ To make it easier to keep track of what’s significant about each change and to
 
 #Adding Klaxon Manually
 
-In the “[Watching](/watching/pages)” page you can also manually add sites to monitor if you already know which HTML-selector you want to follow or are having difficulty with the bookmarklet. 
+In the “[Watching](/watching/pages)” page you can manually add sites to monitor if you already know which CSS Selector on the page you want to follow or are having difficulty with the bookmarklet.
 
-Click on "Manually Watch and Item" on the right side of the heading. This will take you to directly to the Edit page for links. Here you can include the Title, link to the site and the specific selector(s) you want to focus on. 
+Click on "Manually Watch and Item" on the right side of the heading. This will take you to directly to the Edit page for links. Here you can include the title, link to the site and the specific selector(s) you want to focus on. 
 
 ## Understand what’s changed on a page
 
@@ -60,4 +60,3 @@ Now, choose the channel that you want the Klaxon alerts to go to from the dropdo
 ## About Klaxon
 
 Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/#.2N8GFLsI0), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. The public release of this free and open source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/). With feedback or suggestions, contact us with the form below. To help improve Klaxon for other users, whether you’re a coder or not, read [our guide to how you can contribute to the project.](https://github.com/themarshallproject/klaxon/blob/master/CONTRIBUTING.md)
-
