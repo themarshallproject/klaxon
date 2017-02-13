@@ -1,12 +1,12 @@
-## Get emailed when a website changes.
+## Get emailed when a website changes
 
 Klaxon is a free, quick to set up and easy to use *robot* that checks websites regularly so you don't have to.
 
-You list websites you want monitored and Klaxon will check them and, if they change, email you what's different. It saves you having to visit dozens of links yourself every day.
+You list websites you want monitored and Klaxon will visit them and, if they change, email you what's different. It saves you having to reload dozens of links yourself every day.
 
 It's perfect for monitoring website changes you might miss... like freedom of information disclosure logs, court records, and anything related to Donald Trump. And it can even send notifications to your Slack channel.
 
-Read more below, or say hello to the humans behind the project at the [our Group email list](https://groups.google.com/forum/#!forum/news-klaxon-users).
+Read more below, or say hello to the humans behind the project at the [Google Group email list](https://groups.google.com/forum/#!forum/news-klaxon-users).
 
 [![](docs/klaxon_hero.png)](https://newsklaxon.org)
 
