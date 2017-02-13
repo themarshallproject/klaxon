@@ -4,7 +4,7 @@ Klaxon is a free, quick to set up and easy to use *robot* that checks websites r
 
 You list websites you want monitored and Klaxon will visit them and, if they change, email you what's different. It saves you having to reload dozens of links yourself every day.
 
-It's perfect for monitoring website changes you might miss... like freedom of information disclosure logs, court records, and anything related to Donald Trump. And it can even send notifications to your Slack channel.
+It's perfect for monitoring website changes you might miss, like freedom of information disclosure logs, court records, and anything related to Donald Trump. And it can even send notifications to your Slack channel.
 
 Read more below, or say hello to the humans behind the project at the [Google Group email list](https://groups.google.com/forum/#!forum/news-klaxon-users).
 
@@ -12,11 +12,7 @@ Read more below, or say hello to the humans behind the project at the [Google Gr
 
 ## Alerting journalists to changes on the web
 
-Klaxon is a Ruby on Rails app that enables reporters and editors to monitor scores of websites for newsworthy changes. When it finds something new on one of the pages or files it's watching, it emails an alert and pings a Slack channel.
-
-Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. The public release of this free and open source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/). [If you need help using Klaxon once it's already been set up, [you can find it here.](https://github.com/themarshallproject/klaxon/blob/master/data/help.md)]
-
-Klaxon has been used and tested by journalists at the Marshall Project, the Texas Tribune, the Associated Press and elsewhere, but it is still experimental software. Currently, we're calling this a "developer's release," as we're comfortable allowing developers use it in newsrooms. We encourage you to share it with non-technical users in your organization, provided they're aware that there are still bugs to be ironed out; we hope your testing will provide feedback for its future development and that you'll consider contributing to the project as well.
+Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. Klaxon has been used and tested by journalists at The Marshall Project, The New York Times, the Texas Tribune, the Associated Press and elsewhere. The public release of this free and open source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/). [If you need help using Klaxon once it's already been set up, [you can find it here.](https://github.com/themarshallproject/klaxon/blob/master/data/help.md)]
 
 [![Circle CI](https://circleci.com/gh/themarshallproject/klaxon.svg?style=svg)](https://circleci.com/gh/themarshallproject/klaxon)
 
@@ -115,5 +111,6 @@ We've been grateful for additional contributions to the project from:
 * Jeremy Merrill
 * Emily Hopkins
 * Ari Shapell
+* Yolanda Martinez
 
 We also owe thanks to Knight-Mozilla [OpenNews](https://opennews.org/), which supported the initial public release of this free and open source software.
