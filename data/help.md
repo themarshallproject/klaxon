@@ -60,3 +60,8 @@ Now, choose the channel that you want the Klaxon alerts to go to from the dropdo
 ## About Klaxon
 
 Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/#.2N8GFLsI0), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. The public release of this free and open source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/). With feedback or suggestions, contact us with the form below. To help improve Klaxon for other users, whether you’re a coder or not, read [our guide to how you can contribute to the project.](https://github.com/themarshallproject/klaxon/blob/master/CONTRIBUTING.md)
+
+## Upgrading Klaxon
+
+When we release major changes to Klaxon, we’ll make an announcement to our [Google Group email list](https://groups.google.com/forum/#!forum/news-klaxon-users). At that point, you’ll likely want to adopt those in your system as well. To do that, you can find [everything you'll need to upgrade here](https://github.com/themarshallproject/klaxon#applying-upgrades-as-the-project-develops).
+
