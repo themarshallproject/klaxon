@@ -14,7 +14,7 @@
       "generator": "secret"
     },
     "ADMIN_EMAILS": {
-      "description": "A comma-seperated list of emails that are administrators. You need at least one."
+      "description": "A comma-separated list of emails that are administrators. You need at least one."
     }
   },
   "formation": {
