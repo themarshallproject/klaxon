@@ -1,0 +1,31 @@
+version: "2"
+
+services:
+  db:
+    image: postgres:9.5
+    restart: always
+    volumes:
+      - "db-data:/var/lib/postgresql/data"
+    networks:
+      - default
+
+  app:
+    image: axioscode/klaxon
+    container_name: klaxon
+    env_file: .env
+    links:
+      - db
+    depends_on:
+      - db
+    restart: always
+    networks:
+      - default
+      - proxy
+
+volumes:
+  db-data:
+    driver: local
+
+networks:
+  proxy:
+    external: true
