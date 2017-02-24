@@ -14,7 +14,11 @@
       "generator": "secret"
     },
     "ADMIN_EMAILS": {
-      "description": "A comma-seperated list of emails that are administrators. You need at least one."
+      "description": "A comma-separated list of emails that are administrators. You need at least one."
+    },
+    "DEPLOY_TASKS": {
+      "value": "db:migrate",
+      "description": "Space-separated list of tasks to run after each deploy. You shouldn't need to change this."
     }
   },
   "formation": {
@@ -23,10 +27,17 @@
       "size": "free"
     }
   },
-  "image": "heroku/ruby",
   "addons": [
     "heroku-postgresql:hobby-dev",
     "sendgrid:starter",
     "scheduler:standard"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    },
+    {
+      "url": "https://github.com/gunpowderlabs/buildpack-ruby-rake-deploy-tasks"
+    }
   ]
 }
