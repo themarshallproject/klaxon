@@ -94,6 +94,8 @@ You should see three buttons. Click the one in the middle that says “Github Co
 
 On the Heroku page, in the “Connect to Github” section at the bottom, type ‘klaxon’ into the search box next to your Github username. Click the “Search” button. Next, click the “Connect” button next to the name of your forked repo that pops up below. Finally, select the 'master' branch from the dropdown and click “Enable Automatic Deploys” button in the “Automatic deploys” section. This ties your Heroku server to your Github account, so that every time you merge updates into your forked version of the Klaxon repository, they will automatically go live on your server with the latest updates. You'll only have to do all of this one time to set up the pipeline.
 
+_Note: if you are upgrading from version 0.2.0 or lower, please follow the additional instructions in [migration_setup.md](migration_setup.md)_
+
 Finally, each time an update is announced on the Google Group, you can go to your forked version of the repo on Github and click the green “New Pull Request” button to pull the changes from our master repo.
 
 On the "basefork" dropdown on the left, click and select your repo. Then click the “compare across forks” link and change the “head fork” on the dropdown menu to “marshallproject/klaxon”. Make sure both the branches are set to “master” (they should already be). Below that, a green checkbox and the words “Able to merge” should appear. If they do, click the green “Create Pull Request” button. Give this pull request a title. You might want to say “Merging Klaxon release 0.9.1” or whatever the new version number is and click the “Create Pull Request” button again.
@@ -115,5 +117,7 @@ We've been grateful for additional contributions to the project from:
 * Ari Shapell
 * Yolanda Martinez
 * Jackson Gothe-Snape, SBS News
+* Mike Stucka
+* Bob Weston
 
 We also owe thanks to Knight-Mozilla [OpenNews](https://opennews.org/), which supported the initial public release of this free and open source software.
