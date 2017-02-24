@@ -117,5 +117,7 @@ We've been grateful for additional contributions to the project from:
 * Ari Shapell
 * Yolanda Martinez
 * Jackson Gothe-Snape, SBS News
+* Mike Stucka
+* Bob Weston
 
 We also owe thanks to Knight-Mozilla [OpenNews](https://opennews.org/), which supported the initial public release of this free and open source software.
