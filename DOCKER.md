@@ -13,3 +13,17 @@ ADMIN_EMAILS=
 SENDGRID_USERNAME=
 SENDGRID_PASSWORD=
 ```
+
+If you would like to use [Amazon SES](https://aws.amazon.com/ses/) instead to send emails, you'll need a different set of environmental variables.
+
+```sh
+DATABASE_URL=
+SECRET_KEY_BASE=
+ADMIN_EMAILS=
+SMTP_PROVIDER=AMAZON_SES
+AMAZON_SES_ADDRESS=
+AMAZON_SES_USERNAME=
+AMAZON_SES_PASSWORD=
+AMAZON_SES_DOMAIN=
+EMAIL_FROM_ADDRESS=
+```

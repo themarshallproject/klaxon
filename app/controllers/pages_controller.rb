@@ -24,7 +24,7 @@ class PagesController < ApplicationController
 
   # GET /pages
   def index
-    @pages = Page.order(:created_at).all
+    @pages = Page.order('created_at DESC').all
   end
 
   # GET /pages/1

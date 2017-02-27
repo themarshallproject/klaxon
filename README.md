@@ -1,12 +1,18 @@
+## Get emailed when a website changes
+
+Klaxon is a free, quick to set up and easy to use *robot* that checks websites regularly so you don't have to.
+
+You list websites you want monitored and Klaxon will visit them and, if they change, email you what's different. It saves you having to reload dozens of links yourself every day.
+
+It's perfect for monitoring website changes you might miss, like freedom of information disclosure logs, court records, and anything related to Donald Trump. And it can even send notifications to your Slack channel.
+
+Read more below, or say hello to the humans behind the project at the [Google Group email list](https://groups.google.com/forum/#!forum/news-klaxon-users).
+
 [![](docs/klaxon_hero.png)](https://newsklaxon.org)
 
 ## Alerting journalists to changes on the web
 
-Klaxon is a Ruby on Rails app that enables reporters and editors to monitor scores of websites for newsworthy changes. When it finds something new on one of the pages or files it's watching, it emails an alert and pings a Slack channel.
-
-Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. The public release of this free and open source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/). [If you need help using Klaxon once it's already been set up, [you can find it here.](https://github.com/themarshallproject/klaxon/blob/master/data/help.md)]
-
-Klaxon has been used and tested by journalists at the Marshall Project, the Texas Tribune, the Associated Press and elsewhere, but it is still experimental software. Currently, we're calling this a "developer's release," as we're comfortable allowing developers use it in newsrooms. We encourage you to share it with non-technical users in your organization, provided they're aware that there are still bugs to be ironed out; we hope your testing will provide feedback for its future development and that you'll consider contributing to the project as well.
+Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. Klaxon has been used and tested by journalists at The Marshall Project, The New York Times, the Texas Tribune, the Associated Press and elsewhere. The public release of this free and open source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/). [If you need help using Klaxon once it's already been set up, [you can find it here.](https://github.com/themarshallproject/klaxon/blob/master/data/help.md)]
 
 [![Circle CI](https://circleci.com/gh/themarshallproject/klaxon.svg?style=svg)](https://circleci.com/gh/themarshallproject/klaxon)
 
@@ -21,7 +27,7 @@ Our team will keep hacking on Klaxon in spare moments, and we plan to keep it hu
 ### Getting started
 One of our goals for Klaxon is to make it as easy as possible for reporters and editors without tech backgrounds to use and to set up. Getting your own Klaxon running in your newsroom will require you to run a handful of instructions one time through the help of online services Heroku and Github. Following these directions, it should take maybe 10 minutes to set up your Klaxon, including the time to create accounts on Heroku and Github if you need to.
 
-We use [Heroku](https://heroku.com/) to deploy software in The Marshall Project newsroom. We think it makes some of the tedious work of running servers a lot easier to deal with, so we designed Klaxon to be easily deployable on Heroku. (If you’d like to run this in your newsroom’s preferred server setup — say using Docker or a generic Linux machine — we encourage you to do so, and to send it back to us, with documentation, [in a pull request](CONTRIBUTING.md).) So first, you’ll need to [create an account with Heroku](https://signup.heroku.com/), if you don’t already have one.
+We use [Heroku](https://heroku.com/) to deploy software in The Marshall Project newsroom. We think it makes some of the tedious work of running servers a lot easier to deal with, so we designed Klaxon to be easily deployable on Heroku. (If you’d like to run this in your newsroom’s preferred server setup — say using [Docker](https://github.com/themarshallproject/klaxon/blob/develop/DOCKER.md) or a [Linux machine](https://github.com/themarshallproject/klaxon/blob/develop/install_on_ubuntu.md) — we encourage you to do so, and to send it back to us, with documentation, [in a pull request](CONTRIBUTING.md).) If you want to use our setup, you’ll need to [create an account with Heroku](https://signup.heroku.com/), if you don’t already have one.
 
 ### How much will this cost?
 It should be free to get started with Klaxon on Heroku, but if you start using it a lot, you may need to pay a small amount to keep it running. Out of the box with Heroku, for free you’ll get:
@@ -76,7 +82,9 @@ Now, choose the channel that you want the Klaxon alerts to go to from the dropdo
 
 ### Applying upgrades as the project develops
 
-When we release major changes to Klaxon, we’ll make an announcement to [our Google Group email list](https://groups.google.com/forum/#!forum/news-klaxon-users). At that point, you’ll likely want to adopt those in your system as well. To do that, you’ll need to fork our repo to your own Github account to receive the updates, and then you can use Heroku’s dashboard to push the changes to your application.
+When we release major changes to Klaxon, we’ll make an announcement to [our Google Group email list](https://groups.google.com/forum/#!forum/news-klaxon-users). At that point, you’ll likely want to adopt those in your system as well. If you're comfortable using git on the command line, this would require just a few simple commands: pull the changes from the master branch of this repo, merge them into your forked repo and push it all to Heroku.
+
+But if you're not a programmer, there is still a fairly painless way to upgrade by using Github and Heroku. First, you’ll need to fork our repo to your own Github account to receive the updates, and then you can use Heroku’s dashboard to push the changes to your application.
 
 If you don’t already have an account at [Github.com](https://github.com/), now is a good time to set one up (don’t worry, it’s free). This has the added benefit of giving you access [to comment on the issues](https://github.com/themarshallproject/klaxon/issues) our community is working on developing. Once you’re logged into Github with your new account, go to [the repo for the Klaxon project](https://github.com/themarshallproject/klaxon) and click the “Fork” button. This copies our code into a separate version under your Github account that you can tie to your Klaxon instance running on Heroku’s servers.
 
@@ -84,7 +92,9 @@ Now, go to [https://dashboard.heroku.com](https://dashboard.heroku.com/) and cho
 
 You should see three buttons. Click the one in the middle that says “Github Connect With Github”. The options at the bottom of the page will change. Now, click the gray button that says “Connect To Github”. It will pop up a new window to log you into Github, if you aren’t already. In that window, click the “Authorize Application” button. The popup window should now close itself.
 
-On the Heroku page, in the “Connect to Github” section at the bottom, type ‘klaxon’ into the search box next to your Github username. Click the “Search” button. Next, click the “Connect” button next to the name of your forked repo that pops up below. Finally, click “Enable Automatic Deploys” button in the “Automatic deploys” section. This ties your Heroku server to your Github account, so that every time you merge updates into your forked version of the Klaxon repository, they will automatically go live on your server with the latest updates. You'll only have to do all of this one time to set up the pipeline.
+On the Heroku page, in the “Connect to Github” section at the bottom, type ‘klaxon’ into the search box next to your Github username. Click the “Search” button. Next, click the “Connect” button next to the name of your forked repo that pops up below. Finally, select the 'master' branch from the dropdown and click “Enable Automatic Deploys” button in the “Automatic deploys” section. This ties your Heroku server to your Github account, so that every time you merge updates into your forked version of the Klaxon repository, they will automatically go live on your server with the latest updates. You'll only have to do all of this one time to set up the pipeline.
+
+_Note: if you are upgrading from version 0.2.0 or lower, please follow the additional instructions in [migration_setup.md](migration_setup.md)_
 
 Finally, each time an update is announced on the Google Group, you can go to your forked version of the repo on Github and click the green “New Pull Request” button to pull the changes from our master repo.
 
@@ -105,5 +115,9 @@ We've been grateful for additional contributions to the project from:
 * Jeremy Merrill
 * Emily Hopkins
 * Ari Shapell
+* Yolanda Martinez
+* Jackson Gothe-Snape, SBS News
+* Mike Stucka
+* Bob Weston
 
 We also owe thanks to Knight-Mozilla [OpenNews](https://opennews.org/), which supported the initial public release of this free and open source software.

@@ -43,7 +43,7 @@
     <% end %>
   </div>
 
-  <div class="desktop-only container diff-container klax-spacer-md">
+  <div class="container diff-container klax-spacer-md">
     <div class="row klax-spacer-md">
       <%= raw Diffy::Diff.new(@before.match_text, @after.match_text, context: 2).to_s(:html) %>
     </div>

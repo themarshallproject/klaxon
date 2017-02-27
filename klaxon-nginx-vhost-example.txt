@@ -1,0 +1,29 @@
+server {
+  listen 80;
+  server_name klaxon-domain.yourdomain.com;
+  root /path/to_/code/rack_apps/klaxon/current/public;
+
+  passenger_ruby /home/user_name/.rvm/wrappers/ruby-2.3.0/ruby;
+  passenger_enabled on;
+  rails_env production;
+
+  access_log /var/log/nginx/klaxon.access.log;
+  error_log  /var/log/nginx/klaxon.error.log;
+
+  location ~ ^/assets/ {
+    passenger_enabled on;
+    expires max;
+  }
+
+ location ~ ^/(assets|images|flash)/ {
+   passenger_enabled on;
+   expires max;
+ }
+
+ location = /nginx_status {
+   stub_status on;
+   access_log off;
+   allow all;
+   deny all;
+ }
+}
