@@ -10,7 +10,8 @@ services:
       - default
 
   app:
-    image: axioscode/klaxon
+    image: klaxon
+    build: .
     container_name: klaxon
     env_file: .env
     links:
@@ -18,6 +19,8 @@ services:
     depends_on:
       - db
     restart: always
+    ports:
+      - "3004:3000"
     networks:
       - default
       - proxy
