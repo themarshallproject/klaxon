@@ -1,6 +1,9 @@
 # Running Klaxon with Docker
 
-*This guide is a work in progress.*
+You can run K
+
+To install docker and docker-compose, simply: `brew cask install docker`. I think you might be able to just run `docker-compose up` once you're in the directory and after you've set the proper environment variables.
+
 
 ## Expected environmental variables
 
@@ -14,16 +17,16 @@ SENDGRID_USERNAME=
 SENDGRID_PASSWORD=
 ```
 
-If you would like to use [Amazon SES](https://aws.amazon.com/ses/) instead to send emails, you'll need a different set of environmental variables.
+If you would like to use [Amazon SES](https://aws.amazon.com/ses/) instead to send emails, you'll need a different set of environmental variables. Note that your SES username and password are different from your AWS secret key pair.
 
 ```sh
 DATABASE_URL=
 SECRET_KEY_BASE=
 ADMIN_EMAILS=
-SMTP_PROVIDER=AMAZON_SES
-AMAZON_SES_ADDRESS=
-AMAZON_SES_USERNAME=
-AMAZON_SES_PASSWORD=
-AMAZON_SES_DOMAIN=
-EMAIL_FROM_ADDRESS=
+SMTP_PROVIDER=SES
+SES_ADDRESS=
+SES_SMTP_USERNAME=
+SES_SMTP_PASSWORD=
+SES_DOMAIN=
+MAILER_FROM_ADDRESS=
 ```
