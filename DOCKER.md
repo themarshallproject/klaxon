@@ -1,9 +1,11 @@
 # Running Klaxon with Docker
 
-You can run K
-
 To install docker and docker-compose, simply: `brew cask install docker`. I think you might be able to just run `docker-compose up` once you're in the directory and after you've set the proper environment variables.
 
+You'll need to open a separate terminal tab and run:
+
+`docker exec klaxon bundle exec rake db:migrate`
+`docker exec klaxon bundle exec rake users:create_admin`
 
 ## Expected environmental variables
 
