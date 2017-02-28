@@ -1,10 +1,7 @@
 class UserMailer <
   layout 'user_mailer'
 
-  logger.debug "HELLO WORLD"
-
   def login_email(user: nil)
-    logger.debug "HELLO WORLD"
     token = LoginToken.create(user: user)
     @url = token_session_url(token: token)
     @user = user

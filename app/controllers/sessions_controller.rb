@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:email])
+
     if user.nil?
       redirect_to unknown_user_path and return false
     end

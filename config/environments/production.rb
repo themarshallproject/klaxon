@@ -1,6 +1,5 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.logger = Logger.new(STDOUT)
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -83,14 +82,10 @@ Rails.application.configure do
   provider  = (ENV["SMTP_PROVIDER"] || "SENDGRID").to_s
   address   = ENV["#{provider}_ADDRESS"] || "smtp.sendgrid.net"
   # if you use SES as your SMTP provider, then your username and password are actually your AWS credentials.
-  user_name = ENV["#{provider}_USERNAME" || (provider == "SES" ? (ENV["AWS_ACCESS_KEY_ID"] || ENV["ACCESS_KEY_ID"] ) : nil) ]  # for AWS SES, this is your access key id
-  password  = ENV["#{provider}_PASSWORD" || (provider == "SES" ? (ENV["AWS_SECRET_ACCESS_KEY"] || ENV["SECRET_ACCESS_KEY"] ) : nil) ]  # for AWS SES, this is your secret access key
+  # NOTE: this isn't your key/secret key, but the smtp password thing you get from amazon
+  user_name = ENV["#{provider}_USERNAME" || (provider == "SES" ? (ENV["SES_SMTP_USERNAME"]) : nil) ]  # for AWS SES, this is your access key id
+  password  = ENV["#{provider}_PASSWORD" || (provider == "SES" ? (ENV["SES_SMTP_PASSWORD"]) : nil) ]  # for AWS SES, this is your secret access key
   domain    = ENV["#{provider}_DOMAIN"] || "heroku.com"
-
-  Rails.logger.debug "PROVIDER: #{provider}"
-  Rails.logger.debug "ADDRESS: #{address}"
-  Rails.logger.debug "PASSWORD: #{password}"
-  Rails.logger.debug "DOMAIN: #{domain}"
 
   ActionMailer::Base.smtp_settings = {
     :address        => address,
