@@ -1,6 +1,8 @@
 # Running Klaxon with Docker
 
-To install docker and docker-compose, simply: `brew cask install docker`. I think you might be able to just run `docker-compose up` once you're in the directory and after you've set the proper environment variables.
+To install docker and docker-compose, simply: `brew cask install docker`. Once installed, you'll need to open and run the Docker app.
+
+(I think you might be able to just run `docker-compose up` once you're in the directory and after you've set the proper environment variables.)
 
 You'll need to open a separate terminal tab and run:
 ```sh
