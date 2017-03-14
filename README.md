@@ -12,7 +12,7 @@ Read more below, or say hello to the humans behind the project at the [Google Gr
 
 ## Alerting journalists to changes on the web
 
-Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. Klaxon has been used and tested by journalists at The Marshall Project, The New York Times, the Texas Tribune, the Associated Press and elsewhere. The public release of this free and open source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/). [If you need help using Klaxon once it's already been set up, [you can find it here.](https://github.com/themarshallproject/klaxon/blob/master/data/help.md)]
+Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. Klaxon has been used and tested by journalists at The Marshall Project, The New York Times, the Texas Tribune, the Associated Press [and elsewhere](NEWSROOMS.md). The public release of this free and open source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/). [If you need help using Klaxon once it's already been set up, [you can find it here.](https://github.com/themarshallproject/klaxon/blob/master/data/help.md)]
 
 [![Circle CI](https://circleci.com/gh/themarshallproject/klaxon.svg?style=svg)](https://circleci.com/gh/themarshallproject/klaxon)
 
