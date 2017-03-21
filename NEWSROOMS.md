@@ -4,6 +4,7 @@
 * Austin American-Statesman
 * Axios
 * Dallas Morning News
+* FiveThirtyEight
 * Fusion
 * Gizmodo
 * KBIA, in Columbia, Mo.
@@ -12,6 +13,7 @@
 * The New York Times
 * Omaha World-Herald
 * ProPublica
+* Reveal from the Center for Investigative Reporting
 * SBS News, Australia
 * Seattle Times
 * Texas Tribune
