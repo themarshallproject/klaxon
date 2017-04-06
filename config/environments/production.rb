@@ -83,8 +83,8 @@ Rails.application.configure do
   address   = ENV["#{provider}_ADDRESS"] || "smtp.sendgrid.net"
   # if you use SES as your SMTP provider, then your username and password are actually your ses smtp credentials.
   # NOTE: this isn't your key/secret key, but the smtp password thing you get from amazon
-  user_name = ENV["#{provider}_USERNAME" || (provider == "SES" ? ENV["SES_SMTP_USERNAME"] : nil)]  # for AWS SES, this is your access key id
-  password = ENV["#{provider}_PASSWORD" || (provider == "SES" ? ENV["SES_SMTP_PASSWORD"] : nil)]  # for AWS SES, this is your access key id
+  user_name = ENV["#{provider}_USERNAME"]  # for AWS SES, this is your access key id
+  password = ENV["#{provider}_PASSWORD"] # for AWS SES, this is your access key id
   domain    = ENV["#{provider}_DOMAIN"] || "heroku.com"
 
 
