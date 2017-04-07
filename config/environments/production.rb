@@ -41,7 +41,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  config.force_ssl = false
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
@@ -81,11 +81,14 @@ Rails.application.configure do
 
   provider  = (ENV["SMTP_PROVIDER"] || "SENDGRID").to_s
   address   = ENV["#{provider}_ADDRESS"] || "smtp.sendgrid.net"
-  # if you use SES as your SMTP provider, then your username and password are actually your AWS credentials.
-  user_name = ENV["#{provider}_USERNAME" || (provider == "SES" ? (ENV["AWS_ACCESS_KEY_ID"] || ENV["ACCESS_KEY_ID"] ) : nil) ]  # for AWS SES, this is your access key id
-  password  = ENV["#{provider}_PASSWORD" || (provider == "SES" ? (ENV["AWS_SECRET_ACCESS_KEY"] || ENV["SECRET_ACCESS_KEY"] ) : nil) ]  # for AWS SES, this is your secret access key 
+  # if you use SES as your SMTP provider, then your username and password are actually your ses smtp credentials.
+  # NOTE: this isn't your key/secret key, but the smtp password thing you get from amazon
+  user_name = ENV["#{provider}_USERNAME"]  # for AWS SES, this is your access key id
+  password = ENV["#{provider}_PASSWORD"] # for AWS SES, this is your access key id
   domain    = ENV["#{provider}_DOMAIN"] || "heroku.com"
   port      = ENV["#{provider}_PORT"] || "587"
+
+
 
   ActionMailer::Base.smtp_settings = {
     :address        => address,
