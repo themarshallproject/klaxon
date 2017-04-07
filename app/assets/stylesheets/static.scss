@@ -2,20 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$highlight: #9AA8B9;
+
 body {
-  color: #ff0b3a;
+  color: $highlight;
   padding-top: 50px;
 }
 
 a {
-  color: #ff0b3a;
-  border-bottom: 2px solid #ff0b3a;
+  color: $highlight;
+  border-bottom: 2px solid $highlight;
 }
 
 a:hover, a:focus {
-  color: #ff0b3a;
+  color: $highlight;
   text-decoration: none;
-  border-bottom: 2px solid #ff0b3a;
+  border-bottom: 2px solid $highlight;
 }
 
 .navbar a {
@@ -39,7 +41,7 @@ a:hover, a:focus {
 }
 
 .navbar-toggle {
-  background-color: #ff0b3a !important;
+  background-color: $highlight !important;
 }
 
 .navbar-toggle .icon-bar {
@@ -47,7 +49,7 @@ a:hover, a:focus {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  border-top: 0.2em solid #ff0b3a;
+  border-top: 0.2em solid $highlight;
   padding-top: 10px;
 }
 
@@ -63,11 +65,11 @@ h3 {font-size: 2.25em;}
 h4 {font-size: 1.5em;}
 
 .table > thead > tr > th {
-  border-bottom: 2px solid #ff0b3a;
+  border-bottom: 2px solid $highlight;
 }
 
 .table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
-  border-top: 1px solid #ff0b3a;
+  border-top: 1px solid $highlight;
   vertical-align: center;
   // padding: 8px 0;
   padding-left: 0;
@@ -81,21 +83,21 @@ table tbody tr td:last-child, table thead tr td:last-child  {
 
 .form-control {
   border-radius: 0 !important;
-  border: 1px solid #ff0b3a;
+  border: 1px solid $highlight;
   box-shadow: none;
-  color: #ff0b3a;
+  color: $highlight;
 }
 
 .btn {
   border-radius: 0 !important;
-  border: 1px solid #ff0b3a;
-  color: #ff0b3a;
-  border-color: #ff0b3a !important;
+  border: 1px solid $highlight;
+  color: $highlight;
+  border-color: $highlight !important;
 }
 
 .btn:hover {
   color: #fff;
-  background-color: #ff0b3a;
+  background-color: $highlight;
   box-shadow: none;
 }
 
@@ -104,19 +106,19 @@ table tbody tr td:last-child, table thead tr td:last-child  {
 }
 
 .btn-danger:hover {
-  color: #ff0b3a;
+  color: $highlight;
   background-color: #fff;
 }
 
 *:focus {
-  border-color: #ff0b3a !important;
+  border-color: $highlight !important;
   box-shadow: none !important;
   outline: none !important;
 }
 
 .dropdown a {
   border: none;
-  color: #ff0b3a !important;
+  color: $highlight !important;
 }
 
 .nav .dropdown .dropdown-menu {
@@ -142,19 +144,19 @@ table tbody tr td:last-child, table thead tr td:last-child  {
 }
 
 .jumbotron {
-  border: 1px solid #ff0b3a;
+  border: 1px solid $highlight;
   border-radius: 0 !important;
   background-color: transparent;
 }
 
 code {
-  color: #ff0b3a;
+  color: $highlight;
   background-color: rgba(255,11,58, 0.1);
   border-radius: 0;
 }
 
 small {
-  color: #ff0b3a !important;
+  color: $highlight !important;
 }
 
 // custom
@@ -225,7 +227,7 @@ small {
 }
 
 .klax-line-selected, .klax-line-selected a {
-  background-color: #ff0b3a !important;
+  background-color: $highlight !important;
   color: #fff !important;
 }
 
@@ -291,7 +293,7 @@ small {
 .klax-hero {
   margin-top: -50px;
   padding-top: 50px;
-  background-color: #ff0b3a;
+  background-color: $highlight;
   height: 100vh;
   min-height: 900px;
   color: #fff;
@@ -308,7 +310,7 @@ small {
   }
   .btn:hover {
     background-color: white;
-    color: #ff0b3a !important;
+    color: $highlight !important;
   }
   p, h1 {
     text-align: center;
