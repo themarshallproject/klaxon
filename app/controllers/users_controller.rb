@@ -26,23 +26,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    user_domain = @user.email.strip.split('@')[-1].downcase
+    if @user.save
+      UserMailer.welcome_email(user: @user, invited_by: current_user).deliver_later
 
-    approved_domains = (ENV['APPROVED_USER_DOMAINS'] || '').strip.downcase.split(',')
-    approve_any_domain = approved_domains.length == 0
-    domain_is_approved = approved_domains.include?(user_domain)
-
-    if approve_any_domain or domain_is_approved
-      if @user.save
-        UserMailer.welcome_email(user: @user, invited_by: current_user).deliver_later
-        redirect_to users_url, notice: 'User was successfully created.'
-      else
-        render :new
-      end
+      redirect_to users_url, notice: 'User was successfully created.'
     else
-      redirect_to users_url, notice: 'User\'s email address belongs to non-approved domain.'
+      render :new
     end
-
   end
 
   # PATCH/PUT /users/1
