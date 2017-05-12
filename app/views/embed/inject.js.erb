@@ -1,7 +1,7 @@
 (function() {
-  var appRoot = "<%= root_url %>";
-  var editorURL = "<%= @iframe_url %>";
-  var postMessageDomain = "<%= root_url %>";
+  var appRoot = "<%= root_url.gsub('http://', 'https://') %>";
+  var editorURL = "<%= @iframe_url.gsub('http://', 'https://') %>";
+  var postMessageDomain = "<%= root_url.gsub('http://', 'https://') %>";
 
   var currentURL = window.location.href;
   if (currentURL.indexOf(appRoot) >= 0) {
