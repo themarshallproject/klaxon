@@ -39,6 +39,11 @@ class User < ActiveRecord::Base
   end
 
   def email_domain_is_approved
+    if not (email || '').include?('@')
+      errors.add(:email, 'Email address is invalid.')
+      return false
+    end
+
     user_domain = email.strip.split('@')[-1].downcase
     approved_domains = (ENV['APPROVED_USER_DOMAINS'] || '').strip.downcase.split(',')
 
@@ -46,7 +51,8 @@ class User < ActiveRecord::Base
     domain_is_approved = approved_domains.include?(user_domain)
 
     if not (approve_any_domain or domain_is_approved)
-      errors.add(:email, 'This email address belongs to a non-approved domain.')
+      errors.add(:email, 'Email address belongs to a non-approved domain.')
+      return false
     end
   end
 
