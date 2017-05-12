@@ -74,6 +74,10 @@ Once you’re logged in, you should see the main page that will fill up in the c
 
 On the right side of the page, click the “Create New User” button. Add the reporter’s first and last name and email address, and she will get an email allowing her into the Klaxon. Now, finally, you and your users can start adding web pages you want Klaxon to watch.
 
+#### Limit new users to only those on specific email domain(s)
+
+By default, people with any email address can be added as new users. If you'd like to allow only users with *specific* email domains, set the `APPROVED_USER_DOMAINS` environment variable (or "Config Variable" in Heroku's lingo). That variable should be a comma-separated list of domains, e.g., `themarshallproject.org,nsa.gov`.
+
 ### Notify a Slack channel
 
 You’re all set for email notifications. If you’d like to also receive alerts through Slack, you can set that up now too. (If you want alerts from other services, [we welcome pull requests](CONTRIBUTING.md)) Click on the “Settings” button in the upper right corner of the page and choose “Integrations” from the menu. On the Integrations page, click the “Create Slack Integration” button. You can add an integration for any number of channels in your newsroom’s Slack. For each one, you just have to set up an Incoming Webhook. In Slack, click on the dropdown arrow in the upper left corner and choose “Apps & Integrations” from the menu. This will open a new window in your browser for you to search the Slack app directory. In the search box, type “Incoming Webhooks” and choose that option when it pops up. If you already have webhooks, you’ll see a button next to your Slack organization’s name that says “Configure.” Otherwise, click the green button that says “Install”.
