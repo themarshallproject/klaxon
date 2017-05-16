@@ -115,12 +115,14 @@ The core contributors to Klaxon have been Ivar Vong, Andy Rossback, Tom Meagher 
 
 We've been grateful for additional contributions to the project from:
 
-* Ryan Murphy
-* Jeremy Merrill
-* Emily Hopkins
-* Ari Shapell
-* Yolanda Martinez
 * Jackson Gothe-Snape, SBS News
+* Emily Hopkins
+* Jeremy Merrill
+* Ryan Murphy
+* Justin Myers
+* Yolanda Martinez
+* Ari Shapell
+* Jeremy Singer-Vine
 * Mike Stucka
 * Bob Weston
 
