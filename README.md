@@ -117,10 +117,10 @@ We've been grateful for additional contributions to the project from:
 
 * Jackson Gothe-Snape, SBS News
 * Emily Hopkins
+* Yolanda Martinez
 * Jeremy Merrill
 * Ryan Murphy
 * Justin Myers
-* Yolanda Martinez
 * Ari Shapell
 * Jeremy Singer-Vine
 * Mike Stucka
