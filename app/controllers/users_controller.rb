@@ -46,6 +46,7 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   def destroy
+    @user.subscriptions.destroy_all
     @user.destroy
     redirect_to users_url, notice: 'User was successfully deleted.'
   end
@@ -58,6 +59,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email)
+      params.require(:user).permit(:first_name, :last_name, :email, :is_admin)
     end
 end
