@@ -16,10 +16,12 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @current_user = current_user
   end
 
   # GET /users/1/edit
   def edit
+    @current_user = current_user
   end
 
   # POST /users
