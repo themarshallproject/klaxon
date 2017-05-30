@@ -39,6 +39,11 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1
   def update
+    if user_params[:is_admin] && !@user.is_admin && !current_user.is_admin
+      redirect_to edit_user_url(@user), notice: 'You must be an admin to promote users.'
+      return false
+    end
+
     if @user.update(user_params)
       redirect_to users_url, notice: 'User was successfully updated.'
     else
@@ -48,6 +53,11 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   def destroy
+    unless current_user.is_admin
+      redirect_to edit_user_url(@user), notice: 'You must be an admin to delete users.'
+      return false
+    end
+
     @user.subscriptions.destroy_all
     @user.destroy
     redirect_to users_url, notice: 'User was successfully deleted.'
