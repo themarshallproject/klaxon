@@ -28,7 +28,7 @@
             <%= f.input :email, label: false, class: 'form-control' %>
           </div>
         </div>
-        <% if current_user.is_admin %>
+        <% if @current_user.is_admin %>
         <div class="form-group form-group-lg">
           <label class="col-sm-1">Admin</label>
           <div class="col-sm-11">
