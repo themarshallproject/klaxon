@@ -28,6 +28,14 @@
             <%= f.input :email, label: false, class: 'form-control' %>
           </div>
         </div>
+        <% if @current_user.is_admin %>
+        <div class="form-group form-group-lg">
+          <label class="col-sm-1">Admin</label>
+          <div class="col-sm-11">
+            <%= f.check_box :is_admin, label: false, class: 'form-check-box' %>
+          </div>
+        </div>
+        <% end %>
         <div class="form-group form-group-lg">
           <div class="col-md-9">
             <!-- negative space -->
