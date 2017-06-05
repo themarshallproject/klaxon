@@ -15,7 +15,7 @@ FactoryGirl.define do
 
   factory :sqs_integration do
     queue_url "https://sqs.us-east-1.amazonaws.com/1234567890/klaxon-sqs-q-test"
-  end  
+  end
 
   factory :change do
   end
