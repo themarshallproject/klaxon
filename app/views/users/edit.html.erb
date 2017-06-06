@@ -21,3 +21,21 @@
 </div>
 
 <%= render 'form' %>
+
+<div class="container">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Subscriptions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.watching.each do |watch_item| %>
+      <tr>
+        <td><%= link_to watch_item.name, [:edit, watch_item] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
