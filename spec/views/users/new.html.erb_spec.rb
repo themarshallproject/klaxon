@@ -7,6 +7,7 @@ RSpec.describe "users/new", type: :view do
       :last_name => "MyString",
       :email => "MyString"
     ))
+    @current_user = create(:user)
   end
 
   it "renders new user form" do

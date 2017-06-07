@@ -12,7 +12,7 @@ Read more below, or say hello to the humans behind the project at the [Google Gr
 
 ## Alerting journalists to changes on the web
 
-Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. Klaxon has been used and tested by journalists at The Marshall Project, The New York Times, the Texas Tribune, the Associated Press and elsewhere. The public release of this free and open source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/). [If you need help using Klaxon once it's already been set up, [you can find it here.](https://github.com/themarshallproject/klaxon/blob/master/data/help.md)]
+Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. Klaxon has been used and tested by journalists at The Marshall Project, The New York Times, the Texas Tribune, the Associated Press [and elsewhere](NEWSROOMS.md). The public release of this free and open source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/). [If you need help using Klaxon once it's already been set up, [you can find it here.](https://github.com/themarshallproject/klaxon/blob/master/data/help.md)]
 
 [![Circle CI](https://circleci.com/gh/themarshallproject/klaxon.svg?style=svg)](https://circleci.com/gh/themarshallproject/klaxon)
 
@@ -74,6 +74,10 @@ Once you’re logged in, you should see the main page that will fill up in the c
 
 On the right side of the page, click the “Create New User” button. Add the reporter’s first and last name and email address, and she will get an email allowing her into the Klaxon. Now, finally, you and your users can start adding web pages you want Klaxon to watch.
 
+#### Limit new users to only those on specific email domain(s)
+
+By default, people with any email address can be added as new users. If you'd like to allow only users with *specific* email domains, set the `APPROVED_USER_DOMAINS` environment variable (or "Config Variable" in Heroku's lingo). That variable should be a comma-separated list of domains, e.g., `themarshallproject.org,nsa.gov`.
+
 ### Notify a Slack channel
 
 You’re all set for email notifications. If you’d like to also receive alerts through Slack, you can set that up now too. (If you want alerts from other services, [we welcome pull requests](CONTRIBUTING.md)) Click on the “Settings” button in the upper right corner of the page and choose “Integrations” from the menu. On the Integrations page, click the “Create Slack Integration” button. You can add an integration for any number of channels in your newsroom’s Slack. For each one, you just have to set up an Incoming Webhook. In Slack, click on the dropdown arrow in the upper left corner and choose “Apps & Integrations” from the menu. This will open a new window in your browser for you to search the Slack app directory. In the search box, type “Incoming Webhooks” and choose that option when it pops up. If you already have webhooks, you’ll see a button next to your Slack organization’s name that says “Configure.” Otherwise, click the green button that says “Install”.
@@ -111,12 +115,14 @@ The core contributors to Klaxon have been Ivar Vong, Andy Rossback, Tom Meagher 
 
 We've been grateful for additional contributions to the project from:
 
-* Ryan Murphy
-* Jeremy Merrill
-* Emily Hopkins
-* Ari Shapell
-* Yolanda Martinez
 * Jackson Gothe-Snape, SBS News
+* Emily Hopkins
+* Yolanda Martinez
+* Jeremy Merrill
+* Ryan Murphy
+* Justin Myers
+* Ari Shapell
+* Jeremy Singer-Vine
 * Mike Stucka
 * Bob Weston
 
