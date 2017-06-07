@@ -26,13 +26,14 @@
 <table class="table">
   <thead>
     <tr>
-      <th>Subscriptions</th>
+      <th colspan="2">This User's Subscriptions</th>
     </tr>
   </thead>
   <tbody>
     <% @user.watching.each do |watch_item| %>
       <tr>
-        <td><%= link_to watch_item.name, [:edit, watch_item] %></td>
+        <td><%= watch_item.name %></td>
+        <td><%= link_to "Edit", [:edit, watch_item], class: "btn btn-default btn-block" %></td>
       </tr>
     <% end %>
   </tbody>
