@@ -23,20 +23,20 @@
 <%= render 'form' %>
 
 <div class="container">
-<table class="table">
-  <thead>
-    <tr>
-      <th colspan="2">This User's Subscriptions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @user.watching.each do |watch_item| %>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= watch_item.name %></td>
-        <td><%= link_to "Edit", [:edit, watch_item], class: "btn btn-default btn-block" %></td>
+        <th colspan="2"><%= @user.first_name %>'s Subscriptions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @user.watching.each do |watch_item| %>
+        <tr>
+          <td><%= watch_item.name %></td>
+          <td><%= link_to "Edit", [:edit, watch_item], class: "btn btn-default btn-block" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
