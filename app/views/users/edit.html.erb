@@ -33,7 +33,7 @@
       <% @user.watching.each do |watch_item| %>
         <tr>
           <td><%= watch_item.name %></td>
-          <td><%= link_to "Edit", [:edit, watch_item], class: "btn btn-default btn-block" %></td>
+          <td><%= link_to "Edit", [:edit, watch_item], class: "btn btn-default pull-right" %></td>
         </tr>
       <% end %>
     </tbody>
