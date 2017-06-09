@@ -34,6 +34,7 @@
         <tr>
           <td><%= watch_item.name %></td>
           <td><%= link_to "Edit", [:edit, watch_item], class: "btn btn-default pull-right" %></td>
+          <td><%= link_to "Unsubscribe", user_page_unsubscribe_path(@user, watch_item), method: :delete, class: "btn btn-default pull-right" %></td>
         </tr>
       <% end %>
     </tbody>
