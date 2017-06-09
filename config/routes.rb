@@ -47,6 +47,10 @@ Rails.application.routes.draw do
   resources :users do
     get  '/invite' => 'users#invite', as: :invite
     post '/invite' => 'users#create_invite', as: :create_invite
+    resources :pages do 
+     delete '/' => 'users#unsubscribe', as: :unsubscribe     
+    end
+    
   end
 
   scope '/login' do
