@@ -17,8 +17,6 @@ class SessionsController < ApplicationController
 
   def token
     user = LoginToken.decode(token: params[:token])
-    puts "sessions#token: user: #{user.inspect}"
-
     if user.present?
       if user[:expired]
         redirect_to expired_token_path(user[:user].id)
