@@ -9,6 +9,10 @@ class StaticController < ApplicationController
 
   def unknown_user
   end
+  
+  def expired_token
+    @user = User.find(params[:user_id].to_i)
+  end
 
   def feed
   end
