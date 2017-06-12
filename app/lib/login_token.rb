@@ -18,16 +18,16 @@ class LoginToken
     end
 
     begin
-      payload, _config = JWT.decode(token, self.secret_key, 'HS256')
+      payload, _config = JWT.decode(token, self.secret_key, true, { algorithm: 'HS256' })
     rescue JWT::ExpiredSignature
       # If the token has expired, try again to decode it, but with expiration
       # checking turned off, so we can tell who tried to log in.
       begin
-        payload, _config = JWT.decode(token, self.secret_key, true, verify_expiration: false)
-        
+        payload, _config = JWT.decode(token, self.secret_key, true, { algorithm: 'HS256', verify_expiration: false })
+
         user_id = payload['data']['user_id']
         user = User.find_by(id: user_id)
-        
+
         if user.blank?
           return false
         else
