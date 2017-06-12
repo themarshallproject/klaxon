@@ -1,5 +1,5 @@
 class StaticController < ApplicationController
-  before_filter :authorize, except: [:unknown_user]
+  before_filter :authorize, except: [:unknown_user, :expired_token]
 
   def help
     path = File.join(Rails.root, 'data', 'help.md')
@@ -9,7 +9,7 @@ class StaticController < ApplicationController
 
   def unknown_user
   end
-  
+
   def expired_token
     @user = User.find(params[:user_id].to_i)
   end
