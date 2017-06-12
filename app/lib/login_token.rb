@@ -31,7 +31,7 @@ class LoginToken
         if user.blank?
           return false
         else
-          return {user: user, expired: true}
+          return { user: user, expired: true }
         end
       rescue JWT::DecodeError
         return false
