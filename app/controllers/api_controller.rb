@@ -50,6 +50,33 @@ class ApiController < ApplicationController
     }
   end
 
+  # Send content for a page
+  def pages_content
+    page = Page.find_by(id: params[:id])
+    unless page
+      return render json: { errors: [ { detail: "Unable to find page" } ] }, status: 404
+    end
+
+    # Get content
+    content = params[:content]
+    unless content
+      return render json: { errors: [ { detail: "content paramter not provided" } ] }, status: 400
+    end
+
+    # Check page content
+    page.custom_html(content)
+    changes = PollPage.perform(page: page)
+
+    puts changes.inspect
+
+    if changes
+      render json: changes
+      Change.check
+    else
+      render json: { changed: false, status: 'No changes noticed' }
+    end
+  end
+
   def authorize
     if defined? @current_user
       return @current_user

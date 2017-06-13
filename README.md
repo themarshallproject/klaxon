@@ -97,9 +97,11 @@ You can find your token on the users page.
 #### Endpoints
 
 * `/api/pages`: Lists all pages being watched.
-* `/api/users`: Lists all users being watched.
+* `/api/users`: Lists all users.
 * `/api/subscriptions`: List subscripts for users to pages.
 * `/api/stats`: Lists some top level stats.
+* `/api/pages/content`: (POST) Manually upload content for a page being watched and check for changes.  Will return the Page Snapshot object if a change has occurred.
+    * Example: `/api/pages/content?id=1` with a `content` object set in the form data.
 * `/api/page-preview`: Will do scrape and give back a JSON object preview.
     * Example: `/api/page-preview?url="https://google.com"&css_selector=footer`
 * `/api/embed/page`: (POST) Looks up or creates a record by URL.

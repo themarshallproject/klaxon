@@ -20,9 +20,13 @@ class Page < ActiveRecord::Base
     self.url
   end
 
+  def custom_html(custom)
+    @html = custom
+  end
+
   def html
     if self.url.blank?
-      return ''
+      return @html || ''
     end
 
     @html ||= begin
@@ -37,11 +41,19 @@ class Page < ActiveRecord::Base
   end
 
   def match_text
-    document.css(self.css_selector).text
+    if self.css_selector
+      document.css(self.css_selector).text
+    else
+      document.text
+    end
   end
 
   def match_html
-    document.css(self.css_selector).to_html
+    if self.css_selector
+      document.css(self.css_selector).to_html
+    else
+      document.to_html
+    end
   end
 
   def sha2_hash
