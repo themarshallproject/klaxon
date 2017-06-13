@@ -1,4 +1,5 @@
 class ApiController < ApplicationController
+  skip_before_filter  :verify_authenticity_token
   before_action :authorize
 
   def subscriptions
@@ -49,4 +50,20 @@ class ApiController < ApplicationController
     }
   end
 
+  def authorize
+    if defined? @current_user
+      return @current_user
+    end
+
+    @current_user = false
+
+    authenticate_with_http_token do |token, options|
+      @current_user = User.find_by(auth_token: token)
+    end
+
+    unless @current_user
+      render json: { errors: [ { detail: "Access denied" } ] }, status: 401
+    end
+    return @current_user
+  end
 end

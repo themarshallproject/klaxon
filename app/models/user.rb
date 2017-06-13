@@ -1,4 +1,7 @@
+require 'SecureRandom'
+
 class User < ActiveRecord::Base
+  before_create :set_auth_token
   validates :email, length: { minimum: 3 }, uniqueness: { case_sensitive: false }
   validate :email_domain_is_approved, on: [ :create, :update ]
   has_many :pages
@@ -54,6 +57,20 @@ class User < ActiveRecord::Base
       errors.add(:email, 'Email address belongs to a non-approved domain.')
       return false
     end
+  end
+
+  private
+  def set_auth_token
+    return if auth_token.present?
+    self.auth_token = generate_auth_token
+  end
+
+  def generate_auth_token
+    SecureRandom.uuid.gsub(/\-/,'')
+  end
+
+  def invalidate_auth_token
+    self.update_columns(auth_token: nil)
   end
 
 end

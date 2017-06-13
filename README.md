@@ -84,6 +84,35 @@ You’re all set for email notifications. If you’d like to also receive alerts
 
 Now, choose the channel that you want the Klaxon alerts to go to from the dropdown menu. We’d recommend that you not send them to #General, but maybe create a new channel called #Klaxon. After you create or choose your channel, click the green button that says “Add Incoming Webhooks Integration”. Near the top of the next screen, you should see a red URL next to the label “Webhook URL”. Copy that URL and switch over to your browser window with Klaxon in it. Paste the URL into the box labeled “Webhook URL,” and type the name of the channel you want your Slack alerts to go to into the “Channel” box (this should be the same channel name you used in Slack when you created the integration). Now click the “Create Slack Integration Button”. Now you should be all set. If you want to have the ability to send Klaxon alerts to other channels, for specific reporting teams or for certain projects, you can repeat this process.
 
+### API
+
+There is a limited JSON, RESTful API for Klaxon.
+
+#### Authentication
+
+Basic authentication can happen with the Authorization header, such as `Authorizaton: Token token=XXXXX`
+
+You can find your token on the users page.
+
+#### Endpoints
+
+* `/api/pages`: Lists all pages being watched.
+* `/api/users`: Lists all users being watched.
+* `/api/subscriptions`: List subscripts for users to pages.
+* `/api/stats`: Lists some top level stats.
+* `/api/page-preview`: Will do scrape and give back a JSON object preview.
+    * Example: `/api/page-preview?url="https://google.com"&css_selector=footer`
+* `/api/embed/page`: (POST) Looks up or creates a record by URL.
+    * Example: `/api/embed/page?url=https://www.google.com`
+* `/api/embed/page/update-selector`: (POST) Updates selector.
+    * Example: `/api/embed/page/update-selector?id=1&css_selector=dev.container`
+
+#### Examples
+
+One of the primary uses of the API, is to provide custom content to a watcher, for instance if the content is harder to get to than what a CSS selector can accomplish.
+
+*TODO*
+
 ### Applying upgrades as the project develops
 
 When we release major changes to Klaxon, we’ll make an announcement to [our Google Group email list](https://groups.google.com/forum/#!forum/news-klaxon-users). At that point, you’ll likely want to adopt those in your system as well. If you're comfortable using git on the command line, this would require just a few simple commands: pull the changes from the master branch of this repo, merge them into your forked repo and push it all to Heroku.
