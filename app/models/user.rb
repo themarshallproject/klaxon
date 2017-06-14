@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   end
 
   def watching
-    subscriptions.map(&:watching)
+    subscriptions.map(&:watching).compact
   end
 
   def subscribe(watchable)
