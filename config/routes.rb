@@ -53,7 +53,8 @@ Rails.application.routes.draw do
     get '/' => 'sessions#new', as: :login
     get '/token' => 'sessions#token', as: :token_session
     post '/' => 'sessions#create', as: :create_session
-    get 'unknown' => 'static#unknown_user', as: :unknown_user
+    get 'unknown' => 'sessions#unknown_user', as: :unknown_user
+    get 'expired/:user_id' => 'sessions#expired_token', as: :expired_token
   end
   post '/logout' => 'sessions#destroy', as: :logout
 

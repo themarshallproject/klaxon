@@ -1,7 +1,6 @@
 <% content_for(:body_classes) { 'login-page' } %>
 
 <div class="klax-hero">
-
   <div class="klax-section klax-topper klax-lead">
     <div class="container">
       <div class="row">
@@ -13,43 +12,15 @@
         <div class="col-md-3">
         </div>
         <div class="col-md-6">
-        <p class="lead">Klaxon enables reporters and editors to monitor scores of sites and files on the web for newsworthy changes. Get email and Slack notifications when something changes.</p>
+          <p class="lead">Klaxon enables reporters and editors to monitor scores of sites and files on the web for newsworthy changes. Get email and Slack notifications when something changes.</p>
         </div>
         <div class="col-md-3">
         </div>
       </div>
     </div>
   </div>
-
-  <div class="klax-section klax-spacer-lg">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <form class="form-horizontal" method="POST" action="<%= create_session_path(return_to: params[:return_to]) %>">
-            <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-            <div class="form-group form-group-lg">
-              <div class="col-md-3">
-              </div>
-              <label class="col-sm-1">Email</label>
-              <div class="col-md-5">
-                <div class="input-group">
-                  <input name="email" class="form-control" type="text" id="formGroupInputLarge">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default btn-lg" type="submit">Login</button>
-                  </span>
-                </div>
-              </div>
-              <div class="col-md-3">
-              </div>
-
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render 'sessions/login_form.html.erb' %>
 </div>
-
 <div class="klax-section klax-topper klax-footer">
   <div class="container">
     <p style="margin-bottom: 0;">Created at <b><a href="https://themarshallproject.org">The Marshall Project.</a></b>
