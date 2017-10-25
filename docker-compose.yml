@@ -10,11 +10,19 @@ services:
       DATABASE_URL:
       SECRET_KEY_BASE:
       ADMIN_EMAILS:
+
+      # SENDGRID or SES
       SMTP_PROVIDER:
+
+      # Sendgrid
       SENDGRID_USERNAME:
       SENDGRID_PASSWORD:
-      AMAZON_SES_ADDRESS:
-      AMAZON_SES_USERNAME:
-      AMAZON_SES_PASSWORD:
-      AMAZON_SES_DOMAIN:
+
+      # SES
+      SES_ADDRESS:
+      SES_USERNAME:
+      SES_PASSWORD:
+      SES_DOMAIN:
+      SES_PORT:
+
       MAILER_FROM_ADDRESS:
