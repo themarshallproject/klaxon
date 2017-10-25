@@ -1,6 +1,23 @@
 # Running Klaxon with Docker
 
-*This guide is a work in progress.*
+## Development Quickstart
+
+1. Run the following commands:
+
+```
+docker-compose up -d database
+docker-compose build app
+docker-compose run app rake db:create db:migrate
+docker-compose run app rake users:create_admin
+docker-compose up app
+open http://localhost:3000
+```
+
+2. Enter 'admin@news.org' in the email window. It should redirect you to a page that says: "Email Sent".
+
+3. In the console find where it says "Go to Dashboard ( ... )" and copy and paste the link into the browser.
+
+4. You'll now be logged in. The page should say "Watch Your First Item".
 
 ## Expected environmental variables
 
@@ -25,5 +42,5 @@ AMAZON_SES_ADDRESS=
 AMAZON_SES_USERNAME=
 AMAZON_SES_PASSWORD=
 AMAZON_SES_DOMAIN=
-EMAIL_FROM_ADDRESS=
+MAILER_FROM_ADDRESS=
 ```

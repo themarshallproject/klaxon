@@ -1,0 +1,20 @@
+version: '2.2'
+
+services:
+
+  app:
+    build: .
+    environment:
+      RACK_ENV:
+      RAILS_ENV:
+      DATABASE_URL:
+      SECRET_KEY_BASE:
+      ADMIN_EMAILS:
+      SMTP_PROVIDER:
+      SENDGRID_USERNAME:
+      SENDGRID_PASSWORD:
+      AMAZON_SES_ADDRESS:
+      AMAZON_SES_USERNAME:
+      AMAZON_SES_PASSWORD:
+      AMAZON_SES_DOMAIN:
+      MAILER_FROM_ADDRESS:
