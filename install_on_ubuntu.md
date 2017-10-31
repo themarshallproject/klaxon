@@ -1,15 +1,15 @@
 ## Install Klaxon on Ubuntu 14.04 (with CapHub or capistrano)
 
-First, ensure that you have the libpq-dev package, ruby 2.3.0 and the bundler gem installed:
+First, ensure that you have the libpq-dev package, ruby 2.3.4 and the bundler gem installed:
 
  * sudo apt-get install libpq-dev
-  
+
  * gem install bundler (required both locally and on remote server)
 
- * rvm install ruby-2.3.0 (This assumes you have installed RVM.)
-  
+ * rvm install ruby-2.3.4 (This assumes you have installed RVM.)
+
 ## Deploy with capitrano or caphub.
-  
+
 Properly creating a capistrano deployment task is beyond the scope of these instructions. But additional information can be found below:
 
 * https://github.com/capistrano/capistrano
