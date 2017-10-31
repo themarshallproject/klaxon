@@ -3,7 +3,7 @@ server {
   server_name klaxon-domain.yourdomain.com;
   root /path/to_/code/rack_apps/klaxon/current/public;
 
-  passenger_ruby /home/user_name/.rvm/wrappers/ruby-2.3.0/ruby;
+  passenger_ruby /home/user_name/.rvm/wrappers/ruby-2.3.4/ruby;
   passenger_enabled on;
   rails_env production;
 
