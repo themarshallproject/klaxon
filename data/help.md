@@ -20,7 +20,8 @@ For the last step, you’ll want to click the ‘Save and Edit’ button, which 
 
 #### Bookmarklet not working?
 
-In some cases, certain Chrome extensions may break the bookmarklet.
+In some cases, certain Chrome extensions may break the bookmarklet. In some cases, it may look somethings like this:
+![example of broken bookmarlet](https://user-images.githubusercontent.com/190733/28034680-8375a8a2-6577-11e7-86fd-c594d35bd4b1.png)
 
 For example, the Electronic Frontier Foundation's ["Privacy Badger"](https://www.eff.org/privacybadger) is a script blocker. When you use Klaxon in addition to Privacy Badger, EFF's extension detects Klaxon as a script and blocks it. This breaks the service. 
 
@@ -34,7 +35,7 @@ There should be a tab for "Whitelisted Domains" in your Privacy Badger settings.
 
 This should fix this issue. Apply the same logic for other extensions that might cause Klaxon to not work.
 
-For further reference on these issues, refer to issues #135 and #138.
+For further reference on these issues, refer to issues [#135](https://github.com/themarshallproject/klaxon/issues/135) and [#138](https://github.com/themarshallproject/klaxon/issues/138).
 
 ## The Feed
 
