@@ -22,7 +22,7 @@ For the last step, you’ll want to click the ‘Save and Edit’ button, which 
 
 In some cases, certain Chrome extensions may break the bookmarklet.
 
-For example, the Electronic Frontier Foundation's "Privacy Badger" is a script blocker. When you use Klaxon in addition to Privacy Badger, EFF's extension detects Klaxon as a script and blocks it. This breaks the service. 
+For example, the Electronic Frontier Foundation's ["Privacy Badger"](https://www.eff.org/privacybadger) is a script blocker. When you use Klaxon in addition to Privacy Badger, EFF's extension detects Klaxon as a script and blocks it. This breaks the service. 
 
 The solution:
 
