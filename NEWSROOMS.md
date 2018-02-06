@@ -3,6 +3,7 @@
 * Associated Press
 * Austin American-Statesman
 * Axios
+* CBC
 * Dallas Morning News
 * FiveThirtyEight
 * Fusion
