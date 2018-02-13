@@ -62,6 +62,15 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to users_url, notice: 'User was successfully deleted.'
   end
+  
+  # DELETE /users/1/pages/6-some-page-title
+  def unsubscribe
+    user = User.find(params[:user_id])
+    page_id = params[:page_id].split('-')[0].to_i
+    page = Page.find(page_id)
+    user.unsubscribe(page)
+    redirect_to edit_user_url(user), notice: 'Subscription successfully removed.'
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
