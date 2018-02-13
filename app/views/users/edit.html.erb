@@ -7,7 +7,7 @@
     </div>
     <div class="row">
       <div class="col-md-6">
-      <p class="lead">All users can create, edit and delete items in Klaxon.</p>
+        <p class="lead">All users can create, edit and delete items in Klaxon.</p>
       </div>
       <div class="col-md-3">
       </div>
@@ -33,7 +33,12 @@
       <% @user.watching.each do |watch_item| %>
         <tr>
           <td><%= watch_item.name %></td>
-          <td><%= link_to "Edit", [:edit, watch_item], class: "btn btn-default pull-right" %></td>
+          <td class="text-right">
+            <%= link_to "Edit", [:edit, watch_item], class: "btn btn-default" %>
+            <% if current_user.id == @user.id || current_user.is_admin %>
+              <%= link_to "Unsubscribe", user_page_unsubscribe_path(@user, watch_item), method: :delete, class: "btn btn-default" %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>

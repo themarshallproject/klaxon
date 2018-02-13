@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
       redirect_to unknown_user_path
     end
   end
-  
+
   def unknown_user
   end
 
