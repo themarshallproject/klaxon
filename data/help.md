@@ -18,6 +18,30 @@ Before you close the window though, see the red box under the heading “Content
 
 For the last step, you’ll want to click the ‘Save and Edit’ button, which will bring you back to Klaxon so you can give this page a name (like a slug) in the system.
 
+#### Bookmarklet not working?
+
+In some cases, certain Chrome extensions may break the bookmarklet. 
+In some cases, it may look somethings like this:
+
+!["example of broken bookmarlet"](https://user-images.githubusercontent.com/190733/28034680-8375a8a2-6577-11e7-86fd-c594d35bd4b1.png)
+
+For example, the Electronic Frontier Foundation's ["Privacy Badger"](https://www.eff.org/privacybadger) is a script blocker. When you use Klaxon in addition to Privacy Badger, EFF's extension detects Klaxon as a script and blocks it. This breaks the service. 
+
+The solution:
+
+Whitelist your organization’s specific Klaxon in Privacy Badger. 
+
+To do this, click on the Privacy Badger icon in your Chrome extension bar. A dialog box should appear. Click the gear in the upper right hand corner of the dialog box. This will open Privacy Badger Settings in a new tab. 
+
+!["Privac Badger Dialog box"](/docs/privacy_badger_dialog.PNG)
+
+There should be a tab for "Whitelisted Domains" in your Privacy Badger settings. Go to that and add your organization's Klaxon (XXX-klaxon.herokuapp.com) to it. Click add domain. 
+
+!["Privac Badger Dialog settings"](/docs/privacy_badger_settings.PNG)
+
+This should fix this issue. Apply the same logic for other extensions that might cause Klaxon to not work.
+
+For further reference on these issues, refer to issues [#135](https://github.com/themarshallproject/klaxon/issues/135) and [#138](https://github.com/themarshallproject/klaxon/issues/138).
 
 ## The Feed
 
