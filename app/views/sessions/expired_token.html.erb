@@ -1,0 +1,17 @@
+<style>
+  #navbar { display: none !important; }
+</style>
+
+  <div class="klax-section klax-topper">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Klaxon Login Expired</h1>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <p class="lead">The login or invitation for <%= @user.email %> has expired. Please request a new invitation below.</p>
+      </div>
+      <%= render 'sessions/login_form.html.erb' %>
+    </div><!-- /.container -->
+  </div>

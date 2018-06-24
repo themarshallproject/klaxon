@@ -1,0 +1,28 @@
+version: '2.2'
+
+services:
+
+  app:
+    build: .
+    environment:
+      RACK_ENV:
+      RAILS_ENV:
+      DATABASE_URL:
+      SECRET_KEY_BASE:
+      ADMIN_EMAILS:
+
+      # SENDGRID or SES
+      SMTP_PROVIDER:
+
+      # Sendgrid
+      SENDGRID_USERNAME:
+      SENDGRID_PASSWORD:
+
+      # SES
+      SES_ADDRESS:
+      SES_USERNAME:
+      SES_PASSWORD:
+      SES_DOMAIN:
+      SES_PORT:
+
+      MAILER_FROM_ADDRESS:

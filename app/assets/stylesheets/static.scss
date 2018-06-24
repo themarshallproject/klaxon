@@ -12,7 +12,7 @@ a {
   border-bottom: 2px solid #ff0b3a;
 }
 
-a:hover, a:focus {
+a:not(.btn):hover, a:focus {
   color: #ff0b3a;
   text-decoration: none;
   border-bottom: 2px solid #ff0b3a;
@@ -84,6 +84,10 @@ table tbody tr td:last-child, table thead tr td:last-child  {
   border: 1px solid #ff0b3a;
   box-shadow: none;
   color: #ff0b3a;
+}
+
+.form-check-box {
+  margin-bottom: 10px !important;
 }
 
 .btn {

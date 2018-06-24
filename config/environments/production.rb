@@ -28,7 +28,8 @@ Rails.application.configure do
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
-  config.assets.compile = true
+  # Do not fall back to locating/compiling missing assets.
+  config.assets.compile = false
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
@@ -83,12 +84,13 @@ Rails.application.configure do
   address   = ENV["#{provider}_ADDRESS"] || "smtp.sendgrid.net"
   # if you use SES as your SMTP provider, then your username and password are actually your AWS credentials.
   user_name = ENV["#{provider}_USERNAME" || (provider == "SES" ? (ENV["AWS_ACCESS_KEY_ID"] || ENV["ACCESS_KEY_ID"] ) : nil) ]  # for AWS SES, this is your access key id
-  password  = ENV["#{provider}_PASSWORD" || (provider == "SES" ? (ENV["AWS_SECRET_ACCESS_KEY"] || ENV["SECRET_ACCESS_KEY"] ) : nil) ]  # for AWS SES, this is your secret access key 
+  password  = ENV["#{provider}_PASSWORD" || (provider == "SES" ? (ENV["AWS_SECRET_ACCESS_KEY"] || ENV["SECRET_ACCESS_KEY"] ) : nil) ]  # for AWS SES, this is your secret access key
   domain    = ENV["#{provider}_DOMAIN"] || "heroku.com"
+  port      = ENV["#{provider}_PORT"] || "587"
 
   ActionMailer::Base.smtp_settings = {
     :address        => address,
-    :port           => '587',
+    :port           => port,
     :authentication => :plain,
     :user_name      => user_name,
     :password       => password,

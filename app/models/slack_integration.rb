@@ -3,6 +3,8 @@ class SlackIntegration < ActiveRecord::Base
   validates :channel, length: { minimum: 2 }
   validates :webhook_url, length: { minimum: 10 }
   validate :starts_with_hash
+  after_destroy :remove_subscriptions
+
   def starts_with_hash
     if channel.to_s.split('').first != '#'
       errors.add(:channel, "must begin with #")
@@ -49,4 +51,9 @@ class SlackIntegration < ActiveRecord::Base
     return payload
   end
 
+  def remove_subscriptions
+    subscriptions.each do |s|
+      s.destroy
+    end
+  end
 end
