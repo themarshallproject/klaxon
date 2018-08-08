@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     end
 
     get '/page-preview' => 'api#page_preview', as: :api_page_preview
+
+    post 'pages/content' => 'api#pages_content', as: :api_pages_content
   end
 
   scope '/watching' do

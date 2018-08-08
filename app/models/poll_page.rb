@@ -1,5 +1,9 @@
 class PollPage
   def self.perform(page: nil)
+    unless page
+      return false
+    end
+
     html = page.html
     sha2_hash = page.sha2_hash
 
@@ -14,6 +18,7 @@ class PollPage
       return false
     end
 
+    # Should text property be defined here?
     return PageSnapshot.create(page: page, sha2_hash: sha2_hash, html: html)
   end
 

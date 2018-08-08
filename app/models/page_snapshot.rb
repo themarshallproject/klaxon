@@ -12,7 +12,11 @@ class PageSnapshot < ActiveRecord::Base
   end
 
   def match_text
-    document.css(self.page.css_selector).text
+    if self.page.css_selector
+      document.css(self.page.css_selector).text
+    else
+      document.text
+    end
   end
 
   def display_hash
