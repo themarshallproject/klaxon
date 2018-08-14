@@ -18,7 +18,7 @@ The public release of this free and open source software was supported by Knight
 
 ## How Does Klaxon Work?
 
-The Klaxon app enables users to "bookmark" portions of a webpage and be notified via email of any changes that may occur to those sections. [Learn more about bookmarklets on the help.md page](https://github.com/themarshallproject/klaxon/blob/master/data/help.md).
+The Klaxon app enables users to "bookmark" portions of a webpage and be notified via email of any changes that may occur to those sections. [Learn more about bookmarklets on the help.md page](data/help.md).
 
 [![Circle CI](https://circleci.com/gh/themarshallproject/klaxon.svg?style=svg)](https://circleci.com/gh/themarshallproject/klaxon)
 
