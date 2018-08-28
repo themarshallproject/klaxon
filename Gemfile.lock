@@ -152,7 +152,7 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     public_suffix (3.0.3)
-    puma (3.4.0)
+    puma (3.12.0)
     rack (1.6.10)
     rack-cache (1.6.1)
       rack (>= 0.4)
@@ -291,7 +291,7 @@ DEPENDENCIES
   letter_opener
   pg (~> 0.15)
   premailer-rails
-  puma (~> 3.2)
+  puma (~> 3.12)
   rack-cache
   rails (~> 4.2)
   rails_12factor
