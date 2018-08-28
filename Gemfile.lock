@@ -67,7 +67,7 @@ GEM
     crass (1.0.4)
     css_parser (1.6.0)
       addressable
-    database_cleaner (1.5.3)
+    database_cleaner (1.7.0)
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
     diffy (3.1.0)
