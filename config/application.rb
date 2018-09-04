@@ -35,10 +35,7 @@ module Klaxon
 
     config.autoload_paths << "#{Rails.root}/lib"
 
-    # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
-
-    config.static_cache_control = "public, max-age=31536000"
+    config.public_file_server.headers = { 'Cache-Control' => 'public, max-age=31536000' }
 
     config.middleware.use Rack::Cache,
         verbose:     true,

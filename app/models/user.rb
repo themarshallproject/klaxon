@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   validates :email, length: { minimum: 3 }, uniqueness: { case_sensitive: false }
   validate :email_domain_is_approved, on: [ :create, :update ]
   has_many :pages

@@ -8,7 +8,7 @@ RSpec.describe Change, type: :request do
 
     # login
     @user = User.where(email: 'test@test.com').first_or_create
-    get(token_session_path, token: LoginToken.create(user: @user))
+    get(token_session_path, params: { token: LoginToken.create(user: @user) })
   end
 
   it "can create multiple snapshots and send an email based on the last pair" do

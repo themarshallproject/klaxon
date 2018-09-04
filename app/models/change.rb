@@ -1,4 +1,4 @@
-class Change < ActiveRecord::Base
+class Change < ApplicationRecord
   belongs_to :before, polymorphic: true
   validates  :before, presence: true
 

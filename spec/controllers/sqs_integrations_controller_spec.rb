@@ -43,7 +43,7 @@ RSpec.describe SqsIntegrationsController, type: :controller do
   describe "GET #index" do
     it "assigns all sqs_integrations as @sqs_integrations" do
       sqs_integration = SqsIntegration.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, params: {}, headers: valid_session
       expect(assigns(:sqs_integrations)).to eq([sqs_integration])
     end
   end
@@ -51,14 +51,14 @@ RSpec.describe SqsIntegrationsController, type: :controller do
   describe "GET #show" do
     it "assigns the requested sqs_integration as @sqs_integration" do
       sqs_integration = SqsIntegration.create! valid_attributes
-      get :show, {:id => sqs_integration.to_param}, valid_session
+      get :show, params: {:id => sqs_integration.to_param}, headers: valid_session
       expect(assigns(:sqs_integration)).to eq(sqs_integration)
     end
   end
 
   describe "GET #new" do
     it "assigns a new sqs_integration as @sqs_integration" do
-      get :new, {}, valid_session
+      get :new, params: {}, headers: valid_session
       expect(assigns(:sqs_integration)).to be_a_new(SqsIntegration)
     end
   end
@@ -66,7 +66,7 @@ RSpec.describe SqsIntegrationsController, type: :controller do
   describe "GET #edit" do
     it "assigns the requested sqs_integration as @sqs_integration" do
       sqs_integration = SqsIntegration.create! valid_attributes
-      get :edit, {:id => sqs_integration.to_param}, valid_session
+      get :edit, params: {:id => sqs_integration.to_param}, headers: valid_session
       expect(assigns(:sqs_integration)).to eq(sqs_integration)
     end
   end
@@ -75,30 +75,30 @@ RSpec.describe SqsIntegrationsController, type: :controller do
     context "with valid params" do
       it "creates a new SqsIntegration" do
         expect {
-          post :create, {:sqs_integration => valid_attributes}, valid_session
+          post :create, params: {:sqs_integration => valid_attributes}, headers: valid_session
         }.to change(SqsIntegration, :count).by(1)
       end
 
       it "assigns a newly created sqs_integration as @sqs_integration" do
-        post :create, {:sqs_integration => valid_attributes}, valid_session
+        post :create, params: {:sqs_integration => valid_attributes}, headers: valid_session
         expect(assigns(:sqs_integration)).to be_a(SqsIntegration)
         expect(assigns(:sqs_integration)).to be_persisted
       end
 
       it "redirects to the intersections path" do
-        post :create, {:sqs_integration => valid_attributes}, valid_session
+        post :create, params: {:sqs_integration => valid_attributes}, headers: valid_session
         expect(response).to redirect_to(integrations_path)
       end
     end
 
     context "with invalid params" do
       it "assigns a newly created but unsaved sqs_integration as @sqs_integration" do
-        post :create, {:sqs_integration => invalid_attributes}, valid_session
+        post :create, params: {:sqs_integration => invalid_attributes}, headers: valid_session
         expect(assigns(:sqs_integration)).to be_a_new(SqsIntegration)
       end
 
       it "re-renders the 'new' template" do
-        post :create, {:sqs_integration => invalid_attributes}, valid_session
+        post :create, params: {:sqs_integration => invalid_attributes}, headers: valid_session
         expect(response).to render_template("new")
       end
     end
@@ -114,7 +114,7 @@ RSpec.describe SqsIntegrationsController, type: :controller do
 
       it "updates the requested sqs_integration" do
         sqs_integration = SqsIntegration.create! valid_attributes
-        put :update, {:id => sqs_integration.to_param, :sqs_integration => new_attributes}, valid_session
+        put :update, params: {:id => sqs_integration.to_param, :sqs_integration => new_attributes}, headers: valid_session
         sqs_integration.reload
         expect(sqs_integration.queue_url).to eq(new_attributes[:queue_url])
         expect(sqs_integration).to be_persisted
@@ -122,13 +122,13 @@ RSpec.describe SqsIntegrationsController, type: :controller do
 
       it "assigns the requested sqs_integration as @sqs_integration" do
         sqs_integration = SqsIntegration.create! valid_attributes
-        put :update, {:id => sqs_integration.to_param, :sqs_integration => valid_attributes}, valid_session
+        put :update, params: {:id => sqs_integration.to_param, :sqs_integration => valid_attributes}, headers: valid_session
         expect(assigns(:sqs_integration)).to eq(sqs_integration)
       end
 
       it "redirects to the sqs_integration" do
         sqs_integration = SqsIntegration.create! valid_attributes
-        put :update, {:id => sqs_integration.to_param, :sqs_integration => valid_attributes}, valid_session
+        put :update, params: {:id => sqs_integration.to_param, :sqs_integration => valid_attributes}, headers: valid_session
         expect(response).to redirect_to(integrations_path)
       end
     end
@@ -136,13 +136,13 @@ RSpec.describe SqsIntegrationsController, type: :controller do
     context "with invalid params" do
       it "assigns the sqs_integration as @sqs_integration" do
         sqs_integration = SqsIntegration.create! valid_attributes
-        put :update, {:id => sqs_integration.to_param, :sqs_integration => invalid_attributes}, valid_session
+        put :update, params: {:id => sqs_integration.to_param, :sqs_integration => invalid_attributes}, headers: valid_session
         expect(assigns(:sqs_integration)).to eq(sqs_integration)
       end
 
       it "re-renders the 'edit' template" do
         sqs_integration = SqsIntegration.create! valid_attributes
-        put :update, {:id => sqs_integration.to_param, :sqs_integration => invalid_attributes}, valid_session
+        put :update, params: {:id => sqs_integration.to_param, :sqs_integration => invalid_attributes}, headers: valid_session
         expect(response).to render_template("edit")
       end
     end
@@ -152,13 +152,13 @@ RSpec.describe SqsIntegrationsController, type: :controller do
     it "destroys the requested sqs_integration" do
       sqs_integration = SqsIntegration.create! valid_attributes
       expect {
-        delete :destroy, {:id => sqs_integration.to_param}, valid_session
+        delete :destroy, params: {:id => sqs_integration.to_param}, headers: valid_session
       }.to change(SqsIntegration, :count).by(-1)
     end
 
     it "redirects to the sqs_integrations list" do
       sqs_integration = SqsIntegration.create! valid_attributes
-      delete :destroy, {:id => sqs_integration.to_param}, valid_session
+      delete :destroy, params: {:id => sqs_integration.to_param}, headers: valid_session
       expect(response).to redirect_to(integrations_path)
     end
   end

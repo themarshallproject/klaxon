@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  before_filter :set_default_host
+  before_action :set_default_host
   def set_default_host
     # determine the host we're running on, so we can generate urls for emails, etc
     # keep this in an AppSetting (persisted) and pass to Rails when blank

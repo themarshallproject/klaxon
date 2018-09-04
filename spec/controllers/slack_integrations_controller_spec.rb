@@ -39,7 +39,7 @@ RSpec.describe SlackIntegrationsController, type: :controller do
   describe "GET #index" do
     it "assigns all slack_integrations as @slack_integrations" do
       slack_integration = SlackIntegration.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, params: {}, headers: valid_session
       expect(assigns(:slack_integrations)).to eq([slack_integration])
     end
   end
@@ -47,14 +47,14 @@ RSpec.describe SlackIntegrationsController, type: :controller do
   describe "GET #show" do
     it "assigns the requested slack_integration as @slack_integration" do
       slack_integration = SlackIntegration.create! valid_attributes
-      get :show, {:id => slack_integration.to_param}, valid_session
+      get :show, params: {:id => slack_integration.to_param}, headers: valid_session
       expect(assigns(:slack_integration)).to eq(slack_integration)
     end
   end
 
   describe "GET #new" do
     it "assigns a new slack_integration as @slack_integration" do
-      get :new, {}, valid_session
+      get :new, params: {}, headers: valid_session
       expect(assigns(:slack_integration)).to be_a_new(SlackIntegration)
     end
   end
@@ -62,7 +62,7 @@ RSpec.describe SlackIntegrationsController, type: :controller do
   describe "GET #edit" do
     it "assigns the requested slack_integration as @slack_integration" do
       slack_integration = SlackIntegration.create! valid_attributes
-      get :edit, {:id => slack_integration.to_param}, valid_session
+      get :edit, params: {:id => slack_integration.to_param}, headers: valid_session
       expect(assigns(:slack_integration)).to eq(slack_integration)
     end
   end
@@ -71,30 +71,30 @@ RSpec.describe SlackIntegrationsController, type: :controller do
     context "with valid params" do
       it "creates a new SlackIntegration" do
         expect {
-          post :create, {:slack_integration => valid_attributes}, valid_session
+          post :create, params: {:slack_integration => valid_attributes}, headers: valid_session
         }.to change(SlackIntegration, :count).by(1)
       end
 
       it "assigns a newly created slack_integration as @slack_integration" do
-        post :create, {:slack_integration => valid_attributes}, valid_session
+        post :create, params: {:slack_integration => valid_attributes}, headers: valid_session
         expect(assigns(:slack_integration)).to be_a(SlackIntegration)
         expect(assigns(:slack_integration)).to be_persisted
       end
 
       it "redirects to the created slack_integration" do
-        post :create, {:slack_integration => valid_attributes}, valid_session
+        post :create, params: {:slack_integration => valid_attributes}, headers: valid_session
         expect(response).to redirect_to(SlackIntegration.last)
       end
     end
 
     context "with invalid params" do
       it "assigns a newly created but unsaved slack_integration as @slack_integration" do
-        post :create, {:slack_integration => invalid_attributes}, valid_session
+        post :create, params: {:slack_integration => invalid_attributes}, headers: valid_session
         expect(assigns(:slack_integration)).to be_a_new(SlackIntegration)
       end
 
       it "re-renders the 'new' template" do
-        post :create, {:slack_integration => invalid_attributes}, valid_session
+        post :create, params: {:slack_integration => invalid_attributes}, headers: valid_session
         expect(response).to render_template("new")
       end
     end
@@ -108,20 +108,20 @@ RSpec.describe SlackIntegrationsController, type: :controller do
 
       it "updates the requested slack_integration" do
         slack_integration = SlackIntegration.create! valid_attributes
-        put :update, {:id => slack_integration.to_param, :slack_integration => new_attributes}, valid_session
+        put :update, params: {:id => slack_integration.to_param, :slack_integration => new_attributes}, headers: valid_session
         slack_integration.reload
         skip("Add assertions for updated state")
       end
 
       it "assigns the requested slack_integration as @slack_integration" do
         slack_integration = SlackIntegration.create! valid_attributes
-        put :update, {:id => slack_integration.to_param, :slack_integration => valid_attributes}, valid_session
+        put :update, params: {:id => slack_integration.to_param, :slack_integration => valid_attributes}, headers: valid_session
         expect(assigns(:slack_integration)).to eq(slack_integration)
       end
 
       it "redirects to the slack_integration" do
         slack_integration = SlackIntegration.create! valid_attributes
-        put :update, {:id => slack_integration.to_param, :slack_integration => valid_attributes}, valid_session
+        put :update, params: {:id => slack_integration.to_param, :slack_integration => valid_attributes}, headers: valid_session
         expect(response).to redirect_to(slack_integration)
       end
     end
@@ -129,13 +129,13 @@ RSpec.describe SlackIntegrationsController, type: :controller do
     context "with invalid params" do
       it "assigns the slack_integration as @slack_integration" do
         slack_integration = SlackIntegration.create! valid_attributes
-        put :update, {:id => slack_integration.to_param, :slack_integration => invalid_attributes}, valid_session
+        put :update, params: {:id => slack_integration.to_param, :slack_integration => invalid_attributes}, headers: valid_session
         expect(assigns(:slack_integration)).to eq(slack_integration)
       end
 
       it "re-renders the 'edit' template" do
         slack_integration = SlackIntegration.create! valid_attributes
-        put :update, {:id => slack_integration.to_param, :slack_integration => invalid_attributes}, valid_session
+        put :update, params: {:id => slack_integration.to_param, :slack_integration => invalid_attributes}, headers: valid_session
         expect(response).to render_template("edit")
       end
     end
@@ -145,13 +145,13 @@ RSpec.describe SlackIntegrationsController, type: :controller do
     it "destroys the requested slack_integration" do
       slack_integration = SlackIntegration.create! valid_attributes
       expect {
-        delete :destroy, {:id => slack_integration.to_param}, valid_session
+        delete :destroy, params: {:id => slack_integration.to_param}, headers: valid_session
       }.to change(SlackIntegration, :count).by(-1)
     end
 
     it "redirects to the slack_integrations list" do
       slack_integration = SlackIntegration.create! valid_attributes
-      delete :destroy, {:id => slack_integration.to_param}, valid_session
+      delete :destroy, params: {:id => slack_integration.to_param}, headers: valid_session
       expect(response).to redirect_to(slack_integrations_url)
     end
   end

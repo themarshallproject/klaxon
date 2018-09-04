@@ -1,4 +1,4 @@
-class SlackIntegration < ActiveRecord::Base
+class SlackIntegration < ApplicationRecord
 
   validates :channel, length: { minimum: 2 }
   validates :webhook_url, length: { minimum: 10 }
