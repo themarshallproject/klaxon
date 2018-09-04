@@ -6,3 +6,15 @@ deployment:
       - git push git@heroku.com:klaxon-demo.git $CIRCLE_SHA1:refs/heads/master
       - heroku run rake db:migrate --app klaxon-demo:
           timeout: 400
+
+dependencies:
+  post:
+    - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+    - chmod +x ./cc-test-reporter
+
+test:
+  pre:
+    - ./cc-test-reporter before-build
+
+  post:
+    - ./cc-test-reporter after-build --exit-code $EXIT_CODE
