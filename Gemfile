@@ -31,7 +31,7 @@ gem 'aws-sdk', '~> 2.0'
 
 group :development, :test do
   gem 'byebug'
-  gem 'rspec-rails', '~> 3.0'
+  gem 'rspec-rails', '~> 3.8'
   gem 'guard-rspec', require: false
   gem 'factory_bot_rails', '~> 4.0'
   gem 'database_cleaner'
