@@ -13,7 +13,7 @@ gem 'turbolinks'
 gem 'sdoc', '~> 1.0.0', group: :doc
 
 gem 'rack-cache'
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.12'
 gem 'puma', '~> 3.12'
 gem 'rails_12factor'
 
