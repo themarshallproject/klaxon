@@ -150,7 +150,7 @@ GEM
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (1.6.10)
-    rack-cache (1.6.1)
+    rack-cache (1.8.0)
       rack (>= 0.4)
     rack-protection (1.5.5)
       rack
