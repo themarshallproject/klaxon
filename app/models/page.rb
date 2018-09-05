@@ -1,4 +1,4 @@
-class Page < ActiveRecord::Base
+class Page < ApplicationRecord
   belongs_to :user
 
   has_many :page_snapshots, dependent: :destroy

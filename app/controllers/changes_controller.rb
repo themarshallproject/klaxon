@@ -1,5 +1,5 @@
 class ChangesController < ApplicationController
-  before_filter :set_change, only: [:page, :update, :resend]
+  before_action :set_change, only: [:page, :update, :resend]
   before_action :authorize
 
   def page
