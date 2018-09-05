@@ -136,7 +136,7 @@ GEM
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    pg (0.18.4)
+    pg (0.21.0)
     premailer (1.11.1)
       addressable
       css_parser (>= 1.6.0)
@@ -288,7 +288,7 @@ DEPENDENCIES
   jwt
   kramdown
   letter_opener
-  pg (~> 0.15)
+  pg (~> 0.21)
   premailer-rails
   puma (~> 3.12)
   rack-cache
