@@ -46,6 +46,6 @@ end
 
 group :development do
   gem 'letter_opener'
-  gem 'web-console', '~> 3.3'
+  gem 'web-console', '~> 3.7'
   gem 'spring'
 end
