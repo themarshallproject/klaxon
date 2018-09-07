@@ -27,8 +27,7 @@ gem 'httparty'
 gem 'diffy'
 gem 'kramdown'
 
-# only used for alerting SQS.
-gem 'aws-sdk', '~> 2.0'
+gem 'aws-sdk-sqs', '~> 1.6'
 
 group :development, :test do
   gem 'byebug'
