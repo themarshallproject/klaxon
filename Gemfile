@@ -10,6 +10,7 @@ gem 'therubyracer'
 gem 'dotenv'
 gem 'jquery-rails'
 gem 'turbolinks'
+gem 'bootsnap', require: false
 gem 'coffee-rails'
 gem 'sdoc', '~> 1.0.0', group: :doc
 
