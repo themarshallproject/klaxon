@@ -79,10 +79,10 @@ GEM
     dotenv (2.5.0)
     erubi (1.7.1)
     execjs (2.7.0)
-    factory_bot (4.11.0)
+    factory_bot (4.11.1)
       activesupport (>= 3.0.0)
-    factory_bot_rails (4.11.0)
-      factory_bot (~> 4.11.0)
+    factory_bot_rails (4.11.1)
+      factory_bot (~> 4.11.1)
       railties (>= 3.0.0)
     ffi (1.9.25)
     formatador (0.2.5)
@@ -299,7 +299,7 @@ DEPENDENCIES
   database_cleaner
   diffy
   dotenv
-  factory_bot_rails (~> 4.0)
+  factory_bot_rails (~> 4.11)
   guard-rspec
   httparty
   jquery-rails
