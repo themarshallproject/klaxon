@@ -42,6 +42,7 @@ end
 group :test do
   gem 'webmock'
   gem 'rails-controller-testing'
+  gem 'rspec_junit_formatter'
   gem 'codeclimate-test-reporter', require: nil
 end
 
