@@ -13,7 +13,7 @@ development:
 test:
   <<: *default
   database: klaxon_test
-  username: <%= `whoami` %>
+  username: <%= ENV['PGUSER'] || `whoami` %>
   host: localhost
   port: 5432
 
