@@ -35,7 +35,7 @@ class User < ApplicationRecord
 
   def send_notification(change)
     puts "user#send_notification #{self.email}"
-    ChangeMailer.page(change: change, user: self).deliver_later
+    ChangeMailer.page(change: change, user: self).deliver_now
   end
 
   def email_domain_is_approved
