@@ -41,10 +41,6 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
-  # TODO: Remove this once Rails 5.2 has been deployed to production and is
-  # working fine
-  config.action_dispatch.use_authenticated_cookie_encryption = false
-
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
 
