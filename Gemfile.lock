@@ -234,6 +234,8 @@ GEM
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
+    rspec_junit_formatter (0.3.0)
+      rspec-core (>= 2, < 4, != 2.12.0)
     ruby_dep (1.5.0)
     safe_yaml (1.0.4)
     sass (3.5.7)
@@ -326,6 +328,7 @@ DEPENDENCIES
   rails-controller-testing
   rails_12factor
   rspec-rails (~> 3.8)
+  rspec_junit_formatter
   sass-rails (~> 5.0)
   sdoc (~> 1.0.0)
   simple_form (~> 4.0)
