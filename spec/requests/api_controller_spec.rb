@@ -7,7 +7,7 @@ RSpec.describe ApiController, type: :request do
 
     # login
     @user = User.where(email: 'test@test.com').first_or_create
-    get(token_session_path, token: LoginToken.create(user: @user))
+    get(token_session_path, params: { token: LoginToken.create(user: @user) })
   end
 
   describe "/page-preview" do
@@ -16,7 +16,7 @@ RSpec.describe ApiController, type: :request do
       url = 'https://www.themarshallproject.org'
       css_selector = 'header'
 
-      get(api_page_preview_path, url: url, css_selector: css_selector)
+      get(api_page_preview_path, params: { url: url, css_selector: css_selector })
 
       expect(response).to have_http_status(:success)
 
@@ -37,7 +37,7 @@ RSpec.describe ApiController, type: :request do
     selector = ".first-column-region .story"
 
     # create the page
-    post(embed_find_page_path, url: url)
+    post(embed_find_page_path, params: { url: url })
     expect(response).to have_http_status(:success)
     data = JSON.parse(response.body)
     expect(data['url']).to eq url
@@ -46,7 +46,7 @@ RSpec.describe ApiController, type: :request do
     expect(page.user).to eq @user
 
     # update the page
-    post(embed_update_page_selector_path, id: page.id, css_selector: selector)
+    post(embed_update_page_selector_path, params: { id: page.id, css_selector: selector })
     data = JSON.parse(response.body)
     expect(data['css_selector']).to eq selector
     expect(data['user_id']).to eq @user.id

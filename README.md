@@ -12,7 +12,13 @@ Read more below, or say hello to the humans behind the project at the [Google Gr
 
 ## Alerting journalists to changes on the web
 
-Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. Klaxon has been used and tested by journalists at The Marshall Project, The New York Times, the Texas Tribune, the Associated Press [and elsewhere](NEWSROOMS.md). The public release of this free and open source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/). [If you need help using Klaxon once it's already been set up, [you can find it here.](https://github.com/themarshallproject/klaxon/blob/master/data/help.md)]
+Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. Klaxon has been used and tested by journalists at The Marshall Project, The New York Times, the Texas Tribune, the Associated Press [and elsewhere](NEWSROOMS.md). 
+
+The public release of this free and open source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/).
+
+## How Does Klaxon Work?
+
+Klaxon enables users to "bookmark" portions of a webpage and be notified (via email or [Slack](#notify-a-slack-channel)) of any changes that may occur to those sections. [Learn more about bookmarklets on the help.md page](data/help.md).
 
 [![Circle CI](https://circleci.com/gh/themarshallproject/klaxon.svg?style=svg)](https://circleci.com/gh/themarshallproject/klaxon)
 
@@ -116,6 +122,7 @@ The core contributors to Klaxon have been Ivar Vong, Andy Rossback, Tom Meagher 
 We've been grateful for additional contributions to the project from:
 
 * Jackson Gothe-Snape, SBS News
+* Cameo Hill
 * Emily Hopkins
 * Yolanda Martinez
 * Jeremy Merrill
