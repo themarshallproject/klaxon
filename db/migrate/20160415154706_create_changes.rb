@@ -1,4 +1,4 @@
-class CreateChanges < ActiveRecord::Migration
+class CreateChanges < ActiveRecord::Migration[4.2]
   def change
     create_table :changes do |t|
       t.integer :prev_id
