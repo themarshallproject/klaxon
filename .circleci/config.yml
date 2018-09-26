@@ -55,6 +55,10 @@ jobs:
           RAILS_GROUPS: assets
 
     - run:
+        name: Wait for DB
+        command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+    - run:
         command: bundle exec rake db:create db:schema:load --trace
         environment:
           RAILS_ENV: test
@@ -63,10 +67,6 @@ jobs:
     - run:
         name: Make results directory
         command: mkdir -p test-results/rspec/
-
-    - run:
-        name: Wait for DB
-        command: dockerize -wait tcp://localhost:5432 -timeout 1m
 
     - run:
         name: Run the tests
