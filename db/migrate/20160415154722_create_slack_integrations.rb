@@ -1,4 +1,4 @@
-class CreateSlackIntegrations < ActiveRecord::Migration
+class CreateSlackIntegrations < ActiveRecord::Migration[4.2]
   def change
     create_table :slack_integrations do |t|
       t.string :channel

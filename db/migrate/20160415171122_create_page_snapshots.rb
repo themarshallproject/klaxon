@@ -1,4 +1,4 @@
-class CreatePageSnapshots < ActiveRecord::Migration
+class CreatePageSnapshots < ActiveRecord::Migration[4.2]
   def change
     create_table :page_snapshots do |t|
       t.integer :page_id
