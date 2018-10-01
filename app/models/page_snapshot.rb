@@ -1,6 +1,6 @@
-class PageSnapshot < ActiveRecord::Base
+class PageSnapshot < ApplicationRecord
   belongs_to :page
-  validates :page, presence: true
+
   validates :sha2_hash, presence: true
 
   after_destroy do |record|

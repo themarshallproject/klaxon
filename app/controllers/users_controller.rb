@@ -63,6 +63,25 @@ class UsersController < ApplicationController
     redirect_to users_url, notice: 'User was successfully deleted.'
   end
 
+  # DELETE /users/1/pages/6-some-page-title
+  def unsubscribe
+    user = User.find(params[:user_id])
+    page_id = params[:page_id].split('-')[0].to_i
+    page = Page.find(page_id)
+
+
+    if user.id != current_user.id && !current_user.is_admin
+      return redirect_to edit_user_url(user), error: "You don't have permission to edit this users subscriptions."
+    end
+
+    if !user.present? || !page.present?
+      return redirect_to edit_user_url(user), error: "Something went wrong. User or page was not found."
+    end
+
+    user.unsubscribe(page)
+    redirect_to edit_user_url(user), notice: 'Subscription successfully removed.'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

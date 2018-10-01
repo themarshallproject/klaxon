@@ -12,7 +12,7 @@ a {
   border-bottom: 2px solid #ff0b3a;
 }
 
-a:hover, a:focus {
+a:not(.btn):hover, a:focus {
   color: #ff0b3a;
   text-decoration: none;
   border-bottom: 2px solid #ff0b3a;

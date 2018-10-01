@@ -1,4 +1,4 @@
-class SqsIntegration < ActiveRecord::Base
+class SqsIntegration < ApplicationRecord
 
   validates :queue_url, length: { minimum: 10 }
   validate :starts_with_https
