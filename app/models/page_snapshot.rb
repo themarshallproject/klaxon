@@ -12,7 +12,16 @@ class PageSnapshot < ApplicationRecord
   end
 
   def match_text
-    document.css(self.page.css_selector).text
+    @match = document.css(self.css_selector)
+
+    if self.exclude_selector.present?
+      # Set the content of the exclude selector to the empty string
+      @match.css(self.exclude_selector).each do |node|
+        node.content = ""
+      end
+    end
+
+    @match.text
   end
 
   def display_hash
