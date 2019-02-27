@@ -19,7 +19,7 @@ gem 'bcrypt', '~> 3.1.12'
 gem 'puma', '~> 3.12'
 gem 'rails_12factor'
 
-gem 'simple_form', '~> 4.0'
+gem 'simple_form', '~> 4.1'
 
 gem 'jwt'
 gem 'premailer-rails'
