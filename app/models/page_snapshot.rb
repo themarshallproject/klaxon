@@ -12,11 +12,11 @@ class PageSnapshot < ApplicationRecord
   end
 
   def match_text
-    @match = document.css(self.css_selector)
+    @match = document.css(self.page.css_selector)
 
-    if self.exclude_selector.present?
+    if self.page.exclude_selector.present?
       # Set the content of the exclude selector to the empty string
-      @match.css(self.exclude_selector).each do |node|
+      @match.css(self.page.exclude_selector).each do |node|
         node.content = ""
       end
     end
