@@ -1,0 +1,5 @@
+#!/usr/bin/with-contenv bash
+
+echo "starting crond"
+
+su -c "cron -l 8 -f" root
