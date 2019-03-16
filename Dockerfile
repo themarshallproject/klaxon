@@ -20,8 +20,7 @@ RUN tar xzf /tmp/s6-overlay-amd64.tar.gz -C / \
     && mkdir /config \
     && apt-get update \
     && apt-get install -y cron \
-    && rm -rf /var/lib/apt/lists/* \
-    && echo "*/15 * * * * root /config/cron-15min" > /etc/crontab
+    && rm -rf /var/lib/apt/lists/*
 
 COPY rootfs/ /
 VOLUME ["/config"]
