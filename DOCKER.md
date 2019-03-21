@@ -5,11 +5,7 @@
 1. Run the following commands:
 
 ```
-docker-compose up -d database
-docker-compose build app
-docker-compose run app rake db:create db:migrate
-docker-compose run app rake users:create_admin
-docker-compose up app
+docker-compose up
 open http://localhost:3000
 ```
 
