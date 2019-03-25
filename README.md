@@ -128,6 +128,7 @@ We've been grateful for additional contributions to the project from:
 * Jeremy Merrill
 * Ryan Murphy
 * Justin Myers
+* Kevin Schaul
 * Ari Shapell
 * Jeremy Singer-Vine
 * Mike Stucka
