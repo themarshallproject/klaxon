@@ -9,3 +9,8 @@ services:
       DATABASE_URL: "postgres://postgres@database/klaxon"
       SECRET_KEY_BASE: "secret_key_base"
       ADMIN_EMAILS: "admin@news.org"
+
+#      KLAXON_CREATE_DB: 'false'
+#      KLAXON_MIGRATE_DB: 'false'
+#      KLAXON_CREATE_ADMIN: 'false'
+#      KLAXON_CRON_ENABLED: 'false'
