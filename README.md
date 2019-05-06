@@ -68,6 +68,8 @@ Click on the button that says “Manage App”. This takes you behind the scenes
 
 ![](docs/scheduler.png)
 
+Unfortunately our email provider Sendgrid requires an additional step to confirm that you are not a spammer. Your new Sendgrid account is now in a "suspended" state, to get it unsuspended you have to contact Sendgrid support. You can do this by clicking the Sendgrid logo on the Resources tab. **You will not be able to log in until you are cleared by Sendgrid.** This usually happens pretty quickly (hours not days).
+
 Now, at the top of the scheduler page, click the link that is the name of your app (“sl-klaxon”). This will take you to your Klaxon’s login screen on the web.
 
 ![](docs/login_screen.png)
