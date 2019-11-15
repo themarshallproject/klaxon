@@ -27,7 +27,7 @@ class Page < ApplicationRecord
 
     @html ||= begin
       logger.info "downloading url=#{self.url} for page.id=#{self.id}"
-      dirty = Net::HTTP.get(URI(self.url.to_s), :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE)
+      dirty = Net::HTTP.get(URI(self.url.to_s))
       SafeString.coerce(dirty)
     end
   end
