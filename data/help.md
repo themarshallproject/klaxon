@@ -58,6 +58,11 @@ Click on the “Settings” button in the upper right corner of the page and cho
 
 Now, choose the channel that you want the Klaxon alerts to go to from the dropdown menu. We’d recommend that you not send them to #General, but maybe create a new channel called #Klaxon. After you create or choose your channel, click the green button that says “Add Incoming Webhooks Integration”. Near the top of the next screen, you should see a red URL next to the label “Webhook URL”. Copy that URL and switch over to your browser window with Klaxon in it. Paste the URL into the box labeled “Webhook URL,” and type the name of the channel you want your Slack alerts to go to into the “Channel” box (this should be the same channel name you used in Slack when you created the integration). Now click the “Create Slack Integration Button”. Now you should be all set. If you want to have the ability to send Klaxon alerts to other channels, for specific reporting teams or for certain projects, you can repeat this process.
 
+## How to remove an alert
+If you find that you have set an alert in error, or you are no longer using it and want to clear out space, you can delete any alert. From the "Watching" page, click on the "Edit" button next to the alert you want to remove. Then scroll to the bottom of the Edit page and look for this button: ![Klaxon delete button](/images/delete_button.PNG) 
+
+It should do the trick and will remove the alert and it's stored snapshots from the database.
+
 ## About Klaxon
 
 Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/#.2N8GFLsI0), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. The public release of this free and open source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/). With feedback or suggestions, contact us with the form below. To help improve Klaxon for other users, whether you’re a coder or not, read [our guide to how you can contribute to the project.](https://github.com/themarshallproject/klaxon/blob/master/CONTRIBUTING.md)
