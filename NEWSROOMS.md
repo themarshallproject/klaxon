@@ -11,6 +11,7 @@
 * FiveThirtyEight
 * Fusion
 * Gizmodo
+* The Globe and Mail
 * KBIA, in Columbia, Mo.
 * KPCC in Pasadena, Calif.
 * The Marshall Project
