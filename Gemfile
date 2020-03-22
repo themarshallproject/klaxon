@@ -30,6 +30,9 @@ gem 'kramdown'
 
 gem 'aws-sdk-sqs', '~> 1.12'
 
+gem 'chromedriver-helper'
+gem 'watir'
+
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.8'
