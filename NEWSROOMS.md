@@ -28,5 +28,6 @@
 * The Villages Daily Sun
 * Washington Post
 * WRAL, in Raleigh, N.C.
+* Eye on Ohio, the Ohio Center for Journalism
 
 If you know of others who are finding Klaxon useful, please let us know with an email to klaxon-reports[at]themarshallproject[dot]org
