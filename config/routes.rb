@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   end
 
   get '/changes/page/:change_id' => 'changes#page', as: :page_change
+  get '/changes/page/:change_id/html' => 'changes#html', as: :show_html
+  get '/changes/page/:change_id/html/download' => 'changes#download', as: :download_html
   post '/changes/resend/:change_id' => 'changes#resend', as: :resend_change_notifications
   patch '/changes/:change_id' => 'changes#update', as: :change
 

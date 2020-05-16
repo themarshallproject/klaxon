@@ -1,0 +1,39 @@
+<%= stylesheet_link_tag "changes", media: "all" %>
+
+<div class="klax-section klax-topper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Latest Captured HTML</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <p class="lead">Below is a version of <b><%= @page&.name || @page&.url %></b> downloaded on <%= @timestamp.strftime("%A, %B %d, %Y at %H:%M %P") %>. </p>
+        <p class="lead">It may take a moment for the captured page to load. The page may look odd because we're not capturing the CSS as well. Sorry.</p>
+      </div>
+
+      <div class="col-md-3">
+        <!-- negative space -->
+      </div>
+      <div class="col-md-3">
+       <%= link_to 'Past Snapshots', snapshots_page_path(@page), class: 'btn btn-default btn-lg btn-block' %>
+        <%= link_to 'Download HTML', download_html_path(@change_id), download:true, class: 'btn btn-default btn-lg btn-block' %>
+        <%= link_to 'Go to Source', @page.url, class: 'btn btn-default btn-lg btn-block' %>
+        <%= link_to 'Edit Klaxon', edit_page_path(@page), class: 'btn btn-default btn-lg btn-block' %>
+
+      
+      </div>
+    </div>
+  </div></div>
+<div class="klax-section klax-spacer-lg">
+  <div class="container klax-spacer-md">
+    <div class="row klax-spacer-md">
+
+<div class="col-md-12" style="border:solid;"> <div class="ignore-css"><%= raw @html %></div> </div>
+      </div>
+
+    </div></div></div>
+    </div>
+  </div><!-- /.container -->
+</div>

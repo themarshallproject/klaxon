@@ -23,6 +23,27 @@ class ChangesController < ApplicationController
     render json: @change.send_notifications
   end
 
+  def html
+    @change_id=params[:change_id]
+    @snapshot = PageSnapshot.find(@change_id)
+    @page = Page.find(@snapshot.page_id)
+    @timestamp = @snapshot.created_at
+    @html = @snapshot.html
+  end
+
+  def download
+    @id = params[:change_id]
+    @change_id = @id
+    @snapshot = PageSnapshot.find(@id)
+    @html = @snapshot.html
+    @parent_page = Page.find(@snapshot.page_id)
+    @filename = @parent_page.name.gsub(" ","-") + "-" + @snapshot.created_at.to_s.gsub(" ","-") + ".html"
+    send_data(@html,
+          :filename => @filename,
+          :type => 'text/html',
+          :disposition => 'attachment') 
+  end
+
   private
 
   def set_change
@@ -32,4 +53,5 @@ class ChangesController < ApplicationController
   def change_params
     params.require(:change).permit(:summary)
   end
+
 end
