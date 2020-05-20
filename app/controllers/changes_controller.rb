@@ -31,6 +31,13 @@ class ChangesController < ApplicationController
     @html = @snapshot.html
   end
 
+  def raw_html
+    @change_id=params[:change_id]
+    @snapshot = PageSnapshot.find(@change_id)
+    return render html: @snapshot.html.html_safe
+  end
+
+
   def download
     @id = params[:change_id]
     @change_id = @id

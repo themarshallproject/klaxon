@@ -9,7 +9,7 @@
     </div>
     <div class="row">
       <div class="col-md-6">
-        <p class="lead">Below is a version of <b><%= @page&.name || @page&.url %></b> downloaded on <%= @timestamp.strftime("%A, %B %d, %Y at %H:%M %P") %>. </p>
+        <p class="lead">Below is a version of <b><%= @page&.name || @page&.url %></b> downloaded on <%= @timestamp.strftime("%A, %B %d, %Y at %l:%M %P %z off UTC") %>. </p>
         <p class="lead">It may take a moment for the captured page to load. The page may look odd because we're not capturing the CSS as well. Sorry.</p>
       </div>
 
@@ -30,7 +30,7 @@
   <div class="container klax-spacer-md">
     <div class="row klax-spacer-md">
 
-<div class="col-md-12" style="border:solid;"> <div class="ignore-css"><%= raw @html %></div> </div>
+<div class="col-md-12" style="border:solid;"><iframe src="/changes/page/<%= @change_id %>/html/raw"></div> </div>
       </div>
 
     </div></div></div>
