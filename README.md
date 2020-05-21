@@ -126,6 +126,7 @@ We've been grateful for additional contributions to the project from:
 * Jackson Gothe-Snape, SBS News
 * Cameo Hill
 * Emily Hopkins
+* Jason Kulatunga
 * Yolanda Martinez
 * Jeremy Merrill
 * Ryan Murphy
@@ -134,6 +135,7 @@ We've been grateful for additional contributions to the project from:
 * Ari Shapell
 * Jeremy Singer-Vine
 * Mike Stucka
+* k.wakitani
 * Bob Weston
 
 We also owe thanks to Knight-Mozilla [OpenNews](https://opennews.org/), which supported the initial public release of this free and open source software.
