@@ -6,6 +6,6 @@ We've been having issues with the way existing Heroku applications authenticate 
 4. Click the API key to copy it to your clipboard. Then navigate back to Heroku.
 5. In the "Settings" tab of your Heroku app click the "Reveal Config Vars" button.
 6. Change the `SENDGRID_PASSWORD` variable to the API Key by clicking the pencil icon next to it, pasting it in, and saving it.
-7. Change the `SENDGRID_USERNAME` variable to `apikey` in the same manner.
+7. Change the `SENDGRID_USERNAME` variable to the string "apikey" in the same manner.
 
 You should be all set! Confirm that your changes worked as expected by trying to log in again, and ensuring that the login email arrives as expected.
