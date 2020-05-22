@@ -29,7 +29,7 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fall back to locating/compiling missing assets.
-  config.assets.compile = false
+  config.assets.compile = (ENV.fetch('KLAXON_COMPILE_ASSETS', 'false').to_s.downcase == 'true')
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
@@ -42,7 +42,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  config.force_ssl = (ENV.fetch('KLAXON_FORCE_SSL', 'true').to_s.downcase == 'true')
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.

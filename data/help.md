@@ -40,6 +40,8 @@ In the “[Watching](/watching/pages)” page you can manually add sites to moni
 
 Click on "Manually Watch and Item" on the right side of the heading. This will take you to directly to the Edit page for links. Here you can include the title, link to the site and the specific selector(s) you want to focus on.
 
+If you want to ignore changes within your chosen selector(s), enter another selector into the "Exclude selector" input.
+
 ## Understand what’s changed on a page
 
 Sometimes you want to see how the current version of a site compares to a version that you captured, say, six months ago. Because Klaxon stores each snapshot it finds of a site, this is fairly easy to do. You can reach the history of snapshots in a couple of ways. If it’s a site someone else in your newsroom is following, from the Feed, click on the latest snapshot you see for your site, which would say something like “GA Sec’y of State changed” or “The Marshall Project changed”. If it’s a site you added to Klaxon, from the “Watching” page, click on the “Latest snapshot” button next the site you want to explore. Either of these routes takes you to the most recent snapshot for that site.
