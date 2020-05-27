@@ -257,7 +257,7 @@ GEM
     sdoc (1.0.0)
       rdoc (>= 5.0)
     shellany (0.0.1)
-    simple_form (4.1.0)
+    simple_form (5.0.0)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
     simplecov (0.11.2)
@@ -336,7 +336,7 @@ DEPENDENCIES
   rspec_junit_formatter
   sass-rails (~> 5.0)
   sdoc (~> 1.0.0)
-  simple_form (~> 4.1)
+  simple_form (~> 5.0)
   sinatra
   spring
   therubyracer
