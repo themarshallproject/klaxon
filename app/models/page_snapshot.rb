@@ -43,5 +43,4 @@ class PageSnapshot < ApplicationRecord
   def blank_match_text?
     self.match_text.blank?
   end
-
 end
