@@ -2,7 +2,7 @@
 
 If you're interested in [helping improve Klaxon by contributing code](CONTRIBUTING.md), this is a quick guide to how to get it running on your local machine for development.
 
-First, we'll assume you already have git on your local machine, as well as a standard postgres installation. So go to your terminal, navigate to whatever directory where you keep your projects and clone the Klaxon repo.
+First, we'll assume you already have git on your local machine, as well as a standard postgres installation (if you need a [quick way to get Postgres up and running, try this](https://postgresapp.com/)). So go to your terminal, navigate to whatever directory where you keep your projects and clone the Klaxon repo.
 
 ```
 git clone git@github.com:themarshallproject/klaxon.git
@@ -17,7 +17,7 @@ brew update && brew upgrade ruby-build
 rbenv install
 ``` 
 
-Next, you'll need to have the proper versions of all of Klaxon's dependency libraries, as well as foreman, Heroku's tool for running a local server for development. Run these commands here.
+Next, you'll need to have the proper versions of all of Klaxon's dependency libraries, as well as foreman, a process manager that allows you to run a local server for development. Run these commands here.
 
 ```
 gem install bundler
@@ -32,7 +32,7 @@ ADMIN_EMAILS="my_awesome_email@gmail.com"
 HOST='localhost:5000'
 ```
 
-Feel free to substitute in your real email address.
+Feel free to substitute in your email address. In development, Klaxon doesn't actually send emails locally, so a real address is not required.
 
 Now that's set, you'll run a couple of commands for Rails to create Klaxon's database on your machine.
 
@@ -44,10 +44,10 @@ rake db:migrate
 Now, you should be about ready to get started. This command in the top folder of the Klaxon repo will get your dev server rolling.
 
 ```
-foreman start -f Procfile
+foreman start
 ```
 
-Now, you should be able to go to `localhost:5000` in your web browser and see Klaxon's welcome screen pop up. You'll want to manually add a webpage or two to watch at ```watching/pages/new```. For development purposes, you'll probably want to pick a site that updates pretty regularly. We use `http://www.timeanddate.com/`. 
+Now, you should be able to go to [localhost:5000](http://localhost:5000/) in your web browser and see Klaxon's welcome screen pop up. You'll want to manually add a webpage or two to watch at [watching/pages/new](http://localhost:5000/watching/pages/new). For development purposes, you'll probably want to pick a site that updates pretty regularly. We use [http://www.timeanddate.com/](http://www.timeanddate.com/). 
 
 To get Klaxon to check for updates on the pages you're watching, in another terminal window, run this rake command.
 

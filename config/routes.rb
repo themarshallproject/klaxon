@@ -28,11 +28,12 @@ Rails.application.routes.draw do
   end
 
   get '/changes/page/:change_id' => 'changes#page', as: :page_change
-  get '/changes/page/:change_id/html' => 'changes#html', as: :show_html
-  get '/changes/page/:change_id/html/raw' => 'changes#raw_html', as: :raw_html
-  get '/changes/page/:change_id/html/download' => 'changes#download', as: :download_html
   post '/changes/resend/:change_id' => 'changes#resend', as: :resend_change_notifications
   patch '/changes/:change_id' => 'changes#update', as: :change
+
+  get '/page_snapshots/:page_snapshot_id' => 'page_snapshots#html', as: :show_page_snapshot_html
+  get '/page_snapshots/raw/:page_snapshot_id' => 'page_snapshots#raw_html', as: :raw_page_snapshot_html
+  get '/page_snapshots/download_html/:page_snapshot_id' => 'page_snapshots#download', as: :download_page_snapshot_html
 
   scope '/embed' do
     get 'inject' => 'embed#inject'
