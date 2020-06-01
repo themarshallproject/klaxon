@@ -45,7 +45,6 @@ class PageSnapshot < ApplicationRecord
   end
 
   def filename
-    parent_page = Page.find(self.page_id)
-    filename = parent_page.name.gsub(" ","-") + "-" + self.created_at.to_s.gsub(" ","-") + ".html"
+    filename = self.page.name.gsub(" ","-") + "-" + self.created_at.to_s.gsub(" ","-") + ".html"
   end
 end
