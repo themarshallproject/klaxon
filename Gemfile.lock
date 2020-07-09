@@ -86,11 +86,11 @@ GEM
     dotenv (2.7.1)
     erubi (1.9.0)
     execjs (2.7.0)
-    factory_bot (5.0.2)
-      activesupport (>= 4.2.0)
-    factory_bot_rails (5.0.1)
-      factory_bot (~> 5.0.0)
-      railties (>= 4.2.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
     ffi (1.9.25)
     formatador (0.2.5)
     globalid (0.4.2)
@@ -114,7 +114,7 @@ GEM
     httparty (0.16.4)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
-    i18n (1.8.2)
+    i18n (1.8.3)
       concurrent-ruby (~> 1.0)
     jmespath (1.4.0)
     jquery-rails (4.3.4)
@@ -133,7 +133,7 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
-    loofah (2.5.0)
+    loofah (2.6.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.13)
@@ -154,7 +154,7 @@ GEM
     mustermann (1.0.3)
     nenv (0.3.0)
     nio4r (2.3.1)
-    nokogiri (1.10.9)
+    nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
@@ -172,7 +172,7 @@ GEM
       method_source (~> 0.9.0)
     public_suffix (3.0.3)
     puma (3.12.6)
-    rack (2.2.2)
+    rack (2.2.3)
     rack-cache (1.9.0)
       rack (>= 0.4)
     rack-protection (2.0.5)
@@ -318,7 +318,7 @@ DEPENDENCIES
   database_cleaner
   diffy
   dotenv
-  factory_bot_rails (~> 5.0)
+  factory_bot_rails (~> 6.1)
   guard-rspec
   httparty
   jquery-rails
