@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.4.5'
+ruby '2.5.7'
 
 gem 'rails', '~> 5.2.2'
 gem 'pg', '~> 0.21'
@@ -19,7 +19,7 @@ gem 'bcrypt', '~> 3.1.12'
 gem 'puma', '~> 3.12'
 gem 'rails_12factor'
 
-gem 'simple_form', '~> 4.1'
+gem 'simple_form', '~> 5.0'
 
 gem 'jwt'
 gem 'premailer-rails'

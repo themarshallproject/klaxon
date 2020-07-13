@@ -12,7 +12,7 @@ Read more below, or say hello to the humans behind the project at the [Google Gr
 
 ## Alerting journalists to changes on the web
 
-Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. Klaxon has been used and tested by journalists at The Marshall Project, The New York Times, the Texas Tribune, the Associated Press [and elsewhere](NEWSROOMS.md). 
+Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. Klaxon has been used and tested by journalists at The Marshall Project, The New York Times, the Texas Tribune, the Associated Press [and elsewhere](NEWSROOMS.md).
 
 The public release of this free and open source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/).
 
@@ -67,6 +67,8 @@ When you see this message:
 Click on the button that says “Manage App”. This takes you behind the scenes of the various components powering your Klaxon. On this resources screen, click on the link for “Heroku Scheduler,” which will take you a new screen where you must add the very important piece. The scheduler is what runs every 10 minutes to actually check all the sites and pages you’re watching. Click the long, purple ‘Add new job” button. In the text box next to the dollar sign, type the words “rake check:all” with the colon and without the quotes. Under “Frequency,” change it from “Daily” to “Every 10 minutes”. Click the purple “Save” button and your scheduler item should look like this:
 
 ![](docs/scheduler.png)
+
+Unfortunately our email provider Sendgrid requires an additional step to confirm that you are not a spammer. Your new Sendgrid account is now in a "suspended" state, to get it unsuspended you have to contact Sendgrid support. You can do this by clicking the Sendgrid logo on the Resources tab. **You will not be able to log in until you are cleared by Sendgrid.** This usually happens pretty quickly (hours not days).
 
 Now, at the top of the scheduler page, click the link that is the name of your app (“sl-klaxon”). This will take you to your Klaxon’s login screen on the web.
 
@@ -124,6 +126,7 @@ We've been grateful for additional contributions to the project from:
 * Jackson Gothe-Snape, SBS News
 * Cameo Hill
 * Emily Hopkins
+* Jason Kulatunga
 * Yolanda Martinez
 * Jeremy Merrill
 * Ryan Murphy
@@ -132,6 +135,7 @@ We've been grateful for additional contributions to the project from:
 * Ari Shapell
 * Jeremy Singer-Vine
 * Mike Stucka
+* k.wakitani
 * Bob Weston
 
 We also owe thanks to Knight-Mozilla [OpenNews](https://opennews.org/), which supported the initial public release of this free and open source software.
