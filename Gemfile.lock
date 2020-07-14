@@ -123,7 +123,8 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.6)
     jwt (2.1.0)
-    kramdown (1.17.0)
+    kramdown (2.3.0)
+      rexml
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.7.0)
@@ -218,6 +219,7 @@ GEM
       ffi (>= 0.5.0, < 2)
     rdoc (6.0.4)
     ref (2.0.0)
+    rexml (3.2.4)
     rspec (3.8.0)
       rspec-core (~> 3.8.0)
       rspec-expectations (~> 3.8.0)
