@@ -126,6 +126,7 @@ We've been grateful for additional contributions to the project from:
 * Jackson Gothe-Snape, SBS News
 * Cameo Hill
 * Emily Hopkins
+* imnewnity
 * Jason Kulatunga
 * Yolanda Martinez
 * Jeremy Merrill
