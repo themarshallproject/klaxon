@@ -12,6 +12,7 @@
 * ComputerWorld
 * Dallas Morning News
 * EdSource
+* Eye on Ohio, the Ohio Center for Journalism
 * FiveThirtyEight
 * Fusion
 * Gizmodo
