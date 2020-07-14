@@ -12,6 +12,7 @@
 * ComputerWorld
 * Dallas Morning News
 * EdSource
+* Eye on Ohio, the Ohio Center for Journalism
 * FiveThirtyEight
 * Fusion
 * Gizmodo
@@ -54,6 +55,5 @@
 * Washington Post
 * Winnipeg Free Press, Winnipeg, Canada
 * WRAL, in Raleigh, N.C.
-* Eye on Ohio, the Ohio Center for Journalism
 
 If you know of others who are finding Klaxon useful, please let us know with an email to klaxon-reports[at]themarshallproject[dot]org
