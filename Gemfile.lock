@@ -62,7 +62,7 @@ GEM
     bootsnap (1.4.6)
       msgpack (~> 1.0)
     builder (3.2.4)
-    byebug (11.0.1)
+    byebug (11.1.3)
     codeclimate-test-reporter (0.5.2)
       simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.2)
