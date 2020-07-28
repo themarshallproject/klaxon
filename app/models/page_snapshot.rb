@@ -44,4 +44,7 @@ class PageSnapshot < ApplicationRecord
     self.match_text.blank?
   end
 
+  def filename
+    filename = self.page.name.gsub(" ","-") + "-" + self.created_at.to_s.gsub(" ","-") + ".html"
+  end
 end
