@@ -40,5 +40,4 @@ class SessionsController < ApplicationController
     cookies.delete(:user_id)
     redirect_to root_path
   end
-
 end
