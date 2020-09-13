@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
 
     user = User.find_by(id: cookies.signed[:user_id])
     if user.present?
-      cookies.signed[:user_id] = { value: user.id, expires: 7.days.from_now, httponly: true }
+      cookies.signed[:user_id] = { value: user.id, expires: 7.days.from_now, httponly: true, same_site: :none, secure: true }
       @current_user = user
     else
       cookies.signed[:user_id] = nil

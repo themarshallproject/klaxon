@@ -31,6 +31,8 @@ RSpec.describe SlackIntegrationsController, type: :controller do
     skip("Add a hash of attributes invalid for your model")
   }
 
+  before(:each) { login }
+
   describe "GET #index" do
     it "assigns all slack_integrations as @slack_integrations" do
       slack_integration = SlackIntegration.create! valid_attributes

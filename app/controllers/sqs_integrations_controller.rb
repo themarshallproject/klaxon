@@ -1,5 +1,6 @@
 class SqsIntegrationsController < ApplicationController
   before_action :set_sqs_integration, only: [:show, :edit, :update, :destroy]
+  before_action :authorize
 
   # GET /sqs_integrations
   def index
