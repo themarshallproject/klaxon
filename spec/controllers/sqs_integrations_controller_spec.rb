@@ -35,6 +35,8 @@ RSpec.describe SqsIntegrationsController, type: :controller do
     }
   }
 
+  before(:each) { login }
+
   describe "GET #index" do
     it "assigns all sqs_integrations as @sqs_integrations" do
       sqs_integration = SqsIntegration.create! valid_attributes
