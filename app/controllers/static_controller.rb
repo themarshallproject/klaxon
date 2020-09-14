@@ -1,4 +1,5 @@
 class StaticController < ApplicationController
+  before_action :authorize
 
   def help
     path = File.join(Rails.root, 'data', 'help.md')
@@ -8,5 +9,4 @@ class StaticController < ApplicationController
 
   def feed
   end
-
 end
