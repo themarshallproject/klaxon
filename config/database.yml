@@ -5,15 +5,12 @@ default: &default
 
 development:
   <<: *default
-  database: klaxon_development
-  username: <%= `whoami` %>
-  host: localhost
-  port: 5432
+  url: <%= ENV['DATABASE_URL'] || 'postgres://localhost/klaxon_development' %>
 
 test:
   <<: *default
   database: klaxon_test
-  username: <%= `whoami` %>
+  username: <%= ENV['PGUSER'] || `whoami` %>
   host: localhost
   port: 5432
 

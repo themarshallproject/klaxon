@@ -1,6 +1,6 @@
-class PageSnapshot < ActiveRecord::Base
+class PageSnapshot < ApplicationRecord
   belongs_to :page
-  validates :page, presence: true
+
   validates :sha2_hash, presence: true
 
   after_destroy do |record|
@@ -12,7 +12,16 @@ class PageSnapshot < ActiveRecord::Base
   end
 
   def match_text
-    document.css(self.page.css_selector).text
+    @match = document.css(self.page.css_selector)
+
+    if self.page.exclude_selector.present?
+      # Set the content of the exclude selector to the empty string
+      @match.css(self.page.exclude_selector).each do |node|
+        node.content = ""
+      end
+    end
+
+    @match.text
   end
 
   def display_hash
@@ -35,4 +44,7 @@ class PageSnapshot < ActiveRecord::Base
     self.match_text.blank?
   end
 
+  def filename
+    filename = self.page.name.gsub(" ","-") + "-" + self.created_at.to_s.gsub(" ","-") + ".html"
+  end
 end

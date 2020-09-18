@@ -1,4 +1,4 @@
-class Change < ActiveRecord::Base
+class Change < ApplicationRecord
   belongs_to :before, polymorphic: true
   validates  :before, presence: true
 
@@ -23,7 +23,11 @@ class Change < ActiveRecord::Base
   def send_notifications
     subscriptions = Subscription.where(watching: self.after.parent)
     subscriptions.all.map do |subscription|
-      subscription.send_notification(self) rescue nil
+      begin
+        subscription.send_notification(self)
+      rescue Exception => e
+        puts "Error sending notification for Change #{self.id}", e
+      end
     end
 
     # unlike people and slack channels, there are no "subscriptions" to SQS integrations,

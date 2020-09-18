@@ -1,0 +1,77 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/themarshallproject/klaxon
+    parallelism: 1
+    docker:
+    # Includes ruby, node, and chrome/phantomjs
+    # TODO: Go back to the non-legacy version of this image, when our test
+    # infrastructure no longer depends on phantomjs
+    - image: circleci/ruby:2.5.7 # ...with this image as the primary container; this is where all `steps` will run
+      environment: # environment variables for primary container
+        BUNDLE_JOBS: 3
+        BUNDLE_RETRY: 3
+        BUNDLE_PATH: vendor/bundle
+        PGHOST: 127.0.0.1
+        PGUSER: klaxon-test-user
+        RAILS_ENV: test
+        RACK_ENV: test
+        NODE_ENV: test
+    - image: circleci/postgres:9.5-alpine # database image
+      environment: # environment variables for database
+        POSTGRES_USER: klaxon-test-user
+        POSTGRES_DB: klaxon_test
+        POSTGRES_PASSWORD: ""
+    steps:
+    # Check out the repo
+    - checkout
+
+    # Dependencies
+    # Which version of bundler?
+    - run:
+        name: Which bundler?
+        command: bundle -v
+
+    # Restore the dependency cache
+    - restore_cache:
+        keys:
+        - klaxon-v2-{{ checksum "Gemfile.lock" }}-
+        - klaxon-v2-
+
+    - run:
+        name: Bundle Install
+        command: bundle check || bundle install
+
+    # Store bundle cache
+    - save_cache:
+        key: klaxon-v2-{{ checksum "Gemfile.lock" }}-
+        paths:
+          - vendor/bundle
+
+    - run:
+        name: Compile assets
+        command: bundle exec rake assets:precompile assets:clean
+        environment:
+          RAILS_GROUPS: assets
+
+    - run:
+        name: Wait for DB
+        command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+    - run:
+        command: bundle exec rake db:create db:schema:load --trace
+        environment:
+          RAILS_ENV: test
+          RACK_ENV: test
+
+    - run:
+        name: Make results directory
+        command: mkdir -p test-results/rspec/
+
+    - run:
+        name: Run the tests
+        command: bundle exec rspec -r rspec_junit_formatter --format RspecJunitFormatter -o test-results/rspec/rspec.xml
+
+    # Save test results for reporting in the UI
+    - store_test_results:
+        path: test-results

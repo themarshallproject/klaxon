@@ -4,7 +4,7 @@ Klaxon is a free, quick to set up and easy to use *robot* that checks websites r
 
 You list websites you want monitored and Klaxon will visit them and, if they change, email you what's different. It saves you having to reload dozens of links yourself every day.
 
-It's perfect for monitoring website changes you might miss, like freedom of information disclosure logs, court records, and anything related to Donald Trump. And it can even send notifications to your Slack channel.
+It's perfect for monitoring website changes you might miss, like freedom of information disclosure logs, court records, and anything related to Donald Trump. And it can even send notifications to your Slack and Discord channels.
 
 Read more below, or say hello to the humans behind the project at the [Google Group email list](https://groups.google.com/forum/#!forum/news-klaxon-users).
 
@@ -12,7 +12,13 @@ Read more below, or say hello to the humans behind the project at the [Google Gr
 
 ## Alerting journalists to changes on the web
 
-Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. Klaxon has been used and tested by journalists at The Marshall Project, The New York Times, the Texas Tribune, the Associated Press [and elsewhere](NEWSROOMS.md). The public release of this free and open source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/). [If you need help using Klaxon once it's already been set up, [you can find it here.](https://github.com/themarshallproject/klaxon/blob/master/data/help.md)]
+Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. Klaxon has been used and tested by journalists at The Marshall Project, The New York Times, the Texas Tribune, the Associated Press [and elsewhere](NEWSROOMS.md).
+
+The public release of this free and open source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/).
+
+## How Does Klaxon Work?
+
+Klaxon enables users to "bookmark" portions of a webpage and be notified (via email, [Slack, or Discord](#notify-a-slack-or-discord-channel)) of any changes that may occur to those sections. [Learn more about bookmarklets on the help.md page](data/help.md).
 
 [![Circle CI](https://circleci.com/gh/themarshallproject/klaxon.svg?style=svg)](https://circleci.com/gh/themarshallproject/klaxon)
 
@@ -48,7 +54,7 @@ If you have a Heroku account and you’re ready to go, it’s time to click on t
 
 You must be logged into your Heroku account, and it will take you to a page to configure your new app in Heroku’s dashboard. First, give your app a name in the first box. While this is technically optional, this will also double as the URL for your Klaxon instance, so think carefully about it for a moment. Try maybe an abbreviation for your newsroom with a hyphen and the word klaxon, like “wp-klaxon” or “sl-klaxon”. This will become a URL as https://sl-klaxon.herokuapp.com/
 
-Scroll down to the “* Admin_emails” field, add a comma-separated list of email addresses for your newsroom’s Klaxon administrators. These administrators will be able to create accounts for any user in your organization, as well as configure various Klaxons and integrations with services like Slack.
+Scroll down to the “* Admin_emails” field, add a comma-separated list of email addresses for your newsroom’s Klaxon administrators. These administrators will be able to create accounts for any user in your organization, as well as configure various Klaxons and integrations with services like Slack and Discord.
 
 Click the big purple “Deploy for Free” button. If you haven’t given Heroku your credit card yet, it will ask you for your information now. As long as you’re on the free settings, it won’t charge you, but Heroku wants to be prepared in case you change tiers. After that, give Heroku a few minutes for the app to build.
 
@@ -62,7 +68,9 @@ Click on the button that says “Manage App”. This takes you behind the scenes
 
 ![](docs/scheduler.png)
 
-Now, at the top of the scheduler page, click the link that is the name of your app (“sl-klaxon”). This will take you to your Klaxon’s login screen on the web.
+Unfortunately our email provider Sendgrid now requires an additional step to confirm that you are not a spammer. Your new Sendgrid account is now in a "suspended" state, and to get it unsuspended you have to contact [Sendgrid support](https://support.sendgrid.com/hc/en-us/requests/new#login-issue). You can do this by clicking the Sendgrid logo on the Resources tab. If clicking on the logo takes you to an error page, do not worry. This has been known to happen as Sendgrid's system has undergone redesigns. Instead, go to [Sendgrid's page to ask for support](https://support.sendgrid.com/hc/en-us/requests/new#login-issue). Be sure to use the same email address associated with your Heroku account and provide the url of your Klaxon instance. When they ask for "Business impact," choose "P3 General - You have a question about Sendgrid or how to use its products". This step is a nuisance, but important. **You will not be able to get an email log in to Klaxon until you are cleared by Sendgrid.** This usually happens pretty quickly (hours not days).
+
+At the top of the scheduler page, click the link that is the name of your app (“sl-klaxon”). This will take you to back to Klaxon's dashboard. Then click the button in the upper right that says "Open app," and this should take you to your Klaxon's login screen on the web.
 
 ![](docs/login_screen.png)
 
@@ -78,11 +86,19 @@ On the right side of the page, click the “Create New User” button. Add the r
 
 By default, people with any email address can be added as new users. If you'd like to allow only users with *specific* email domains, set the `APPROVED_USER_DOMAINS` environment variable (or "Config Variable" in Heroku's lingo). That variable should be a comma-separated list of domains, e.g., `themarshallproject.org,nsa.gov`.
 
-### Notify a Slack channel
+### Notify a Slack or Discord channel
 
-You’re all set for email notifications. If you’d like to also receive alerts through Slack, you can set that up now too. (If you want alerts from other services, [we welcome pull requests](CONTRIBUTING.md)) Click on the “Settings” button in the upper right corner of the page and choose “Integrations” from the menu. On the Integrations page, click the “Create Slack Integration” button. You can add an integration for any number of channels in your newsroom’s Slack. For each one, you just have to set up an Incoming Webhook. In Slack, click on the dropdown arrow in the upper left corner and choose “Apps & Integrations” from the menu. This will open a new window in your browser for you to search the Slack app directory. In the search box, type “Incoming Webhooks” and choose that option when it pops up. If you already have webhooks, you’ll see a button next to your Slack organization’s name that says “Configure.” Otherwise, click the green button that says “Install”.
+You’re all set for email notifications. If you’d like to also receive alerts through Slack and/or Discord, you can set that up now too. (If you want alerts from other services, [we welcome pull requests](CONTRIBUTING.md)) Click on the “Settings” button in the upper right corner of the page and choose “Integrations” from the menu. On the Integrations page, click the “Create Slack Integration” button. You can add an integration for any number of channels in your newsroom’s Slack or Discord. For each channel, you just have to set up an Incoming Webhook.
+
+#### Slack
+In Slack, click on the dropdown arrow in the upper left corner and choose “Apps & Integrations” from the menu. This will open a new window in your browser for you to search the Slack app directory. In the search box, type “Incoming Webhooks” and choose that option when it pops up. If you already have webhooks, you’ll see a button next to your Slack organization’s name that says “Configure.” Otherwise, click the green button that says “Install”.
 
 Now, choose the channel that you want the Klaxon alerts to go to from the dropdown menu. We’d recommend that you not send them to #General, but maybe create a new channel called #Klaxon. After you create or choose your channel, click the green button that says “Add Incoming Webhooks Integration”. Near the top of the next screen, you should see a red URL next to the label “Webhook URL”. Copy that URL and switch over to your browser window with Klaxon in it. Paste the URL into the box labeled “Webhook URL,” and type the name of the channel you want your Slack alerts to go to into the “Channel” box (this should be the same channel name you used in Slack when you created the integration). Now click the “Create Slack Integration Button”. Now you should be all set. If you want to have the ability to send Klaxon alerts to other channels, for specific reporting teams or for certain projects, you can repeat this process.
+
+#### Discord
+In Discord, click on the dropdown arrow in the upper left (next to your server name) and choose “Server Settings” from the menu. Click “Integrations” in the left sidebar, then click the “Create Webhook” button.
+
+Now, choose the name for your webhook (you can leave it the default random name if you'd like) and choose the channel that you want the Klaxon alerts to go to. We’d recommend that you not send them to #general, but maybe create a new channel called #klaxon (you'll need to do this in your normal server view first). After you choose your channel, click “Copy Webhook URL”. Switch over to your browser window with Klaxon in it. Paste the URL into the box labeled “Webhook URL,” and type the name of the channel you want your Discord alerts to go to into the “Channel” box (this should be the same channel name you used in Discord when you created the integration). Additionally, you **must** append “/slack” (without quotes) to the end of your webhook URL, as these alerts will be sent to Discord as a Slack-Compatible Webhook. Now click the “Create Slack Integration Button”. Now you should be all set. If you want to have the ability to send Klaxon alerts to other channels, for specific reporting teams or for certain projects, you can repeat this process.
 
 ### Applying upgrades as the project develops
 
@@ -116,14 +132,19 @@ The core contributors to Klaxon have been Ivar Vong, Andy Rossback, Tom Meagher 
 We've been grateful for additional contributions to the project from:
 
 * Jackson Gothe-Snape, SBS News
+* Cameo Hill
 * Emily Hopkins
+* Matthew Verive
+* Jason Kulatunga
 * Yolanda Martinez
 * Jeremy Merrill
 * Ryan Murphy
 * Justin Myers
+* Kevin Schaul
 * Ari Shapell
 * Jeremy Singer-Vine
 * Mike Stucka
+* k.wakitani
 * Bob Weston
 
 We also owe thanks to Knight-Mozilla [OpenNews](https://opennews.org/), which supported the initial public release of this free and open source software.
