@@ -1,5 +1,6 @@
 class SlackIntegrationsController < ApplicationController
   before_action :set_slack_integration, only: [:show, :edit, :update, :destroy]
+  before_action :authorize
 
   # GET /slack_integrations
   def index
