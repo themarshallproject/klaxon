@@ -34,7 +34,8 @@
   "addons": [
     "heroku-postgresql:hobby-dev",
     "mailgun:starter",
-    "scheduler:standard"
+    "scheduler:standard",
+    "papertrail:choklad"
   ],
   "buildpacks": [
     {
