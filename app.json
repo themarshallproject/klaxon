@@ -19,6 +19,10 @@
     "DEPLOY_TASKS": {
       "value": "db:migrate",
       "description": "Space-separated list of tasks to run after each deploy. You shouldn't need to change this."
+    },
+    "SMTP_PROVIDER": {
+      "description": "The email service that the app will use for logging in and sending notifications. If you're going to use a different setup, we recommend leaving this and configuring manually later.",
+      "value": "MAILGUN"
     }
   },
   "formation": {
@@ -29,7 +33,7 @@
   },
   "addons": [
     "heroku-postgresql:hobby-dev",
-    "sendgrid:starter",
+    "mailgun:starter",
     "scheduler:standard"
   ],
   "buildpacks": [

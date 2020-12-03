@@ -81,10 +81,10 @@ Rails.application.configure do
   # config.action_mailer.postmark_settings = { :api_token => ENV['POSTMARK_API_TOKEN'] }
 
   provider  = (ENV["SMTP_PROVIDER"] || "SENDGRID").to_s
-  address   = ENV["#{provider}_ADDRESS"] || "smtp.sendgrid.net"
+  address   = ENV["#{provider}_SERVER"] || ENV["#{provider}_ADDRESS"] || "smtp.sendgrid.net"
   # if you use SES as your SMTP provider, then your username and password are actually your AWS credentials.
-  user_name = ENV["#{provider}_USERNAME" || (provider == "SES" ? (ENV["AWS_ACCESS_KEY_ID"] || ENV["ACCESS_KEY_ID"] ) : nil) ]  # for AWS SES, this is your access key id
-  password  = ENV["#{provider}_PASSWORD" || (provider == "SES" ? (ENV["AWS_SECRET_ACCESS_KEY"] || ENV["SECRET_ACCESS_KEY"] ) : nil) ]  # for AWS SES, this is your secret access key
+  user_name = ENV["#{provider}_LOGIN"] || ENV["#{provider}_USERNAME"]  # for AWS SES, this is your access key id
+  password  = ENV["#{provider}_PASSWORD"]  # for AWS SES, this is your secret access key
   domain    = ENV["#{provider}_DOMAIN"] || "heroku.com"
   port      = ENV["#{provider}_PORT"] || "587"
 
@@ -97,4 +97,5 @@ Rails.application.configure do
     :domain         => domain,
     :enable_starttls_auto => true
   }
+  ActionMailer::Base.delivery_method = :smtp
 end
