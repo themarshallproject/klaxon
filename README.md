@@ -70,6 +70,16 @@ Click on the button that says “Manage App”. This takes you behind the scenes
 
 Unfortunately our email provider Sendgrid now requires an additional step to confirm that you are not a spammer. Your new Sendgrid account is now in a "suspended" state, and to get it unsuspended you have to contact [Sendgrid support](https://support.sendgrid.com/hc/en-us/requests/new#login-issue). You can do this by clicking the Sendgrid logo on the Resources tab. If clicking on the logo takes you to an error page, do not worry. This has been known to happen as Sendgrid's system has undergone redesigns. Instead, go to [Sendgrid's page to ask for support](https://support.sendgrid.com/hc/en-us/requests/new#login-issue). Be sure to use the same email address associated with your Heroku account and provide the url of your Klaxon instance. When they ask for "Business impact," choose "P3 General - You have a question about Sendgrid or how to use its products". This step is a nuisance, but important. **You will not be able to get an email log in to Klaxon until you are cleared by Sendgrid.** This usually happens pretty quickly (hours not days).
 
+Unfortunately you are not yet done configuring Sendgrid. There's one more step: setting up your API key.
+
+1. From the Heroku application page, click on the "Resources" tab, and click the link to the Sendgrid plugin, this will take you to the Sendgrid website.
+2. In the left hand column choose Settings -> API Keys. Click the blue "Create an API Key" button in the top right corner.
+3. In the form that appears fill in the API key name (doesn't matter what you name it), make sure the "Full Access" option is selected, and click "Create & View".
+4. Click the API key to copy it to your clipboard. Then navigate back to Heroku.
+5. In the "Settings" tab of your Heroku app click the "Reveal Config Vars" button.
+6. Change the `SENDGRID_PASSWORD` variable to the API Key by clicking the pencil icon next to it, pasting it in, and saving it.
+7. Change the `SENDGRID_USERNAME` variable to the string "apikey" in the same manner.
+
 At the top of the scheduler page, click the link that is the name of your app (“sl-klaxon”). This will take you to back to Klaxon's dashboard. Then click the button in the upper right that says "Open app," and this should take you to your Klaxon's login screen on the web.
 
 ![](docs/login_screen.png)
