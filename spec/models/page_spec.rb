@@ -19,6 +19,42 @@ RSpec.describe Page, type: :model do
     expect(@page.match_html.length).to be > 10
   end
 
+  it "can exclude with single selector" do
+    @url = "https://www.themarshallproject.org/test-page/"
+    stub_request(:get, @url).
+         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'www.themarshallproject.org', 'User-Agent'=>'Ruby'}).
+         to_return(:status => 200, :body => "<body><div class='keep-me'>Keep this text</div><div class='exclude-me'>Don't keep this text</div></body>", :headers => {})
+    @page = create(:page, url: @url, css_selector: "body", exclude_selector: ".exclude-me")
+    expect(@page.match_text).to be == "Keep this text"
+  end
+
+  it "can exclude with multi selector" do
+    @url = "https://www.themarshallproject.org/test-page/"
+    stub_request(:get, @url).
+         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'www.themarshallproject.org', 'User-Agent'=>'Ruby'}).
+         to_return(:status => 200, :body => "<body><div class='keep-me'>Keep this text</div><div class='exclude-me'>Don't keep this text</div><div class='also-exclude'>Don't keep this either</div></body>", :headers => {})
+    @page = create(:page, url: @url, css_selector: "body", exclude_selector: ".exclude-me,.also-exclude")
+    expect(@page.match_text).to be == "Keep this text"
+  end
+
+  it "can exclude with nested content" do
+    @url = "https://www.themarshallproject.org/test-page/"
+    stub_request(:get, @url).
+         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'www.themarshallproject.org', 'User-Agent'=>'Ruby'}).
+         to_return(:status => 200, :body => "<body><div class='keep-me'>Keep this text</div><div class='exclude-me'>Don't keep this text<div>A nested div</div></div></body>", :headers => {})
+    @page = create(:page, url: @url, css_selector: "body", exclude_selector: ".exclude-me")
+    expect(@page.match_text).to be == "Keep this text"
+  end
+
+  it "can work with empty exclude_selector" do
+    @url = "https://www.themarshallproject.org/test-page/"
+    stub_request(:get, @url).
+         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'www.themarshallproject.org', 'User-Agent'=>'Ruby'}).
+         to_return(:status => 200, :body => "<body><div class='keep-me'>Keep this text</div> <div class='exclude-me'>And keep this text</div></body>", :headers => {})
+    @page = create(:page, url: @url, css_selector: "body", exclude_selector: "")
+    expect(@page.match_text).to be == "Keep this text And keep this text"
+  end
+
   it "can calculate the hash of a page" do
     expect(@page.sha2_hash.length).to be == 64
   end

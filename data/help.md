@@ -40,6 +40,8 @@ In the “[Watching](/watching/pages)” page you can manually add sites to moni
 
 Click on "Manually Watch and Item" on the right side of the heading. This will take you to directly to the Edit page for links. Here you can include the title, link to the site and the specific selector(s) you want to focus on.
 
+If you want to ignore changes within your chosen selector(s), enter another selector into the "Exclude selector" input.
+
 ## Understand what’s changed on a page
 
 Sometimes you want to see how the current version of a site compares to a version that you captured, say, six months ago. Because Klaxon stores each snapshot it finds of a site, this is fairly easy to do. You can reach the history of snapshots in a couple of ways. If it’s a site someone else in your newsroom is following, from the Feed, click on the latest snapshot you see for your site, which would say something like “GA Sec’y of State changed” or “The Marshall Project changed”. If it’s a site you added to Klaxon, from the “Watching” page, click on the “Latest snapshot” button next the site you want to explore. Either of these routes takes you to the most recent snapshot for that site.
@@ -55,6 +57,11 @@ First, select the “older” version from the left column that you want to be t
 Click on the “Settings” button in the upper right corner of the page and choose “Integrations” from the menu. On the Integrations page, click the “Create Slack Integration” button. You can add an integration for any number of channels in your newsroom’s Slack. For each one, you just have to set up an Incoming Webhook. In Slack, click on the dropdown arrow in the upper left corner and choose “Apps & Integrations” from the menu. This will open a new window in your browser for you to search the Slack app directory. In the search box, type “Incoming Webhooks” and choose that option when it pops up. If you already have webhooks, you’ll see a button next to your Slack organization’s name that says “Configure.” Otherwise, click the green button that says “Install”.
 
 Now, choose the channel that you want the Klaxon alerts to go to from the dropdown menu. We’d recommend that you not send them to #General, but maybe create a new channel called #Klaxon. After you create or choose your channel, click the green button that says “Add Incoming Webhooks Integration”. Near the top of the next screen, you should see a red URL next to the label “Webhook URL”. Copy that URL and switch over to your browser window with Klaxon in it. Paste the URL into the box labeled “Webhook URL,” and type the name of the channel you want your Slack alerts to go to into the “Channel” box (this should be the same channel name you used in Slack when you created the integration). Now click the “Create Slack Integration Button”. Now you should be all set. If you want to have the ability to send Klaxon alerts to other channels, for specific reporting teams or for certain projects, you can repeat this process.
+
+## How to remove an alert
+If you find that you have set an alert in error, or you are no longer using it and want to clear out space, you can delete any alert. From the "Watching" page, click on the "Edit" button next to the alert you want to remove. Then scroll to the bottom of the Edit page and look for this button: ![Klaxon delete button](/images/delete_button.PNG) 
+
+It should do the trick and will remove the alert and it's stored snapshots from the database.
 
 ## About Klaxon
 

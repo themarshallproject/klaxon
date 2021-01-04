@@ -42,7 +42,7 @@
                 <p><%= snapshot.created_at %></p>
               </div>
               <div class="col-md-5">
-                <p><b></b></p>
+                <p><b><%= link_to 'Snapshot HTML', show_page_snapshot_html_path(snapshot.id), class: 'btn btn-default btn-sm btn-block' %></b></p>
               </div>
             </div><!-- end row -->
           <% end %>

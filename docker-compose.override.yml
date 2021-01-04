@@ -1,10 +1,6 @@
 version: '2.2'
 
 services:
-
-  database:
-    image: "postgres:9.6"
-
   app:
     ports: ["3000:3000"]
     environment:

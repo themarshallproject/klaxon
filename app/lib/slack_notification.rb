@@ -1,7 +1,7 @@
 class SlackNotification
   def self.perform(url, payload)
     json = payload.to_json
-    request = HTTParty.post(url, body: json)
+    request = HTTParty.post(url, body: json, headers: {'Content-Type' => 'application/json'})
     if request.code == 200
       request.body
     else

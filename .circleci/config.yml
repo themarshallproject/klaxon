@@ -7,7 +7,7 @@ jobs:
     # Includes ruby, node, and chrome/phantomjs
     # TODO: Go back to the non-legacy version of this image, when our test
     # infrastructure no longer depends on phantomjs
-    - image: circleci/ruby:2.4 # ...with this image as the primary container; this is where all `steps` will run
+    - image: circleci/ruby:2.5.7 # ...with this image as the primary container; this is where all `steps` will run
       environment: # environment variables for primary container
         BUNDLE_JOBS: 3
         BUNDLE_RETRY: 3
