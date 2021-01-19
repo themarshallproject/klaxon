@@ -37,11 +37,11 @@ class Page < ApplicationRecord
   end
 
   def match_text
-    @match = document.css(self.css_selector)
+    @match = document.css(self.css_selector.strip)
 
     if self.exclude_selector.present?
       # Set the content of the exclude selector to the empty string
-      @match.css(self.exclude_selector).each do |node|
+      @match.css(self.exclude_selector.strip).each do |node|
         node.content = ""
       end
     end
@@ -50,7 +50,7 @@ class Page < ApplicationRecord
   end
 
   def match_html
-    document.css(self.css_selector).to_html
+    document.css(self.css_selector.strip).to_html
   end
 
   def sha2_hash
@@ -59,6 +59,8 @@ class Page < ApplicationRecord
 
   def sanitize
     self.url = url.strip
+    self.css_selector = css_selector.strip unless self.css_selector.nil?
+    self.exclude_selector = exclude_selector.strip unless self.exclude_selector.nil?
   end
 
   def update_subscriptions
