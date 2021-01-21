@@ -32,6 +32,7 @@ class ApiController < ApplicationController
 
   def embed_update_page_selector  # POST request
     page = Page.find_by(id: params[:id])
+
     page.css_selector = params[:css_selector]
     if page.save
       render json: page
