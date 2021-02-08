@@ -16,7 +16,7 @@ gem 'sdoc', '~> 1.0.0', group: :doc
 
 gem 'rack-cache'
 gem 'bcrypt', '~> 3.1.12'
-gem 'puma', '~> 4.3'
+gem 'puma', '~> 5.2'
 gem 'rails_12factor'
 
 gem 'simple_form', '~> 5.0'
