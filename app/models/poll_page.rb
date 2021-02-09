@@ -21,9 +21,9 @@ class PollPage
     Page.all.shuffle.each do |page|
       begin
         self.perform(page: page)
-      rescue
+      rescue StandardError => e
         # TODO: send notifications about failed updates?
-        puts "Failed to update page #{page.id}"
+        puts "Failed to update page #{page.id}", e
       end
     end
   end
