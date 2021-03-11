@@ -58,17 +58,17 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    aws-eventstream (1.1.0)
-    aws-partitions (1.409.0)
-    aws-sdk-core (3.110.0)
+    aws-eventstream (1.1.1)
+    aws-partitions (1.432.0)
+    aws-sdk-core (3.113.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
       aws-sigv4 (~> 1.1)
       jmespath (~> 1.0)
-    aws-sdk-sqs (1.35.0)
-      aws-sdk-core (~> 3, >= 3.109.0)
+    aws-sdk-sqs (1.37.0)
+      aws-sdk-core (~> 3, >= 3.112.0)
       aws-sigv4 (~> 1.1)
-    aws-sigv4 (1.2.2)
+    aws-sigv4 (1.2.3)
       aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.16)
     bindex (0.8.1)
@@ -326,7 +326,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws-sdk-sqs (~> 1.35)
+  aws-sdk-sqs (~> 1.37)
   bcrypt (~> 3.1.12)
   bootsnap
   byebug
