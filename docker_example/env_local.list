@@ -1,0 +1,15 @@
+#We set the postgres url/IP addres here and include username and password in the url
+DATABASE_URL=postgres://USERNAME:PASSWORD@192.168.10.40/klaxon
+"ADMIN_EMAILS=someuser@companyname.com
+RAILS_ENV=production
+# We're using the same production secret_key_base value used in non-docker version of the app
+SECRET_KEY_BASE=secret_key_value_here
+# postfix doesn't need to be installed for this to work.
+SMTP_PROVIDER=POSTFIX
+# set this to the value of your own smpt server
+POSTFIX_ADDRESS=smtp-xxx.companyname.com
+POSTFIX_PORT=25
+POSTFIX_DOMAIN=companyname.com
+#We have this set to false because we are handling ssl redirect in our nginx vhost. Leaving it true causes "too many redirects" error. If running on your local machine, this should also be set to false because you probably don't have an ssl cert set up for localhost.
+KLAXON_FORCE_SSL=false
+KLAXON_COMPILE_ASSETS=true

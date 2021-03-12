@@ -12,13 +12,13 @@ RSpec.describe SessionsController, type: :controller do
   describe "POST #create" do
     it "accepts an email for login" do
       user = create(:user)
-      post :create, email: user.email
+      post :create, params: { email: user.email }
       expect(response).not_to redirect_to(unknown_user_path)
     end
 
     it "is case-insensitive when checking emails" do
       user = create(:user)
-      post :create, email: user.email.upcase
+      post :create, params: { email: user.email.upcase }
       expect(response).not_to redirect_to(unknown_user_path)
     end
   end

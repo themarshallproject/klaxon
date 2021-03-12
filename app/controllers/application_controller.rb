@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  before_filter :set_default_host
+  before_action :set_default_host
   def set_default_host
     # determine the host we're running on, so we can generate urls for emails, etc
     # keep this in an AppSetting (persisted) and pass to Rails when blank
@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
 
     user = User.find_by(id: cookies.signed[:user_id])
     if user.present?
-      cookies.signed[:user_id] = { value: user.id, expires: 7.days.from_now, httponly: true }
+      cookies.signed[:user_id] = { value: user.id, expires: 7.days.from_now, httponly: true, same_site: :none, secure: true }
       @current_user = user
     else
       cookies.signed[:user_id] = nil

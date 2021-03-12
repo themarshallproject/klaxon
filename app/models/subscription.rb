@@ -1,4 +1,4 @@
-class Subscription < ActiveRecord::Base
+class Subscription < ApplicationRecord
   belongs_to :watcher, polymorphic: true
   validates :watcher, presence: true
 
