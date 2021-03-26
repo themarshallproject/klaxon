@@ -58,17 +58,17 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    aws-eventstream (1.1.0)
-    aws-partitions (1.409.0)
-    aws-sdk-core (3.110.0)
+    aws-eventstream (1.1.1)
+    aws-partitions (1.435.0)
+    aws-sdk-core (3.113.0)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
       aws-sigv4 (~> 1.1)
       jmespath (~> 1.0)
-    aws-sdk-sqs (1.35.0)
-      aws-sdk-core (~> 3, >= 3.109.0)
+    aws-sdk-sqs (1.38.0)
+      aws-sdk-core (~> 3, >= 3.112.0)
       aws-sigv4 (~> 1.1)
-    aws-sigv4 (1.2.2)
+    aws-sigv4 (1.2.3)
       aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.16)
     bindex (0.8.1)
@@ -158,7 +158,9 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2020.0512)
-    mimemagic (0.3.5)
+    mimemagic (0.3.9)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.2)
     mini_portile2 (2.5.0)
     mini_racer (0.3.1)
@@ -326,7 +328,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws-sdk-sqs (~> 1.35)
+  aws-sdk-sqs (~> 1.38)
   bcrypt (~> 3.1.12)
   bootsnap
   byebug
