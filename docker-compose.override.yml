@@ -1,0 +1,11 @@
+version: '2.2'
+
+services:
+  app:
+    ports: ["3000:3000"]
+    environment:
+      RACK_ENV: "development"
+      RAILS_ENV: "development"
+      DATABASE_URL: "postgres://postgres@database/klaxon"
+      SECRET_KEY_BASE: "secret_key_base"
+      ADMIN_EMAILS: "admin@news.org"

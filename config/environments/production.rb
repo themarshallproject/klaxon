@@ -22,13 +22,14 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.serve_static_files = true
+  config.public_file_server.enabled = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
-  config.assets.compile = true
+  # Do not fall back to locating/compiling missing assets.
+  config.assets.compile = (ENV.fetch('KLAXON_COMPILE_ASSETS', 'false').to_s.downcase == 'true')
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
@@ -41,7 +42,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  config.force_ssl = (ENV.fetch('KLAXON_FORCE_SSL', 'true').to_s.downcase == 'true')
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
@@ -83,7 +84,7 @@ Rails.application.configure do
   address   = ENV["#{provider}_ADDRESS"] || "smtp.sendgrid.net"
   # if you use SES as your SMTP provider, then your username and password are actually your AWS credentials.
   user_name = ENV["#{provider}_USERNAME" || (provider == "SES" ? (ENV["AWS_ACCESS_KEY_ID"] || ENV["ACCESS_KEY_ID"] ) : nil) ]  # for AWS SES, this is your access key id
-  password  = ENV["#{provider}_PASSWORD" || (provider == "SES" ? (ENV["AWS_SECRET_ACCESS_KEY"] || ENV["SECRET_ACCESS_KEY"] ) : nil) ]  # for AWS SES, this is your secret access key 
+  password  = ENV["#{provider}_PASSWORD" || (provider == "SES" ? (ENV["AWS_SECRET_ACCESS_KEY"] || ENV["SECRET_ACCESS_KEY"] ) : nil) ]  # for AWS SES, this is your secret access key
   domain    = ENV["#{provider}_DOMAIN"] || "heroku.com"
   port      = ENV["#{provider}_PORT"] || "587"
 

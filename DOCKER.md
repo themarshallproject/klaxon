@@ -1,6 +1,19 @@
 # Running Klaxon with Docker
 
-*This guide is a work in progress.*
+## Development Quickstart
+
+1. Run the following commands:
+
+```
+docker-compose up
+open http://localhost:3000
+```
+
+2. Enter 'admin@news.org' in the email window. It should redirect you to a page that says: "Email Sent".
+
+3. In the console find where it says "Go to Dashboard ( ... )" and copy and paste the link into the browser.
+
+4. You'll now be logged in. The page should say "Watch Your First Item".
 
 ## Expected environmental variables
 
@@ -20,10 +33,10 @@ If you would like to use [Amazon SES](https://aws.amazon.com/ses/) instead to se
 DATABASE_URL=
 SECRET_KEY_BASE=
 ADMIN_EMAILS=
-SMTP_PROVIDER=AMAZON_SES
-AMAZON_SES_ADDRESS=
-AMAZON_SES_USERNAME=
-AMAZON_SES_PASSWORD=
-AMAZON_SES_DOMAIN=
-EMAIL_FROM_ADDRESS=
+SMTP_PROVIDER=SES
+SES_ADDRESS=
+SES_USERNAME=
+SES_PASSWORD=
+SES_DOMAIN=
+MAILER_FROM_ADDRESS=
 ```

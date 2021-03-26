@@ -21,14 +21,14 @@ class SessionsController < ApplicationController
       if user[:expired]
         redirect_to expired_token_path(user[:user].id)
       else
-        cookies.signed[:user_id] = { value: user.id, expires: 7.days.from_now, httponly: true }
+        cookies.signed[:user_id] = { value: user.id, expires: 7.days.from_now, httponly: true, same_site: :none, secure: true }
         redirect_to root_path
       end
     else
       redirect_to unknown_user_path
     end
   end
-  
+
   def unknown_user
   end
 
@@ -40,5 +40,4 @@ class SessionsController < ApplicationController
     cookies.delete(:user_id)
     redirect_to root_path
   end
-
 end

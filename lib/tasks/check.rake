@@ -7,5 +7,4 @@ namespace :check do
     # look for new changes
     Change.check
   end
-
 end

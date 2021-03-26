@@ -38,9 +38,13 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :letter_opener
 
+  config.force_ssl = (ENV.fetch('KLAXON_FORCE_SSL', 'false').to_s.downcase == 'true')
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
   # Set host to localhost specifically to override AppSetting
   Rails.application.routes.default_url_options = { host: ENV['HOST'] }
+
+  config.hosts << "klaxon.test"
 end

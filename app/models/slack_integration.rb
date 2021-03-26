@@ -1,4 +1,4 @@
-class SlackIntegration < ActiveRecord::Base
+class SlackIntegration < ApplicationRecord
 
   validates :channel, length: { minimum: 2 }
   validates :webhook_url, length: { minimum: 10 }
@@ -38,7 +38,7 @@ class SlackIntegration < ActiveRecord::Base
     page_name = change&.after&.page&.name
     text = "#{page_name} changed #{page_change_url(change)}"
 
-    icon_url = URI.join(root_url, ActionController::Base.helpers.asset_path("klaxon-logo-100px.png")).to_s
+    icon_url = URI.join(root_url, '/images/klaxon-logo-100px.png').to_s
 
     payload = {
       "username": "Klaxon",

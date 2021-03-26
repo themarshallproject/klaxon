@@ -1,4 +1,4 @@
-class AppSetting < ActiveRecord::Base
+class AppSetting < ApplicationRecord
 
   def self.default_host_key
     'default_host'

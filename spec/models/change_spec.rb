@@ -48,8 +48,7 @@ RSpec.describe Change, type: :model do
     last_change = Change.order('created_at DESC').first
     expect(last_change.before).to eq expect_before
     expect(last_change.after).to  eq expect_after
-
-    assert_enqueued_jobs 1 # (and not more than 1)
+    expect(ActionMailer::Base.deliveries.length).to eq 1
   end
 
   it "doesnt send anything if there is only one snapshot for a page" do
@@ -63,7 +62,7 @@ RSpec.describe Change, type: :model do
     # perform
     Change.check
 
-    assert_enqueued_jobs 0 # (and not more than 0)
+    expect(ActionMailer::Base.deliveries.length).to eq 0
   end
 
 end

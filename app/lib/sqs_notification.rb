@@ -1,5 +1,3 @@
-require 'aws-sdk'
-
 class SqsNotification
   def self.perform(queue_url, payload)
     client = Aws::SQS::Client.new(
@@ -11,16 +9,16 @@ class SqsNotification
 
     begin
       return client.send_message({
-        delay_seconds: 10, 
+        delay_seconds: 10,
         message_attributes: {
           "payload" => {
-            data_type: "String", 
-            string_value: json, 
+            data_type: "String",
+            string_value: json,
           }
-        }, 
-        message_body: json, 
-        queue_url: queue_url, 
-      }) 
+        },
+        message_body: json,
+        queue_url: queue_url,
+      })
     rescue Aws::SQS::Errors::ServiceError => e
       puts "Error sending SQS message to queue_url=#{queue_url} for payload=#{payload.to_json}; Error: #{e}"
       return false
