@@ -1,5 +1,5 @@
 class StaticController < ApplicationController
-  before_filter :authorize, except: [:unknown_user]
+  before_action :authorize
 
   def help
     path = File.join(Rails.root, 'data', 'help.md')
@@ -7,10 +7,6 @@ class StaticController < ApplicationController
     @html = Kramdown::Document.new(markdown).to_html
   end
 
-  def unknown_user
-  end
-
   def feed
   end
-
 end

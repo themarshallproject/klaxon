@@ -31,6 +31,10 @@ Rails.application.routes.draw do
   post '/changes/resend/:change_id' => 'changes#resend', as: :resend_change_notifications
   patch '/changes/:change_id' => 'changes#update', as: :change
 
+  get '/page_snapshots/:page_snapshot_id' => 'page_snapshots#html', as: :show_page_snapshot_html
+  get '/page_snapshots/raw/:page_snapshot_id' => 'page_snapshots#raw_html', as: :raw_page_snapshot_html
+  get '/page_snapshots/download_html/:page_snapshot_id' => 'page_snapshots#download', as: :download_page_snapshot_html
+
   scope '/embed' do
     get 'inject' => 'embed#inject'
     get 'iframe' => 'embed#iframe'
@@ -47,13 +51,18 @@ Rails.application.routes.draw do
   resources :users do
     get  '/invite' => 'users#invite', as: :invite
     post '/invite' => 'users#create_invite', as: :create_invite
+    resources :pages do 
+     delete '/' => 'users#unsubscribe', as: :unsubscribe     
+    end
+    
   end
 
   scope '/login' do
     get '/' => 'sessions#new', as: :login
     get '/token' => 'sessions#token', as: :token_session
     post '/' => 'sessions#create', as: :create_session
-    get 'unknown' => 'static#unknown_user', as: :unknown_user
+    get 'unknown' => 'sessions#unknown_user', as: :unknown_user
+    get 'expired/:user_id' => 'sessions#expired_token', as: :expired_token
   end
   post '/logout' => 'sessions#destroy', as: :logout
 

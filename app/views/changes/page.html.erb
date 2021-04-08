@@ -14,6 +14,7 @@
       </div>
       <div class="col-md-3">
         <%= link_to 'Past Snapshots', snapshots_page_path(@page), class: 'btn btn-default btn-lg btn-block' %>
+        <%= link_to 'Snapshot HTML', show_page_snapshot_html_path(@after.id), class: 'btn btn-default btn-lg btn-block' %>
         <%= link_to 'Go to Source', @page.url, class: 'btn btn-default btn-lg btn-block' %>
         <%= link_to 'Edit', edit_page_path(@page), class: 'btn btn-default btn-lg btn-block' %>
       </div>

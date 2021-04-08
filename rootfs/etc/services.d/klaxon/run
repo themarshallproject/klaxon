@@ -1,0 +1,5 @@
+#!/usr/bin/with-contenv bash
+
+echo "starting klaxon"
+cd /usr/src/app
+bundle exec puma -C "config/puma.rb"

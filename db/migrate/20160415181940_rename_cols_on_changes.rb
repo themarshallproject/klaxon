@@ -1,4 +1,4 @@
-class RenameColsOnChanges < ActiveRecord::Migration
+class RenameColsOnChanges < ActiveRecord::Migration[4.2]
   def change
     rename_column :changes, :prev_id, :before_id
     rename_column :changes, :prev_type, :before_type
