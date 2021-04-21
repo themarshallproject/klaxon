@@ -8,3 +8,5 @@ backups/
 !/log/.keep
 /tmp
 pull_dev_database.sh
+
+snapshots
