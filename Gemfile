@@ -34,7 +34,7 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
-  gem 'factory_bot_rails', '~> 6.1'
+  gem 'factory_bot_rails', '~> 6.2'
   gem 'database_cleaner'
   gem 'sinatra'
 end
