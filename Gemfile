@@ -3,7 +3,7 @@ ruby '2.7.2'
 
 gem 'rails', '~> 6.0.0'
 gem 'pg', '~> 1.0'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 6.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'mini_racer', '~> 0.3'
 
