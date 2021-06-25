@@ -31,5 +31,3 @@ Important values to change in docker-compose.yml:
 
 Go to your browser and hit `127.0.0.1:8885` .
 
-## Alternatively use docker-compose
-
