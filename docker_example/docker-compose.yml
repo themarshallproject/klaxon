@@ -11,11 +11,13 @@ services:
       - ./db:/var/lib/postgresql
   app:
     links:
-    - db
+      - db
     depends_on:
       - db
     image: themarshallproject/klaxon
     env_file: 
       - env_local.list
     ports:
-      - 3000:3000
+      - change_me:3000
+    # Example:
+    # - 8885:3000
