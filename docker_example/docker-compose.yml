@@ -1,0 +1,23 @@
+version: '2.2'
+
+services:
+  db:
+    image: "postgres:13.3-alpine"
+    environment:
+      - POSTGRES_USER=klaxon
+      - POSTGRES_PASSWORD=secret-psql-password
+      - POSTGRES_DB=klaxon
+    volumes:
+      - ./db:/var/lib/postgresql
+  app:
+    links:
+      - db
+    depends_on:
+      - db
+    image: themarshallproject/klaxon
+    env_file: 
+      - env_local.list
+    ports:
+      - change_me:3000
+    # Example:
+    # - 8885:3000
