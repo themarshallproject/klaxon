@@ -70,6 +70,11 @@ RSpec.describe Page, type: :model do
     expect(page.url).to eq url
   end
 
+  it "strips whitespace from the selectors" do
+    selector = ".test"
+    page = create(:page, css_selector: " #{selector}    ", exclude_selector: " #{selector} ")
+  end
+
   it "gracefully handles parsing an invalid uri" do
     weird_url = " bad:///site.com"
     page = build(:page, url: weird_url) # our sanitizer is on before_save, which does not run here

@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
-ruby '2.5.7'
+ruby '2.7.2'
 
-gem 'rails', '~> 6.0'
-gem 'pg', '~> 0.21'
+gem 'rails', '~> 6.0.0'
+gem 'pg', '~> 1.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'therubyracer'
+gem 'mini_racer', '~> 0.3'
 
 gem 'dotenv'
 gem 'jquery-rails'
@@ -28,7 +28,7 @@ gem 'httparty'
 gem 'diffy'
 gem 'kramdown'
 
-gem 'aws-sdk-sqs', '~> 1.30'
+gem 'aws-sdk-sqs', '~> 1.35'
 
 group :development, :test do
   gem 'byebug'
