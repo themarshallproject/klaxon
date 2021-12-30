@@ -27,4 +27,13 @@ RSpec.describe Subscription, type: :model do
 
     expect(slack_integration.watching).to include(page)
   end
+  
+  it "allows a teams channel to subscribe to a page" do
+    teams_integration = create(:teams_integration)
+    page = create(:page)
+
+    teams_integration.subscribe(page)
+
+    expect(teams_integration.watching).to include(page)
+  end
 end
