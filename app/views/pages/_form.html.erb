@@ -80,6 +80,26 @@
           <% end %>
         </div>
       <% end %>
+      <% if @teams_integrations.empty? %>
+
+        <div class="col-md-3 klax-spacer-md">
+          <h5>Teams</h5>
+          <p>It looks like you haven't configured any Teams notifications yet, would you like to? <%= link_to "Go to settings.", integrations_path %>
+      <% else %>
+        <div class="col-md-3 klax-spacer-md">
+          <h5>Teams</h5>
+          <p>Which of the Teams channels that you’ve added should get notification when this item changes?</p>
+
+          <% @teams_integrations.each do |teams| %>
+            <div class="checkbox">
+              <label>
+                <%= check_box_tag "page[subscriptions][]", "teams:#{teams.id}", teams.is_subscribed_to?(@page) %>
+                <%= teams.channel %>
+              </label>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
       <div class="col-md-3 klax-spacer-md disabled">
 <!--         <h5>Twitter</h5>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tincidunt semper orci, eget molestie orci ullamcorper eu. Curabitur viverra ligula a dolor scelerisque, at tincidunt.</p> -->
