@@ -2,14 +2,7 @@ class TeamsIntegration < ApplicationRecord
 
   validates :channel, length: { minimum: 2 }
   validates :webhook_url, length: { minimum: 10 }
-  validate :starts_with_hash
   after_destroy :remove_subscriptions
-
-  def starts_with_hash
-    if channel.to_s.split('').first != '#'
-      errors.add(:channel, "must begin with #")
-    end
-  end
 
   include Rails.application.routes.url_helpers
 
