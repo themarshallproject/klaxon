@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Teams Integrations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Channel</th>
+      <th>Webhook url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teams_integrations.each do |teams_integration| %>
+      <tr>
+        <td><%= teams_integration.channel %></td>
+        <td><%= teams_integration.webhook_url %></td>
+        <td><%= link_to 'Show', teams_integration %></td>
+        <td><%= link_to 'Edit', edit_teams_integration_path(teams_integration) %></td>
+        <td><%= link_to 'Destroy', teams_integration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Teams integration', new_teams_integration_path %>
