@@ -17,6 +17,11 @@ FactoryBot.define do
     queue_url { "https://sqs.us-east-1.amazonaws.com/1234567890/klaxon-sqs-q-test" }
   end
 
+  factory :teams_integration do
+    channel { "Klaxon" }
+    webhook_url { "https://test.webhook.office.com/webhookb2/wxyz-789@1234-abc/IncomingWebhook/abcdefg/abc-def-g1234" }
+  end
+
   factory :change do
   end
 
