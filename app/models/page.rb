@@ -74,6 +74,8 @@ class Page < ApplicationRecord
           User.find(id).subscribe(self)
         elsif model == 'slack'
           SlackIntegration.find(id).subscribe(self)
+        elsif model == 'teams'
+          TeamsIntegration.find(id).subscribe(self)
         else
           raise "unknown subscription type"
         end
