@@ -30,6 +30,8 @@ class TeamsIntegration < ApplicationRecord
 
     change_date = change&.created_at&.strftime("%A, %B %d, %Y at %H:%M")
     page_name = change&.after&.page&.name
+    source_url = change&.after&.page&.url
+    edit_url = edit_page_path(change&.after&.page)
     summary = "#{page_name} changed"
     text = "#{page_name} changed #{page_change_url(change)}"
 
@@ -55,7 +57,7 @@ class TeamsIntegration < ApplicationRecord
           "targets": [
             {
               "os": "default",
-              "uri": "#{embed_find_page_url(change)}"
+              "uri": source_url
             }
           ]
         },
@@ -76,6 +78,16 @@ class TeamsIntegration < ApplicationRecord
             {
               "os": "default",
               "uri": "#{show_page_snapshot_html_url(change)}"
+            }
+          ]
+        },
+        {
+          "@type": "OpenUri",
+          "name": "Edit",
+          "targets": [
+            {
+              "os": "default",
+              "uri": edit_url
             }
           ]
         }
