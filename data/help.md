@@ -1,6 +1,6 @@
 ## How Klaxon works
 
-Klaxon is a tool that enables journalists and researchers to monitor scores of websites for noteworthy changes. When it finds something new on one of the pages it's watching, it saves a version of it, or a "snapshot,” and emails an alert and pings a Slack channel.
+Klaxon is a tool that enables journalists and researchers to monitor scores of websites for noteworthy changes. When it finds something new on one of the pages it's watching, it saves a version of it, or a "snapshot,” and alerts via email, Slack, Microsoft Teams, and/or Amazon SQS.
 
 #Bookmark Set-Up
 
