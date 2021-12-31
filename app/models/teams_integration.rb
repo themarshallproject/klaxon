@@ -28,6 +28,7 @@ class TeamsIntegration < ApplicationRecord
   def send_notification(change)
     puts "teams_integration#send_notification #{self.channel}"
 
+    change_date = change&.created_at&.strftime("%A, %B %d, %Y at %H:%M")
     page_name = change&.after&.page&.name
     summary = "#{page_name} changed"
     text = "#{page_name} changed #{page_change_url(change)}"
@@ -42,7 +43,7 @@ class TeamsIntegration < ApplicationRecord
       "sections": [
         {
           "activityTitle": "Klaxon",
-          "activitySubtitle": "INSERT DATE HERE",
+          "activitySubtitle": change_date,
           "activityImage": icon_url,
           "text": text
         }
@@ -54,7 +55,7 @@ class TeamsIntegration < ApplicationRecord
           "targets": [
             {
               "os": "default",
-              "uri": "https://www.google.com/"
+              "uri": "#{embed_find_page_url(change)}"
             }
           ]
         },
@@ -64,7 +65,7 @@ class TeamsIntegration < ApplicationRecord
           "targets": [
             {
               "os": "default",
-              "uri": "https://www.yahoo.com/"
+              "uri": "#{page_change_url(change)}"
             }
           ]
         },
@@ -74,7 +75,7 @@ class TeamsIntegration < ApplicationRecord
           "targets": [
             {
               "os": "default",
-              "uri": "https://www.microsoft.com/"
+              "uri": "#{show_page_snapshot_html_url(change)}"
             }
           ]
         }
