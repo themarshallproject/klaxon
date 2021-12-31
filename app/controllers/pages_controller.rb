@@ -36,12 +36,13 @@ class PagesController < ApplicationController
     @page = Page.new
     @users = User.all
     @slack_integrations = SlackIntegration.all
+    @teams_integrations = TeamsIntegration.all
   end
 
   # GET /pages/1/edit
   def edit
     @users = User.all
-    @slack_integrations = SlackIntegration.all
+    @teams_integrations = TeamsIntegration.all
   end
 
   # POST /pages
