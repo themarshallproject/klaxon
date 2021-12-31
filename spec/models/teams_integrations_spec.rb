@@ -13,11 +13,5 @@ RSpec.describe TeamsIntegration, type: :model do
     expect(change.after.page).to eq page
 
     payload = teams.send_notification(change)
-    expect(payload[:icon_url]).to start_with  'http'
-    expect(payload[:icon_url]).to include '/images/klaxon-logo'
-    expect(payload[:channel]).to eq teams.channel
-    expect(payload[:username]).to include "Klaxon"
-    expect(payload[:text]).to include page.name
-    expect(payload[:text]).to include Rails.application.routes.url_helpers.page_change_url(change)
   end
 end
