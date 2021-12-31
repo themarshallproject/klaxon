@@ -29,15 +29,56 @@ class TeamsIntegration < ApplicationRecord
     puts "teams_integration#send_notification #{self.channel}"
 
     page_name = change&.after&.page&.name
+    summary = "#{page_name} changed"
     text = "#{page_name} changed #{page_change_url(change)}"
 
     icon_url = URI.join(root_url, '/images/klaxon-logo-100px.png').to_s
 
     payload = {
-      "username": "Klaxon",
-      "icon_url": icon_url,
-      "channel": self.channel,
-      "text": text,
+      "@type": "MessageCard",
+      "@context": "https://schema.org/extensions",
+      "themeColor": "FF0B3A",
+      "summary": summary,
+      "sections": [
+        {
+          "activityTitle": "Klaxon",
+          "activitySubtitle": "INSERT DATE HERE",
+          "activityImage": icon_url,
+          "text": text
+        }
+      ],
+      "potentialAction": [
+        {
+          "@type": "OpenUri",
+          "name": "Go to Source",
+          "targets": [
+            {
+              "os": "default",
+              "uri": "https://www.google.com/"
+            }
+          ]
+        },
+        {
+          "@type": "OpenUri",
+          "name": "Compare Snapshots",
+          "targets": [
+            {
+              "os": "default",
+              "uri": "https://www.yahoo.com/"
+            }
+          ]
+        },
+        {
+          "@type": "OpenUri",
+          "name": "Snapshot HTML",
+          "targets": [
+            {
+              "os": "default",
+              "uri": "https://www.microsoft.com/"
+            }
+          ]
+        }
+      ]
     }
 
     TeamsNotification.perform(self.webhook_url, payload)
