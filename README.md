@@ -4,7 +4,7 @@ Klaxon is a free, quick to set up and easy to use *robot* that checks websites r
 
 You list websites you want monitored and Klaxon will visit them and, if they change, email you what's different. It saves you having to reload dozens of links yourself every day.
 
-It's perfect for monitoring website changes you might miss, like freedom of information disclosure logs, court records, and anything related to Donald Trump. And it can even send notifications to your Slack and Discord channels.
+It's perfect for monitoring website changes you might miss, like freedom of information disclosure logs, court records, and anything related to Donald Trump. And it can even send notifications to Slack, Discord, Microsoft Teams, and Amazon SQS.
 
 Read more below, or say hello to the humans behind the project at the [Google Group email list](https://groups.google.com/forum/#!forum/news-klaxon-users).
 
@@ -18,7 +18,7 @@ The public release of this free and open source software was supported by Knight
 
 ## How Does Klaxon Work?
 
-Klaxon enables users to "bookmark" portions of a webpage and be notified (via email, [Slack, or Discord](#notify-a-slack-or-discord-channel)) of any changes that may occur to those sections. [Learn more about bookmarklets on the help.md page](data/help.md).
+Klaxon enables users to "bookmark" portions of a webpage and be notified (via email, [Slack, Discord](#notify-a-slack-or-discord-channel), Microsoft Teams, or Amazon SQS) of any changes that may occur to those sections. [Learn more about bookmarklets on the help.md page](data/help.md).
 
 [![Circle CI](https://circleci.com/gh/themarshallproject/klaxon.svg?style=svg)](https://circleci.com/gh/themarshallproject/klaxon)
 
@@ -54,7 +54,7 @@ If you have a Heroku account and you’re ready to go, it’s time to click on t
 
 You must be logged into your Heroku account, and it will take you to a page to configure your new app in Heroku’s dashboard. First, give your app a name in the first box. While this is technically optional, this will also double as the URL for your Klaxon instance, so think carefully about it for a moment. Try maybe an abbreviation for your newsroom with a hyphen and the word klaxon, like “wp-klaxon” or “sl-klaxon”. This will become a URL as https://sl-klaxon.herokuapp.com/
 
-Scroll down to the “* Admin_emails” field, add a comma-separated list of email addresses for your newsroom’s Klaxon administrators. These administrators will be able to create accounts for any user in your organization, as well as configure various Klaxons and integrations with services like Slack and Discord.
+Scroll down to the “* Admin_emails” field, add a comma-separated list of email addresses for your newsroom’s Klaxon administrators. These administrators will be able to create accounts for any user in your organization, as well as configure various Klaxons and integrations with services like Slack and Microsoft Teams.
 
 Click the big purple “Deploy for Free” button. If you haven’t given Heroku your credit card yet, it will ask you for your information now. As long as you’re on the free settings, it won’t charge you, but Heroku wants to be prepared in case you change tiers. After that, give Heroku a few minutes for the app to build.
 
