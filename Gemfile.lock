@@ -145,8 +145,8 @@ GEM
       rexml
     launchy (2.5.0)
       addressable (~> 2.7)
-    letter_opener (1.7.0)
-      launchy (~> 2.2)
+    letter_opener (1.8.0)
+      launchy (>= 2.2, < 3)
     libv8-node (15.14.0.0)
     listen (3.5.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
