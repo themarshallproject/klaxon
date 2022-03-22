@@ -141,7 +141,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (2.5.1)
     jwt (2.3.0)
-    kramdown (2.3.1)
+    kramdown (2.3.2)
       rexml
     launchy (2.5.0)
       addressable (~> 2.7)
