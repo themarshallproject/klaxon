@@ -15,7 +15,7 @@ gem 'coffee-rails'
 gem 'sdoc', '~> 2.3.1', group: :doc
 
 gem 'rack-cache'
-gem 'bcrypt', '~> 3.1.12'
+gem 'bcrypt', '~> 3.1.17'
 gem 'puma', '~> 5.6'
 gem 'rails_12factor'
 
