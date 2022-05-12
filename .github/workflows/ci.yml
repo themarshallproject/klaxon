@@ -43,4 +43,4 @@ jobs:
         run: mkdir -p test-results/rspec/
 
       - name: Run the tests
-        run: bundle exec rspec --format RSpec::Github::Formatter -o test-results/rspec/rspec.xml
+        run: bundle exec rspec --format RSpec::Github::Formatter --tag ~skip -o test-results/rspec/rspec.xml
