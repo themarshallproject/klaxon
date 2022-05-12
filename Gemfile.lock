@@ -179,7 +179,7 @@ GEM
     notiffany (0.1.3)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    pg (1.3.4)
+    pg (1.3.5)
     premailer (1.14.2)
       addressable
       css_parser (>= 1.6.0)
