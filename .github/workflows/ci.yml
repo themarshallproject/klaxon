@@ -39,8 +39,5 @@ jobs:
       - name: Prepare the database
         run: bundle exec rake db:create db:schema:load --trace
 
-      - name: Make results directory
-        run: mkdir -p test-results/rspec/
-
       - name: Run the tests
-        run: bundle exec rspec --format RSpec::Github::Formatter --tag ~skip -o test-results/rspec/rspec.xml
+        run: bundle exec rspec --format RSpec::Github::Formatter --tag ~skip
