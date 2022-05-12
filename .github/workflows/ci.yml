@@ -3,7 +3,7 @@ name: CI
 on: [push]
 
 jobs:
-  test:
+  test:g
     runs-on: ubuntu-latest
 
     env:
@@ -40,7 +40,7 @@ jobs:
         run: bundle exec rake db:create db:schema:load --trace
 
       - name: Make results directory
-        command: mkdir -p test-results/rspec/
+        run: mkdir -p test-results/rspec/
 
       - name: Run the tests
         run: bundle exec rspec --format RSpec::Github::Formatter -o test-results/rspec/rspec.xml
