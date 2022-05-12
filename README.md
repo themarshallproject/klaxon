@@ -1,6 +1,6 @@
 ## Get emailed when a website changes
 
-Klaxon is a free, quick to set up and easy to use *robot* that checks websites regularly so you don't have to.
+Klaxon is a free, quick to set up and easy to use _robot_ that checks websites regularly so you don't have to.
 
 You list websites you want monitored and Klaxon will visit them and, if they change, email you what's different. It saves you having to reload dozens of links yourself every day.
 
@@ -20,8 +20,6 @@ The public release of this free and open source software was supported by Knight
 
 Klaxon enables users to "bookmark" portions of a webpage and be notified (via email, [Slack, or Discord](#notify-a-slack-or-discord-channel)) of any changes that may occur to those sections. [Learn more about bookmarklets on the help.md page](data/help.md).
 
-[![Circle CI](https://circleci.com/gh/themarshallproject/klaxon.svg?style=svg)](https://circleci.com/gh/themarshallproject/klaxon)
-
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/themarshallproject/klaxon/tree/master)
 
 ## Setting up your Klaxon
@@ -31,30 +29,33 @@ Klaxon is open source software built in the newsroom of [The Marshall Project](h
 Our team will keep hacking on Klaxon in spare moments, and we plan to keep it humming for our own use. But we think this project has the potential to help just about any newsroom. For it to succeed and to evolve, it will depend on the contributions from other journalist-developers. We are excited about the prospect of building a community around this project to help maintain it. So when you spot the inevitable bug, please let us know. And if you’d like to help us [make this better](CONTRIBUTING.md), or add new functionality to it, we’d love to have your help.
 
 ### Getting started
+
 One of our goals for Klaxon is to make it as easy as possible for reporters and editors without tech backgrounds to use and to set up. Getting your own Klaxon running in your newsroom will require you to run a handful of instructions one time through the help of online services Heroku and Github. Following these directions, it should take maybe 10 minutes to set up your Klaxon, including the time to create accounts on Heroku and Github if you need to.
 
 We use [Heroku](https://heroku.com/) to deploy software in The Marshall Project newsroom. We think it makes some of the tedious work of running servers a lot easier to deal with, so we designed Klaxon to be easily deployable on Heroku. (If you’d like to run this in your newsroom’s preferred server setup — say using [Docker](https://github.com/themarshallproject/klaxon/blob/develop/DOCKER.md) or a [Linux machine](https://github.com/themarshallproject/klaxon/blob/develop/install_on_ubuntu.md) — we encourage you to do so, and to send it back to us, with documentation, [in a pull request](CONTRIBUTING.md).) If you want to use our setup, you’ll need to [create an account with Heroku](https://signup.heroku.com/), if you don’t already have one.
 
 ### How much will this cost?
+
 It should be free to get started with Klaxon on Heroku, but if you start using it a lot, you may need to pay a small amount to keep it running. Out of the box with Heroku, for free you’ll get:
 
-* 12,000 emails per month with SendGrid
-* 10,000 records of changes in your Postgres database
-* Your web interface available 18 hours a day
-* Checks of each of your watched sites every 10 minutes with Heroku’s Scheduler.
+- 12,000 emails per month with SendGrid
+- 10,000 records of changes in your Postgres database
+- Your web interface available 18 hours a day
+- Checks of each of your watched sites every 10 minutes with Heroku’s Scheduler.
 
 If you find your newsroom hitting the limits of these free tiers, you can pay to expand them. To send up to 40,000 emails a month, you can upgrade your Sendgrid add-on in Heroku for $9.95 a month. If you need to store more records in your database, you can pay $9 a month for up to 10 million rows. And if you need your web interface running around the clock, you can upgrade your Heroku dyno from the Free to the Hobby level for $7 a month. Some of these won’t be necessary, particularly in smaller newsrooms, but it’s good to know.
 
 If you want to track files with Klaxon, you’ll have to set up an account with Amazon Web Services’ Simple Storage Service (S3). If you are tracking a few dozen files on the web that update irregularly, it should cost you pennies each month. (More on this option to come…)
 
 ### Let’s do this
+
 If you have a Heroku account and you’re ready to go, it’s time to click on this button:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 You must be logged into your Heroku account, and it will take you to a page to configure your new app in Heroku’s dashboard. First, give your app a name in the first box. While this is technically optional, this will also double as the URL for your Klaxon instance, so think carefully about it for a moment. Try maybe an abbreviation for your newsroom with a hyphen and the word klaxon, like “wp-klaxon” or “sl-klaxon”. This will become a URL as https://sl-klaxon.herokuapp.com/
 
-Scroll down to the “* Admin_emails” field, add a comma-separated list of email addresses for your newsroom’s Klaxon administrators. These administrators will be able to create accounts for any user in your organization, as well as configure various Klaxons and integrations with services like Slack and Discord.
+Scroll down to the “\* Admin_emails” field, add a comma-separated list of email addresses for your newsroom’s Klaxon administrators. These administrators will be able to create accounts for any user in your organization, as well as configure various Klaxons and integrations with services like Slack and Discord.
 
 Click the big purple “Deploy for Free” button. If you haven’t given Heroku your credit card yet, it will ask you for your information now. As long as you’re on the free settings, it won’t charge you, but Heroku wants to be prepared in case you change tiers. After that, give Heroku a few minutes for the app to build.
 
@@ -100,18 +101,20 @@ On the right side of the page, click the “Create New User” button. Add the r
 
 #### Limit new users to only those on specific email domain(s)
 
-By default, people with any email address can be added as new users. If you'd like to allow only users with *specific* email domains, set the `APPROVED_USER_DOMAINS` environment variable (or "Config Variable" in Heroku's lingo). That variable should be a comma-separated list of domains, e.g., `themarshallproject.org,nsa.gov`.
+By default, people with any email address can be added as new users. If you'd like to allow only users with _specific_ email domains, set the `APPROVED_USER_DOMAINS` environment variable (or "Config Variable" in Heroku's lingo). That variable should be a comma-separated list of domains, e.g., `themarshallproject.org,nsa.gov`.
 
 ### Notify a Slack or Discord channel
 
 You’re all set for email notifications. If you’d like to also receive alerts through Slack and/or Discord, you can set that up now too. (If you want alerts from other services, [we welcome pull requests](CONTRIBUTING.md)) Click on the “Settings” button in the upper right corner of the page and choose “Integrations” from the menu. On the Integrations page, click the “Create Slack Integration” button. You can add an integration for any number of channels in your newsroom’s Slack or Discord. For each channel, you just have to set up an Incoming Webhook.
 
 #### Slack
+
 In Slack, click on the dropdown arrow in the upper left corner and choose “Apps & Integrations” from the menu. This will open a new window in your browser for you to search the Slack app directory. In the search box, type “Incoming Webhooks” and choose that option when it pops up. If you already have webhooks, you’ll see a button next to your Slack organization’s name that says “Configure.” Otherwise, click the green button that says “Install”.
 
 Now, choose the channel that you want the Klaxon alerts to go to from the dropdown menu. We’d recommend that you not send them to #General, but maybe create a new channel called #Klaxon. After you create or choose your channel, click the green button that says “Add Incoming Webhooks Integration”. Near the top of the next screen, you should see a red URL next to the label “Webhook URL”. Copy that URL and switch over to your browser window with Klaxon in it. Paste the URL into the box labeled “Webhook URL,” and type the name of the channel you want your Slack alerts to go to into the “Channel” box (this should be the same channel name you used in Slack when you created the integration). Now click the “Create Slack Integration Button”. Now you should be all set. If you want to have the ability to send Klaxon alerts to other channels, for specific reporting teams or for certain projects, you can repeat this process.
 
 #### Discord
+
 In Discord, click on the dropdown arrow in the upper left (next to your server name) and choose “Server Settings” from the menu. Click “Integrations” in the left sidebar, then click the “Create Webhook” button.
 
 Now, choose the name for your webhook (you can leave it the default random name if you'd like) and choose the channel that you want the Klaxon alerts to go to. We’d recommend that you not send them to #general, but maybe create a new channel called #klaxon (you'll need to do this in your normal server view first). After you choose your channel, click “Copy Webhook URL”. Switch over to your browser window with Klaxon in it. Paste the URL into the box labeled “Webhook URL,” and type the name of the channel you want your Discord alerts to go to into the “Channel” box (this should be the same channel name you used in Discord when you created the integration). Additionally, you **must** append “/slack” (without quotes) to the end of your webhook URL, as these alerts will be sent to Discord as a Slack-Compatible Webhook. Now click the “Create Slack Integration Button”. Now you should be all set. If you want to have the ability to send Klaxon alerts to other channels, for specific reporting teams or for certain projects, you can repeat this process.
@@ -143,24 +146,25 @@ You should then get a response that looks like this:
 If it does, and everything is green, you’re good to go. Just click the “Merge pull request” button then click the “Confirm merge” button and that’s that.
 
 ### Acknowledgements
+
 The core contributors to Klaxon have been Ivar Vong, Andy Rossback, Tom Meagher and Gabe Isman.
 
 We've been grateful for additional contributions to the project from:
 
-* Jackson Gothe-Snape, SBS News
-* Cameo Hill
-* Emily Hopkins
-* Matthew Verive
-* Jason Kulatunga
-* Yolanda Martinez
-* Jeremy Merrill
-* Ryan Murphy
-* Justin Myers
-* Kevin Schaul
-* Ari Shapell
-* Jeremy Singer-Vine
-* Mike Stucka
-* k.wakitani
-* Bob Weston
+- Jackson Gothe-Snape, SBS News
+- Cameo Hill
+- Emily Hopkins
+- Matthew Verive
+- Jason Kulatunga
+- Yolanda Martinez
+- Jeremy Merrill
+- Ryan Murphy
+- Justin Myers
+- Kevin Schaul
+- Ari Shapell
+- Jeremy Singer-Vine
+- Mike Stucka
+- k.wakitani
+- Bob Weston
 
 We also owe thanks to Knight-Mozilla [OpenNews](https://opennews.org/), which supported the initial public release of this free and open source software.

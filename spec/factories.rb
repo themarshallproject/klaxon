@@ -27,6 +27,7 @@ FactoryBot.define do
   end
 
   factory :page do
+    user
     name { "nyt homepage" }
     url { "http://www.nytimes.com/" }
     css_selector { "h2.story-heading" }
