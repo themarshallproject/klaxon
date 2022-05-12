@@ -11,6 +11,7 @@ test:
   <<: *default
   database: klaxon_test
   username: <%= ENV['PGUSER'] || `whoami` %>
+  password: <%= ENV['PGPASSWORD'] %>
   host: localhost
   port: 5432
 
