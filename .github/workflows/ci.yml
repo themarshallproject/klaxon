@@ -40,4 +40,4 @@ jobs:
         run: bundle exec rake db:create db:schema:load --trace
 
       - name: Run the tests
-        run: bundle exec rspec --format RSpec::Github::Formatter --tag ~skip
+        run: bundle exec rspec --format RSpec::Github::Formatter --tag ~skip --tag ~pending
