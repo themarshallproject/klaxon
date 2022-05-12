@@ -2,11 +2,12 @@ require 'rails_helper'
 
 RSpec.describe "pages/show", type: :view do
   before(:each) do
+    @user = create(:user)
     @page = assign(:page, Page.create!(
+      :user => @user,
       :name => "MyText",
       :url => "MyText",
       :css_selector => "MyText",
-      :user_id => 1
     ))
   end
 
@@ -15,6 +16,6 @@ RSpec.describe "pages/show", type: :view do
     expect(rendered).to match(/MyText/)
     expect(rendered).to match(/MyText/)
     expect(rendered).to match(/MyText/)
-    expect(rendered).to match(/1/)
+    expect(rendered).to match(Regexp.new(@user.id.to_s))
   end
 end
