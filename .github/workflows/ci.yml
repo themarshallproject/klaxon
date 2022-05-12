@@ -9,7 +9,7 @@ jobs:
     env:
       PGHOST: 127.0.0.1
       PGUSER: klaxon-test-user
-      PGPASSWORD: ""
+      PGPASSWORD: "LjRKZViA88dMumv"
       RAILS_ENV: test
       RACK_ENV: test
       NODE_ENV: test
@@ -20,7 +20,7 @@ jobs:
         env:
           POSTGRES_DB: klaxon_test
           POSTGRES_USER: klaxon-test-user
-          POSTGRES_PASSWORD: ""
+          POSTGRES_PASSWORD: "LjRKZViA88dMumv"
         ports:
           - 5432:5432
 
