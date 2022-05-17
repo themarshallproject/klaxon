@@ -8,6 +8,7 @@ WORKDIR /usr/src/app
 
 COPY Gemfile /usr/src/app/
 COPY Gemfile.lock /usr/src/app/
+RUN gem install bundler:2.3.11
 RUN bundle install
 
 COPY . /usr/src/app
