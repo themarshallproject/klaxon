@@ -17,6 +17,7 @@ services:
       DATABASE_URL: "postgres://postgres:PASSWORD@database/klaxon"
       SECRET_KEY_BASE: "secret_key_base"
       ADMIN_EMAILS: "admin@news.org"
+      KLAXON_INSTANCE_NAME: "Alex's News Room"
     build:
       context: .
       dockerfile: dev.Dockerfile
