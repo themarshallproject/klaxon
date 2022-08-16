@@ -164,7 +164,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2022.0105)
     mini_mime (1.1.0)
-    mini_racer (0.6.2)
+    mini_racer (0.6.3)
       libv8-node (~> 16.10.0.0)
     minitest (5.15.0)
     msgpack (1.5.4)
@@ -347,7 +347,7 @@ DEPENDENCIES
   jwt
   kramdown
   letter_opener
-  mini_racer (~> 0.6.2)
+  mini_racer (~> 0.6.3)
   pg (~> 1.4)
   premailer-rails
   puma (~> 5.6)
