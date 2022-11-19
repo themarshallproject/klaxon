@@ -36,16 +36,14 @@ We use [Heroku](https://heroku.com/) to deploy software in The Marshall Project 
 
 ### How much will this cost?
 
-It should be free to get started with Klaxon on Heroku, but if you start using it a lot, you may need to pay a small amount to keep it running. Out of the box with Heroku, for free you’ll get:
+While Heroku no longer offers free tiers of service, this should cost about $10 a month to get started. If you start using it a lot, you may need to pay a small amount to move to a bigger databse. Out of the box with Heroku, for $10 you’ll get:
 
 - 12,000 emails per month with SendGrid
 - 10,000 records of changes in your Postgres database
-- Your web interface available 18 hours a day
+- Your web interface
 - Checks of each of your watched sites every 10 minutes with Heroku’s Scheduler.
 
-If you find your newsroom hitting the limits of these free tiers, you can pay to expand them. To send up to 40,000 emails a month, you can upgrade your Sendgrid add-on in Heroku for $9.95 a month. If you need to store more records in your database, you can pay $9 a month for up to 10 million rows. And if you need your web interface running around the clock, you can upgrade your Heroku dyno from the Free to the Hobby level for $7 a month. Some of these won’t be necessary, particularly in smaller newsrooms, but it’s good to know.
-
-If you want to track files with Klaxon, you’ll have to set up an account with Amazon Web Services’ Simple Storage Service (S3). If you are tracking a few dozen files on the web that update irregularly, it should cost you pennies each month. (More on this option to come…)
+If you find your newsroom hitting the limits of these tiers, you can pay to expand them. To send up to 40,000 emails a month, you can upgrade your Sendgrid add-on in Heroku for $9.95 a month. If you need to store more records in your database, you can pay an additional $4 a month for up to 10 million rows. And if you need your web interface running around the clock, you can upgrade your Heroku dyno from the Eco to the Hobby level for $2 more a month. Some of these won’t be necessary, particularly in smaller newsrooms, but it’s good to know.
 
 ### Let’s do this
 
@@ -57,7 +55,7 @@ You must be logged into your Heroku account, and it will take you to a page to c
 
 Scroll down to the “\* Admin_emails” field, add a comma-separated list of email addresses for your newsroom’s Klaxon administrators. These administrators will be able to create accounts for any user in your organization, as well as configure various Klaxons and integrations with services like Slack and Discord.
 
-Click the big purple “Deploy for Free” button. If you haven’t given Heroku your credit card yet, it will ask you for your information now. As long as you’re on the free settings, it won’t charge you, but Heroku wants to be prepared in case you change tiers. After that, give Heroku a few minutes for the app to build.
+Click the big purple “Deploy for Free” button. If you haven’t given Heroku your credit card yet, it will ask you for your information now. After that, give Heroku a few minutes for the app to build.
 
 When you see this message:
 
