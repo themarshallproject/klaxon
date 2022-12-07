@@ -1,26 +1,38 @@
 FROM ruby:2.7.6
 
-# throw errors if Gemfile has been modified since Gemfile.lock
+# Throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
 
-# set up the app directory
+# Set up the app directory
 WORKDIR /usr/src/app
 
-# copy over the dependency files
+# Copy over the dependency files
 COPY Gemfile* .
 
-# install dependencies
+# Configure bundler
+ENV LANG=C.UTF-8 \
+    BUNDLE_JOBS=4 \
+    BUNDLE_RETRY=3
+
+# Store Bundler settings in the project's root
+ENV BUNDLE_APP_CONFIG=.bundle
+
+# Upgrade RubyGems and install the latest Bundler version
+RUN gem update --system && \
+    gem install bundler
+
+# Install dependencies
 RUN bundle install
 
-# copy over the rest of the app
+# Copy over the rest of the app
 COPY . .
 
-# set default production environments
+# Set default production variables
 ENV RACK_ENV "production"
 ENV RAILS_ENV "production"
 
-# expose the port
+# Expose the port
 EXPOSE 3000
 
-# start the app
+# Start the app
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
