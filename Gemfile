@@ -11,7 +11,6 @@ gem 'dotenv'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bootsnap', require: false
-gem 'sdoc', '~> 2.3.1', group: :doc
 
 gem 'rack-cache'
 gem 'bcrypt', '~> 3.1.18'
