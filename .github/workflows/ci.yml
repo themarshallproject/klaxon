@@ -16,7 +16,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:9.5
+        image: postgres:14
         env:
           POSTGRES_DB: klaxon_test
           POSTGRES_USER: klaxon-test-user
