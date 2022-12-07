@@ -11,7 +11,6 @@ gem 'dotenv'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bootsnap', require: false
-gem 'coffee-rails'
 
 gem 'rack-cache'
 gem 'bcrypt', '~> 3.1.18'
