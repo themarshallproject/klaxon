@@ -6,9 +6,6 @@ RUN bundle config --global frozen 1
 # Set up the app directory
 WORKDIR /usr/src/app
 
-# Copy over the dependency files
-COPY Gemfile* .
-
 # Configure bundler
 ENV LANG=C.UTF-8 \
     BUNDLE_JOBS=4 \
@@ -20,6 +17,9 @@ ENV BUNDLE_APP_CONFIG=.bundle
 # Upgrade RubyGems and install the latest Bundler version
 RUN gem update --system && \
     gem install bundler
+
+# Copy over the dependency files
+COPY Gemfile* .
 
 # Install dependencies
 RUN bundle install
