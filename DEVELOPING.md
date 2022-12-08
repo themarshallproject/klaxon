@@ -7,6 +7,8 @@ First, we'll assume you already have git on your local machine, as well as a sta
 ```
 git clone git@github.com:themarshallproject/klaxon.git
 ```
+**Note**:change Ruby version?? then `brew install rbenv --auto-update
+
 
 After you've cloned it, `cd` into the Klaxon directory. If you're on a Mac, you'll need to already have [homebrew](https://brew.sh/) and [rbenv](https://github.com/rbenv/rbenv) (a program that manages versions of Ruby) installed. Then you'll want
 
