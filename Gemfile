@@ -15,7 +15,6 @@ gem 'bootsnap', require: false
 gem 'rack-cache'
 gem 'bcrypt', '~> 3.1.18'
 gem 'puma', '~> 5.6'
-gem 'rails_12factor'
 
 gem 'simple_form', '~> 5.0'
 
