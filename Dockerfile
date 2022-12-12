@@ -1,7 +1,4 @@
-FROM ruby:2.7.6
-
-# silencing warning about older bundler mismatch
-RUN gem install bundler:2.3.22
+FROM ruby:2.7.2
 
 # throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
