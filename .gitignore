@@ -10,3 +10,4 @@ backups/
 pull_dev_database.sh
 
 snapshots
+.env*

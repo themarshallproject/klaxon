@@ -1,4 +1,7 @@
-FROM ruby:2.7.2
+FROM ruby:2.7.6
+
+# addressing bundler versioning error
+RUN gem install bundler:2.3.22
 
 # throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
