@@ -10,8 +10,8 @@ development:
 test:
   <<: *default
   database: klaxon_test
-  username: <%= ENV['PGUSER'] || `whoami` %>
-  password: <%= ENV['PGPASSWORD'] %>
+  username: <%= ENV['POSTGRES_USER'] || `whoami` %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
   host: localhost
   port: 5432
 

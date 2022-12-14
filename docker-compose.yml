@@ -2,21 +2,25 @@ version: '2.2'
 volumes:
   postgres_data_local: {}
 services:
-  db:
+  database:
     image: postgres:9
     env_file:
-      - .env.local
+      - .env
+    ports:
+      - "5000:5000"
     volumes:
       - postgres_data_local:/var/lib/postgresql/data
 
   app:
-    ports: ["3000:3000"]
+    ports: 
+      - "3000:3000"
     env_file:
-      - .env.local
+      - .env
+    # command: bundle exec puma -C config/puma.rb
     build:
       context: .
       dockerfile: Dockerfile
     volumes:
       - .:/code
     depends_on:
-      - db
+      - database
