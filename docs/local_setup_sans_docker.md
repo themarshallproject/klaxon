@@ -1,4 +1,4 @@
-# Developing Klaxon Locally
+# Setting up Klaxon locally for development
 
 This guide is an adaptation of the original [Klaxon developing file](https://github.com/themarshallproject/klaxon/blob/develop/DEVELOPING.md) for use by the Washington Post News Engineering team.
 
