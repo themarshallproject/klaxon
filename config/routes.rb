@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  Healthcheck.routes(self)
   root 'watching#feed'
 
   scope 'api' do
