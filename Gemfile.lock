@@ -180,10 +180,10 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.8)
-    nokogiri (1.13.8)
+    nokogiri (1.13.9)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    nokogiri (1.13.8-arm64-darwin)
+    nokogiri (1.13.9-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.13.9-x86_64-darwin)
       racc (~> 1.4)
@@ -237,6 +237,9 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
+    rails-healthcheck (1.4.0)
+      actionpack
+      railties
     rails-html-sanitizer (1.4.3)
       loofah (~> 2.3)
     rails_12factor (0.0.3)
@@ -366,6 +369,7 @@ DEPENDENCIES
   rack-cache
   rails (~> 6.0.0)
   rails-controller-testing
+  rails-healthcheck
   rails_12factor
   rspec-github
   rspec-rails
@@ -382,4 +386,4 @@ RUBY VERSION
    ruby 2.7.6p219
 
 BUNDLED WITH
-   2.3.22
+   2.3.26

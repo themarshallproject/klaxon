@@ -28,6 +28,8 @@ gem 'kramdown'
 
 gem 'aws-sdk-sqs', '~> 1.52'
 
+gem 'rails-healthcheck'
+
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
