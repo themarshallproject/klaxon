@@ -334,9 +334,9 @@ context:
         matcher:
           HttpCode: "200-299"
 
-  dns:
-    zone_apex: news-engineering.aws.wapo.pub.
-    domain: klaxon-dev.news-engineering.aws.wapo.pub.
+      dns:
+        zone_apex: news-engineering.aws.wapo.pub.
+        domain: klaxon-dev.news-engineering.aws.wapo.pub.
     # #  If you are using either `import_listener`  or `import_target_group`above,
     # #  you need to import the canonical hosted zone of the load balancer
     # #  and the dns name of the load balancer here
