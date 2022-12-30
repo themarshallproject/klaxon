@@ -1,0 +1,8 @@
+# This generates an ECR repository
+# `name` here must  be the same as the `APP_NAME` in the build step
+
+template: v1/cfn/shared/clusters/simple-ecs/service/image.template.yml
+stack_name: klaxon-image
+region: us-east-1
+context:
+  name: klaxon

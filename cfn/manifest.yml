@@ -1,0 +1,4 @@
+templates:
+  shared:
+    source: v1/cfn/shared
+    version: 78cde3a8ff9b5b14c11fc6f924fb86977ebffa8d

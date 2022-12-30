@@ -1,0 +1,530 @@
+_globals:
+  # This section is used to accumulate the YAML Anchors for use in the config to DRY the configs
+  # This is done to reduce errors due to copying configs from one env/region to another
+
+  - &CLUSTER_PREFIX         newsroom
+  - &DEBUG                  false
+
+  # Assuming a config file is named as follows
+  # e.g. cfn/config/MyFirstService/dev/us-east-1/config.yml
+
+  # The following two lines extract information from the stackjack config file being executed
+  - &FILEPATH               "{{ config_file_name }}"
+  - &FILENAME               !_split [ !_split [ *FILEPATH, '/', 0, -1 ], '.', 0, 0 ]
+
+  # Other information including service name, environment and region are further extracted from the file path
+  - &SERVICE_NAME           !_split [ *FILEPATH, '/', 0, 2 ]
+  - &ENVIRONMENT            !_split [ *FILEPATH, '/', 0, 3 ]
+  - &REGION                 !_split [ *FILEPATH, '/', 0, 4 ]
+
+  # Or can be statically defined
+  #- &SERVICE_NAME           MyFirstService
+  #- &ENVIRONMENT            dev
+  #- &REGION                 us-east-1
+
+  # Lastly we assemble the ClusterName and StackName based on data collected above
+  #
+  - &CLUSTER_NAME           !_join [ '-', *CLUSTER_PREFIX, *ENVIRONMENT ]
+  - &STACK_NAME             !_join [ '-', *CLUSTER_NAME, *SERVICE_NAME ]
+
+
+template: v1/cfn/shared/apps/ecs-v2/service.template.yml
+stack_name: *STACK_NAME
+region: *REGION
+
+context:
+  debug: *DEBUG
+  name: *SERVICE_NAME
+  environment: *ENVIRONMENT
+  cluster_name: *CLUSTER_NAME
+
+  # vpc_environment:
+  #     Used if the "Environment" string does not match a known VPC label. An example is where
+  #     dev2 is a seperate infrastructure but placed within the dev vpc.
+  #
+  #     only relevant when the config is creating an ALB
+  #
+  # vpc_environment: dev
+
+  description: Klaxon enables reporters and editors to monitor scores of sites on the web for newsworthy changes.
+
+  # The "service" block is used to describe elements for the ECS Service definition. It is a combination
+  # settings directly related to the AWS::ECS::Service object, along with some controls and objects related
+  # to the Service/Task definition
+
+  service:
+    # default_scale: int
+    #   Define the number of service-instances that should be run within the cluster
+    #   Note: coordinate this with your auto-scaling behavior in the scaling section
+    default_scale: 3
+
+    # network_mode: string
+    #   controls how Docker exposes the service to the network
+    #     bridge: performs port translation
+    #     host: disabled port translation, any "listeners" within application bind to ports on host
+    network_mode: bridge
+
+    # strategy: string
+    #   controls how ECS deploys the service
+    #     DAEMON: deploys one service-instance to every node within ECS cluster
+    #     REPLICA: deploys "default_scale" copies of service-instance within the cluster
+    strategy: REPLICA
+
+    #UpdateReplacePolicy: string
+    #  Cloudformation by default 'Delete' it resources if not specififed the UpdateReplacePolicy.
+    #   Delete: Deletes the resources by default
+    #   Retain: keeps the resource without deleting the resource or its contents
+    # We have added this parameter to TaskDefinition
+    UpdateReplacePolicy: Retain
+
+    # service_name: string
+    #   defines the name ECS will know the service as.
+    #   If undefined, service_name dynamic_service_name will be set to true
+
+    # dynamic_service_name: bool
+    #   controls how the ECS service name is defined.
+    #   default: based on existance of service.service_name
+    #     false: the ecs service name is specified completely by the service.service_name value
+    #     true: the ECS service name will be global.name - global-environment
+    dynamic_service_name: true
+
+    # task_role: dictionary
+    #   used to control aspects of the IAM role which the tasks execute with
+    #
+    # task_role:
+      # import_role: string
+      #   specifies previously defined IAM role for executing service-instances with
+      #     If import_role begins with arn: its assumed to be a fully qualified IAM Role ARN
+      #     otherwise, its used in an !ImportValue statement to use a value defined from another CFN stack
+
+      # policies: list of dictionaries
+      #   used to define a IAM::Role object
+      #
+      #   - effect: (ALLOW / DENY)
+      #
+      #     sid: IAM SID as defined by IAM::Role
+      #
+      #     actions: list of strings
+      #       # used to define privledges
+      #       - ec2:DescribeInstances
+      #     not_actions: list of strings
+      #       # used to exclude privledges
+      #       - ec2:TerminateInstance
+      #
+      #     conditions: dictionary
+      #       # used to define conditions to this policy
+      #       StringEqualsIgnoreCase:
+      #         "aws:username": "johndoe"
+      #
+      #     principals: dictionary
+      #       # used to define principals
+      #       AWS:
+      #         - arn:aws:iam::123456789012:root
+      #         - 123456789012
+      #     not_principals: dictionary
+      #       # used to exclude principals
+      #       AWS:
+      #         - arn:aws:iam::123456789012:root
+      #         - 123456789012
+      #
+      #     not_resources: list of strings
+      #       # used to exclude resources from consideration
+      #       - i-12345678
+      #     resources: list of strings
+      #       # used to include resources from consideration
+      #       - i-98765432
+      #
+      #     # If neither resources or not_resources is provided then the default is
+      #     resources:
+      #       - *
+      #
+
+    # execution_role: dictionary
+    # The role ECS uses to launch the task (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html)
+    # By default a minimal one is created that allows pulling from ECR and injecting secrets via the Parameter Store and SecretsManager
+    # execution_role:
+      # import_role: string
+      #   specifies previously defined IAM role for executing service-instances with
+      #     If import_role begins with arn: its assumed to be a fully qualified IAM Role ARN
+      #     otherwise, its used in an !ImportValue statement to use a value defined from another CFN stack
+
+      # policies: list of dictionaries
+      #   used to define a IAM::Role object
+      #   For a full options, see above `task_role`
+
+
+    # volumes:
+    #   - name: shared
+    #     DockerVolumeConfiguration:
+    #       Driver: local
+    #       Autoprovision: true
+    #       Scope: shared
+    #       Labels:
+    #         com.arc.usage: local
+
+    # volumes: list of dictionaries
+    #   There are two types of volumes that can be created through this process.
+    #   - Host Bindings. allows access to specific filesystems on the EC2 host.
+    #   - Docker Volumes. allows access to storage resources both "locally" and "network" based resources.
+    #     When creating Docker Volumes, you can use the "local" driver for storage based on host disks or
+    #     other drivers such as RexRay for persistent storage
+    #
+    #   All entries require a "name" which becomes the sourceVolume as specified in the mount_points stanza
+    #   - name: my_tmp
+    #
+    #     host: dictionary, used for "Bind-Mounts"
+    #       source_path: string, specifies the volume path on the EC2 instance
+    #
+    #     DockerVolumeConfiguration: see AWS::ECS::TaskDefinition/DockerVolumeConfiguration
+    #         Autoprovision: bool
+    #         Driver: string
+    #         DriverOpts:
+    #           Key : Value
+    #         Labels:
+    #           Key : Value
+    #         Scope: string (task / shared)
+    #
+
+
+  #################
+  #
+  # routing: list of dictionaries
+  #   This section provides the ability to create or reference xLB objects for the purpose of exposing
+  #   the service-instances to the network
+
+  routing:
+    - alias: http
+      allow_destroy: false
+      destroy: false
+
+      # alias: string
+      #   alias is used in the naming of the CFN resources so that we do not have to use the numerical
+      #   position in the array to identify the objects. This facilitates re-organizing the objects in the
+      #   routing list
+
+      # allow_destroy: bool
+      #   this allows the xLB object to be destroyed/recreated by CFN/StackJack by disabling the
+      #   StackJack protection afforded to xLB's. This does NOT force destruction, it only disables the
+      #   protection.
+      #
+      #   Typically this is acceptable when the target xLB is referenced through a cname or other dynamic
+      #   object in another CFN stack
+
+      # destroy: bool
+      #   this forces the destruction of the associated resources. This is to facilitate disabling the
+      #   StackJack protections for the xLB object
+
+      ###################
+      #
+      # A Routing object allows for three modes of operation allowing for aspects of the routing to be
+      # established outside of the service definition.
+      #
+      # These include:
+      #
+      # import_target_group: CFN Export name of the Target Group
+      #   When target_group_arn is defined no objects are created, the referenced TG is supplied as the
+      #   "LoadBalancer" object for the ECS::Service
+      #   Attributes affecting the imported target_group include:
+      #
+      # import_listener: CFN Export name of the Listener to attach the TG to
+      #   When import_listener is defined the template will create a new Target Group and apply the
+      #   TG to the listener. Attributes affecting the TG include
+      #
+      #     priority: int
+      #       controls placement within the listener
+      #     container_port: int
+      #     container_protocol: string
+      #     perform_health_check and health_check object
+      #     target_group_attributes: dictionary (see AWS::ElasticLoadBalancingV2::TargetGroup/TargetGroupAttributes)
+      #     dns.domain: string
+      #       Applies a host-header condition to the listener rule to control access based on DNS name
+      #
+      # If neither of the above conditions is met then no_load_balancer is tested to determine if an ALB should be created
+      #   no_load_balancer: bool (default False)
+      #
+      #   The parameters below influence the creation of the xLB and TargetGroup
+
+      is_public: False
+      is_private: True
+
+      # is_public: bool (default True)
+      # is_private: bool (default False)
+      #   These two are mutually exclusive. When is_public is True and is_private is False
+      #   the xLB will be placed into the subnets identified by vpc-(vpc)-PublicSubnetIds-Group0
+      #   otherwise the xLB will be placed into the vpc-(vpc)-PrivateSubnetIds-Group0
+      #
+      #   Accordingly, the SecurityGroup protecting the xLB will either be 0.0.0.0/8 or 10.0.0.0/8
+
+      subnet_group: group0
+
+      # subnet_group: string (default group0)
+      #   this allows the user to specify a subnet group other than the default "Group0" value.
+      #   useful for utilizing expansion_cidrs
+
+      ###################
+      #
+      # Before discussing protocol and port designations, we need to cover several legacy aspects to the
+      # configuration. Historically the Protocol/Port was inherited from the container specification, but
+      # the router had the ability to override those params. With the addition of 1 or more Routers and
+      # 1 or more "containers" this became a bit outdated.
+      #
+      # protocol: string (default HTTP)
+      # port: int (default 80)
+
+      public_protocol: http
+      public_port: 443
+      http_to_https_redirect: true
+      certificate: arn:aws:acm:us-east-1:912288704264:certificate/c1ff8358-9b24-4e68-9d38-28caf63c0fde
+
+      # public_protocol: HTTP / HTTPS / TCP / UDP / TCP_UDP / TLS (default router.protocol)
+      #   this defines the Listener Protocol
+      #   if HTTP or HTTPS then an ALB (Application Load Balancer) is created
+      #   otherwise a NLB (Network Load Balancer) is created
+
+      # public_port: int (default router.port)
+      #   this defines which TCP port the Listener attached to the ALB is accessable on
+
+      # certificate: ARN
+      #   if protocol is HTTPS then specifies the TLS certificate to reference, Must be FQ ARN
+
+      # http_to_https_redirect: bool
+      #   if TRUE, then will setup an additional listener HTTP/80 on the ALB redirecting to HTTPS/443
+      #   on the ALB being defined.
+
+      # container_name: main
+      # container_port: 8080
+      # container_protocol: http
+
+      # container_name: string (default container.name)
+      #   This is used to associate the TargetGroup with a specific container defined as part of the
+      #   service task. If undefined it references the main "container" by name
+
+      # container_port: int (default container.port | router.port)
+      #   This is used to identify the port the process within the container is bound to. When
+      #   network_mode=bridge ECS uses this to identify the NAT'ed port
+
+      # container_protocol: string (default container.protocol | router.protocol)
+      #   This specifies the protocol accepted by the process in the ECS task. An example use-case allows
+      #   the ALB to accept traffic using HTTPS and relay to a process only supporting HTTP
+
+      dynamic_name: true
+
+      # dynamic_name: bool
+      #   If Undefined, then is based on existance of router.target_group_name
+      #
+      #   If True, the name of the Load Balancer and TargetGroup will be left up to CFN to define
+      #   If False then:
+      #     target_group_name default will be stackname-alias
+      #     Load Balancer will be named StackName
+      #     Target Group will be named based on router.target_group_name
+
+      # target_group_name: string
+
+      perform_health_check: true
+
+      # perform_health_check: bool
+      #   If True, then a Health Check will be applied to the TargetGroup
+
+      # health_check: dictionary
+      #   this structure defines the parameters of a health check, the defaults are below
+      #
+      health_check:
+        path: "/healthcheck"
+        interval_seconds: 10
+        timeout_seconds: 5
+        healthy_threshold_count: 2
+        unhealthy_threshold_count: 6
+        matcher:
+          HttpCode: "200-299"
+
+    dns:
+      zone_apex: news-engineering.aws.wapo.pub.
+      domain: klaxon-prod.news-engineering.aws.wapo.pub.
+    # #  If you are using either `import_listener`  or `import_target_group`above,
+    # #  you need to import the canonical hosted zone of the load balancer
+    # #  and the dns name of the load balancer here
+    #   load_balancer_zone_id: H1Z1234
+    #   load_balancer_dns: goodlb-111.eu-central-1.elb.amazonaws.com
+
+  #############################
+  #
+  # container: dictionary
+  #   The container object is used to describe the "1st" container as part of an ECS Task Definition.
+  #   ECS Tasks can have 1 or more containers associated with each service-instance deployment and there are
+  #   Several reasons to utilize this approach.
+  #
+  # o_container: list of dictionaries
+  #   Using the same "dictionary" object for container o_container is used to describe the 2..N docker containers
+  #   to be associated with the ECS task definition.
+
+  container:
+    name: !_join ["-", *SERVICE_NAME, *ENVIRONMENT]
+    essential: true
+    memory_reservation: 512
+    logs: awslogs
+
+    # name: string
+    #   used to name the ECS Container within the task definition.
+    #   Also used to name the Docker image if neither container.image or service.image are defined
+
+    # essential: bool (default True)
+    #   used by ECS to determine what action to take if the container terminates.
+
+    # memory_reservation: int (default 512, expressed in MB)
+    #   Used during task "placement" to determine how much memory the task (service-instance) will be consumed.
+    #   Is not enforced in anyway, purely for planning purposes.
+
+    # logs: string (default awslogs)
+    #   This is used to define how logs are collected and processed by ECS. This is both a "generator" for
+    #   "awslogs" and "fluentd", otherwise allows the user to pass parameters directly to the ECS::Task
+    #
+    #   When "awslogs":
+    #     All logs are forwarded to CloudWatch logs
+    #     awslogs-group is StackName
+    #     awslogs-region is Region
+    #     awslogs-stream-prefix is environment
+    #
+    #   When "fluentd":
+    #     Logs are forwarded to FluentD process running on EC2 hosts as part of cluster 172.17.0.1:24224
+    #     fluent-tag is service.name-service.environment with the docker container ID appended
+    #     Additional config object container.log_options is a dictionary allowing other params to be provided as options
+    #
+    #   Otherwise:
+    #     LogDriver = container.logs
+    #     Options is dictionary based on container.log_options
+
+    # By default, the image uses your container name and a parameter stored at /deployments/container_name/latest
+    # If you use the build process included in this repo, it will automatically store the latest version for you in that parameter
+    #
+    # image = container_name
+
+    # If you are using a custom image version tag, put that here
+    # otherwise the default is via SSM is /deployments/app/latest/
+    # If the string begins with a "/" it is expected to be a SSM param name, otherwise its a plain string
+    #
+    # image_version: /deployments/app/VERSION_NAME
+    # image_version: 0123897107860fed (Git Commit Hash)
+
+    # If you need a custom image not managed in SSM
+    # If you do this, you will need to make sure to include code to authenticate with the provider
+    #
+    # image = provider/project/repo:tag
+    #         In order for "image" to be reconized as raw_image_path, it must contain a "/" or a ":"
+    #
+    # raw_image_path: customer_path_to_image (Deprecated)
+
+
+    environment:
+      DEBUG: yes
+      ## TODO: @Katlyn, set up the env vars here
+  
+    # environment: dictionary
+    #   This allows environment values to be passed to the execution of the container at runtime
+
+    # Environment also supports complex datatypes including dict and lists
+
+    # secrets:
+      # For SSM Params the path to the value can simply be specified as the value for the secret
+      # The defined task will have an additional RequiredCapability added:
+      # ecs.capability.secrets.ssm.environment-variables
+      #
+      # SECRET_PASSWORD_IN_SSM: "/path/to/ssm/parameter/in/same/region"
+
+      # For values from SecretsManager you need to specify the full ARN to the secret
+      #
+      # SECRET_PASSWORD_IN_SECRETS_MANAGER: !Sub "arn:aws:secretsmanager:${AWS::Region}:${AWS::AccountId}:secret:my_secret-AbCdEf"
+
+    # secrets: dictionary
+    #   This allows secrets to be securely inserted as environment variables into the container at runtime.
+    #   For more information: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html
+
+
+  # mount_points:
+  #     - containerPath: /tmp
+  #       sourceVolume: my_tmp
+  #       readOnly: false
+  #     - containerPath: /test
+  #       sourceVolume: shared
+  #       readOnly: false
+
+    # mount_points: list of dictionaries
+    #   This allows attaching HOST based file systems/resources to the ECS task container.
+    #
+    #   containerPath: string
+    #     defining the filepath within the container to mount the volume.
+    #   readOnly: bool
+    #     Docker resource flag allowing Read or Read/Write access to the files
+    #   sourceVolume: string
+    #     This is NOT the filepath on the EC2 instance, it is a logical resource that can be defined at the
+    #     container or service level
+
+    # volumes:
+    #   - name: my_tmp
+    #     host:
+    #       source_path: /tmp
+
+    port: 3000
+    # protocol: tcp
+
+    # port_mapping:
+    #   8080: tcp
+    #   7070: tcp
+    #   7071: udp
+
+    # needs_ports: true
+    # no_ports: false
+
+    # port: integer (default 8080)
+    #   legacy approach to defining container port needing to be exposed
+    # protocol: string
+    #   legacy approach to describing container port needing to be exposed
+    #
+    # In the case where 2 or more ports needs to be exposed the prefered method is to use a dictionary
+    #
+    # port_mapping: dictionary
+    #   int: string
+    #
+    # no_ports: bool (default false)
+    #   deprecated legacy flag
+    #
+    # needs_ports: bool
+    #   default value as follows:
+    #     If port_mapping contains an entry, then true
+    #     Otherwise equal to NOT(no_ports)
+    #
+    # When port_mapping is undefined and needs_ports is true the port_mapping will be automatically created
+    # using container.port and container.protocol
+
+
+    # Not required, additional cloudformation properties
+    container_properties:
+      ExtraHosts:
+        - Hostname: statsd
+          IpAddress: 172.17.0.1
+
+  # If using autoscaling, make sure it makes sense to scale
+  # your app based on its memory or cpu usage. Besides the 
+  # settings here, the `service.default_scale` and the 
+  # `container.memory_reservation` will impact scaling behavior.
+  scaling:
+    # Autoscaling is enabled by default. use `true` to turn it off
+    disable: false
+    
+    # default max is 12X the service.default_scale
+    max: 20
+    # default min is the default_scale
+    min: 2
+
+    #Additional configurable properties with their defaults:
+    cpu_target: 50
+    mem_target: 75
+    scale_in_cooldown: 900
+    scale_out_cooldown: 30
+    disable_scale_in: false
+
+
+  # Not required, other companion containers
+  # other_containers:
+  #   - name:
+  #     environment:
+  #     cfn_properties:

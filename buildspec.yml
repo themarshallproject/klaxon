@@ -1,0 +1,53 @@
+version: 0.2
+
+env:
+  shell: bash
+  variables:
+    # APP_NAME must match that of the ecr image repo
+    # see cfn/configs/image/us-east-1/config.yml context.name
+    APP_NAME: klaxon
+    DOCKERFILE_PATH: ./Dockerfile
+
+phases:
+  install:
+    runtime-versions:
+      docker: 18
+  pre_build:
+    commands:
+      - which docker
+      - docker ps
+      - echo $CODEBUILD_RESOLVED_SOURCE_VERSION > commit_hash
+      - echo "Building commit `cat commit_hash`"
+      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
+      - docker pull $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$APP_NAME:$DEPLOYMENT_ENV-latest || true
+
+  build:
+    on-failure: ABORT
+    commands:
+      - docker build --cache-from $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$APP_NAME:$DEPLOYMENT_ENV-latest -t $APP_NAME:$DEPLOYMENT_ENV-`cat commit_hash` -f $DOCKERFILE_PATH .
+
+  post_build:
+    commands:
+      # For each valid region, need to push to ECR in each region
+      - export REGIONS=${REGIONS_LIST:-`aws ssm get-parameter --name "/bootstrap/account-regions" --query Parameter.Value --output text`}
+      - |
+
+        # Push only to current region and let it replicate
+        eval $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
+        IFS=","
+        FULL_VERSIONS=`cat commit_hash`,"latest"
+        for VERSION in $FULL_VERSIONS; do
+          docker tag $APP_NAME:$DEPLOYMENT_ENV-$VERSION $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$APP_NAME:$DEPLOYMENT_ENV-$VERSION
+          docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$APP_NAME:$DEPLOYMENT_ENV-$VERSION
+        done
+
+        IFS=","
+        for REGION in $REGIONS; do
+          IFS=","
+          STORE_VERSIONS="latest"
+          for VERSION in $STORE_VERSIONS; do
+            aws --region $REGION ssm put-parameter --overwrite --name "/deployments/$APP_NAME-$DEPLOYMENT_ENV/$VERSION-latest" --value `cat commit_hash` --type String
+          done
+
+        done
+      - |
