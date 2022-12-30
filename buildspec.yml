@@ -46,7 +46,7 @@ phases:
           IFS=","
           STORE_VERSIONS="latest"
           for VERSION in $STORE_VERSIONS; do
-            aws --region $REGION ssm put-parameter --overwrite --name "/deployments/$APP_NAME-$DEPLOYMENT_ENV/$VERSION-latest" --value `cat commit_hash` --type String
+            aws --region $REGION ssm put-parameter --overwrite --name "/deployments/$APP_NAME-$DEPLOYMENT_ENV/latest" --value `cat commit_hash` --type String
           done
 
         done
