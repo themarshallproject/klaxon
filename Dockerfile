@@ -19,7 +19,8 @@ RUN gem update --system && \
     gem install bundler
 
 # Copy over the dependency files
-COPY Gemfile* .
+COPY Gemfile .
+COPY Gemfile.lock .
 
 # Install dependencies
 RUN bundle install
