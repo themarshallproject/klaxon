@@ -2,20 +2,20 @@ _globals:
   # This section is used to accumulate the YAML Anchors for use in the config to DRY the configs
   # This is done to reduce errors due to copying configs from one env/region to another
 
-  - &CLUSTER_PREFIX         newsroom
-  - &DEBUG                  false
+  - &CLUSTER_PREFIX newsroom
+  - &DEBUG false
 
   # Assuming a config file is named as follows
   # e.g. cfn/config/MyFirstService/dev/us-east-1/config.yml
 
   # The following two lines extract information from the stackjack config file being executed
-  - &FILEPATH               "{{ config_file_name }}"
-  - &FILENAME               !_split [ !_split [ *FILEPATH, '/', 0, -1 ], '.', 0, 0 ]
+  - &FILEPATH "{{ config_file_name }}"
+  - !_split &FILENAME [!_split [*FILEPATH, "/", 0, -1], ".", 0, 0]
 
   # Other information including service name, environment and region are further extracted from the file path
-  - &SERVICE_NAME           !_split [ *FILEPATH, '/', 0, 2 ]
-  - &ENVIRONMENT            !_split [ *FILEPATH, '/', 0, 3 ]
-  - &REGION                 !_split [ *FILEPATH, '/', 0, 4 ]
+  - !_split &SERVICE_NAME [*FILEPATH, "/", 0, 2]
+  - !_split &ENVIRONMENT [*FILEPATH, "/", 0, 3]
+  - !_split &REGION [*FILEPATH, "/", 0, 4]
 
   # Or can be statically defined
   #- &SERVICE_NAME           MyFirstService
@@ -24,9 +24,8 @@ _globals:
 
   # Lastly we assemble the ClusterName and StackName based on data collected above
   #
-  - &CLUSTER_NAME           !_join [ '-', *CLUSTER_PREFIX, *ENVIRONMENT ]
-  - &STACK_NAME             !_join [ '-', *CLUSTER_NAME, *SERVICE_NAME ]
-
+  - !_join &CLUSTER_NAME ["-", *CLUSTER_PREFIX, *ENVIRONMENT]
+  - !_join &STACK_NAME ["-", *CLUSTER_NAME, *SERVICE_NAME]
 
 template: v1/cfn/shared/apps/ecs-v2/service.template.yml
 stack_name: *STACK_NAME
@@ -92,66 +91,65 @@ context:
     #   used to control aspects of the IAM role which the tasks execute with
     #
     # task_role:
-      # import_role: string
-      #   specifies previously defined IAM role for executing service-instances with
-      #     If import_role begins with arn: its assumed to be a fully qualified IAM Role ARN
-      #     otherwise, its used in an !ImportValue statement to use a value defined from another CFN stack
+    # import_role: string
+    #   specifies previously defined IAM role for executing service-instances with
+    #     If import_role begins with arn: its assumed to be a fully qualified IAM Role ARN
+    #     otherwise, its used in an !ImportValue statement to use a value defined from another CFN stack
 
-      # policies: list of dictionaries
-      #   used to define a IAM::Role object
-      #
-      #   - effect: (ALLOW / DENY)
-      #
-      #     sid: IAM SID as defined by IAM::Role
-      #
-      #     actions: list of strings
-      #       # used to define privledges
-      #       - ec2:DescribeInstances
-      #     not_actions: list of strings
-      #       # used to exclude privledges
-      #       - ec2:TerminateInstance
-      #
-      #     conditions: dictionary
-      #       # used to define conditions to this policy
-      #       StringEqualsIgnoreCase:
-      #         "aws:username": "johndoe"
-      #
-      #     principals: dictionary
-      #       # used to define principals
-      #       AWS:
-      #         - arn:aws:iam::123456789012:root
-      #         - 123456789012
-      #     not_principals: dictionary
-      #       # used to exclude principals
-      #       AWS:
-      #         - arn:aws:iam::123456789012:root
-      #         - 123456789012
-      #
-      #     not_resources: list of strings
-      #       # used to exclude resources from consideration
-      #       - i-12345678
-      #     resources: list of strings
-      #       # used to include resources from consideration
-      #       - i-98765432
-      #
-      #     # If neither resources or not_resources is provided then the default is
-      #     resources:
-      #       - *
-      #
+    # policies: list of dictionaries
+    #   used to define a IAM::Role object
+    #
+    #   - effect: (ALLOW / DENY)
+    #
+    #     sid: IAM SID as defined by IAM::Role
+    #
+    #     actions: list of strings
+    #       # used to define privledges
+    #       - ec2:DescribeInstances
+    #     not_actions: list of strings
+    #       # used to exclude privledges
+    #       - ec2:TerminateInstance
+    #
+    #     conditions: dictionary
+    #       # used to define conditions to this policy
+    #       StringEqualsIgnoreCase:
+    #         "aws:username": "johndoe"
+    #
+    #     principals: dictionary
+    #       # used to define principals
+    #       AWS:
+    #         - arn:aws:iam::123456789012:root
+    #         - 123456789012
+    #     not_principals: dictionary
+    #       # used to exclude principals
+    #       AWS:
+    #         - arn:aws:iam::123456789012:root
+    #         - 123456789012
+    #
+    #     not_resources: list of strings
+    #       # used to exclude resources from consideration
+    #       - i-12345678
+    #     resources: list of strings
+    #       # used to include resources from consideration
+    #       - i-98765432
+    #
+    #     # If neither resources or not_resources is provided then the default is
+    #     resources:
+    #       - *
+    #
 
     # execution_role: dictionary
     # The role ECS uses to launch the task (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html)
     # By default a minimal one is created that allows pulling from ECR and injecting secrets via the Parameter Store and SecretsManager
     # execution_role:
-      # import_role: string
-      #   specifies previously defined IAM role for executing service-instances with
-      #     If import_role begins with arn: its assumed to be a fully qualified IAM Role ARN
-      #     otherwise, its used in an !ImportValue statement to use a value defined from another CFN stack
+    # import_role: string
+    #   specifies previously defined IAM role for executing service-instances with
+    #     If import_role begins with arn: its assumed to be a fully qualified IAM Role ARN
+    #     otherwise, its used in an !ImportValue statement to use a value defined from another CFN stack
 
-      # policies: list of dictionaries
-      #   used to define a IAM::Role object
-      #   For a full options, see above `task_role`
-
+    # policies: list of dictionaries
+    #   used to define a IAM::Role object
+    #   For a full options, see above `task_role`
 
     # volumes:
     #   - name: shared
@@ -184,7 +182,6 @@ context:
     #           Key : Value
     #         Scope: string (task / shared)
     #
-
 
   #################
   #
@@ -337,9 +334,9 @@ context:
         matcher:
           HttpCode: "200-299"
 
-    dns:
-      zone_apex: news-engineering.aws.wapo.pub.
-      domain: klaxon-dev.news-engineering.aws.wapo.pub.
+  dns:
+    zone_apex: news-engineering.aws.wapo.pub.
+    domain: klaxon-dev.news-engineering.aws.wapo.pub.
     # #  If you are using either `import_listener`  or `import_target_group`above,
     # #  you need to import the canonical hosted zone of the load balancer
     # #  and the dns name of the load balancer here
@@ -413,7 +410,6 @@ context:
     #
     # raw_image_path: customer_path_to_image (Deprecated)
 
-
     environment:
       DEBUG: yes
       DATABASE_URL: "postgresql://{{resolve:secretsmanager:/klaxon/aurora-postgresql-dev/app:SecretString:username}}:{{resolve:secretsmanager:/klaxon/aurora-postgresql-dev/app:SecretString:password}}@{{resolve:secretsmanager:/policeshootings/aurora-postgresql-dev/app:SecretString:writer-host}}:5432/klaxon"
@@ -429,28 +425,27 @@ context:
     # Environment also supports complex datatypes including dict and lists
 
     # secrets:
-      # For SSM Params the path to the value can simply be specified as the value for the secret
-      # The defined task will have an additional RequiredCapability added:
-      # ecs.capability.secrets.ssm.environment-variables
-      #
-      # SECRET_PASSWORD_IN_SSM: "/path/to/ssm/parameter/in/same/region"
+    # For SSM Params the path to the value can simply be specified as the value for the secret
+    # The defined task will have an additional RequiredCapability added:
+    # ecs.capability.secrets.ssm.environment-variables
+    #
+    # SECRET_PASSWORD_IN_SSM: "/path/to/ssm/parameter/in/same/region"
 
-      # For values from SecretsManager you need to specify the full ARN to the secret
-      #
-      # SECRET_PASSWORD_IN_SECRETS_MANAGER: !Sub "arn:aws:secretsmanager:${AWS::Region}:${AWS::AccountId}:secret:my_secret-AbCdEf"
+    # For values from SecretsManager you need to specify the full ARN to the secret
+    #
+    # SECRET_PASSWORD_IN_SECRETS_MANAGER: !Sub "arn:aws:secretsmanager:${AWS::Region}:${AWS::AccountId}:secret:my_secret-AbCdEf"
 
     # secrets: dictionary
     #   This allows secrets to be securely inserted as environment variables into the container at runtime.
     #   For more information: https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data.html
 
-
-  # mount_points:
-  #     - containerPath: /tmp
-  #       sourceVolume: my_tmp
-  #       readOnly: false
-  #     - containerPath: /test
-  #       sourceVolume: shared
-  #       readOnly: false
+    # mount_points:
+    #     - containerPath: /tmp
+    #       sourceVolume: my_tmp
+    #       readOnly: false
+    #     - containerPath: /test
+    #       sourceVolume: shared
+    #       readOnly: false
 
     # mount_points: list of dictionaries
     #   This allows attaching HOST based file systems/resources to the ECS task container.
@@ -500,7 +495,6 @@ context:
     # When port_mapping is undefined and needs_ports is true the port_mapping will be automatically created
     # using container.port and container.protocol
 
-
     # Not required, additional cloudformation properties
     container_properties:
       ExtraHosts:
@@ -508,13 +502,13 @@ context:
           IpAddress: 172.17.0.1
 
   # If using autoscaling, make sure it makes sense to scale
-  # your app based on its memory or cpu usage. Besides the 
-  # settings here, the `service.default_scale` and the 
+  # your app based on its memory or cpu usage. Besides the
+  # settings here, the `service.default_scale` and the
   # `container.memory_reservation` will impact scaling behavior.
   scaling:
     # Autoscaling is enabled by default. use `true` to turn it off
     disable: false
-    
+
     # default max is 12X the service.default_scale
     max: 20
     # default min is the default_scale
@@ -526,7 +520,6 @@ context:
     scale_in_cooldown: 900
     scale_out_cooldown: 30
     disable_scale_in: false
-
 
   # Not required, other companion containers
   # other_containers:
