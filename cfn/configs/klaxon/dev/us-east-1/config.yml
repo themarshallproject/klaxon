@@ -408,7 +408,7 @@ context:
     # image = provider/project/repo:tag
     #         In order for "image" to be reconized as raw_image_path, it must contain a "/" or a ":"
     #
-    raw_image_path: ${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/klaxon/dev-latest
+    raw_image_path: ${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/klaxon:dev-latest
 
     environment:
       DEBUG: yes
