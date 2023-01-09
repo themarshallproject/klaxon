@@ -64,8 +64,8 @@ In order to be allowed to login to Klaxon once it's running on your machine, it'
 
 ```
 ADMIN_EMAILS="my_awesome_email@gmail.com"
-HOST='localhost:3000'
-PORT=3000
+HOST='localhost:3001'
+PORT=3001
 ```
 
 Feel free to substitute in your email address. In development, Klaxon doesn't actually send emails locally, so a real address is not required.
@@ -83,7 +83,7 @@ Now, you should be about ready to get started. This command in the top folder of
 bin/dev
 ```
 
-Now, you should be able to go to [localhost:3000](http://localhost:3000/) in your web browser and see Klaxon's welcome screen pop up. You'll want to manually add a webpage or two to watch at [watching/pages/new](http://localhost:3000/watching/pages/new). For development purposes, you'll probably want to pick a site that updates pretty regularly. We use [http://www.timeanddate.com/](http://www.timeanddate.com/).
+Now, you should be able to go to [localhost:3001](http://localhost:3001/) in your web browser and see Klaxon's welcome screen pop up. You'll want to manually add a webpage or two to watch at [watching/pages/new](http://localhost:3001/watching/pages/new). For development purposes, you'll probably want to pick a site that updates pretty regularly. We use [http://www.timeanddate.com/](http://www.timeanddate.com/).
 
 To get Klaxon to check for updates on the pages you're watching, in another terminal window, run this rake command.
 

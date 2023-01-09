@@ -27,6 +27,7 @@ Rails.application.configure do
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
+  config.serve_static_files = true
 
   # Do not fall back to locating/compiling missing assets.
   config.assets.compile = (ENV.fetch('KLAXON_COMPILE_ASSETS', 'false').to_s.downcase == 'true')

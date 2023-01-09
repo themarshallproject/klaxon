@@ -14,7 +14,7 @@ edit env_local.list (found in the docker_example directory) and use your own val
 
 cd into the docker_example directory in this repo and run the following. You only need to be in this directory because we used a relative path to the env_local.list file.
 
-`docker run -p 8885:3000 --name klaxon_local --env-file ./env_local.list --restart unless-stopped -d klaxon`
+`docker run -p 8885:3001 --name klaxon_local --env-file ./env_local.list --restart unless-stopped -d klaxon`
 
 ### Docker Compose
 

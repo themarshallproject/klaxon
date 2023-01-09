@@ -414,7 +414,7 @@ context:
       DEBUG: yes
       DATABASE_URL: "postgresql://{{resolve:secretsmanager:/klaxon/aurora-postgresql-dev/app:SecretString:username}}:{{resolve:secretsmanager:/klaxon/aurora-postgresql-dev/app:SecretString:password}}@{{resolve:secretsmanager:/klaxon/aurora-postgresql-dev/app:SecretString:writer-host}}:5432/klaxon"
       ADMIN_EMAILS: "erik.reyna@washpost.com, armand.emamdjomeh@washpost.com, katlyn.alo@washpost.com"
-      PORT: 3000
+      PORT: 3001
       RACK_ENV: production
       RAILS_ENV: production
       SECRET_KEY_BASE: "{{resolve:secretsmanager:/klaxon/prod/secret-key:SecretString:secret_key_base}}"
@@ -463,7 +463,7 @@ context:
     #     host:
     #       source_path: /tmp
 
-    port: 3000
+    port: 3001
     # protocol: tcp
 
     # port_mapping:

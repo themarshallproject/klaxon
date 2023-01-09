@@ -18,6 +18,6 @@ services:
     env_file: 
       - env_local.list
     ports:
-      - change_me:3000
+      - change_me:3001
     # Example:
-    # - 8885:3000
+    # - 8885:3001

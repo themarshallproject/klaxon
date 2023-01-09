@@ -6,8 +6,8 @@ These instructions assume you have Git, Homebrew, Postgres, Ruby, and Docker ins
 
 Let's start by setting up our environment. If you haven't already, create a `.env` file and add the following (populating with your own preferences, where applicable):
 ```
-HOST='localhost:3000'
-PORT=3000
+HOST='localhost:3001'
+PORT=3001
 
 # Database settings
 POSTGRES_USER=postgres
@@ -31,7 +31,7 @@ BROWSER=/dev/null
 Let's use our `docker-compose.yml` file to build our Docker image, create our empty Postgres database and spin up our app. Run:
 ```
 docker-compose up
-open http://localhost:3000
+open http://localhost:3001
 ```
 
 You should see a `PendingMigrationError` in your browser. You can either click the `Run pending migrations` button below the error description, or run:

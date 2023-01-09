@@ -28,6 +28,7 @@ RUN bundle install
 # Copy over the rest of the app
 COPY . .
 
-EXPOSE 3000
+EXPOSE 3001
 
+CMD ["bundle", "exec", "rails", "assets:precompile"]
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
