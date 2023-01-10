@@ -1,6 +1,9 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # overriding the default url option
+  Rails.application.routes.default_url_options[:host] = 'localhost:3001'
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 

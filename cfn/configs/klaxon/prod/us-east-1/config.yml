@@ -415,7 +415,6 @@ context:
 
 
     environment:
-      DEBUG: yes
       ## TODO: @Katlyn, set up the env vars here
   
     # environment: dictionary

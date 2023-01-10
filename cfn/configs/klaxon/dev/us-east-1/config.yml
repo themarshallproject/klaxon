@@ -411,7 +411,6 @@ context:
     raw_image_path: ${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/klaxon:dev-latest
 
     environment:
-      DEBUG: yes
       DATABASE_URL: "postgresql://{{resolve:secretsmanager:/klaxon/aurora-postgresql-dev/app:SecretString:username}}:{{resolve:secretsmanager:/klaxon/aurora-postgresql-dev/app:SecretString:password}}@{{resolve:secretsmanager:/klaxon/aurora-postgresql-dev/app:SecretString:writer-host}}:5432/klaxon"
       ADMIN_EMAILS: "erik.reyna@washpost.com, armand.emamdjomeh@washpost.com, katlyn.alo@washpost.com"
       PORT: 3001
