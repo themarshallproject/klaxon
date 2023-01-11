@@ -417,6 +417,7 @@ context:
       RACK_ENV: production
       RAILS_ENV: production
       SECRET_KEY_BASE: "{{resolve:secretsmanager:/klaxon/prod/secret-key:SecretString:secret_key_base}}"
+      KLAXON_COMPILE_ASSETS: true
 
     # environment: dictionary
     #   This allows environment values to be passed to the execution of the container at runtime
