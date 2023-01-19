@@ -25,7 +25,7 @@ gem 'httparty'
 gem 'diffy'
 gem 'kramdown'
 
-gem 'aws-sdk-sqs', '~> 1.52'
+gem 'aws-sdk-sqs', '~> 1.53'
 
 group :development, :test do
   gem 'byebug'
