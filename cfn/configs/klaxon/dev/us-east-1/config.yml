@@ -332,7 +332,7 @@ context:
         healthy_threshold_count: 2
         unhealthy_threshold_count: 6
         matcher:
-          HttpCode: "200-299"
+          HttpCode: "200-399" # accepts success or redirect
 
       dns:
         zone_apex: news-engineering.aws.wapo.pub.
