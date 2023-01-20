@@ -418,6 +418,13 @@ context:
       RAILS_ENV: production
       SECRET_KEY_BASE: "{{resolve:secretsmanager:/klaxon/prod/secret-key:SecretString:secret_key_base}}"
       KLAXON_COMPILE_ASSETS: true
+      SMTP_PROVIDER: SES
+      SES_ADDRESS: "{{resolve:secretsmanager:/klaxon/ses-prod/smtp-user-credentials/secret-key:SecretString:address}}"
+      SES_DOMAIN: "{{resolve:secretsmanager:/klaxon/ses-prod/smtp-user-credentials/secret-key:SecretString:domain}}"
+      SES_PORT: "{{resolve:secretsmanager:/klaxon/ses-prod/smtp-user-credentials/secret-key:SecretString:port}}"
+      MAILER_FROM_ADDRESS: "{{resolve:secretsmanager:/klaxon/ses-prod/smtp-user-credentials/secret-key:SecretString:mailerFromAddress}}"
+      SES_USERNAME: "{{resolve:secretsmanager:/klaxon/ses-prod/smtp-user-credentials/secret-key:SecretString:username}}"
+      SES_PASSWORD: "{{resolve:secretsmanager:/klaxon/ses-prod/smtp-user-credentials/secret-key:SecretString:password}}"
 
     # environment: dictionary
     #   This allows environment values to be passed to the execution of the container at runtime

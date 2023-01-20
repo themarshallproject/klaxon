@@ -11,3 +11,4 @@ pull_dev_database.sh
 
 snapshots
 .env*
+!.env.*.example

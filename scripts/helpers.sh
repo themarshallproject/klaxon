@@ -21,6 +21,8 @@ alias klaxon-psql="klaxon-psql-run psql"
 
 alias klaxon-migrate="klaxon-rails db:migrate"
 
+alias klaxon-create-admin="klaxon-rails users:create_admin"
+
 # Drop and re-create the DB, not just flushing data from tables
 klaxon-reset-db(){
     klaxon-psql-run sh -c "echo \"SELECT pg_terminate_backend(pg_stat_activity.pid) \
@@ -49,4 +51,5 @@ echo \"                              example: klaxon-rails db:migrate\"
 echo \"klaxon-psql              - drop into a psql shell\"
 echo \"klaxon-psql-container   - get the container ID of the postgres service\"
 echo \"klaxon-psql-run          - run a command on the running postgres container\"
+echo \"klaxon-create-admin      - add users for each comma-separated email in ADMIN_EMAILS\"
 "
