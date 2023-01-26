@@ -1,4 +1,4 @@
-FROM ruby:2.7.6
+FROM public.ecr.aws/docker/library/ruby:2.7.6
 
 # Throw errors if Gemfile has been modified since Gemfile.lock
 RUN bundle config --global frozen 1
