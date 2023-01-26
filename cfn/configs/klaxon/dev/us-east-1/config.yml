@@ -325,13 +325,13 @@ context:
       #   this structure defines the parameters of a health check, the defaults are below
       #
       health_check:
-        path: "/healthcheck/"
+        path: "/healthcheck"
         interval_seconds: 10
         timeout_seconds: 5
         healthy_threshold_count: 2
         unhealthy_threshold_count: 6
         matcher:
-          HttpCode: "200-299" # accepts success or redirect
+          HttpCode: "200-399" # accepts success or redirect
 
       dns:
         zone_apex: news-engineering.aws.wapo.pub.
