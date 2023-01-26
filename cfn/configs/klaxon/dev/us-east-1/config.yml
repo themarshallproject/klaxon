@@ -325,7 +325,7 @@ context:
       #   this structure defines the parameters of a health check, the defaults are below
       #
       health_check:
-        path: "/healthcheck"
+        path: "/healthcheck/"
         interval_seconds: 10
         timeout_seconds: 5
         healthy_threshold_count: 2
