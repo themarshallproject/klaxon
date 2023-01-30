@@ -16,7 +16,7 @@ gem 'rack-cache'
 gem 'bcrypt', '~> 3.1.18'
 gem 'puma', '~> 5.6'
 
-gem 'simple_form', '~> 5.0'
+gem 'simple_form', '~> 5.2'
 
 gem 'jwt'
 gem 'premailer-rails'
