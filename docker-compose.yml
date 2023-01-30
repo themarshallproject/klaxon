@@ -3,9 +3,6 @@ volumes:
 services:
   db:
     image: postgres:14
-    env_file:
-      - .env.local
-      - ~/.clokta/default.env
     ports:
       - "5432:5432"
     volumes:
@@ -15,8 +12,7 @@ services:
     ports: 
       - "3001:3001"
     env_file:
-      - .env.local
-      - ~/.clokta/default.env
+      - .env.dev
     build: .
     depends_on:
       - db

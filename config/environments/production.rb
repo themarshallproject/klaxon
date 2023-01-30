@@ -1,9 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  # overriding the default url option
-  Rails.application.routes.default_url_options[:host] = 'localhost:3001'
-
   # Code is not reloaded between requests.
   config.cache_classes = true # to run migrations locally, change to false
 
@@ -83,6 +80,9 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   # config.action_mailer.postmark_settings = { :api_token => ENV['POSTMARK_API_TOKEN'] }
+
+  # uncomment locally, using 3001 to avoid conflict with our other applications
+  # Rails.application.routes.default_url_options[:host] = 'localhost:3001'
 
   provider  = (ENV["SMTP_PROVIDER"] || "SENDGRID").to_s
   address   = ENV["#{provider}_ADDRESS"] || "smtp.sendgrid.net"

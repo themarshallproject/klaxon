@@ -7,6 +7,9 @@ alias klaxon-app="docker-compose run --rm app"
 # Shorter way to run the Ruby rails command.
 alias klaxon-rails="klaxon-app rails"
 
+# Shorter way to run the Ruby rake command.
+alias klaxon-rake="klaxon-app rake"
+
 # TODO: add command to run tests
 
 # Get the container id of the running postgres container
@@ -19,9 +22,14 @@ alias klaxon-psql-run="docker exec -tiu postgres \$(klaxon-psql-container)"
 # Drop into a psql shell on the running postgres container
 alias klaxon-psql="klaxon-psql-run psql"
 
+# Run data migrations
 alias klaxon-migrate="klaxon-rails db:migrate"
 
+# Create admin records for each email in the ADMIN_EMAILS env variable
 alias klaxon-create-admin="klaxon-rails users:create_admin"
+
+# Check all watched pages
+alias klaxon-check-all="klaxon-rake check:all"
 
 # Drop and re-create the DB, not just flushing data from tables
 klaxon-reset-db(){
@@ -51,5 +59,7 @@ echo \"                              example: klaxon-rails db:migrate\"
 echo \"klaxon-psql              - drop into a psql shell\"
 echo \"klaxon-psql-container   - get the container ID of the postgres service\"
 echo \"klaxon-psql-run          - run a command on the running postgres container\"
+echo \"klaxon-migrate          - run data migrations\"
 echo \"klaxon-create-admin      - add users for each comma-separated email in ADMIN_EMAILS\"
+echo \"klaxon-check-all          - check all pages we are currently watching\"
 "

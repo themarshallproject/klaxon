@@ -6,7 +6,7 @@
 
 ```
 docker-compose up
-open http://localhost:3001
+open http://localhost:3000
 ```
 
 2. Enter 'admin@news.org' in the email window. It should redirect you to a page that says: "Email Sent".
