@@ -271,7 +271,8 @@ context:
       public_protocol: HTTPS
       public_port: 443
       certificate: arn:aws:acm:us-east-1:912288704264:certificate/c1ff8358-9b24-4e68-9d38-28caf63c0fde
-
+      http_to_https_redirect: true
+      
       # public_protocol: HTTP / HTTPS / TCP / UDP / TCP_UDP / TLS (default router.protocol)
       #   this defines the Listener Protocol
       #   if HTTP or HTTPS then an ALB (Application Load Balancer) is created
