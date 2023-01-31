@@ -5,6 +5,8 @@ services:
     image: postgres:14
     ports:
       - "5432:5432"
+    env_file:
+      - .env.dev
     volumes:
       - postgres_data_local:/var/lib/postgresql/data
 
