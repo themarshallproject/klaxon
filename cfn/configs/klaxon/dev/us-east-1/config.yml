@@ -27,7 +27,7 @@ _globals:
   - !_join &CLUSTER_NAME ["-", *CLUSTER_PREFIX, *ENVIRONMENT]
   - !_join &STACK_NAME ["-", *CLUSTER_NAME, *SERVICE_NAME]
 
-template: v1/cfn/shared/apps/ecs-v2/service.template.yml
+template: cfn/templates/service.template.yml
 stack_name: *STACK_NAME
 region: *REGION
 
@@ -327,12 +327,14 @@ context:
       #
       health_check:
         path: "/healthcheck"
-        interval_seconds: 10
+        interval_seconds: 30
         timeout_seconds: 5
         healthy_threshold_count: 2
         unhealthy_threshold_count: 6
         matcher:
-          HttpCode: "200-399" # accepts success or redirect
+          HttpCode: "200-299"
+        protocol: "HTTPS"
+        port: 443
 
       dns:
         zone_apex: news-engineering.aws.wapo.pub.
