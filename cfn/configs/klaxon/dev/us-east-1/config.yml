@@ -518,9 +518,9 @@ context:
     disable: false
 
     # default max is 12X the service.default_scale
-    max: 20
+    max: 12
     # default min is the default_scale
-    min: 2
+    min: 1
 
     #Additional configurable properties with their defaults:
     cpu_target: 50
