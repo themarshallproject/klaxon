@@ -328,7 +328,7 @@ context:
       health_check:
         path: "/healthcheck"
         interval_seconds: 30
-        timeout_seconds: 5
+        timeout_seconds: 10
         healthy_threshold_count: 2
         unhealthy_threshold_count: 6
         matcher:
