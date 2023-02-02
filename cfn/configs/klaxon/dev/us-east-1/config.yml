@@ -27,7 +27,7 @@ _globals:
   - !_join &CLUSTER_NAME ["-", *CLUSTER_PREFIX, *ENVIRONMENT]
   - !_join &STACK_NAME ["-", *CLUSTER_NAME, *SERVICE_NAME]
 
-template: cfn/templates/service.template.yml
+template: v1/cfn/shared/apps/ecs-v2/service.template.yml
 stack_name: *STACK_NAME
 region: *REGION
 
@@ -271,7 +271,6 @@ context:
       public_protocol: HTTPS
       public_port: 443
       certificate: arn:aws:acm:us-east-1:912288704264:certificate/c1ff8358-9b24-4e68-9d38-28caf63c0fde
-      http_to_https_redirect: true
       
       # public_protocol: HTTP / HTTPS / TCP / UDP / TCP_UDP / TLS (default router.protocol)
       #   this defines the Listener Protocol
@@ -333,8 +332,6 @@ context:
         unhealthy_threshold_count: 6
         matcher:
           HttpCode: "200-299"
-        protocol: "HTTPS"
-        port: 443
 
       dns:
         zone_apex: news-engineering.aws.wapo.pub.
