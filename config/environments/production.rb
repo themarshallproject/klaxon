@@ -44,6 +44,9 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = (ENV.fetch('KLAXON_FORCE_SSL', 'true').to_s.downcase == 'true')
+  # force_ssl above breaks the healthcheck, returning a 300 status instead of 200
+  # this should allow an ssl exception, per https://api.rubyonrails.org/v5.2.1/classes/ActionDispatch/SSL.html
+  config.ssl_options = { redirect: { exclude: -> request { request.path =~ /healthcheck/ } } }
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
