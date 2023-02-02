@@ -44,6 +44,4 @@ EXPOSE 3001
 
 ENTRYPOINT ["./docker-entrypoint.sh"]
 
-# As written this first command will not execute since it's the first of two `CMD`s
-CMD ["bundle", "exec", "rails", "assets:precompile"] 
 CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
