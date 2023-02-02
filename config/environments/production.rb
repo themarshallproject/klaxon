@@ -84,6 +84,7 @@ Rails.application.configure do
   # changes the root url used in the email link, depending on environment
   Rails.application.routes.default_url_options[:host] = (ENV["HOST_URL"] || "localhost:3001")
 
+
   provider  = (ENV["SMTP_PROVIDER"] || "SENDGRID").to_s
   address   = ENV["#{provider}_ADDRESS"] || "smtp.sendgrid.net"
   # if you use SES as your SMTP provider, then your username and password are actually your AWS user credentials.

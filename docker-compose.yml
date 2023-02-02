@@ -6,7 +6,7 @@ services:
     ports:
       - "5432:5432"
     env_file:
-      - .env.dev
+      - .env.local
     volumes:
       - postgres_data_local:/var/lib/postgresql/data
 
@@ -14,7 +14,7 @@ services:
     ports: 
       - "3001:3001"
     env_file:
-      - .env.dev
+      - .env.local
     build: .
     depends_on:
       - db
