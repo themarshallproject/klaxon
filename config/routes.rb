@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  # route is /healthcheck, see config/initializers/healthcheck.rb to configure
   Healthcheck.routes(self)
   root 'watching#feed'
 
