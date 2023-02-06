@@ -2,20 +2,20 @@ _globals:
   # This section is used to accumulate the YAML Anchors for use in the config to DRY the configs
   # This is done to reduce errors due to copying configs from one env/region to another
 
-  - &CLUSTER_PREFIX         newsroom
-  - &DEBUG                  false
+  - &CLUSTER_PREFIX newsroom
+  - &DEBUG false
 
   # Assuming a config file is named as follows
   # e.g. cfn/config/MyFirstService/dev/us-east-1/config.yml
 
   # The following two lines extract information from the stackjack config file being executed
-  - &FILEPATH               "{{ config_file_name }}"
-  - &FILENAME               !_split [ !_split [ *FILEPATH, '/', 0, -1 ], '.', 0, 0 ]
+  - &FILEPATH "{{ config_file_name }}"
+  - !_split &FILENAME [!_split [*FILEPATH, "/", 0, -1], ".", 0, 0]
 
   # Other information including service name, environment and region are further extracted from the file path
-  - &SERVICE_NAME           !_split [ *FILEPATH, '/', 0, 2 ]
-  - &ENVIRONMENT            !_split [ *FILEPATH, '/', 0, 3 ]
-  - &REGION                 !_split [ *FILEPATH, '/', 0, 4 ]
+  - !_split &SERVICE_NAME [*FILEPATH, "/", 0, 2]
+  - !_split &ENVIRONMENT [*FILEPATH, "/", 0, 3]
+  - !_split &REGION [*FILEPATH, "/", 0, 4]
 
   # Or can be statically defined
   #- &SERVICE_NAME           MyFirstService
@@ -24,9 +24,8 @@ _globals:
 
   # Lastly we assemble the ClusterName and StackName based on data collected above
   #
-  - &CLUSTER_NAME           !_join [ '-', *CLUSTER_PREFIX, *ENVIRONMENT ]
-  - &STACK_NAME             !_join [ '-', *CLUSTER_NAME, *SERVICE_NAME ]
-
+  - !_join &CLUSTER_NAME ["-", *CLUSTER_PREFIX, *ENVIRONMENT]
+  - !_join &STACK_NAME ["-", *CLUSTER_NAME, *SERVICE_NAME]
 
 template: v1/cfn/shared/apps/ecs-v2/service.template.yml
 stack_name: *STACK_NAME
@@ -71,7 +70,7 @@ context:
     strategy: REPLICA
 
     #UpdateReplacePolicy: string
-    #  Cloudformation by default 'Delete' it resources if not specififed the UpdateReplacePolicy.
+    #  Cloudformation by default "Delete" it resources if not specififed the UpdateReplacePolicy.
     #   Delete: Deletes the resources by default
     #   Retain: keeps the resource without deleting the resource or its contents
     # We have added this parameter to TaskDefinition
@@ -271,9 +270,8 @@ context:
       # protocol: string (default HTTP)
       # port: int (default 80)
 
-      public_protocol: http
+      public_protocol: HTTPS
       public_port: 443
-      http_to_https_redirect: true
       certificate: arn:aws:acm:us-east-1:912288704264:certificate/c1ff8358-9b24-4e68-9d38-28caf63c0fde
 
       # public_protocol: HTTP / HTTPS / TCP / UDP / TCP_UDP / TLS (default router.protocol)
@@ -329,13 +327,13 @@ context:
       #   this structure defines the parameters of a health check, the defaults are below
       #
       health_check:
-        path: "/healthcheck/"
+        path: "/healthcheck"
         interval_seconds: 10
         timeout_seconds: 5
         healthy_threshold_count: 2
         unhealthy_threshold_count: 6
         matcher:
-          HttpCode: "200-399" # accepts success or redirect
+          HttpCode: "200-299"
 
     dns:
       zone_apex: news-engineering.aws.wapo.pub.
@@ -411,11 +409,26 @@ context:
     # image = provider/project/repo:tag
     #         In order for "image" to be reconized as raw_image_path, it must contain a "/" or a ":"
     #
-    # raw_image_path: customer_path_to_image (Deprecated)
+    raw_image_path: ${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/klaxon:prod-latest
 
 
     environment:
-      ## TODO: @Katlyn, set up the env vars here
+      DATABASE_URL: "postgresql://{{resolve:secretsmanager:/klaxon/aurora-postgresql-prod/app:SecretString:username}}:{{resolve:secretsmanager:/klaxon/aurora-postgresql-dev/app:SecretString:password}}@{{resolve:secretsmanager:/klaxon/aurora-postgresql-dev/app:SecretString:writer-host}}:5432/klaxon"
+      ADMIN_EMAILS: "admin@news.org"
+      PORT: 3001
+      APP_HOST: klaxon-prod.news-engineering.aws.wapo.pub.
+      RACK_ENV: production
+      RAILS_ENV: production
+      HOST_URL: "klaxon-prod.news-engineering.aws.wapo.pub"
+      SECRET_KEY_BASE: "{{resolve:secretsmanager:/klaxon/prod/secret-key:SecretString:secret_key_base}}"
+      KLAXON_COMPILE_ASSETS: true
+      SMTP_PROVIDER: SES
+      SES_ADDRESS: "{{resolve:secretsmanager:/klaxon/ses-prod/smtp-user-credentials:SecretString:address}}"
+      SES_DOMAIN: "{{resolve:secretsmanager:/klaxon/ses-prod/smtp-user-credentials:SecretString:domain}}"
+      SES_PORT: "{{resolve:secretsmanager:/klaxon/ses-prod/smtp-user-credentials:SecretString:port}}"
+      MAILER_FROM_ADDRESS: "{{resolve:secretsmanager:/klaxon/ses-prod/smtp-user-credentials:SecretString:mailerFromAddress}}"
+      SES_USERNAME: "{{resolve:secretsmanager:/klaxon/ses-prod/smtp-user-credentials:SecretString:username}}"
+      SES_PASSWORD: "{{resolve:secretsmanager:/klaxon/ses-prod/smtp-user-credentials:SecretString:password}}"
   
     # environment: dictionary
     #   This allows environment values to be passed to the execution of the container at runtime

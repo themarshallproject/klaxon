@@ -413,6 +413,7 @@ context:
       DATABASE_URL: "postgresql://{{resolve:secretsmanager:/klaxon/aurora-postgresql-dev/app:SecretString:username}}:{{resolve:secretsmanager:/klaxon/aurora-postgresql-dev/app:SecretString:password}}@{{resolve:secretsmanager:/klaxon/aurora-postgresql-dev/app:SecretString:writer-host}}:5432/klaxon"
       ADMIN_EMAILS: "admin@news.org"
       PORT: 3001
+      APP_HOST: klaxon-dev.news-engineering.aws.wapo.pub.
       RACK_ENV: production
       RAILS_ENV: production
       HOST_URL: "klaxon-dev.news-engineering.aws.wapo.pub"
