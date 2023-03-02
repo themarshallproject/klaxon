@@ -29,7 +29,7 @@
     }
   },
   "addons": [
-    "heroku-postgresql:hobby-dev",
+    "heroku-postgresql:mini",
     "sendgrid:starter",
     "scheduler:standard"
   ],
