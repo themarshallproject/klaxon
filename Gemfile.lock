@@ -79,15 +79,15 @@ GEM
     codeclimate-test-reporter (1.0.9)
       simplecov (<= 0.13)
     coderay (1.1.3)
-    concurrent-ruby (1.2.0)
+    concurrent-ruby (1.2.2)
     crack (0.4.5)
       rexml
     crass (1.0.6)
     css_parser (1.12.0)
       addressable
-    database_cleaner (2.0.1)
-      database_cleaner-active_record (~> 2.0.0)
-    database_cleaner-active_record (2.0.0)
+    database_cleaner (2.0.2)
+      database_cleaner-active_record (>= 2, < 3)
+    database_cleaner-active_record (2.1.0)
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
@@ -163,7 +163,7 @@ GEM
     mini_mime (1.1.2)
     mini_racer (0.6.3)
       libv8-node (~> 16.10.0.0)
-    minitest (5.17.0)
+    minitest (5.18.0)
     msgpack (1.6.0)
     multi_xml (0.6.0)
     mustermann (3.0.0)
@@ -325,7 +325,7 @@ GEM
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    zeitwerk (2.6.6)
+    zeitwerk (2.6.7)
 
 PLATFORMS
   arm64-darwin-21
