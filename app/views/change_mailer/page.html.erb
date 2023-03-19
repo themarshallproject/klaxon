@@ -34,9 +34,13 @@
 
 <div class="container">
     <div class="klax-app-name">
-    Klaxon
+         <% if ENV['KLAXON_INSTANCE_NAME'].present? -%>
+             <b> Klaxon @ <%= ENV['KLAXON_INSTANCE_NAME'] %></b>
+         <% else -%>
+           <b>Klaxon</b>
+        <% end -%></a>
   </div>
-  <h3>Something Changed</h3>
+  <h3>Something Changed @ <%= ENV['KLAXON_INSTANCE_NAME'] %></h3>
 
   <p class="klax-lead"><b><%= @page.name %></b> changed. It has changed <b><%= @page.num_changes %></b> times since Klaxon started monitoring it on <b><%= @page.created_at.strftime("%A, %B %d, %Y") %>.</b></p>
 
