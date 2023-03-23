@@ -12,7 +12,7 @@ test:
   database: klaxon_test
   username: <%= ENV['PGUSER'] || `whoami` %>
   password: <%= ENV['PGPASSWORD'] %>
-  host: localhost
+  host: <%= ENV['PGHOST'] || 'localhost' %>
   port: 5432
 
 production:

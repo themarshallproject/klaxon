@@ -2,41 +2,32 @@
 
 ## Development Quickstart
 
-1. Run the following commands:
+0.  Preparation
+
+    1. Copy the `.env.sample` to `.env` in this project and update the environment variables accordingly. See the `.env.sample` file for additional information.
+    2. Use [`mkcert`](https://github.com/FiloSottile/mkcert) to generate SSL certificates for local development. Having local https allows you to run Klaxon closer to how you'd run it in production.
+
+       1. If on macOS, you can use Homebrew. If on a different platform, see the directions in the `mkcert` repository.
+
+       ```bash
+       brew install mkcert
+       brew install nss # if you use Firefox
+
+       mkcert localhost
+       mkcert -install
+       ```
+
+       2. Copy the generated files to `localhost.crt` (the public key) and `localhost.key` (the private key) into the `certs/` directory in this repository.
+
+1.  Now you're ready to start Klaxon locally! Run the following commands:
 
 ```
-docker-compose up
-open http://localhost:3000
+docker-compose up --build
+open https://localhost:4443
 ```
 
-2. Enter 'admin@news.org' in the email window. It should redirect you to a page that says: "Email Sent".
+2. Enter `admin@news.org` in the email window. It should redirect you to a page that says: "Email Sent".
 
 3. In the console find where it says "Go to Dashboard ( ... )" and copy and paste the link into the browser.
 
 4. You'll now be logged in. The page should say "Watch Your First Item".
-
-## Expected environmental variables
-
-Klaxon needs certain environmental variables to be able to run. One way to accomplish this in Docker is with an [env file](https://docs.docker.com/engine/reference/commandline/run/#set-environment-variables-e-env-env-file). Below is a template for setting one up.
-
-```sh
-DATABASE_URL=
-SECRET_KEY_BASE=
-ADMIN_EMAILS=
-SENDGRID_USERNAME=
-SENDGRID_PASSWORD=
-```
-
-If you would like to use [Amazon SES](https://aws.amazon.com/ses/) instead to send emails, you'll need a different set of environmental variables.
-
-```sh
-DATABASE_URL=
-SECRET_KEY_BASE=
-ADMIN_EMAILS=
-SMTP_PROVIDER=SES
-SES_ADDRESS=
-SES_USERNAME=
-SES_PASSWORD=
-SES_DOMAIN=
-MAILER_FROM_ADDRESS=
-```
