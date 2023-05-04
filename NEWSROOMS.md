@@ -37,6 +37,7 @@
 * Omaha World-Herald
 * Palm Beach Post
 * Panier à salade, France
+* Politico
 * ProPublica
 * Reuters
 * Reveal from the Center for Investigative Reporting
