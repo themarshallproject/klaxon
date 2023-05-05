@@ -8,7 +8,6 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'dotenv'
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'bootsnap', require: false
 
 gem 'rack-cache'
