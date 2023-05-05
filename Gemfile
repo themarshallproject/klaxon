@@ -5,7 +5,6 @@ gem "rails", '~> 7.0.4', '>= 7.0.4.3'
 gem 'pg', '~> 1.5'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'mini_racer', '~> 0.6.3'
 
 gem 'dotenv'
 gem 'jquery-rails'
