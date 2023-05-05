@@ -10,7 +10,6 @@ gem 'dotenv'
 gem 'jquery-rails'
 gem 'bootsnap', require: false
 
-gem 'rack-cache'
 gem 'bcrypt', '~> 3.1.18'
 gem 'puma', '~> 5.6'
 

@@ -207,8 +207,6 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.7)
-    rack-cache (1.13.0)
-      rack (>= 0.4)
     rack-protection (3.0.6)
       rack
     rack-test (2.1.0)
@@ -344,7 +342,6 @@ DEPENDENCIES
   pg (~> 1.5)
   premailer-rails
   puma (~> 5.6)
-  rack-cache
   rails (~> 7.0.4, >= 7.0.4.3)
   rails-controller-testing
   rspec-github
