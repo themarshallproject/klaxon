@@ -26,7 +26,8 @@ gem 'kramdown'
 gem 'aws-sdk-sqs', '~> 1.53'
 
 group :development, :test do
-  gem 'byebug'
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
   gem 'factory_bot_rails', '~> 6.1'
