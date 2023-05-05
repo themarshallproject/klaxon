@@ -40,7 +40,6 @@ group :test do
   gem 'webmock'
   gem 'rails-controller-testing'
   gem 'rspec-github', require: false
-  gem 'codeclimate-test-reporter', require: nil
 end
 
 group :development do
