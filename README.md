@@ -14,7 +14,7 @@ Read more below, or say hello to the humans behind the project at the [Google Gr
 
 Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. Klaxon has been used and tested by journalists at The Marshall Project, The New York Times, the Texas Tribune, the Associated Press [and elsewhere](NEWSROOMS.md).
 
-The public release of this free and open source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/).
+The public release of this free and open-source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/).
 
 ## How Does Klaxon Work?
 
