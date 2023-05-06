@@ -80,7 +80,6 @@ GEM
       aws-sigv4 (~> 1.1)
     aws-sigv4 (1.5.2)
       aws-eventstream (~> 1, >= 1.0.2)
-    bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
@@ -317,7 +316,6 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk-sqs (~> 1.53)
-  bcrypt (~> 3.1.18)
   bootsnap
   dartsass-rails (~> 0.4.1)
   database_cleaner
