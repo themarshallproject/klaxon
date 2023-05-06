@@ -10,3 +10,6 @@ backups/
 pull_dev_database.sh
 
 snapshots
+
+/app/assets/builds/*
+!/app/assets/builds/.keep

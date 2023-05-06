@@ -3,7 +3,8 @@ ruby '3.1.4'
 
 gem "rails", '~> 7.0.4', '>= 7.0.4.3'
 gem 'pg', '~> 1.5'
-gem 'sass-rails', '~> 5.0'
+gem "sprockets-rails"
+gem "dartsass-rails", "~> 0.4.1"
 gem 'uglifier', '>= 1.3.0'
 
 gem 'dotenv'
