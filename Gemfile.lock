@@ -105,6 +105,8 @@ GEM
       reline (>= 0.3.1)
     diff-lcs (1.5.0)
     diffy (3.4.2)
+    dockerfile-rails (1.2.5)
+      rails
     dotenv (2.8.1)
     erubi (1.12.0)
     execjs (2.8.1)
@@ -324,6 +326,7 @@ DEPENDENCIES
   database_cleaner
   debug
   diffy
+  dockerfile-rails (>= 1.2)
   dotenv
   factory_bot_rails (~> 6.1)
   guard-rspec
