@@ -320,7 +320,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  aws-sdk-sqs (~> 1.53)
+  aws-sdk-sqs (~> 1.55)
   bootsnap
   dartsass-rails (~> 0.4.1)
   database_cleaner
