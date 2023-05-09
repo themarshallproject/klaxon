@@ -24,9 +24,8 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = true
 
-  # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
-  # config.assets.css_compressor = :sass
+  # Compress JavaScript.
+  config.assets.js_compressor = :terser
 
   # Do not fall back to locating/compiling missing assets.
   config.assets.compile = (ENV.fetch('KLAXON_COMPILE_ASSETS', 'false').to_s.downcase == 'true')

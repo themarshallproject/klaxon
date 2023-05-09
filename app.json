@@ -5,7 +5,7 @@
   "website": "https://github.com/themarshallproject/klaxon",
   "repository": "https://github.com/themarshallproject/klaxon",
   "success_url": "/",
-  "stack": "heroku-20",
+  "stack": "heroku-22",
   "scripts": {
     "postdeploy": "bash ./postdeploy.sh"
   },
@@ -16,29 +16,22 @@
     },
     "ADMIN_EMAILS": {
       "description": "A comma-separated list of emails that are administrators. You need at least one."
-    },
-    "DEPLOY_TASKS": {
-      "value": "db:migrate",
-      "description": "Space-separated list of tasks to run after each deploy. You shouldn't need to change this."
     }
   },
   "formation": {
     "web": {
       "quantity": 1,
-      "size": "free"
+      "size": "eco"
     }
   },
   "addons": [
-    "heroku-postgresql:hobby-dev",
+    "heroku-postgresql:mini",
     "sendgrid:starter",
     "scheduler:standard"
   ],
   "buildpacks": [
     {
       "url": "heroku/ruby"
-    },
-    {
-      "url": "https://github.com/gunpowderlabs/buildpack-ruby-rake-deploy-tasks"
     }
   ]
 }

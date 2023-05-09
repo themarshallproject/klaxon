@@ -1,19 +1,16 @@
 source 'https://rubygems.org'
-ruby '2.7.6'
+ruby '3.1.4'
 
-gem 'rails', '~> 6.0.0'
+gem "rails", '~> 7.0.4', '>= 7.0.4.3'
 gem 'pg', '~> 1.5'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'mini_racer', '~> 0.6.3'
+gem "sprockets-rails"
+gem "dartsass-rails", "~> 0.4.1"
+gem "terser", "~> 1.1"
 
 gem 'dotenv'
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'bootsnap', require: false
 
-gem 'rack-cache'
-gem 'bcrypt', '~> 3.1.18'
 gem 'puma', '~> 5.6'
 
 gem 'simple_form', '~> 5.2'
@@ -28,7 +25,8 @@ gem 'kramdown'
 gem 'aws-sdk-sqs', '~> 1.55'
 
 group :development, :test do
-  gem 'byebug'
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
   gem 'factory_bot_rails', '~> 6.1'
@@ -40,11 +38,9 @@ group :test do
   gem 'webmock'
   gem 'rails-controller-testing'
   gem 'rspec-github', require: false
-  gem 'codeclimate-test-reporter', require: nil
 end
 
 group :development do
   gem 'letter_opener'
-  gem 'web-console', '~> 4.2'
-  gem 'spring'
+  gem 'web-console'
 end
