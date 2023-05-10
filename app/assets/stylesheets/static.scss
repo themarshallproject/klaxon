@@ -2,20 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+:root {
+  --primary-color: #444444;
+  --secondary-color: #ff0b3a;
+}
+
 body {
-  color: #ff0b3a;
+  color: var(--primary-color);
   padding-top: 50px;
 }
 
 a {
-  color: #ff0b3a;
-  border-bottom: 2px solid #ff0b3a;
+  color: var(--primary-color);
+  border-bottom: 1px solid var(--secondary-color);
 }
 
-a:not(.btn):hover, a:focus {
-  color: #ff0b3a;
+a:not(.btn):hover,
+a:focus {
+  color: var(--primary-color);
   text-decoration: none;
-  border-bottom: 2px solid #ff0b3a;
+  border-bottom-width: 2px;
 }
 
 .navbar a {
@@ -30,8 +36,12 @@ a:not(.btn):hover, a:focus {
   background-color: #fff;
 }
 
-.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
-  background-color:  rgba(255,11,58, 0.1);
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+  background-color: rgba(255, 11, 58, 0.1);
 }
 
 .nav > li > a:hover {
@@ -39,15 +49,20 @@ a:not(.btn):hover, a:focus {
 }
 
 .navbar-toggle {
-  background-color: #ff0b3a !important;
+  background-color: var(--primary-color) !important;
 }
 
 .navbar-toggle .icon-bar {
   background-color: white !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  border-top: 0.2em solid #ff0b3a;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  border-top: 0.2em solid var(--secondary-color);
   padding-top: 10px;
 }
 
@@ -56,18 +71,29 @@ h1 {
   font-size: 5.063em;
 }
 
-h2 {font-size: 3.375em;}
-
-h3 {font-size: 2.25em;}
-
-h4 {font-size: 1.5em;}
-
-.table > thead > tr > th {
-  border-bottom: 2px solid #ff0b3a;
+h2 {
+  font-size: 3.375em;
 }
 
-.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
-  border-top: 1px solid #ff0b3a;
+h3 {
+  font-size: 2.25em;
+}
+
+h4 {
+  font-size: 1.5em;
+}
+
+.table > thead > tr > th {
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+.table > thead > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > th,
+.table > tbody > tr > td,
+.table > tfoot > tr > th,
+.table > tfoot > tr > td {
+  border-top: 1px solid var(--secondary-color);
   vertical-align: center;
   // padding: 8px 0;
   padding-left: 0;
@@ -75,15 +101,16 @@ h4 {font-size: 1.5em;}
   white-space: normal !important;
 }
 
-table tbody tr td:last-child, table thead tr td:last-child  {
+table tbody tr td:last-child,
+table thead tr td:last-child {
   padding-right: 0 !important;
 }
 
 .form-control {
   border-radius: 0 !important;
-  border: 1px solid #ff0b3a;
+  border: 1px solid var(--secondary-color);
   box-shadow: none;
-  color: #ff0b3a;
+  color: var(--primary-color);
 }
 
 .form-check-box {
@@ -92,14 +119,14 @@ table tbody tr td:last-child, table thead tr td:last-child  {
 
 .btn {
   border-radius: 0 !important;
-  border: 1px solid #ff0b3a;
-  color: #ff0b3a;
-  border-color: #ff0b3a !important;
+  border: 1px solid var(--secondary-color);
+  color: var(--primary-color);
+  border-color: var(--secondary-color) !important;
 }
 
 .btn:hover {
   color: #fff;
-  background-color: #ff0b3a;
+  background-color: var(--secondary-color);
   box-shadow: none;
 }
 
@@ -108,24 +135,24 @@ table tbody tr td:last-child, table thead tr td:last-child  {
 }
 
 .btn-danger:hover {
-  color: #ff0b3a;
+  color: var(--secondary-color);
   background-color: #fff;
 }
 
 *:focus {
-  border-color: #ff0b3a !important;
+  border-color: var(--secondary-color) !important;
   box-shadow: none !important;
   outline: none !important;
 }
 
 .dropdown a {
   border: none;
-  color: #ff0b3a !important;
+  color: var(--primary-color) !important;
 }
 
 .nav .dropdown .dropdown-menu {
   border-radius: 0 !important;
-  border-color: rgba(255,11,58, 0.5);
+  border-color: rgba(255, 11, 58, 0.5);
 }
 
 .dropdown-menu {
@@ -134,31 +161,33 @@ table tbody tr td:last-child, table thead tr td:last-child  {
 }
 
 .dropdown-menu .divider {
-  background-color: rgba(255,11,58, 0.5);
+  background-color: rgba(255, 11, 58, 0.5);
 }
 
-.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
-  border-color: rgba(255,11,58, 0.1) !important;
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+  border-color: rgba(255, 11, 58, 0.1) !important;
 }
 
 .separator {
-  border-color: rgba(255,11,58, 0.5);
+  border-color: rgba(255, 11, 58, 0.5);
 }
 
 .jumbotron {
-  border: 1px solid #ff0b3a;
+  border: 1px solid var(--secondary-color);
   border-radius: 0 !important;
   background-color: transparent;
 }
 
 code {
-  color: #ff0b3a;
-  background-color: rgba(255,11,58, 0.1);
+  color: var(--secondary-color);
+  background-color: rgba(255, 11, 58, 0.1);
   border-radius: 0;
 }
 
 small {
-  color: #ff0b3a !important;
+  color: var(--primary-color) !important;
 }
 
 // custom
@@ -184,14 +213,14 @@ small {
 }
 
 .klax-feed-item {
-  border-top: 1px solid rgba(255,11,58, 0.5);
+  border-top: 1px solid rgba(255, 11, 58, 0.5);
   padding-top: 3vh;
 }
 
 .diff {
   color: #000000;
   padding: 40px 0;
-  background-color: rgba(150,150,150, 0.1);
+  background-color: rgba(150, 150, 150, 0.1);
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
   font-size: 90%;
 }
@@ -213,10 +242,10 @@ small {
   text-decoration: none !important;
 }
 .diff .del {
-  background-color: rgba(255,11,58, 0.2);
+  background-color: rgba(255, 11, 58, 0.2);
 }
 .diff .ins {
-  background-color: rgba(0,255,0, 0.2);
+  background-color: rgba(0, 255, 0, 0.2);
 }
 
 .diff .ins ins {
@@ -228,19 +257,20 @@ small {
   color: white !important;
 }
 
-.klax-line-selected, .klax-line-selected a {
-  background-color: #ff0b3a !important;
+.klax-line-selected,
+.klax-line-selected a {
+  background-color: var(--secondary-color) !important;
   color: #fff !important;
 }
 
 .klax-code-after {
-  background-color: rgba(0,255,0, 0.2);
+  background-color: rgba(0, 255, 0, 0.2);
   color: #111 !important;
   font-size: 70%;
 }
 
 .klax-code-before {
-  background-color: rgba(255,11,58, 0.2);
+  background-color: rgba(255, 11, 58, 0.2);
   color: #111 !important;
   font-size: 70%;
 }
@@ -255,7 +285,7 @@ small {
 }
 
 .klax-line-anchor {
-  padding:0 !important;
+  padding: 0 !important;
 }
 
 .klax-line-anchor {
@@ -283,7 +313,8 @@ small {
     fill: #fff;
   }
 
-  .navbar-toggle, .navbar-nav {
+  .navbar-toggle,
+  .navbar-nav {
     display: none;
   }
 
@@ -295,7 +326,7 @@ small {
 .klax-hero {
   margin-top: -50px;
   padding-top: 50px;
-  background-color: #ff0b3a;
+  background-color: var(--secondary-color);
   height: 100vh;
   min-height: 900px;
   color: #fff;
@@ -312,9 +343,10 @@ small {
   }
   .btn:hover {
     background-color: white;
-    color: #ff0b3a !important;
+    color: var(--secondary-color) !important;
   }
-  p, h1 {
+  p,
+  h1 {
     text-align: center;
   }
   .klax-lead {
@@ -333,4 +365,3 @@ small {
     display: none;
   }
 }
-
