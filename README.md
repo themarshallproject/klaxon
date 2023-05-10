@@ -79,7 +79,7 @@ Unfortunately you are not yet done configuring Sendgrid. There are more steps to
 6. Change the `SENDGRID_PASSWORD` variable to the API Key by clicking the pencil icon next to it, pasting it in, and saving it.
 7. Change the `SENDGRID_USERNAME` variable to the string "apikey" in the same manner.
 
-Now you'll need to set up a "Verified Sender" account in Sendgrid using an email address that you have access to. See https://github.com/themarshallproject/klaxon/issues/404 for some more context.
+Now you'll need to set up a "Verified Sender" account in Sendgrid using an email address that you have access to. In your Sendgrid dashboard, click "Sender Authentication" and choose "[Verify Single Sender](https://app.sendgrid.com/settings/sender_auth/senders/new)." (See https://github.com/themarshallproject/klaxon/issues/404 for some more context.)
 
 When you've completed this process in Sendgrid, you'll need to set the `MAILER_FROM_ADDRESS` variable as you did above to your verified sender email address.
 
