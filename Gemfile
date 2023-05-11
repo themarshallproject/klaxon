@@ -44,3 +44,5 @@ group :development do
   gem 'letter_opener'
   gem 'web-console'
 end
+
+gem "rufus-scheduler", "~> 3.8"
