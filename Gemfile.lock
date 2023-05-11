@@ -105,6 +105,8 @@ GEM
       reline (>= 0.3.1)
     diff-lcs (1.5.0)
     diffy (3.4.2)
+    dockerfile-rails (1.2.5)
+      rails
     dotenv (2.8.1)
     erubi (1.12.0)
     et-orbi (1.2.7)
@@ -189,6 +191,8 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
+    nokogiri (1.14.3-aarch64-linux)
+      racc (~> 1.4)
     nokogiri (1.14.3-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.14.3-x86_64-darwin)
@@ -321,6 +325,7 @@ GEM
     zeitwerk (2.6.8)
 
 PLATFORMS
+  aarch64-linux
   arm64-darwin-22
   x86_64-darwin-22
   x86_64-linux
@@ -332,6 +337,7 @@ DEPENDENCIES
   database_cleaner
   debug
   diffy
+  dockerfile-rails (>= 1.2)
   dotenv
   factory_bot_rails (~> 6.1)
   guard-rspec

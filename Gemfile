@@ -41,6 +41,7 @@ group :test do
 end
 
 group :development do
+  gem "dockerfile-rails", ">= 1.2"
   gem 'letter_opener'
   gem 'web-console'
 end
