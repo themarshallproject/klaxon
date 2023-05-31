@@ -11,7 +11,7 @@ gem 'dotenv'
 gem 'jquery-rails'
 gem 'bootsnap', require: false
 
-gem 'puma', '~> 6.2'
+gem 'puma', '~> 6.3'
 
 gem 'simple_form', '~> 5.2'
 
