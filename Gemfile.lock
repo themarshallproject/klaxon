@@ -210,7 +210,7 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (5.0.1)
-    puma (6.2.2)
+    puma (6.3.0)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.7)
@@ -341,7 +341,7 @@ DEPENDENCIES
   letter_opener
   pg (~> 1.5)
   premailer-rails
-  puma (~> 6.2)
+  puma (~> 6.3)
   rails (~> 7.0.5)
   rails-controller-testing
   rspec-github
