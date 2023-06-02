@@ -296,7 +296,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    terser (1.1.15)
+    terser (1.1.16)
       execjs (>= 0.3.0, < 3)
     thor (1.2.2)
     tilt (2.1.0)
