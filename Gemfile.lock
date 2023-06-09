@@ -105,7 +105,7 @@ GEM
       reline (>= 0.3.1)
     diff-lcs (1.5.0)
     diffy (3.4.2)
-    dockerfile-rails (1.4.1)
+    dockerfile-rails (1.4.2)
       rails
     dotenv (2.8.1)
     erubi (1.12.0)
@@ -138,7 +138,7 @@ GEM
     httparty (0.21.0)
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
-    i18n (1.13.0)
+    i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
     irb (1.6.4)
@@ -212,7 +212,7 @@ GEM
     public_suffix (5.0.1)
     puma (6.3.0)
       nio4r (~> 2.0)
-    racc (1.6.2)
+    racc (1.7.0)
     rack (2.2.7)
     rack-protection (3.0.6)
       rack
