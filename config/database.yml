@@ -1,7 +1,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  pool: 5
+  pool: <%= ENV.fetch("DB_POOL") { 5 } %>
 
 development:
   <<: *default
@@ -11,6 +11,7 @@ test:
   <<: *default
   database: klaxon_test
   username: <%= ENV['PGUSER'] || `whoami` %>
+  password: <%= ENV['PGPASSWORD'] %>
   host: localhost
   port: 5432
 

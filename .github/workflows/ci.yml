@@ -1,0 +1,43 @@
+name: CI
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    env:
+      PGHOST: 127.0.0.1
+      PGUSER: klaxon-test-user
+      PGPASSWORD: "LjRKZViA88dMumv"
+      RAILS_ENV: test
+      RACK_ENV: test
+      NODE_ENV: test
+
+    services:
+      postgres:
+        image: postgres:9.5
+        env:
+          POSTGRES_DB: klaxon_test
+          POSTGRES_USER: klaxon-test-user
+          POSTGRES_PASSWORD: "LjRKZViA88dMumv"
+        ports:
+          - 5432:5432
+
+    steps:
+      - name: Checkout the project
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Compile assets
+        run: bundle exec rake assets:precompile assets:clean
+
+      - name: Prepare the database
+        run: bundle exec rake db:create db:schema:load --trace
+
+      - name: Run the tests
+        run: bundle exec rspec --tag ~skip --tag ~pending --format RSpec::Github::Formatter

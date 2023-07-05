@@ -1,25 +1,19 @@
 source 'https://rubygems.org'
-ruby '2.7.2'
+ruby '3.1.4'
 
-gem 'rails', '~> 6.0.0'
-gem 'pg', '~> 1.0'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
-gem 'mini_racer', '~> 0.3'
+gem "rails", '~> 7.0.6'
+gem 'pg', '~> 1.5'
+gem "sprockets-rails"
+gem "dartsass-rails", "~> 0.5.0"
+gem "terser", "~> 1.1"
 
 gem 'dotenv'
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'bootsnap', require: false
-gem 'coffee-rails'
-gem 'sdoc', '~> 1.0.0', group: :doc
 
-gem 'rack-cache'
-gem 'bcrypt', '~> 3.1.12'
-gem 'puma', '~> 4.3'
-gem 'rails_12factor'
+gem 'puma', '~> 6.3'
 
-gem 'simple_form', '~> 5.0'
+gem 'simple_form', '~> 5.2'
 
 gem 'jwt'
 gem 'premailer-rails'
@@ -28,10 +22,11 @@ gem 'httparty'
 gem 'diffy'
 gem 'kramdown'
 
-gem 'aws-sdk-sqs', '~> 1.35'
+gem 'aws-sdk-sqs', '~> 1.59'
 
 group :development, :test do
-  gem 'byebug'
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
   gem 'factory_bot_rails', '~> 6.1'
@@ -42,12 +37,11 @@ end
 group :test do
   gem 'webmock'
   gem 'rails-controller-testing'
-  gem 'rspec_junit_formatter'
-  gem 'codeclimate-test-reporter', require: nil
+  gem 'rspec-github', require: false
 end
 
 group :development do
+  gem "dockerfile-rails", ">= 1.2"
   gem 'letter_opener'
-  gem 'web-console', '~> 3.7'
-  gem 'spring'
+  gem 'web-console'
 end

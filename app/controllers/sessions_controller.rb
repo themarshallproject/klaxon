@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by("LOWER(email) = ?", params[:email].downcase)
+    user = User.find_by("LOWER(email) = ?", params[:session][:email].downcase)
     if user.nil?
       redirect_to unknown_user_path and return false
     end
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       if user[:expired]
         redirect_to expired_token_path(user[:user].id)
       else
-        cookies.signed[:user_id] = { value: user.id, expires: 7.days.from_now, httponly: true, same_site: :none, secure: true }
+        cookies.signed[:user_id] = { value: user.id, expires: 7.days.from_now, httponly: true }
         redirect_to root_path
       end
     else
