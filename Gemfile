@@ -1,17 +1,17 @@
 source 'https://rubygems.org'
 ruby '3.1.4'
 
-gem "rails", '~> 7.0.4', '>= 7.0.4.3'
+gem "rails", '~> 7.0.6'
 gem 'pg', '~> 1.5'
 gem "sprockets-rails"
-gem "dartsass-rails", "~> 0.4.1"
+gem "dartsass-rails", "~> 0.5.0"
 gem "terser", "~> 1.1"
 
 gem 'dotenv'
 gem 'jquery-rails'
 gem 'bootsnap', require: false
 
-gem 'puma', '~> 6.2'
+gem 'puma', '~> 6.3'
 
 gem 'simple_form', '~> 5.2'
 
@@ -22,7 +22,7 @@ gem 'httparty'
 gem 'diffy'
 gem 'kramdown'
 
-gem 'aws-sdk-sqs', '~> 1.55'
+gem 'aws-sdk-sqs', '~> 1.59'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

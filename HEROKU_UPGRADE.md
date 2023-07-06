@@ -1,6 +1,8 @@
-Those of you who are still running Klaxon on free Heroku tiers have likely received messages telling you that the free services will soon be wound down. We have considered a few options to work around this, but we haven't found a good way to mitigate this issue while keeping Klaxon as easy to deploy and maintain as can be. After six years of being able to run this at no cost at all, it looks like you will now have to pay a small fee to continue to do so. We will keep investigating other avenues for the future of Klaxon, but for now, you'll have to pay. 
+# Heroku Transition Guide
 
-On Nov. 28th, Heroku will stop running free apps, so you have to make a couple of small tweaks to your setup before then. Here's what you'll need to do: 
+Those of you who are still running Klaxon on free Heroku tiers have likely received messages telling you that the free services will soon be wound down. We have considered a few options to work around this, but we haven't found a good way to mitigate this issue while keeping Klaxon as easy to deploy and maintain as can be. After six years of being able to run this at no cost at all, it looks like you will now have to pay a small fee to continue to do so. We will keep investigating other avenues for the future of Klaxon, but for now, you'll have to pay.
+
+On Nov. 28th, Heroku will stop running free apps, so you have to make a couple of small tweaks to your setup before then. Here's what you'll need to do:
 
 - Log into your Heroku dashboard at https://dashboard.heroku.com/apps/
 - Click on your Klaxon app
