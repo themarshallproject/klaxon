@@ -17,15 +17,19 @@ Help prioritize new features for the community to work on together next, by comm
 
 ### Contribute code
 
-We’re especially excited about other journalist-developers contributing code to flesh out the project and to add new features.
+We’re excited about other journalist-developers contributing code to support the project.
 
-If you want to contribute, start by reviewing this advice inspired by this post on [the Codacy blog](http://blog.codacy.com/2015/12/17/open-source-development-a-few-guidelines/) and [Shauna Gordon-McKeon’s PyCon 2015 talk](https://shaunagm.github.io/personal/pycon2015.html).
+If you want to contribute, start by reviewing this advice inspired by this post on [the Codacy blog](http://blog.codacy.com/2015/12/17/open-source-development-a-few-guidelines/) and [Shauna Gordon-McKeon’s PyCon 2015 talk](https://shaunagm.github.io/personal/pycon2015.html). Read the documentation in our GitHub repo, particularly this CONTRIBUTING.md file and our [Code of Conduct](CODE_OF_CONDUCT.md). You’re now ready to engage with the community by commenting on issues and participating in the process.
 
-Before you do anything, read the documentation in our GitHub repo, particularly this CONTRIBUTING.md file and our [Code of Conduct](CODE_OF_CONDUCT.md). You’re now ready to engage with the community by commenting on issues and participating in the process.
+Look for [issues](https://github.com/themarshallproject/klaxon/issues) in Klaxon’s GitHub repo tagged "help wanted" or “first-timer-friendly”. Create a new branch for your feature, write a patch and send a pull request to us on GitHub.
 
-Look for [issues](https://github.com/themarshallproject/klaxon/issues) in Klaxon’s GitHub repo tagged "help wanted" or “first-timer-friendly”. If you need help getting Klaxon running on a local development server, [follow these directions](DEVELOPING.md). Create a new branch for your feature, write a patch and send a pull request to us on GitHub.
+Klaxon now supports GitHub Codespaces, making it possible to work on the codebase without setting it up on your local computer.
 
-We should acknowledge your patch and respond with questions or comments, and we’ll expect that you’ll remain engaged with the issue, responding to our questions in a timely manner and iterating on the code until the patch is merged or otherwise closed.
+<a href='https://codespaces.new/themarshallproject/klaxon?quickstart=1'><img src='https://github.com/codespaces/badge.svg' alt='Open in GitHub Codespaces' style='max-width: 100%;'></a>
+
+If you want to get Klaxon running locally [follow these directions](DEVELOPING.md).
+
+We should acknowledge your patch and respond with questions or comments. We expect that you’ll remain engaged with the issue, responding to our questions in a timely manner and iterating on the code until the patch is merged or otherwise closed.
 
 ### Discuss
 
