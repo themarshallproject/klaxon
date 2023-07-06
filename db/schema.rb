@@ -2,24 +2,23 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# This file is the source Rails uses to define your schema when running `rails
-# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
 # be faster and is potentially less error prone than running all of your
 # migrations from scratch. Old migrations may fail to apply correctly if those
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_23_221320) do
-
+ActiveRecord::Schema[7.0].define(version: 2019_02_23_221320) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "app_settings", id: :serial, force: :cascade do |t|
     t.string "key"
     t.text "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["key"], name: "index_app_settings_on_key"
   end
 
@@ -29,8 +28,8 @@ ActiveRecord::Schema.define(version: 2019_02_23_221320) do
     t.integer "after_id"
     t.string "after_type"
     t.text "summary"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["after_id"], name: "index_changes_on_after_id"
     t.index ["after_type"], name: "index_changes_on_after_type"
     t.index ["before_id"], name: "index_changes_on_before_id"
@@ -39,8 +38,8 @@ ActiveRecord::Schema.define(version: 2019_02_23_221320) do
 
   create_table "page_snapshots", id: :serial, force: :cascade do |t|
     t.integer "page_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "sha2_hash"
     t.text "html"
     t.string "text"
@@ -53,8 +52,8 @@ ActiveRecord::Schema.define(version: 2019_02_23_221320) do
     t.text "url"
     t.text "css_selector"
     t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "exclude_selector"
     t.index ["user_id"], name: "index_pages_on_user_id"
   end
@@ -62,14 +61,14 @@ ActiveRecord::Schema.define(version: 2019_02_23_221320) do
   create_table "slack_integrations", id: :serial, force: :cascade do |t|
     t.string "channel"
     t.text "webhook_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "sqs_integrations", id: :serial, force: :cascade do |t|
     t.text "queue_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "subscriptions", id: :serial, force: :cascade do |t|
@@ -77,8 +76,8 @@ ActiveRecord::Schema.define(version: 2019_02_23_221320) do
     t.string "watcher_type"
     t.integer "watching_id"
     t.string "watching_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.index ["watcher_id"], name: "index_subscriptions_on_watcher_id"
     t.index ["watcher_type"], name: "index_subscriptions_on_watcher_type"
     t.index ["watching_id"], name: "index_subscriptions_on_watching_id"
@@ -89,8 +88,8 @@ ActiveRecord::Schema.define(version: 2019_02_23_221320) do
     t.string "first_name"
     t.string "last_name"
     t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.boolean "is_admin"
     t.index ["email"], name: "index_users_on_email"
   end
