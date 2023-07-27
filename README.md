@@ -30,7 +30,7 @@ Our team hacks on Klaxon in spare moments and we plan to keep it humming for our
 
 One of our goals for Klaxon is to make it as easy as possible for reporters and editors without tech backgrounds to use and to setup. Getting your own Klaxon running in your newsroom will require you to run a handful of instructions one-time through the help of online services Heroku and GitHub. It should take maybe 10 minutes to set up your Klaxon, including the time to create accounts on Heroku and GitHub if you need to.
 
-We use [Heroku](https://heroku.com/) to deploy software at The Marshall Project. We think it makes some of the tedious work of running servers a lot easier to deal with so we designed Klaxon to be easily deployable on Heroku. (If you’d like to run this in your newsroom’s preferred server setup — say using [Docker](https://github.com/themarshallproject/klaxon/blob/develop/DOCKER.md) or a [Linux machine](https://github.com/themarshallproject/klaxon/blob/develop/install_on_ubuntu.md) — we encourage you to do so, but know you'll be on your own maintaining it!)
+We use [Heroku](https://heroku.com/) to deploy software at The Marshall Project. We think it makes some of the tedious work of running servers a lot easier to deal with so we designed Klaxon to be easily deployable on Heroku. (If you’d like to run this in your newsroom’s preferred server setup — say using [Docker](https://github.com/themarshallproject/klaxon/blob/main/DOCKER.md) or a [Linux machine](https://github.com/themarshallproject/klaxon/blob/main/install_on_ubuntu.md) — we encourage you to do so, but know you'll be on your own maintaining it!)
 
 If you want to use our setup, you’ll need to [create an account with Heroku](https://signup.heroku.com/) if you don’t already have one.
 
