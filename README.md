@@ -123,7 +123,7 @@ Now, choose the name for your webhook (you can leave it the default random name 
 
 ### Applying upgrades as the project develops
 
-When we release major changes to Klaxon, we’ll make an announcement to [our Google Group email list](https://groups.google.com/forum/#!forum/news-klaxon-users). At that point, you’ll likely want to adopt those in your system as well. If you're comfortable using git on the command line, this would require just a few simple commands: pull the changes from the master branch of this repo, merge them into your forked repo and push it all to Heroku.
+When we release major changes to Klaxon, we’ll make an announcement to [our Google Group email list](https://groups.google.com/forum/#!forum/news-klaxon-users). At that point, you’ll likely want to adopt those in your system as well. If you're comfortable using git on the command line, this would require just a few simple commands: pull the changes from the main branch of this repo, merge them into your forked repo and push it all to Heroku.
 
 But if you're not a programmer, there is still a fairly painless way to upgrade by using GitHub and Heroku. First, you’ll need to fork our repo to your own GitHub account to receive the updates, and then you can use Heroku’s dashboard to push the changes to your application.
 
@@ -133,13 +133,13 @@ Now, go to [https://dashboard.heroku.com](https://dashboard.heroku.com/) and cho
 
 You should see three buttons. Click the one in the middle that says “GitHub Connect With GitHub”. The options at the bottom of the page will change. Now, click the gray button that says “Connect To GitHub”. It will pop up a new window to log you into GitHub, if you aren’t already. In that window, click the “Authorize Application” button. The popup window should now close itself.
 
-On the Heroku page, in the “Connect to GitHub” section at the bottom, type ‘klaxon’ into the search box next to your GitHub username. Click the “Search” button. Next, click the “Connect” button next to the name of your forked repo that pops up below. Finally, select the 'master' branch from the dropdown and click “Enable Automatic Deploys” button in the “Automatic deploys” section. This ties your Heroku server to your GitHub account, so that every time you merge updates into your forked version of the Klaxon repository, they will automatically go live on your server with the latest updates. You'll only have to do all of this one time to set up the pipeline.
+On the Heroku page, in the “Connect to GitHub” section at the bottom, type ‘klaxon’ into the search box next to your GitHub username. Click the “Search” button. Next, click the “Connect” button next to the name of your forked repo that pops up below. Finally, select the 'main' branch from the dropdown and click “Enable Automatic Deploys” button in the “Automatic deploys” section. This ties your Heroku server to your GitHub account, so that every time you merge updates into your forked version of the Klaxon repository, they will automatically go live on your server with the latest updates. You'll only have to do all of this one time to set up the pipeline.
 
 _Note: if you are upgrading from version 0.2.0 or lower, please follow the additional instructions in [migration_setup.md](migration_setup.md)_
 
-Finally, each time an update is announced on the Google Group, you can go to your forked version of the repo on GitHub and click the green “New Pull Request” button to pull the changes from our master repo.
+Finally, each time an update is announced on the Google Group, you can go to your forked version of the repo on GitHub and click the green “New Pull Request” button to pull the changes from our main repo.
 
-On the "basefork" dropdown on the left, click and select your repo. Then click the “compare across forks” link and change the “head fork” on the dropdown menu to “marshallproject/klaxon”. Make sure both the branches are set to “master” (they should already be). Below that, a green checkbox and the words “Able to merge” should appear. If they do, click the green “Create Pull Request” button. Give this pull request a title. You might want to say “Merging Klaxon release 0.9.1” or whatever the new version number is and click the “Create Pull Request” button again.
+On the "basefork" dropdown on the left, click and select your repo. Then click the “compare across forks” link and change the “head fork” on the dropdown menu to “marshallproject/klaxon”. Make sure both the branches are set to "main" (they should already be). Below that, a green checkbox and the words “Able to merge” should appear. If they do, click the green “Create Pull Request” button. Give this pull request a title. You might want to say “Merging Klaxon release 0.9.1” or whatever the new version number is and click the “Create Pull Request” button again.
 
 You should then get a response that looks like this:
 

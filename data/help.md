@@ -65,7 +65,7 @@ It should do the trick and will remove the alert and it's stored snapshots from 
 
 ## About Klaxon
 
-Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/#.2N8GFLsI0), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. The public release of this free and open source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/). With feedback or suggestions, contact us with the form below. To help improve Klaxon for other users, whether you’re a coder or not, read [our guide to how you can contribute to the project.](https://github.com/themarshallproject/klaxon/blob/master/CONTRIBUTING.md)
+Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/#.2N8GFLsI0), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. The public release of this free and open source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/). With feedback or suggestions, contact us with the form below. To help improve Klaxon for other users, whether you’re a coder or not, read [our guide to how you can contribute to the project.](https://github.com/themarshallproject/klaxon/blob/main/CONTRIBUTING.md)
 
 ## Upgrading Klaxon
 
