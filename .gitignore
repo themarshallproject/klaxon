@@ -13,3 +13,6 @@ snapshots
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+.env*
+!.env.*.example
