@@ -17,8 +17,8 @@ services:
 
     # Use "forwardPorts" in **devcontainer.json** to forward an app port locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
-    environment:
-      DATABASE_URL: postgres://postgres:postgres@db/postgres
+    env_file:
+      - .env.local
 
   db:
     image: postgres:latest
@@ -26,10 +26,8 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
       - ./create-db-user.sql:/docker-entrypoint-initdb.d/create-db-user.sql
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_DB: postgres
-      POSTGRES_PASSWORD: postgres
+    env_file:
+      - .env.local
       # Your config/database.yml should use the user and password you set here,
       # and host "db" (as that's the name of this service). You can use whatever
       # database name you want. Use `bin/rails db:prepare` to create the database.
@@ -48,3 +46,4 @@ services:
 
 volumes:
   postgres-data:
+
