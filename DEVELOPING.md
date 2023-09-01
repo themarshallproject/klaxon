@@ -24,14 +24,13 @@ gem install bundler
 bundle install
 ```
 
-In order to be allowed to login to Klaxon once it's running on your machine, it'll need to know that your email address is. Create a file named `.env` and paste in these two items:
+In order to be allowed to login to Klaxon once it's running on your machine, it'll need to know that your email address is. Create an env file for local development like so:
 
 ```
-ADMIN_EMAILS="my_awesome_email@gmail.com"
-HOST='localhost:5000'
+cp .env.local.example .env.local
 ```
 
-Feel free to substitute in your email address. In development, Klaxon doesn't actually send emails locally, so a real address is not required.
+Feel free to substitute in your email address in `ADMIN_EMAILS`. In development, Klaxon doesn't actually send emails locally, so a real address is not required. But, those will be the addresses used to log into the app.
 
 Now that's set, you'll run a couple of commands for Rails to create Klaxon's database on your machine.
 
