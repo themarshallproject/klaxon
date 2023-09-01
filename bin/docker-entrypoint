@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+# If running the rails server then:
+# 1) create or migrate existing database
+# 2) create an admin user if one doesn't exist
+if [ "${*}" == "./bin/rails server" ]; then
+  ./bin/rails db:prepare
+  ./bin/rake users:create_admin
+fi
+
+exec "${@}"

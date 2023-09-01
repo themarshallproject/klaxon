@@ -1,3 +1,5 @@
+# Sendgrid
+
 Sendgrid requires that you authenticate using an API key, instead of the user name and password that they automatically provide through the plugin. Unfortunately this means that some manual steps are required to properly configure your Klaxon instance. You will create an API key for Sendgrid, and set it as the Sendgrid password.
 
 1. From the Heroku application page, click on the "Resources" tab, and click the link to the Sendgrid plugin, this will take you to the Sendgrid website, which will ask you to update your email. Be sure to put your real email address you use for Klaxon.

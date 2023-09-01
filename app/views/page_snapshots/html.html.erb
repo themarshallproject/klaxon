@@ -1,5 +1,3 @@
-<%= stylesheet_link_tag "changes", media: "all" %>
-
 <div class="klax-section klax-topper">
   <div class="container">
     <div class="row">
@@ -17,7 +15,7 @@
       <div class="col-md-3">
         <!-- negative space -->
       </div>
-      
+
       <div class="col-md-3">
        <%= link_to 'Past Snapshots', snapshots_page_path(@snapshot.page), class: 'btn btn-default btn-lg btn-block' %>
         <%= link_to 'Download HTML', download_page_snapshot_html_path(@snapshot), download:true, class: 'btn btn-default btn-lg btn-block' %>
@@ -34,7 +32,7 @@
     <div class="row klax-spacer-md">
       <div class="col-md-12" style="border:solid;"><iframe style="height: 800px; width: 100%" src="<%= raw_page_snapshot_html_path(@snapshot) %>">
 
-      </div> 
+      </div>
     </div>
   </div>
 
