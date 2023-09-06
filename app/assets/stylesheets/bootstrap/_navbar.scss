@@ -167,7 +167,18 @@
   padding: $navbar-padding-vertical $navbar-padding-horizontal;
   font-size: $font-size-large;
   line-height: $line-height-computed;
-  height: $navbar-height;
+  display: flex;
+  flex-direction: row;
+  // prevents trimming of leading/trailing whitespace
+  white-space: pre;
+
+  > svg {
+    min-width: 23px;
+  }
+
+  > * {
+    margin: 0 10 0 10;
+  }
 
   &:hover,
   &:focus {

@@ -8,4 +8,7 @@ Rails.application.config.assets.version = '1.0'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-# Rails.application.config.assets.precompile += %w( search.js )
+Rails.application.config.assets.precompile += %w( '.svg' )
+
+# css_compressor needed for svg to display according to: https://stackoverflow.com/a/36992492
+Rails.application.config.assets.css_compressor = :sass
