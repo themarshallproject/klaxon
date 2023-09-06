@@ -60,7 +60,7 @@ Go forth and add some features, and be sure to send us your [pull requests](/pul
 
 ## Optional
 
-There is a helper script you can use and modify with shorthands that make development a bit easier. Most of the commands are geared toward folks running the app in a Docker container. To use:
+There is a helper script you can use and modify with shorthands that make development a bit easier. Most of the existing commands are geared toward folks running the app in a Docker container. To use:
 
 ```
 source scripts/helpers.sh
