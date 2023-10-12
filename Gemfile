@@ -13,7 +13,7 @@ gem 'bootsnap', require: false
 
 gem 'puma', '~> 6.4'
 
-gem 'simple_form', '~> 5.2'
+gem 'simple_form', '~> 5.3'
 
 gem 'jwt'
 gem 'premailer-rails'
