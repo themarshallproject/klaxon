@@ -1,7 +1,7 @@
 class Page < ApplicationRecord
   belongs_to :user
 
-  has_many :page_snapshots, dependent: :destroy
+  has_many :page_snapshots, dependent: :nullify_then_purge
 
   attr_accessor :subscriptions # Gets set in controller on update/create
   after_create :update_subscriptions
