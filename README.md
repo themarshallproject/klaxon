@@ -153,6 +153,7 @@ The core contributors to Klaxon have been Ivar Vong, Andy Rossback, Tom Meagher 
 
 We've been grateful for additional contributions to the project from:
 
+- captn3m0
 - Jackson Gothe-Snape, SBS News
 - Cameo Hill
 - Emily Hopkins
