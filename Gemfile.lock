@@ -69,16 +69,16 @@ GEM
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
     aws-eventstream (1.2.0)
-    aws-partitions (1.831.0)
-    aws-sdk-core (3.185.0)
+    aws-partitions (1.843.0)
+    aws-sdk-core (3.185.2)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.651.0)
       aws-sigv4 (~> 1.5)
       jmespath (~> 1, >= 1.6.1)
-    aws-sdk-sqs (1.64.0)
+    aws-sdk-sqs (1.65.0)
       aws-sdk-core (~> 3, >= 3.184.0)
       aws-sigv4 (~> 1.1)
-    aws-sigv4 (1.6.0)
+    aws-sigv4 (1.6.1)
       aws-eventstream (~> 1, >= 1.0.2)
     bindex (0.8.1)
     bootsnap (1.17.0)
@@ -338,7 +338,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  aws-sdk-sqs (~> 1.64)
+  aws-sdk-sqs (~> 1.65)
   bootsnap
   dartsass-rails (~> 0.5.0)
   database_cleaner
