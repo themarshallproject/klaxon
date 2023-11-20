@@ -29,7 +29,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
-  gem 'factory_bot_rails', '~> 6.1'
+  gem 'factory_bot_rails', '~> 6.4'
   gem 'database_cleaner'
   gem 'sinatra'
 end
