@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '3.1.4'
 
-gem "rails", '~> 7.0.8'
+gem "rails", '~> 7.1.2'
 gem 'pg', '~> 1.5'
 gem "sprockets-rails"
 gem "dartsass-rails", "~> 0.5.0"
