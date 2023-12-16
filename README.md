@@ -1,16 +1,18 @@
 ## Get emailed when a website changes
 
-Klaxon is a free, quick to setup and easy to use service that checks websites for changes so you don't have to.
+Klaxon is a free, quick to setup and easy to use service that checks websites for changes so you don't have to. Working with the fine folks at MuckRock and Document Cloud, we have launched an even easier version of Klaxon that requires no server for you to maintain and very little setup. We encourage all new individual users, or anyone who no longer wants to run their own pesky Heroku servers, to use [the new Klaxon Cloud tool](https://www.documentcloud.org/app?q=#add-ons/MuckRock/Klaxon) that is built into [Document Cloud](https://www.documentcloud.org/home), the open document archive for journalists and researchers. 
 
-You add websites you want monitored and Klaxon will visit them periodically. If they change, it'll email you what's different. It's perfect for monitoring website changes you might miss — like freedom of information disclosure logs, court records or anything related to Donald Trump. It can even send notifications to Slack and Discord channels with a little extra setup.
+While the original version of Klaxon will remain free and open source on Github, we will no longer be supporting development for individual users. Feel free to fork the source code to run your own instance, and [send back pull requests](CONTRIBUTING.md)) for features you think will benefit the long-standing, institutional users.
 
-Read more below or say hello to the humans behind the project at the [Google Group email list](https://groups.google.com/forum/#!forum/news-klaxon-users).
+In either variety of Klaxon, you add websites you want monitored and the tool will visit them periodically. If they change, it'll email you what's different. It's perfect for monitoring website changes you might miss — like freedom of information disclosure logs, court records or anything related to Donald Trump. It can even send notifications to Slack channels with a little extra setup.
+
+Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. Klaxon has been used and tested by journalists at The Marshall Project, The New York Times, The Texas Tribune, The Washington Post, Associated Press, [and more](NEWSROOMS.md).
+
+The documentation here refers solely to the original version of Klaxon that requires you to manage your own server and email service through Heroku. Read more about it below or say hello to the humans behind the project at the [Google Group email list](https://groups.google.com/forum/#!forum/news-klaxon-users).
 
 [![](docs/klaxon_hero.png)](https://newsklaxon.org)
 
 ## Alerting journalists to changes on the web
-
-Built and refined in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), Klaxon has provided our journalists with many news tips, giving us early warnings and valuable time to pursue stories. Klaxon has been used and tested by journalists at The Marshall Project, The New York Times, The Texas Tribune, Associated Press, [and more](NEWSROOMS.md).
 
 The public release of this free and open-source software was supported by Knight-Mozilla [OpenNews](https://opennews.org/).
 
@@ -22,13 +24,13 @@ Klaxon enables users to "bookmark" portions of a webpage and be notified (via em
 
 ## Setting up your Klaxon
 
-Klaxon is open-source software built by the newsroom of [The Marshall Project](https://www.themarshallproject.org/), a nonprofit investigative news organization covering the American criminal justice system. It was created by a team of three — Ivar Vong, Andy Rossback and Tom Meagher — and it is subject to the kind of shortcomings any side project might encounter. It may break unexpectedly. It may miss a change in a website or an email might not fire off correctly. Still we’ve found it immensely useful in our daily reporting. We want other journalists to benefit from Klaxon and to help us improve it, but keep these caveats in mind and use it at your own risk.
+Klaxon is open-source software built by the newsroom of [The Marshall Project](https://www.themarshallproject.org/), a nonprofit investigative news organization covering the American criminal justice system. It was created by a team of three — Ivar Vong, Andy Rossback and Tom Meagher — and supported by contributions from users around the world. It is subject to the kind of shortcomings any side project might encounter. It may break unexpectedly. It may miss a change in a website or an email might not fire off correctly. Still we’ve found it immensely useful in our daily reporting. We want other journalists to benefit from Klaxon and to help us improve it, but keep these caveats in mind and use it at your own risk.
 
-Our team hacks on Klaxon in spare moments and we plan to keep it humming for our own use. But we think this project has the potential to help just about any newsroom. For it to succeed and to evolve it will depend on the contributions from other journalist-developers. We are excited about the prospect of building a community around this project to help maintain it. So when you spot the inevitable bug, please let us know. And if you’d like to help us [make this better](CONTRIBUTING.md) or add new functionality to it we’d love to have your help.
+And if you’d like to help us [make this better](CONTRIBUTING.md) or add new functionality to it we’d love to have your help.
 
 ### Getting started
 
-One of our goals for Klaxon is to make it as easy as possible for reporters and editors without tech backgrounds to use and to setup. Getting your own Klaxon running in your newsroom will require you to run a handful of instructions one-time through the help of online services Heroku and GitHub. It should take maybe 10 minutes to set up your Klaxon, including the time to create accounts on Heroku and GitHub if you need to.
+One of our goals for Klaxon was to make it as easy as possible for reporters and editors without tech backgrounds to use and to setup. Getting your own Klaxon running in your newsroom will require you to run a handful of instructions one time through the help of online services Heroku and GitHub. It should take maybe 10 minutes to set up your Klaxon, including the time to create accounts on Heroku and GitHub if you need to.
 
 We use [Heroku](https://heroku.com/) to deploy software at The Marshall Project. We think it makes some of the tedious work of running servers a lot easier to deal with so we designed Klaxon to be easily deployable on Heroku. (If you’d like to run this in your newsroom’s preferred server setup — say using [Docker](https://github.com/themarshallproject/klaxon/blob/main/DOCKER.md) or a [Linux machine](https://github.com/themarshallproject/klaxon/blob/main/install_on_ubuntu.md) — we encourage you to do so, but know you'll be on your own maintaining it!)
 
@@ -67,11 +69,11 @@ Click on the button that says “Manage App”. This takes you behind the scenes
 
 ![](docs/scheduler.png)
 
-Sendgrid now requires an additional step to confirm that you are not a spammer. Your new Sendgrid account is created in a "suspended" state. To get it unsuspended you have to contact [Sendgrid support](https://support.sendgrid.com/hc/en-us/requests/new#login-issue). You can do this by clicking the Sendgrid logo on the Resources tab.
+Sendgrid now requires additional steps to confirm that you are not a spammer. Your new Sendgrid account is created in a "suspended" state. To get it unsuspended you have to contact [Sendgrid support](https://support.sendgrid.com/hc/en-us/requests/new#login-issue). You can do this by clicking the Sendgrid logo on the Resources tab.
 
 If clicking on the logo takes you to an error page do not worry. This has been known to happen as Sendgrid's system has undergone redesigns. Instead go to [Sendgrid's page to ask for support](https://support.sendgrid.com/hc/en-us/requests/new#login-issue). Be sure to use the same email address associated with your Heroku account and provide the url of your Klaxon instance. When they ask for "Business impact," choose "P3 General - You have a question about Sendgrid or how to use its products".
 
-This step is a nuisance, but important. **You will not be able to get an email log in to Klaxon until you are cleared by Sendgrid.** This usually happens pretty quickly.
+This step is a nuisance, but important. **You will not be able to get an email to log in to Klaxon until you are cleared by Sendgrid.** This usually happens pretty quickly.
 
 Unfortunately you are not yet done configuring Sendgrid. There are more steps to set up your account.
 
@@ -103,7 +105,7 @@ On the right side of the page, click the “Create New User” button. Add the r
 
 #### Limit new users to only those on specific email domain(s)
 
-By default, people with any email address can be added as new users. If you'd like to allow only users with _specific_ email domains, set the `APPROVED_USER_DOMAINS` environment variable (or "Config Vars" in Heroku's lingo). That variable should be a comma-separated list of domains, e.g., `themarshallproject.org,nsa.gov`.
+By default, people with any email address can be added as new users. If you'd like to allow only users with _specific_ email domains, set the `APPROVED_USER_DOMAINS` environment variable (or "Config Vars" in Heroku's lingo). That variable should be a comma-separated list of domains, e.g., `themarshallproject.org, nsa.gov`.
 
 ### Notify a Slack or Discord channel
 
@@ -149,7 +151,7 @@ If it does, and everything is green, you’re good to go. Just click the “Merg
 
 ### Acknowledgements
 
-The core contributors to Klaxon have been Ivar Vong, Andy Rossback, Tom Meagher and Gabe Isman.
+The core contributors to Klaxon have been Ivar Vong, Andy Rossback, Tom Meagher, Gabe Isman and Ryan Murphy.
 
 We've been grateful for additional contributions to the project from:
 
@@ -161,7 +163,6 @@ We've been grateful for additional contributions to the project from:
 - Jason Kulatunga
 - Yolanda Martinez
 - Jeremy Merrill
-- Ryan Murphy
 - Justin Myers
 - Kevin Schaul
 - Ari Shapell

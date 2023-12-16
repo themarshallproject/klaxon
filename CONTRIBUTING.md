@@ -2,9 +2,9 @@
 
 # CONTRIBUTING
 
-Klaxon is open source software built in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), a nonprofit investigative news organization covering the American criminal justice system. It was created by a team of three—Ivar Vong, Andy Rossback and Tom Meagher—and has been maintained by Gabe Isman in the years since then. It is subject to the kind of shortcomings any young, small side project might encounter. It may break unexpectedly. It may miss a change in a website, or an email might not fire off correctly. Still, we’ve found it immensely useful in our daily reporting. We want other journalists to benefit from Klaxon and to help us improve it, but keep these caveats in mind and use it at your own risk.
+Klaxon is open source software built in the newsroom of [The Marshall Project](https://www.themarshallproject.org/), a nonprofit investigative news organization covering the American criminal justice system. It was created by a team of three—Ivar Vong, Andy Rossback and Tom Meagher—and has been maintained by Gabe Isman and Ryan Murphy in the years since then. It is subject to the kind of shortcomings any young, small side project might encounter. It may break unexpectedly. It may miss a change in a website, or an email might not fire off correctly. Still, we’ve found it immensely useful in our daily reporting. We want other journalists to benefit from Klaxon and to help us improve it, but keep these caveats in mind and use it at your own risk.
 
-Our team will keep hacking on Klaxon in spare moments, and we plan to keep it humming for our own use. But we think this project has the potential to help just about any newsroom. For it to succeed and to evolve, it will depend on the contributions from other journalist-developers. We are excited about the prospect of building a community around this project to help maintain it. So when you spot the inevitable bug, please let us know. And if you’d like to help us make this better, or add new functionality to it, we’d love to have your help.
+When you spot the inevitable bug, please let us know. And if you’d like to help us make this better, or add new functionality to it, we’d love to have your help.
 
 ### Contribute without coding
 
