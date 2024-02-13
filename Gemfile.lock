@@ -111,7 +111,7 @@ GEM
     diffy (3.4.2)
     dockerfile-rails (1.6.5)
       rails (>= 3.0.0)
-    dotenv (2.8.1)
+    dotenv (3.0.0)
     erubi (1.12.0)
     execjs (2.9.1)
     factory_bot (6.4.5)
