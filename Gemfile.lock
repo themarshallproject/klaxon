@@ -95,6 +95,7 @@ GEM
     crass (1.0.6)
     css_parser (1.14.0)
       addressable
+    csv (3.3.0)
     dartsass-rails (0.5.0)
       railties (>= 6.0.0)
       sass-embedded (~> 1.63)
@@ -144,7 +145,8 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     hashdiff (1.1.0)
     htmlentities (4.3.4)
-    httparty (0.21.0)
+    httparty (0.22.0)
+      csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
     i18n (1.14.4)
