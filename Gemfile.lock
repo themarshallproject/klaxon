@@ -111,7 +111,7 @@ GEM
       reline (>= 0.3.8)
     diff-lcs (1.5.1)
     diffy (3.4.2)
-    dockerfile-rails (1.6.16)
+    dockerfile-rails (1.6.17)
       rails (>= 3.0.0)
     dotenv (3.1.2)
     erubi (1.13.0)
@@ -190,7 +190,7 @@ GEM
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
     nenv (0.3.0)
-    net-imap (0.4.12)
+    net-imap (0.4.14)
       date
       net-protocol
     net-pop (0.1.2)
