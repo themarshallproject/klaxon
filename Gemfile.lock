@@ -96,7 +96,7 @@ GEM
     css_parser (1.14.0)
       addressable
     csv (3.3.0)
-    dartsass-rails (0.5.0)
+    dartsass-rails (0.5.1)
       railties (>= 6.0.0)
       sass-embedded (~> 1.63)
     database_cleaner (2.0.2)
@@ -125,10 +125,18 @@ GEM
     formatador (1.1.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    google-protobuf (3.23.3-aarch64-linux)
-    google-protobuf (3.23.3-arm64-darwin)
-    google-protobuf (3.23.3-x86_64-darwin)
-    google-protobuf (3.23.3-x86_64-linux)
+    google-protobuf (4.27.3-aarch64-linux)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.27.3-arm64-darwin)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.27.3-x86_64-darwin)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.27.3-x86_64-linux)
+      bigdecimal
+      rake (>= 13)
     guard (2.18.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -301,14 +309,9 @@ GEM
       rspec-support (~> 3.13)
     rspec-support (3.13.1)
     ruby2_keywords (0.0.5)
-    sass-embedded (1.63.4-aarch64-linux-gnu)
-      google-protobuf (~> 3.23)
-    sass-embedded (1.63.4-arm64-darwin)
-      google-protobuf (~> 3.23)
-    sass-embedded (1.63.4-x86_64-darwin)
-      google-protobuf (~> 3.23)
-    sass-embedded (1.63.4-x86_64-linux-gnu)
-      google-protobuf (~> 3.23)
+    sass-embedded (1.77.8)
+      google-protobuf (~> 4.26)
+      rake (>= 13)
     shellany (0.0.1)
     simple_form (5.3.1)
       actionpack (>= 5.2)
@@ -357,7 +360,7 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk-sqs (~> 1.79)
   bootsnap
-  dartsass-rails (~> 0.5.0)
+  dartsass-rails (~> 0.5.1)
   database_cleaner
   debug
   diffy
