@@ -105,13 +105,13 @@ GEM
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
-    date (3.3.4)
+    date (3.4.0)
     debug (1.9.2)
       irb (~> 1.10)
       reline (>= 0.3.8)
     diff-lcs (1.5.1)
     diffy (3.4.3)
-    dockerfile-rails (1.6.22)
+    dockerfile-rails (1.6.23)
       rails (>= 3.0.0)
     dotenv (3.1.4)
     erubi (1.13.0)
@@ -190,7 +190,7 @@ GEM
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
     nenv (0.3.0)
-    net-imap (0.4.16)
+    net-imap (0.5.0)
       date
       net-protocol
     net-pop (0.1.2)
@@ -199,7 +199,7 @@ GEM
       timeout
     net-smtp (0.5.0)
       net-protocol
-    nio4r (2.7.3)
+    nio4r (2.7.4)
     nokogiri (1.16.7-aarch64-linux)
       racc (~> 1.4)
     nokogiri (1.16.7-arm64-darwin)
