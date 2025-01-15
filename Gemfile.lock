@@ -111,7 +111,7 @@ GEM
       reline (>= 0.3.8)
     diff-lcs (1.5.1)
     diffy (3.4.3)
-    dockerfile-rails (1.7.0)
+    dockerfile-rails (1.7.2)
       rails (>= 3.0.0)
     dotenv (3.1.7)
     erubi (1.13.1)
