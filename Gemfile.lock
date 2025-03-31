@@ -146,7 +146,7 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     hashdiff (1.1.2)
     htmlentities (4.3.4)
-    httparty (0.23.0)
+    httparty (0.23.1)
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
