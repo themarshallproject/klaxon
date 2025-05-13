@@ -22,7 +22,7 @@ gem 'httparty'
 gem 'diffy'
 gem 'kramdown'
 
-gem 'aws-sdk-sqs', '~> 1.94'
+gem 'aws-sdk-sqs', '~> 1.95'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
