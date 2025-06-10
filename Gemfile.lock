@@ -112,7 +112,7 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     diff-lcs (1.5.1)
-    diffy (3.4.3)
+    diffy (3.4.4)
     dockerfile-rails (1.7.2)
       rails (>= 3.0.0)
     dotenv (3.1.8)
