@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '3.1.4'
 
 gem "rails", '~> 7.0.8'
-gem 'pg', '~> 1.5'
+gem 'pg', '~> 1.6'
 gem "sprockets-rails"
 gem "dartsass-rails", "~> 0.5.0"
 gem "terser", "~> 1.2"
