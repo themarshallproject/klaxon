@@ -87,7 +87,7 @@ function buildSelector(el: Element): string {
       result,
     );
   }
-  return result;
+  return optimize(segments, el);
 }
 
 function buildAbsoluteSelector(el: Element): string | null {
@@ -109,4 +109,30 @@ function buildAbsoluteSelector(el: Element): string | null {
   }
 
   return parts.length > 0 ? parts.join(" > ") : null;
+}
+
+function optimize(segments: string[], el: Element): string {
+  if (segments.length === 0) {
+    return "";
+  }
+
+  if (segments.length === 1) {
+    return segments[0];
+  }
+
+  // Try removing segments to shorten the selector
+  let best = segments;
+  for (let i = 0; i < best.length; i++) {
+    if (best.length <= 1) break;
+    const candidate = [...best.slice(0, i), ...best.slice(i + 1)];
+    const css = candidate.join(" > ");
+    if (!isUnique(css)) continue;
+    const match = document.querySelector(css);
+    if (match === el || (match?.contains(el) && match.children.length === 1)) {
+      best = candidate;
+      i--; // retry same index since array shifted
+    }
+  }
+
+  return best.join(" > ");
 }
