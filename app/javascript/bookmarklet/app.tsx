@@ -1,18 +1,41 @@
+import { useHighlight } from "./useHighlight";
+
 interface AppProps {
-  shadow: ShadowRoot;
+  onDismiss: () => void;
 }
 
-export function App({ shadow }: AppProps) {
-  function dismiss() {
-    const host = shadow.host as HTMLElement;
-    host.parentNode?.removeChild(host);
-    window.__KLAXON_BOOKMARKLET__ = false;
-  }
+export function App({ onDismiss }: AppProps) {
+  const { selector, locked, unlock, rect } = useHighlight();
 
   return (
-    <div class="panel">
-      <p>Klaxon Bookmarklet</p>
-      <button onClick={dismiss}>Close</button>
-    </div>
+    <>
+      {rect.value && (
+        <div
+          class="highlight-overlay"
+          style={{
+            top: rect.value.top + "px",
+            left: rect.value.left + "px",
+            width: rect.value.width + "px",
+            height: rect.value.height + "px",
+          }}
+        />
+      )}
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">Klaxon</span>
+          <button class="btn-close" onClick={onDismiss} aria-label="Close">×</button>
+        </div>
+        <div class="selector-display">
+          {selector.value ? (
+            <code class="selector-text">{selector}</code>
+          ) : (
+            <span class="selector-placeholder">Hover over an element to select it</span>
+          )}
+        </div>
+        {locked.value && (
+          <button class="btn-clear" onClick={unlock}>Clear selection</button>
+        )}
+      </div>
+    </>
   );
 }
