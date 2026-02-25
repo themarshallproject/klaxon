@@ -1,0 +1,14 @@
+{
+  "name": "klaxon-bookmarklet",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:bookmarklet": "node config/esbuild.js",
+    "build:bookmarklet:watch": "node config/esbuild.js --watch"
+  },
+  "devDependencies": {
+    "esbuild": "^0.27.3",
+    "preact": "^10.28.4",
+    "typescript": "^5.9.3"
+  }
+}
