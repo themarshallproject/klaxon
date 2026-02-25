@@ -1,13 +1,103 @@
+:host {
+  --color-text: #444444;
+  --color-accent: #ff0b3a;
+  --color-bg: #fff;
+  --color-muted: #999;
+  --color-accent-light: rgba(255, 11, 58, 0.1);
+  --color-accent-border: rgba(255, 11, 58, 0.5);
+}
+
 .panel {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #111;
-  color: white;
+  background: var(--color-bg);
+  color: var(--color-text);
   padding: 16px;
-  border-radius: 8px;
+  border-radius: 0;
   font-family: system-ui, sans-serif;
   max-width: 400px;
+  min-width: 280px;
   z-index: 999999;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border: 1px solid var(--color-accent-border);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.panel-title {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border-top: 0.2em solid var(--color-accent);
+  padding-top: 4px;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  color: var(--color-text);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.btn-close:hover {
+  color: var(--color-accent);
+}
+
+.selector-display {
+  background: var(--color-accent-light);
+  border-radius: 0;
+  padding: 10px 12px;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.selector-text {
+  font-family: monospace;
+  font-size: 13px;
+  color: var(--color-text);
+  word-break: break-all;
+}
+
+.selector-placeholder {
+  font-size: 13px;
+  color: var(--color-muted);
+  font-style: italic;
+}
+
+.btn-clear {
+  margin-top: 10px;
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--color-accent);
+  border-radius: 0;
+  color: var(--color-text);
+  font-size: 13px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.btn-clear:hover {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.highlight-overlay {
+  position: absolute;
+  pointer-events: none;
+  z-index: 999998;
+  border: 2px solid var(--color-accent);
+  background-color: var(--color-accent-light);
+  box-sizing: border-box;
 }
