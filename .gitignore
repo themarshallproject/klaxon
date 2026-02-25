@@ -37,3 +37,9 @@
 # Ignore build assets from dartsass-rails.
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+# Ignore Node dependencies
+/node_modules
+
+# Ignore build assets from esbuild.
+/public/bookmarklet.js
