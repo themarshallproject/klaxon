@@ -3,5 +3,7 @@
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
     "moduleResolution": "node",
+    "target": "esnext",
+    "lib": ["ESNext", "DOM", "ESNext.Disposable"]
   }
 }
