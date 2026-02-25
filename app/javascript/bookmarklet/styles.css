@@ -1,0 +1,13 @@
+.panel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #111;
+  color: white;
+  padding: 16px;
+  border-radius: 8px;
+  font-family: system-ui, sans-serif;
+  max-width: 400px;
+  z-index: 999999;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
