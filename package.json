@@ -7,6 +7,7 @@
     "build:bookmarklet:watch": "node config/esbuild.js --watch"
   },
   "devDependencies": {
+    "@preact/signals": "^2.8.1",
     "esbuild": "^0.27.3",
     "preact": "^10.28.4",
     "typescript": "^5.9.3"
