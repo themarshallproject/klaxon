@@ -19,11 +19,15 @@ export function useHighlight(): {
   selector: Signal<string>;
   locked: Signal<boolean>;
   unlock: () => void;
+  stepUp: () => void;
+  canStepUp: Signal<boolean>;
   rect: Signal<OverlayRect | null>;
 } {
   const selector = useSignal("");
   const locked = useSignal(false);
   const rect = useSignal<OverlayRect | null>(null);
+  const currentElement = useSignal<Element | null>(null);
+  const canStepUp = useSignal(false);
 
   useEffect(() => {
     function setRect(el: Element) {
@@ -50,6 +54,7 @@ export function useHighlight(): {
           return;
         }
         selector.value = cssSelector(target);
+        currentElement.value = target;
         setRect(target);
       });
     }
@@ -62,6 +67,8 @@ export function useHighlight(): {
       e.preventDefault();
       e.stopImmediatePropagation();
       selector.value = cssSelector(target);
+      currentElement.value = target;
+      canStepUp.value = target.parentElement != null;
       setRect(target);
       locked.value = true;
     }
@@ -89,7 +96,25 @@ export function useHighlight(): {
     locked.value = false;
     selector.value = "";
     rect.value = null;
+    currentElement.value = null;
+    canStepUp.value = false;
   }
 
-  return { selector, locked, unlock, rect };
+  function stepUp() {
+    const el = currentElement.value;
+    if (!el?.parentElement) return;
+    const parent = el.parentElement;
+    currentElement.value = parent;
+    selector.value = cssSelector(parent);
+    canStepUp.value = parent.parentElement != null;
+    const r = parent.getBoundingClientRect();
+    rect.value = {
+      top: r.top + window.scrollY,
+      left: r.left + window.scrollX,
+      width: r.width,
+      height: r.height,
+    };
+  }
+
+  return { selector, locked, unlock, stepUp, canStepUp, rect };
 }

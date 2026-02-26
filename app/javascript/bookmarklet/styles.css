@@ -35,7 +35,7 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-text);
   border-top: 0.2em solid var(--color-accent);
   padding-top: 4px;
 }
@@ -76,9 +76,14 @@
   font-style: italic;
 }
 
-.btn-clear {
+.btn-row {
+  display: flex;
+  gap: 8px;
   margin-top: 10px;
-  width: 100%;
+}
+
+.btn-action {
+  flex: 1;
   background: transparent;
   border: 1px solid var(--color-accent);
   border-radius: 0;
@@ -88,7 +93,7 @@
   cursor: pointer;
 }
 
-.btn-clear:hover {
+.btn-action:hover {
   background: var(--color-accent);
   color: var(--color-bg);
 }

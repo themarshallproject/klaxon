@@ -5,7 +5,7 @@ interface AppProps {
 }
 
 export function App({ onDismiss }: AppProps) {
-  const { selector, locked, unlock, rect } = useHighlight();
+  const { selector, locked, unlock, stepUp, canStepUp, rect } = useHighlight();
 
   return (
     <>
@@ -33,7 +33,12 @@ export function App({ onDismiss }: AppProps) {
           )}
         </div>
         {locked.value && (
-          <button class="btn-clear" onClick={unlock}>Clear selection</button>
+          <div class="btn-row">
+            {canStepUp.value && (
+              <button class="btn-action" onClick={stepUp}>Step up</button>
+            )}
+            <button class="btn-action" onClick={unlock}>Clear selection</button>
+          </div>
         )}
       </div>
     </>
