@@ -10,8 +10,8 @@
   },
   "devDependencies": {
     "@preact/signals": "^2.8.1",
+    "@vitest/browser-playwright": "^4.0.18",
     "esbuild": "^0.27.3",
-    "happy-dom": "^20.7.0",
     "preact": "^10.28.4",
     "typescript": "^5.9.3",
     "vitest": "^4.0.18"
