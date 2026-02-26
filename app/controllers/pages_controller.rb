@@ -33,7 +33,10 @@ class PagesController < ApplicationController
 
   # GET /pages/new
   def new
-    @page = Page.new
+    @page = Page.new(
+      url: params[:url],
+      css_selector: params[:css_selector]
+    )
     @users = sorted_users(@page)
     @slack_integrations = SlackIntegration.all
   end
