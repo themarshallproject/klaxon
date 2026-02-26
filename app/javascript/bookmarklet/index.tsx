@@ -31,5 +31,5 @@ if (window.__KLAXON_BOOKMARKLET__) {
     window.__KLAXON_BOOKMARKLET__ = false;
   }
 
-  render(<App onDismiss={destroy} />, root);
+  render(<App onDismiss={destroy} host={__KLAXON_HOST__} />, root);
 }
