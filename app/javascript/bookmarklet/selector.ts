@@ -16,7 +16,10 @@ export function cssSelector(el: Element): string {
 function buildSelector(el: Element): string {
   // If the element has a unique ID, use it
   if (el.id) {
-    const idSelector = "#" + CSS.escape(el.id);
+    // Use attribute selector for IDs that start with a digit to avoid invalid selectors
+    const idSelector = /^\d/.test(el.id)
+      ? `[id="${CSS.escape(el.id)}"]`
+      : `#${CSS.escape(el.id)}`;
     // Technically IDs should be unique... but just in case
     if (isUnique(idSelector)) {
       return idSelector;
