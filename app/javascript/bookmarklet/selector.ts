@@ -14,6 +14,10 @@ export function cssSelector(el: Element): string {
 }
 
 function buildSelector(el: Element): string {
+  if (el === document.body) {
+    return "body";
+  }
+
   // If the element has a unique ID, use it
   if (el.id) {
     const idSelector = `#${CSS.escape(el.id)}`;
@@ -37,7 +41,7 @@ function buildSelector(el: Element): string {
   let current: Element | null = el;
 
   // Big loop of death
-  while (current && current !== document.body && segments.length < 12) {
+  while (current && current !== document.body) {
     const tag = current.tagName.toLowerCase();
     const classes = Array.from(current.classList)
       .filter((c) => /^[a-z_-][a-z0-9_-]*$/i.test(c))
@@ -77,38 +81,12 @@ function buildSelector(el: Element): string {
 
   const result = segments.join(" > ");
   if (!isUnique(result)) {
-    // Absolute fallback: full nth-of-type path from body
-    const fallback = buildAbsoluteSelector(el);
-    if (fallback && isUnique(fallback)) {
-      return fallback;
-    }
     console.warn(
       "Klaxon bookmarklet could not generate a unique selector; using best-effort:",
       result,
     );
   }
   return optimize(segments, el);
-}
-
-function buildAbsoluteSelector(el: Element): string | null {
-  const parts: string[] = [];
-  let current: Element | null = el;
-
-  while (current && current !== document.body) {
-    const tag = current.tagName.toLowerCase();
-    if (current.parentElement) {
-      const siblings = Array.from(current.parentElement.children).filter(
-        (s) => s.tagName === current!.tagName,
-      );
-      const nth = siblings.indexOf(current) + 1;
-      parts.unshift(siblings.length > 1 ? `${tag}:nth-of-type(${nth})` : tag);
-    } else {
-      parts.unshift(tag);
-    }
-    current = current.parentElement;
-  }
-
-  return parts.length > 0 ? parts.join(" > ") : null;
 }
 
 function optimize(segments: string[], el: Element): string {
