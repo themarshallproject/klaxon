@@ -1,4 +1,4 @@
-import { describe, it, expect, afterEach } from "vitest";
+import { describe, it, expect, afterEach, vi } from "vitest";
 import { cssSelector } from "./selector";
 
 function setBody(html: string) {
@@ -70,8 +70,12 @@ describe("cssSelector", () => {
     setBody('<div id="cached">hello</div>');
     const el = document.getElementById("cached")!;
     const first = cssSelector(el);
+    // Spy after first call; second call must not touch the DOM
+    const spy = vi.spyOn(document, "querySelectorAll");
     const second = cssSelector(el);
     expect(first).toBe(second);
+    expect(spy).not.toHaveBeenCalled();
+    spy.mockRestore();
   });
 
   it("optimizes away redundant segments", () => {
