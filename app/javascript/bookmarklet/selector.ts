@@ -35,15 +35,22 @@ function makeIdSelector(id: string): string {
   return `[id="${escapeAttrValue(id)}"]`;
 }
 
+function matchesTarget(match: Element | null, el: Element): boolean {
+  return (
+    match === el ||
+    (match?.contains(el) && match.children.length === 1) ||
+    false
+  );
+}
+
 /**
  * Tries to find a short, attribute-based selector that uniquely identifies
  * `el` without walking the DOM tree. Checks (in order):
  * 1. unique ID
- * 2. data-* attributes
- * 3. role/aria-label/name attributes
- * 4. tag alone
- * 5. tag + single class
- * 6. single class alone
+ * 2. data-* + role/aria-label/name attributes
+ * 3. tag alone
+ * 4. tag + single class
+ * 5. single class alone
  */
 function trySimpleSelectors(el: Element): string | null {
   // Unique ID
@@ -55,27 +62,21 @@ function trySimpleSelectors(el: Element): string | null {
     }
   }
 
-  // data-* attributes
-  for (const attr of Array.from(el.attributes)) {
-    if (attr.name.startsWith("data-")) {
-      const candidate = `[${attr.name}="${escapeAttrValue(attr.value)}"]`;
+  // data-* and named attributes
+  const attrs: [string, string][] = [];
 
-      if (isUnique(candidate)) {
-        return candidate;
-      }
-    }
+  for (const attr of Array.from(el.attributes)) {
+    if (attr.name.startsWith("data-")) attrs.push([attr.name, attr.value]);
   }
 
-  // role and aria-label attributes
-  for (const attrName of ["role", "aria-label", "name"] as const) {
-    const val = el.getAttribute(attrName);
-    if (val) {
-      const candidate = `[${attrName}="${escapeAttrValue(val)}"]`;
+  for (const name of ["role", "aria-label", "name"]) {
+    const val = el.getAttribute(name);
+    if (val) attrs.push([name, val]);
+  }
 
-      if (isUnique(candidate)) {
-        return candidate;
-      }
-    }
+  for (const [name, val] of attrs) {
+    const candidate = `[${name}="${escapeAttrValue(val)}"]`;
+    if (isUnique(candidate)) return candidate;
   }
 
   const tag = el.tagName.toLowerCase();
@@ -108,32 +109,21 @@ function trySimpleSelectors(el: Element): string | null {
   return null;
 }
 
+function* classCombos(classes: string[]): Generator<string[]> {
+  for (const c of classes) yield [c];
+  for (let i = 0; i < classes.length; i++)
+    for (let j = i + 1; j < classes.length; j++) yield [classes[i], classes[j]];
+  if (classes.length > 2) yield classes;
+}
+
 /**
  * Builds the selector segment for a single element, using the minimal class
- * combination needed for uniqueness. Tries single classes first, then pairs,
- * then the full set, falling back to tag-only if nothing is globally unique.
+ * combination needed for uniqueness.
  */
 function buildSegment(current: Element, validClasses: string[]): string {
   const tag = current.tagName.toLowerCase();
 
-  // Try single classes first, then pairs, then the full set
-  const classCombinations: string[][] = [];
-
-  for (const cls of validClasses) {
-    classCombinations.push([cls]);
-  }
-
-  for (let i = 0; i < validClasses.length; i++) {
-    for (let j = i + 1; j < validClasses.length; j++) {
-      classCombinations.push([validClasses[i], validClasses[j]]);
-    }
-  }
-
-  if (validClasses.length > 2) {
-    classCombinations.push(validClasses);
-  }
-
-  for (const combo of classCombinations) {
+  for (const combo of classCombos(validClasses)) {
     const classStr = combo.map((c) => "." + CSS.escape(c)).join("");
     if (isUnique(tag + classStr)) {
       return tag + classStr;
@@ -166,9 +156,10 @@ export function cssSelector(el: Element): string {
 
   // Big loop of death
   while (current && current !== document.body) {
-    // Anchor to nearest unique-ID ancestor (but not el itself — handled above)
+    // Anchor to nearest unique-ID ancestor (skipping itself)
     if (current !== el && current.id) {
       const idSelector = makeIdSelector(current.id);
+
       if (isUnique(idSelector)) {
         segments.unshift(idSelector);
         break;
@@ -180,10 +171,10 @@ export function cssSelector(el: Element): string {
     const allClasses = validClasses.map((c) => "." + CSS.escape(c)).join("");
 
     let segment = buildSegment(current, validClasses);
-    let segmentModified = false;
 
     // Check if this segment is unique enough so far
     const testSelector = [segment, ...segments].join(" > ");
+
     if (isUnique(testSelector)) {
       segments.unshift(segment);
       break;
@@ -194,18 +185,18 @@ export function cssSelector(el: Element): string {
       const siblings = Array.from(current.parentElement.children).filter(
         (s) => s.tagName === current!.tagName,
       );
+
       if (siblings.length > 1) {
         const nth = siblings.indexOf(current) + 1;
         segment = tag + allClasses + `:nth-of-type(${nth})`;
-        segmentModified = true;
       }
     }
 
     segments.unshift(segment);
     current = current.parentElement;
 
-    // Exit if we have a unique selector (skip if segment unchanged — already checked above)
-    if (segmentModified && isUnique(segments.join(" > "))) {
+    // Exit if we have a unique selector
+    if (isUnique(segments.join(" > "))) {
       break;
     }
   }
@@ -234,7 +225,7 @@ function optimize(segments: string[], el: Element): string {
 
     const match = document.querySelector(css);
 
-    if (match === el || (match?.contains(el) && match.children.length === 1)) {
+    if (matchesTarget(match, el)) {
       best = candidate;
       i--; // retry same index since array shifted
     }
@@ -246,8 +237,7 @@ function optimize(segments: string[], el: Element): string {
 
 /**
  * Tries replacing each ` > ` (child combinator) with a space (descendant
- * combinator) and keeps the change when the selector still uniquely resolves
- * to `el`.
+ * combinator) if it still uniquely identifies the target element.
  */
 function relaxCombinators(segments: string[], el: Element): string {
   const joiners = segments.slice(1).map(() => " > ");
@@ -255,31 +245,16 @@ function relaxCombinators(segments: string[], el: Element): string {
   for (let i = 0; i < joiners.length; i++) {
     if (joiners[i] === " > ") {
       joiners[i] = " ";
-      const css = buildFromSegmentsAndJoiners(segments, joiners);
+      const css = segments.reduce(
+        (acc, seg, idx) => acc + joiners[idx - 1] + seg,
+      );
       const match = document.querySelector(css);
 
-      if (
-        !isUnique(css) ||
-        (match !== el && !(match?.contains(el) && match.children.length === 1))
-      ) {
+      if (!isUnique(css) || !matchesTarget(match, el)) {
         joiners[i] = " > ";
       }
     }
   }
 
-  return buildFromSegmentsAndJoiners(segments, joiners);
-}
-
-/** Joins segments with their corresponding combinators into a CSS selector string. */
-function buildFromSegmentsAndJoiners(
-  segments: string[],
-  joiners: string[],
-): string {
-  let result = segments[0];
-
-  for (let i = 0; i < joiners.length; i++) {
-    result += joiners[i] + segments[i + 1];
-  }
-
-  return result;
+  return segments.reduce((acc, seg, i) => acc + joiners[i - 1] + seg);
 }
