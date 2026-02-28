@@ -33,7 +33,7 @@ export function cssSelector(el: Element): string {
   while (current && current !== document.body) {
     const tag = current.tagName.toLowerCase();
     const classes = Array.from(current.classList)
-      .filter((c) => /^[a-z_-][a-z0-9_-]*$/i.test(c))
+      .filter((c) => /^[a-z0-9_-]+$/i.test(c))
       .map((c) => "." + CSS.escape(c))
       .join("");
 
