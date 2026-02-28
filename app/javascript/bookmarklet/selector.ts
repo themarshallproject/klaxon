@@ -25,7 +25,7 @@ function getValidClasses(el: Element): string[] {
 /**
  * Returns a CSS selector for the given ID. Uses the `#id` shorthand when
  * the ID needs no escaping, and falls back to `[id="..."]` because we
- * cannot count on the tool using this to be escape string friendly.
+ * cannot count on the consumer using this to be escape string friendly.
  */
 function makeIdSelector(id: string): string {
   if (CSS.escape(id) === id) {
@@ -204,57 +204,47 @@ export function cssSelector(el: Element): string {
   return optimize(segments, el);
 }
 
-function optimize(segments: string[], el: Element): string {
-  if (segments.length === 0) {
-    return "";
-  }
+type Entry = { segment: string; joiner: string };
 
-  if (segments.length === 1) {
-    return segments[0];
-  }
-
-  let best = segments;
-
-  for (let i = 0; i < best.length; i++) {
-    if (best.length <= 1) break;
-
-    const candidate = [...best.slice(0, i), ...best.slice(i + 1)];
-    const css = candidate.join(" > ");
-
-    if (!isUnique(css)) continue;
-
-    const match = document.querySelector(css);
-
-    if (matchesTarget(match, el)) {
-      best = candidate;
-      i--; // retry same index since array shifted
-    }
-  }
-
-  // Pass 2: Try relaxing child combinators (>) to descendant combinators ( )
-  return relaxCombinators(best, el);
+function toSelector(entries: Entry[]): string {
+  return entries
+    .map((e, i) => (i === 0 ? e.segment : e.joiner + e.segment))
+    .join("");
 }
 
-/**
- * Tries replacing each ` > ` (child combinator) with a space (descendant
- * combinator) if it still uniquely identifies the target element.
- */
-function relaxCombinators(segments: string[], el: Element): string {
-  const joiners = segments.slice(1).map(() => " > ");
+function check(entries: Entry[], el: Element): boolean {
+  const css = toSelector(entries);
+  if (!isUnique(css)) return false;
+  return matchesTarget(document.querySelector(css), el);
+}
 
-  for (let i = 0; i < joiners.length; i++) {
-    if (joiners[i] === " > ") {
-      joiners[i] = " ";
-      const css = segments.reduce(
-        (acc, seg, idx) => acc + joiners[idx - 1] + seg,
-      );
-      const match = document.querySelector(css);
+function optimize(segments: string[], el: Element): string {
+  if (segments.length <= 1) return segments.join("");
 
-      if (!isUnique(css) || !matchesTarget(match, el)) {
-        joiners[i] = " > ";
+  let entries: Entry[] = segments.map((segment, i) => ({
+    segment,
+    joiner: i === 0 ? "" : " > ",
+  }));
+
+  for (let i = 0; i < entries.length; i++) {
+    // 1. Try removing this segment entirely
+    if (entries.length > 1) {
+      const without = entries.toSpliced(i, 1);
+
+      if (check(without, el)) {
+        entries = without;
+        i--;
+        continue;
       }
+    }
+
+    // 2. Try relaxing " > " to " " before this segment
+    if (i > 0 && entries[i].joiner === " > ") {
+      entries[i] = { ...entries[i], joiner: " " };
+
+      if (!check(entries, el)) entries[i] = { ...entries[i], joiner: " > " };
     }
   }
 
-  return segments.reduce((acc, seg, i) => acc + joiners[i - 1] + seg);
+  return toSelector(entries);
 }
