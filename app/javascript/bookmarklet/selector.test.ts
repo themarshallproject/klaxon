@@ -1,4 +1,4 @@
-import { describe, it, expect, afterEach, vi } from "vitest";
+import { describe, it, expect, afterEach } from "vitest";
 import { cssSelector } from "./selector";
 
 function setBody(html: string) {
@@ -66,16 +66,21 @@ describe("cssSelector", () => {
     expect(document.querySelector(result)).toBe(el);
   });
 
-  it("returns cached result on repeat calls for the same element", () => {
-    setBody('<div id="cached">hello</div>');
-    const el = document.getElementById("cached")!;
+  it("recomputes selector after DOM mutation", () => {
+    setBody("<div><span>target</span></div>");
+    const el = document.querySelector("span")!;
     const first = cssSelector(el);
-    // Spy after first call; second call must not touch the DOM
-    const spy = vi.spyOn(document, "querySelectorAll");
+    expect(first).toBe("span");
+
+    // Mutate the DOM — add a sibling span
+    const extra = document.createElement("span");
+    extra.textContent = "other";
+    el.parentElement!.appendChild(extra);
+
     const second = cssSelector(el);
-    expect(first).toBe(second);
-    expect(spy).not.toHaveBeenCalled();
-    spy.mockRestore();
+    // Should now disambiguate since "span" matches two elements
+    expect(document.querySelectorAll(second).length).toBe(1);
+    expect(document.querySelector(second)).toBe(el);
   });
 
   it("optimizes away redundant segments", () => {
@@ -107,6 +112,17 @@ describe("cssSelector", () => {
     expect(result).not.toBe("#dup");
     expect(result).toBe('[data-testid="second"]');
     // But it should still uniquely select the element
+    expect(document.querySelectorAll(result).length).toBe(1);
+    expect(document.querySelector(result)).toBe(el);
+  });
+
+  it("includes classes starting with a digit in selectors", () => {
+    setBody(
+      '<div><span class="123-unique">a</span><span class="other">b</span></div>',
+    );
+    const el = document.querySelector('[class="123-unique"]') as Element;
+    const result = cssSelector(el);
+    expect(result).toContain("\\31 23-unique");
     expect(document.querySelectorAll(result).length).toBe(1);
     expect(document.querySelector(result)).toBe(el);
   });
