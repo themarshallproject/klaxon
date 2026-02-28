@@ -1,19 +1,8 @@
-const selectorCache = new WeakMap<Element, string>();
-
 function isUnique(selector: string): boolean {
   return document.querySelectorAll(selector).length === 1;
 }
 
 export function cssSelector(el: Element): string {
-  const cached = selectorCache.get(el);
-  if (cached) return cached;
-
-  const result = buildSelector(el);
-  selectorCache.set(el, result);
-  return result;
-}
-
-function buildSelector(el: Element): string {
   if (el === document.body) {
     return "body";
   }
