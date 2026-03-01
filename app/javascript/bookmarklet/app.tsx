@@ -1,3 +1,4 @@
+import { useEffect } from "preact/hooks";
 import { useHighlight } from "./useHighlight";
 
 interface AppProps {
@@ -7,6 +8,23 @@ interface AppProps {
 
 export function App({ onDismiss, host }: AppProps) {
   const { selector, locked, unlock, stepUp, canStepUp, rect } = useHighlight();
+
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key !== "Escape") return;
+
+      if (locked.value) {
+        unlock();
+      } else {
+        onDismiss();
+      }
+    }
+
+    document.addEventListener("keydown", handleKeyDown, true);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown, true);
+    };
+  }, []);
 
   function watchThis() {
     const url = new URL("/watching/pages/new", host);
