@@ -1,5 +1,5 @@
 import { useEffect } from "preact/hooks";
-import { useSignal, Signal } from "@preact/signals";
+import { useSignal, useComputed, batch, Signal, ReadonlySignal } from "@preact/signals";
 import { cssSelector } from "./selector";
 
 const EXCLUDED_IDS = ["__klaxon_host__"] as const;
@@ -20,14 +20,14 @@ export function useHighlight(): {
   locked: Signal<boolean>;
   unlock: () => void;
   stepUp: () => void;
-  canStepUp: Signal<boolean>;
+  canStepUp: ReadonlySignal<boolean>;
   rect: Signal<OverlayRect | null>;
 } {
   const selector = useSignal("");
   const locked = useSignal(false);
   const rect = useSignal<OverlayRect | null>(null);
   const currentElement = useSignal<Element | null>(null);
-  const canStepUp = useSignal(false);
+  const canStepUp = useComputed(() => currentElement.value?.parentElement != null);
 
   useEffect(() => {
     function setRect(el: Element) {
@@ -66,11 +66,12 @@ export function useHighlight(): {
       if (isBookmarkletElement(target)) return;
       e.preventDefault();
       e.stopImmediatePropagation();
-      selector.value = cssSelector(target);
-      currentElement.value = target;
-      canStepUp.value = target.parentElement != null;
-      setRect(target);
-      locked.value = true;
+      batch(() => {
+        selector.value = cssSelector(target);
+        currentElement.value = target;
+        setRect(target);
+        locked.value = true;
+      });
     }
 
     function onMouseOut(e: MouseEvent) {
@@ -93,27 +94,29 @@ export function useHighlight(): {
   }, []);
 
   function unlock() {
-    locked.value = false;
-    selector.value = "";
-    rect.value = null;
-    currentElement.value = null;
-    canStepUp.value = false;
+    batch(() => {
+      locked.value = false;
+      selector.value = "";
+      rect.value = null;
+      currentElement.value = null;
+    });
   }
 
   function stepUp() {
     const el = currentElement.value;
     if (!el?.parentElement) return;
     const parent = el.parentElement;
-    currentElement.value = parent;
-    selector.value = cssSelector(parent);
-    canStepUp.value = parent.parentElement != null;
     const r = parent.getBoundingClientRect();
-    rect.value = {
-      top: r.top + window.scrollY,
-      left: r.left + window.scrollX,
-      width: r.width,
-      height: r.height,
-    };
+    batch(() => {
+      currentElement.value = parent;
+      selector.value = cssSelector(parent);
+      rect.value = {
+        top: r.top + window.scrollY,
+        left: r.left + window.scrollX,
+        width: r.width,
+        height: r.height,
+      };
+    });
   }
 
   return { selector, locked, unlock, stepUp, canStepUp, rect };
