@@ -32,6 +32,7 @@ const config = {
   entryPoints: [path.join(root, "app/javascript/bookmarklet/index.tsx")],
   bundle: true,
   format: "iife",
+  globalName: "Klaxon",
   platform: "browser",
   minify: true,
   outfile: path.join(root, "public/bookmarklet.js"),

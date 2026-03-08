@@ -2,19 +2,21 @@ import { render } from "preact";
 import { App } from "./app";
 import styles from "./styles.css";
 
-// Prevent double injection
-if (window.__KLAXON_BOOKMARKLET__) {
-  console.warn("Klaxon bookmarklet already active");
-} else {
+export function init(host: string) {
+  // Prevent double injection
+  if (window.__KLAXON_BOOKMARKLET__) {
+    console.warn("Klaxon bookmarklet already active");
+    return;
+  }
   window.__KLAXON_BOOKMARKLET__ = true;
 
   // Host and Shadow DOM
-  const host = document.createElement("div");
-  host.id = "__klaxon_host__";
-  host.style.all = "initial"; // Reset all styles to prevent interference
-  document.body.appendChild(host);
+  const hostEl = document.createElement("div");
+  hostEl.id = "__klaxon_host__";
+  hostEl.style.all = "initial"; // Reset all styles to prevent interference
+  document.body.appendChild(hostEl);
 
-  const shadow = host.attachShadow({ mode: "open" });
+  const shadow = hostEl.attachShadow({ mode: "open" });
 
   // Inject CSS
   const styleTag = document.createElement("style");
@@ -27,9 +29,9 @@ if (window.__KLAXON_BOOKMARKLET__) {
 
   function destroy() {
     render(null, root);
-    host.remove();
+    hostEl.remove();
     window.__KLAXON_BOOKMARKLET__ = false;
   }
 
-  render(<App onDismiss={destroy} host={__KLAXON_HOST__} />, root);
+  render(<App onDismiss={destroy} host={host} />, root);
 }

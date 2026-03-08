@@ -5,6 +5,6 @@ module BookmarkletHelper
 
     js_content = File.read(file_path)
     host = root_url.chomp("/")
-    "javascript:(function(){var __KLAXON_HOST__=#{host.to_json};#{js_content}})();"
+    "javascript:(function(){#{js_content}Klaxon.init(#{host.to_json});})();"
   end
 end
