@@ -15,7 +15,6 @@
     background-color: var(--color-bg);
     color: var(--color-text);
     padding: 16px;
-    border-radius: 0;
     font-family: system-ui, sans-serif;
     max-width: 400px;
     min-width: 280px;
@@ -36,7 +35,6 @@
     font-weight: 600;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: var(--color-text);
     border-top: 0.2em solid var(--color-accent);
     padding-top: 4px;
 }
@@ -55,21 +53,23 @@
     color: var(--color-accent);
 }
 
-.selector-display {
-    background-color: var(--color-accent-light);
-    border-radius: 0;
+.selector-display,
+.text-preview {
     padding: 10px 12px;
     min-height: 40px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+.selector-display {
+    background-color: var(--color-accent-light);
     gap: 8px;
 }
 
 .selector-text {
     font-family: monospace;
     font-size: 13px;
-    color: var(--color-text);
     word-break: break-all;
 }
 
@@ -81,13 +81,7 @@
 
 .text-preview {
     background-color: var(--color-offset);
-    border-radius: 0;
-    padding: 10px 12px;
-    min-height: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
+    gap: 8px;
     margin-top: 8px;
 }
 
@@ -100,7 +94,6 @@
 }
 
 .text-preview-content {
-    color: var(--color-text);
     font-family: monospace;
     font-size: 13px;
     max-height: 6em;
@@ -115,15 +108,18 @@
     margin-top: 8px;
 }
 
-.btn-action {
+.btn-action,
+.btn-primary {
     flex: 1;
-    background-color: transparent;
-    border: 1px solid var(--color-accent);
-    border-radius: 0;
-    color: var(--color-text);
     font-size: 13px;
     padding: 8px 12px;
     cursor: pointer;
+    border: 1px solid var(--color-accent);
+}
+
+.btn-action {
+    background-color: transparent;
+    color: var(--color-text);
 }
 
 .btn-action:hover {
@@ -132,14 +128,8 @@
 }
 
 .btn-primary {
-    flex: 1;
     background-color: var(--color-accent);
-    border: 1px solid var(--color-accent);
-    border-radius: 0;
     color: #fff;
-    font-size: 13px;
-    padding: 8px 12px;
-    cursor: pointer;
 }
 
 .btn-primary:hover {
