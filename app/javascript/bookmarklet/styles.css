@@ -1,123 +1,156 @@
 :host {
-  --color-text: #444444;
-  --color-accent: #ff0b3a;
-  --color-bg: #fff;
-  --color-muted: #999;
-  --color-accent-light: rgba(255, 11, 58, 0.1);
-  --color-accent-border: rgba(255, 11, 58, 0.5);
+    --color-text: #444444;
+    --color-accent: #ff0b3a;
+    --color-offset: #eeeeee;
+    --color-bg: #fff;
+    --color-muted: #999;
+    --color-accent-light: rgba(255, 11, 58, 0.1);
+    --color-accent-border: rgba(255, 11, 58, 0.5);
 }
 
 .panel {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: var(--color-bg);
-  color: var(--color-text);
-  padding: 16px;
-  border-radius: 0;
-  font-family: system-ui, sans-serif;
-  max-width: 400px;
-  min-width: 280px;
-  z-index: 999999;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  border: 1px solid var(--color-accent-border);
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    padding: 16px;
+    border-radius: 0;
+    font-family: system-ui, sans-serif;
+    max-width: 400px;
+    min-width: 280px;
+    z-index: 999999;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--color-accent-border);
 }
 
 .panel-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
 }
 
 .panel-title {
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--color-text);
-  border-top: 0.2em solid var(--color-accent);
-  padding-top: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text);
+    border-top: 0.2em solid var(--color-accent);
+    padding-top: 4px;
 }
 
 .btn-close {
-  background: none;
-  border: none;
-  color: var(--color-text);
-  font-size: 20px;
-  line-height: 1;
-  cursor: pointer;
-  padding: 0 4px;
+    background: none;
+    border: none;
+    color: var(--color-text);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 4px;
 }
 
 .btn-close:hover {
-  color: var(--color-accent);
+    color: var(--color-accent);
 }
 
 .selector-display {
-  background: var(--color-accent-light);
-  border-radius: 0;
-  padding: 10px 12px;
-  min-height: 40px;
-  display: flex;
-  align-items: center;
+    background-color: var(--color-accent-light);
+    border-radius: 0;
+    padding: 10px 12px;
+    min-height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
 }
 
 .selector-text {
-  font-family: monospace;
-  font-size: 13px;
-  color: var(--color-text);
-  word-break: break-all;
+    font-family: monospace;
+    font-size: 13px;
+    color: var(--color-text);
+    word-break: break-all;
 }
 
 .selector-placeholder {
-  font-size: 13px;
-  color: var(--color-muted);
-  font-style: italic;
+    font-size: 13px;
+    color: var(--color-muted);
+    font-style: italic;
+}
+
+.text-preview {
+    background-color: var(--color-offset);
+    border-radius: 0;
+    padding: 10px 12px;
+    min-height: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    margin-top: 8px;
+}
+
+.box-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #666;
+    align-self: flex-end;
+}
+
+.text-preview-content {
+    color: var(--color-text);
+    font-family: monospace;
+    font-size: 13px;
+    max-height: 6em;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-break: break-all;
 }
 
 .btn-row {
-  display: flex;
-  gap: 8px;
-  margin-top: 10px;
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
 }
 
 .btn-action {
-  flex: 1;
-  background: transparent;
-  border: 1px solid var(--color-accent);
-  border-radius: 0;
-  color: var(--color-text);
-  font-size: 13px;
-  padding: 8px 12px;
-  cursor: pointer;
+    flex: 1;
+    background-color: transparent;
+    border: 1px solid var(--color-accent);
+    border-radius: 0;
+    color: var(--color-text);
+    font-size: 13px;
+    padding: 8px 12px;
+    cursor: pointer;
 }
 
 .btn-action:hover {
-  background: var(--color-accent);
-  color: var(--color-bg);
+    background-color: var(--color-accent);
+    color: var(--color-bg);
 }
 
 .btn-primary {
-  flex: 1;
-  background: var(--color-accent);
-  border: 1px solid var(--color-accent);
-  border-radius: 0;
-  color: #fff;
-  font-size: 13px;
-  padding: 8px 12px;
-  cursor: pointer;
+    flex: 1;
+    background-color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+    border-radius: 0;
+    color: #fff;
+    font-size: 13px;
+    padding: 8px 12px;
+    cursor: pointer;
 }
 
 .btn-primary:hover {
-  opacity: 0.85;
+    opacity: 0.85;
 }
 
 .highlight-overlay {
-  position: absolute;
-  pointer-events: none;
-  z-index: 999998;
-  border: 2px solid var(--color-accent);
-  background-color: var(--color-accent-light);
-  box-sizing: border-box;
+    position: absolute;
+    pointer-events: none;
+    z-index: 999998;
+    border: 2px solid var(--color-accent);
+    background-color: var(--color-accent-light);
+    box-sizing: border-box;
 }

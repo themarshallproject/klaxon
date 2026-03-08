@@ -22,12 +22,16 @@ export function useHighlight(): {
   stepUp: () => void;
   canStepUp: ReadonlySignal<boolean>;
   rect: Signal<OverlayRect | null>;
+  textPreview: ReadonlySignal<string>;
 } {
   const selector = useSignal("");
   const locked = useSignal(false);
   const rect = useSignal<OverlayRect | null>(null);
   const currentElement = useSignal<Element | null>(null);
   const canStepUp = useComputed(() => currentElement.value?.parentElement != null);
+  const textPreview = useComputed(() =>
+    (currentElement.value?.textContent ?? "").replace(/\s+/g, " ").trim()
+  );
 
   useEffect(() => {
     function setRect(el: Element) {
@@ -119,5 +123,5 @@ export function useHighlight(): {
     });
   }
 
-  return { selector, locked, unlock, stepUp, canStepUp, rect };
+  return { selector, locked, unlock, stepUp, canStepUp, rect, textPreview };
 }

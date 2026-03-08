@@ -7,7 +7,7 @@ interface AppProps {
 }
 
 export function App({ onDismiss, host }: AppProps) {
-  const { selector, locked, unlock, stepUp, canStepUp, rect } = useHighlight();
+  const { selector, locked, unlock, stepUp, canStepUp, rect, textPreview } = useHighlight();
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {
@@ -52,12 +52,19 @@ export function App({ onDismiss, host }: AppProps) {
           <button class="btn-close" onClick={onDismiss} aria-label="Close">×</button>
         </div>
         <div class="selector-display">
+          <span class="box-label">Selection</span>
           {selector.value ? (
             <code class="selector-text">{selector}</code>
           ) : (
             <span class="selector-placeholder">Hover over an element to select it</span>
           )}
         </div>
+        {locked.value && textPreview.value && (
+          <div class="text-preview">
+            <span class="box-label">Preview</span>
+            <code class="text-preview-content">{textPreview}</code>
+          </div>
+        )}
         {locked.value && (
           <div class="btn-row">
             <button class="btn-primary" onClick={watchThis}>Watch this</button>
