@@ -8,5 +8,4 @@ class Subscription < ApplicationRecord
   def send_notification(change)
     watcher.send_notification(change)
   end
-
 end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SqsIntegration, type: :model do
+RSpec.describe SqsIntegration do
   it "generates the correct payload" do
     Aws.config[:stub_responses] = true
 

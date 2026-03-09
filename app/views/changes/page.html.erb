@@ -46,7 +46,7 @@
 
   <div class="container diff-container klax-spacer-md">
     <div class="row klax-spacer-md">
-      <%= raw Diffy::Diff.new(@before.match_text, @after.match_text, context: 2).to_s(:html) %>
+      <%= sanitize Diffy::Diff.new(@before.match_text, @after.match_text, context: 2).to_s(:html), tags: %w[div span ul li del ins strong], attributes: %w[class] %>
     </div>
   </div>
 </div>
@@ -83,7 +83,7 @@ $(".diff li").each(function(i){
   $(this).html(contents);
 });
 var hash = window.location.hash.substr(1);
-$(".diff a[data-line="+hash+"]").addClass("klax-line-selected");
+if (hash) { $(".diff a[data-line="+hash+"]").addClass("klax-line-selected"); }
 $(".diff a").click(function(){
   $(".diff a").removeClass("klax-line-selected");
   $(this).addClass("klax-line-selected");

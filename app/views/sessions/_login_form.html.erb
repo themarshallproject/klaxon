@@ -2,7 +2,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <%= form_with(model: @user, scope: :session, local: true, class: "form-horizontal") do |f| %>
+          <%= form_with(url: create_session_path, scope: :session, local: true, class: "form-horizontal") do |f| %>
             <div class="form-group form-group-lg">
               <div class="col-md-3">
               </div>

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Change, type: :model do
+RSpec.describe Change do
   include ActiveJob::TestHelper
 
   it "is the edge between page_snapshots (happy path, already sorted)" do
@@ -8,7 +8,7 @@ RSpec.describe Change, type: :model do
     snapshots = page.page_snapshots
     expect(snapshots.count).to eq 2
 
-    change = Change.create(before: snapshots.first, after: snapshots.last)
+    change = described_class.create(before: snapshots.first, after: snapshots.last)
     expect(change.before).to eq(snapshots.first)
     expect(change.after).to eq(snapshots.last)
   end
@@ -29,7 +29,7 @@ RSpec.describe Change, type: :model do
     expect(snapshots.count).to eq 2
 
     expect {
-        Change.create!(before: snapshots.last, after: snapshots.first)
+        described_class.create!(before: snapshots.last, after: snapshots.first)
     }.to raise_error(ActiveRecord::RecordInvalid)
   end
 
@@ -42,10 +42,10 @@ RSpec.describe Change, type: :model do
     user.subscribe(page)
 
     # perform
-    Change.check
+    described_class.check
 
     expect_before, expect_after = page.page_snapshots.order('created_at ASC').last(2)
-    last_change = Change.order('created_at DESC').first
+    last_change = described_class.order('created_at DESC').first
     expect(last_change.before).to eq expect_before
     expect(last_change.after).to  eq expect_after
     expect(ActionMailer::Base.deliveries.length).to eq 1
@@ -60,9 +60,8 @@ RSpec.describe Change, type: :model do
     user.subscribe(page)
 
     # perform
-    Change.check
+    described_class.check
 
     expect(ActionMailer::Base.deliveries.length).to eq 0
   end
-
 end

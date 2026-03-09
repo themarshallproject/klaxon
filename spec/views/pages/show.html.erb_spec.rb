@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe "pages/show", type: :view do
-  before(:each) do
+RSpec.describe "pages/show" do
+  before do
     @user = create(:user)
     @page = assign(:page, Page.create!(
-      :user => @user,
-      :name => "MyText",
-      :url => "MyText",
-      :css_selector => "MyText",
+      user: @user,
+      name: "MyText",
+      url: "MyText",
+      css_selector: "MyText",
     ))
   end
 

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SlackIntegration, type: :model do
+RSpec.describe SlackIntegration do
   it "generates the correct payload" do
     stub_request(:post, /test-webhook.com/)
 
@@ -13,7 +13,7 @@ RSpec.describe SlackIntegration, type: :model do
     expect(change.after.page).to eq page
 
     payload = slack.send_notification(change)
-    expect(payload[:icon_url]).to start_with  'http'
+    expect(payload[:icon_url]).to start_with 'http'
     expect(payload[:icon_url]).to include '/images/klaxon-logo'
     expect(payload[:channel]).to eq slack.channel
     expect(payload[:username]).to include "Klaxon"

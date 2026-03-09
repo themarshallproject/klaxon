@@ -1,5 +1,5 @@
 class SqsIntegrationsController < ApplicationController
-  before_action :set_sqs_integration, only: [:show, :edit, :update, :destroy]
+  before_action :set_sqs_integration, only: [ :show, :edit, :update, :destroy ]
   before_action :authorize
 
   # GET /sqs_integrations
@@ -25,7 +25,7 @@ class SqsIntegrationsController < ApplicationController
     @sqs_integration = SqsIntegration.new(sqs_integration_params)
 
     if @sqs_integration.save
-      redirect_to integrations_path, notice: 'SQS integration was successfully created.'
+      redirect_to integrations_path, notice: "SQS integration was successfully created."
     else
       render :new
     end
@@ -34,7 +34,7 @@ class SqsIntegrationsController < ApplicationController
   # PATCH/PUT /sqs_integrations/1
   def update
     if @sqs_integration.update(sqs_integration_params)
-      redirect_to integrations_path, notice: 'SQS integration was successfully updated.'
+      redirect_to integrations_path, notice: "SQS integration was successfully updated."
     else
       render :edit
     end
@@ -43,7 +43,7 @@ class SqsIntegrationsController < ApplicationController
   # DELETE /sqs_integrations/1
   def destroy
     @sqs_integration.destroy
-    redirect_to integrations_path, notice: 'SQS integration was successfully destroyed.'
+    redirect_to integrations_path, notice: "SQS integration was successfully destroyed."
   end
 
   private

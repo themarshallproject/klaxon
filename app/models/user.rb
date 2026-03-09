@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :pages
 
   def full_name
-    [first_name, last_name].join(' ')
+    [ first_name, last_name ].join(" ")
   end
 
   def display_name
@@ -39,21 +39,19 @@ class User < ApplicationRecord
   end
 
   def email_domain_is_approved
-    if not (email || '').include?('@')
-      errors.add(:email, 'Email address is invalid.')
-      return false
+    if not (email || "").include?("@")
+      errors.add(:email, "Email address is invalid.")
+      return
     end
 
-    user_domain = email.strip.split('@')[-1].downcase
-    approved_domains = (ENV['APPROVED_USER_DOMAINS'] || '').strip.downcase.split(',')
+    user_domain = email.strip.split("@")[-1].downcase
+    approved_domains = (ENV["APPROVED_USER_DOMAINS"] || "").strip.downcase.split(",")
 
     approve_any_domain = approved_domains.length == 0
     domain_is_approved = approved_domains.include?(user_domain)
 
     if not (approve_any_domain or domain_is_approved)
-      errors.add(:email, 'Email address belongs to a non-approved domain.')
-      return false
+      errors.add(:email, "Email address belongs to a non-approved domain.")
     end
   end
-
 end

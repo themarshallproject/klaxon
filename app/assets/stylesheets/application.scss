@@ -1,11 +1,4 @@
 // Bootstrap overrides
-@function twbs-font-path($path) {
-  @return font-path($path);
-}
-@function twbs-image-path($path) {
-  @return image-path($path);
-}
-$bootstrap-sass-asset-helper: true;
 $brand-danger: #ff0b3a;
 
 // Core variables and mixins
@@ -15,8 +8,6 @@ $brand-danger: #ff0b3a;
 // Reset and dependencies
 @import "bootstrap/normalize";
 @import "bootstrap/print";
-@import "bootstrap/glyphicons";
-
 // Core CSS
 @import "bootstrap/scaffolding";
 @import "bootstrap/type";

@@ -1,9 +1,8 @@
 class SqsIntegration < ApplicationRecord
-
   validates :queue_url, length: { minimum: 10 }
   validate :starts_with_https
   def starts_with_https
-    if queue_url.to_s.split('').first(5).join('') != 'https'
+    if queue_url.to_s.split("").first(5).join("") != "https"
       errors.add(:queue_url, "must begin with https")
     end
   end
@@ -29,7 +28,6 @@ class SqsIntegration < ApplicationRecord
     }
 
     SqsNotification.perform(self.queue_url, payload)
-    return payload
+    payload
   end
-
 end

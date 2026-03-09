@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "users/show", type: :view do
-  before(:each) do
+RSpec.describe "users/show" do
+  before do
     @user = create(:user)
   end
 

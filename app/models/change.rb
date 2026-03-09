@@ -32,14 +32,14 @@ class Change < ApplicationRecord
 
     # unlike people and slack channels, there are no "subscriptions" to SQS integrations,
     # instead, all changes are sent to the queue -- allowing the consumer to choose which to act on
-    SqsIntegration.all.each{|sqs_integration| sqs_integration.send_notification(self) }
+    SqsIntegration.all.each { |sqs_integration| sqs_integration.send_notification(self) }
   end
 
   def self.check
     Page.all.each do |page|
       # if we have multiple snapshots, only notify for the change between the last two
 
-      current = page.page_snapshots.order('created_at DESC').first
+      current = page.page_snapshots.order("created_at DESC").first
 
       Change.where(
         before: current&.previous, # this can pass nil, but it will be throw an error if so

@@ -1,11 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe Page, type: :model do
-
-  before :all do
+RSpec.describe Page do
+  before do
     stub_request(:get, "https://www.themarshallproject.org/").
-         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'www.themarshallproject.org', 'User-Agent'=>'Ruby'}).
-         to_return(:status => 200, :body => "<body>lorem ipsum lorem ipsum lorem ipsum</body>", :headers => {})
+         with(headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'www.themarshallproject.org', 'User-Agent'=>'Ruby' }).
+         to_return(status: 200, body: "<body>lorem ipsum lorem ipsum lorem ipsum</body>", headers: {})
 
     @page = create(:page, url: "https://www.themarshallproject.org", css_selector: "body")
   end
@@ -22,41 +21,41 @@ RSpec.describe Page, type: :model do
   it "can exclude with single selector" do
     @url = "https://www.themarshallproject.org/test-page/"
     stub_request(:get, @url).
-         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'www.themarshallproject.org', 'User-Agent'=>'Ruby'}).
-         to_return(:status => 200, :body => "<body><div class='keep-me'>Keep this text</div><div class='exclude-me'>Don't keep this text</div></body>", :headers => {})
+         with(headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'www.themarshallproject.org', 'User-Agent'=>'Ruby' }).
+         to_return(status: 200, body: "<body><div class='keep-me'>Keep this text</div><div class='exclude-me'>Don't keep this text</div></body>", headers: {})
     @page = create(:page, url: @url, css_selector: "body", exclude_selector: ".exclude-me")
-    expect(@page.match_text).to be == "Keep this text"
+    expect(@page.match_text).to eq "Keep this text"
   end
 
   it "can exclude with multi selector" do
     @url = "https://www.themarshallproject.org/test-page/"
     stub_request(:get, @url).
-         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'www.themarshallproject.org', 'User-Agent'=>'Ruby'}).
-         to_return(:status => 200, :body => "<body><div class='keep-me'>Keep this text</div><div class='exclude-me'>Don't keep this text</div><div class='also-exclude'>Don't keep this either</div></body>", :headers => {})
+         with(headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'www.themarshallproject.org', 'User-Agent'=>'Ruby' }).
+         to_return(status: 200, body: "<body><div class='keep-me'>Keep this text</div><div class='exclude-me'>Don't keep this text</div><div class='also-exclude'>Don't keep this either</div></body>", headers: {})
     @page = create(:page, url: @url, css_selector: "body", exclude_selector: ".exclude-me,.also-exclude")
-    expect(@page.match_text).to be == "Keep this text"
+    expect(@page.match_text).to eq "Keep this text"
   end
 
   it "can exclude with nested content" do
     @url = "https://www.themarshallproject.org/test-page/"
     stub_request(:get, @url).
-         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'www.themarshallproject.org', 'User-Agent'=>'Ruby'}).
-         to_return(:status => 200, :body => "<body><div class='keep-me'>Keep this text</div><div class='exclude-me'>Don't keep this text<div>A nested div</div></div></body>", :headers => {})
+         with(headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'www.themarshallproject.org', 'User-Agent'=>'Ruby' }).
+         to_return(status: 200, body: "<body><div class='keep-me'>Keep this text</div><div class='exclude-me'>Don't keep this text<div>A nested div</div></div></body>", headers: {})
     @page = create(:page, url: @url, css_selector: "body", exclude_selector: ".exclude-me")
-    expect(@page.match_text).to be == "Keep this text"
+    expect(@page.match_text).to eq "Keep this text"
   end
 
   it "can work with empty exclude_selector" do
     @url = "https://www.themarshallproject.org/test-page/"
     stub_request(:get, @url).
-         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'www.themarshallproject.org', 'User-Agent'=>'Ruby'}).
-         to_return(:status => 200, :body => "<body><div class='keep-me'>Keep this text</div> <div class='exclude-me'>And keep this text</div></body>", :headers => {})
+         with(headers: { 'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'www.themarshallproject.org', 'User-Agent'=>'Ruby' }).
+         to_return(status: 200, body: "<body><div class='keep-me'>Keep this text</div> <div class='exclude-me'>And keep this text</div></body>", headers: {})
     @page = create(:page, url: @url, css_selector: "body", exclude_selector: "")
-    expect(@page.match_text).to be == "Keep this text And keep this text"
+    expect(@page.match_text).to eq "Keep this text And keep this text"
   end
 
   it "can calculate the hash of a page" do
-    expect(@page.sha2_hash.length).to be == 64
+    expect(@page.sha2_hash.length).to eq 64
   end
 
   it "has snapshots" do
@@ -73,6 +72,8 @@ RSpec.describe Page, type: :model do
   it "strips whitespace from the selectors" do
     selector = ".test"
     page = create(:page, css_selector: " #{selector}    ", exclude_selector: " #{selector} ")
+    expect(page.css_selector).to eq selector
+    expect(page.exclude_selector).to eq selector
   end
 
   it "gracefully handles parsing an invalid uri" do
@@ -88,10 +89,9 @@ RSpec.describe Page, type: :model do
     page_id = page.id
 
     expect(page.page_snapshots.count).to eq 3
-    expect { Change.check }.to change { Change.count }.by(1)
-    expect { page.destroy }.to change { Change.count }.by(-1)
+    expect { Change.check }.to change(Change, :count).by(1)
+    expect { page.destroy }.to change(Change, :count).by(-1)
 
     expect(PageSnapshot.where(page_id: page_id).count).to eq 0
   end
-
 end

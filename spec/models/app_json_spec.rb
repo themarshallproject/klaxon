@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "HerokuAppJSONTemplate", type: :model do
-
+RSpec.describe "HerokuAppJSONTemplate" do
   before :all do
     @path = File.join(Rails.root, "app.json")
   end
@@ -10,6 +9,4 @@ RSpec.describe "HerokuAppJSONTemplate", type: :model do
     hash = JSON.parse File.read(@path)
     expect(hash["name"]).to eq "Klaxon"
   end
-
 end
-

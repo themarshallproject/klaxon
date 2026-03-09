@@ -1,9 +1,13 @@
 #!/bin/bash -e
 
-# If running the rails server then:
-# 1) create or migrate existing database
-# 2) create an admin user if one doesn't exist
-if [ "${*}" == "./bin/rails server" ]; then
+# Enable jemalloc for reduced memory usage and latency.
+if [ -z "${LD_PRELOAD+x}" ]; then
+    LD_PRELOAD=$(find /usr/lib -name libjemalloc.so.2 -print -quit)
+    export LD_PRELOAD
+fi
+
+# If running the rails server then create or migrate existing database
+if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
   ./bin/rails db:prepare
   ./bin/rake users:create_admin
 fi

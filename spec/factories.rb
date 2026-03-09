@@ -1,5 +1,4 @@
 FactoryBot.define do
-
   factory :page_snapshot do
     page { create(:page) }
     sequence(:sha2_hash) { |n| "#{n}-fake-#{SecureRandom.hex}" }
@@ -41,5 +40,4 @@ FactoryBot.define do
       end
     end
   end
-
 end

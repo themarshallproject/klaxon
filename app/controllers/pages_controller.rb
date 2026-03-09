@@ -1,30 +1,30 @@
 class PagesController < ApplicationController
   before_action :authorize
-  before_action :set_page, only: [:show, :edit, :update, :destroy, :latest_change, :snapshots, :setup_compare]
+  before_action :set_page, only: [ :show, :edit, :update, :destroy, :latest_change, :snapshots, :setup_compare ]
 
   def latest_change
     change = @page.latest_change
     if change
       redirect_to page_change_path(change)
     else
-      redirect_to edit_page_url(@page), notice: 'Not enough snapshots to diff.'
+      redirect_to edit_page_url(@page), notice: "Not enough snapshots to diff."
     end
   end
 
   def snapshots
-    @snapshots = @page.page_snapshots.order('created_at DESC').select(:id, :created_at, :sha2_hash)
+    @snapshots = @page.page_snapshots.order("created_at DESC").select(:id, :created_at, :sha2_hash)
   end
 
   def setup_compare
     # TODO extract this
-    snapshots = @page.page_snapshots.where(id: [params[:before], params[:after]]).order('created_at ASC').last(2) # TODO: this needs an integration test
+    snapshots = @page.page_snapshots.where(id: [ params[:before], params[:after] ]).order("created_at ASC").last(2) # TODO: this needs an integration test
     change = Change.where(before: snapshots.first, after: snapshots.last).first_or_create
     redirect_to page_change_path(change)
   end
 
   # GET /pages
   def index
-    @pages = Page.order('created_at DESC').all
+    @pages = Page.includes(:user).order("created_at DESC")
   end
 
   # GET /pages/1
@@ -33,14 +33,17 @@ class PagesController < ApplicationController
 
   # GET /pages/new
   def new
-    @page = Page.new
-    @users = User.all
+    @page = Page.new(
+      url: params[:url],
+      css_selector: params[:css_selector]
+    )
+    @users = sorted_users(@page)
     @slack_integrations = SlackIntegration.all
   end
 
   # GET /pages/1/edit
   def edit
-    @users = User.all
+    @users = sorted_users(@page)
     @slack_integrations = SlackIntegration.all
   end
 
@@ -50,7 +53,7 @@ class PagesController < ApplicationController
     @page.user = current_user
 
     if @page.save
-      redirect_to pages_url, notice: 'Page was successfully created.'
+      redirect_to pages_url, notice: "Page was successfully created."
     else
       render :new
     end
@@ -59,7 +62,7 @@ class PagesController < ApplicationController
   # PATCH/PUT /pages/1
   def update
     if @page.update(page_params)
-      redirect_to pages_url, notice: 'Page was successfully updated.'
+      redirect_to pages_url, notice: "Page was successfully updated."
     else
       render :edit
     end
@@ -68,13 +71,18 @@ class PagesController < ApplicationController
   # DELETE /pages/1
   def destroy
     @page.destroy
-    redirect_to pages_url, notice: 'Page was successfully destroyed.'
+    redirect_to pages_url, notice: "Page was successfully destroyed."
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_page
       @page = Page.find(params[:id])
+    end
+
+    def sorted_users(page)
+      subscribed_user_ids = Subscription.where(watching: page, watcher_type: "User").pluck(:watcher_id).to_set
+      User.all.sort_by { |u| [ u.id == current_user.id ? 0 : 1, subscribed_user_ids.include?(u.id) ? 0 : 1, u.display_name.downcase ] }
     end
 
     # Only allow a trusted parameter "white list" through.

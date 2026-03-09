@@ -1,5 +1,5 @@
 class ChangesController < ApplicationController
-  before_action :set_change, only: [:page, :update, :resend]
+  before_action :set_change, only: [ :page, :update, :resend ]
   before_action :authorize
 
   def page
@@ -13,7 +13,7 @@ class ChangesController < ApplicationController
   # PATCH/PUT /changes/1
   def update
     if @change.update(change_params)
-      redirect_to page_change_url(@change), notice: 'change was successfully updated.'
+      redirect_to page_change_url(@change), notice: "change was successfully updated."
     else
       render :page
     end

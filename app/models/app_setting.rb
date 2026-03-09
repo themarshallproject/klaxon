@@ -1,7 +1,6 @@
 class AppSetting < ApplicationRecord
-
   def self.default_host_key
-    'default_host'
+    "default_host"
   end
 
   def self.default_host_exists?
@@ -22,11 +21,10 @@ class AppSetting < ApplicationRecord
   end
 
   def self.mailer_from_address
-    if ENV['MAILER_FROM_ADDRESS'].present?
-      ENV['MAILER_FROM_ADDRESS']
+    if ENV["MAILER_FROM_ADDRESS"].present?
+      ENV["MAILER_FROM_ADDRESS"]
     else
-      'Klaxon <no-reply@newsklaxon.org>'
+      "Klaxon <no-reply@newsklaxon.org>"
     end
   end
-
 end

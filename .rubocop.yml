@@ -1,0 +1,30 @@
+# Omakase Ruby styling for Rails
+inherit_gem:
+  rubocop-rails-omakase: rubocop.yml
+
+plugins:
+  - rubocop-rspec
+  - rubocop-rspec_rails
+
+AllCops:
+  NewCops: enable
+
+# Cops that are too strict for this codebase's existing specs
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/InstanceVariable:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Exclude:
+    - spec/integration/**/*
+
+RSpec/BeforeAfterAll:
+  Exclude:
+    - spec/models/app_json_spec.rb
+    - spec/models/page_spec.rb
+    - spec/models/safe_string_spec.rb

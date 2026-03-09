@@ -53,7 +53,7 @@
           <div class="checkbox">
             <label>
               <%= check_box_tag "page[subscriptions][]", "user:#{user.id}", user.is_subscribed_to?(@page) %>
-              <%= user.display_name %>
+              <%= user.display_name %><%= " (You)" if user == current_user %>
             </label>
           </div>
         <% end %>

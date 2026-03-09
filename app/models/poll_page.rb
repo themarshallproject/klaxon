@@ -14,7 +14,7 @@ class PollPage
       return false
     end
 
-    return PageSnapshot.create(page: page, sha2_hash: sha2_hash, html: html)
+    PageSnapshot.create(page: page, sha2_hash: sha2_hash, html: html)
   end
 
   def self.perform_all

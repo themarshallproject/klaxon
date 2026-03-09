@@ -1,10 +1,11 @@
 Rails.application.config.to_prepare do
-  unless ENV["SECRET_KEY_BASE"] == "DUMMY"
+  unless ENV["SECRET_KEY_BASE_DUMMY"].present? || !Rails.env.production?
     begin
       if Rails.application.routes.default_url_options[:host].blank? and AppSetting.default_host_exists?
         host = AppSetting.default_host
         Rails.logger.info "[SUCCESS] Setting default_url_options[:host] = '#{host}'"
         Rails.application.routes.default_url_options[:host] = host
+        ActionMailer::Base.default_url_options[:host] = host
       end
     rescue ActiveRecord::NoDatabaseError
       Rails.logger.error "[ERROR] Failed to set default_host because: ActiveRecord::NoDatabaseError. If this is the first deploy, this is expected and will be fixed after the database is created."

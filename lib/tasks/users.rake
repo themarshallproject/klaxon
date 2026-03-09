@@ -1,7 +1,7 @@
 namespace :users do
   desc "TODO"
   task create_admin: :environment do
-    emails = ENV['ADMIN_EMAILS'].to_s.split(',')
+    emails = ENV["ADMIN_EMAILS"].to_s.split(",")
     emails.each do |email|
       email.strip!
       user = User.where(email: email).first_or_create do |user|
@@ -11,5 +11,4 @@ namespace :users do
       user.save
     end
   end
-
 end

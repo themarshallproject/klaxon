@@ -7,7 +7,7 @@ require 'spec_helper'
 require 'rspec/rails'
 
 require 'webmock/rspec'
-# WebMock.disable_net_connect!(allow_localhost: true)
+WebMock.disable_net_connect!(allow_localhost: true)
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -42,18 +42,7 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include LoginHelper
 
-  config.use_transactional_fixtures = false
-
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
-  end
-
-  config.around(:each) do |example|
-    DatabaseCleaner.cleaning do
-      example.run
-    end
-  end
+  config.use_transactional_fixtures = true
 
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and

@@ -1,12 +1,11 @@
 class SlackIntegration < ApplicationRecord
-
   validates :channel, length: { minimum: 2 }
   validates :webhook_url, length: { minimum: 10 }
   validate :starts_with_hash
   after_destroy :remove_subscriptions
 
   def starts_with_hash
-    if channel.to_s.split('').first != '#'
+    if channel.to_s.split("").first != "#"
       errors.add(:channel, "must begin with #")
     end
   end
@@ -38,17 +37,18 @@ class SlackIntegration < ApplicationRecord
     page_name = change&.after&.page&.name
     text = "#{page_name} changed #{page_change_url(change)}"
 
-    icon_url = URI.join(root_url, '/images/klaxon-logo-100px.png').to_s
+    icon_url = URI.join(root_url, "/images/klaxon-logo-100px.png").to_s
 
     payload = {
       "username": "Klaxon",
       "icon_url": icon_url,
       "channel": self.channel,
-      "text": text,
+      "text": text
     }
 
     SlackNotification.perform(self.webhook_url, payload)
-    return payload
+
+    payload
   end
 
   def remove_subscriptions

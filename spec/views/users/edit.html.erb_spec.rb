@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "users/edit", type: :view do
-  before(:each) do
+RSpec.describe "users/edit" do
+  before do
     @user = create(:user)
     @current_user = @user
   end
@@ -10,7 +10,6 @@ RSpec.describe "users/edit", type: :view do
     render
 
     assert_select "form[action=?][method=?]", user_path(@user), "post" do
-
       assert_select "input#user_first_name[name=?]", "user[first_name]"
 
       assert_select "input#user_last_name[name=?]", "user[last_name]"

@@ -29,7 +29,7 @@ class PageSnapshot < ApplicationRecord
   end
 
   def previous
-    siblings.where('created_at < ?', self.created_at).order('created_at DESC').first
+    siblings.where("created_at < ?", self.created_at).order("created_at DESC").first
   end
 
   def siblings
@@ -45,6 +45,6 @@ class PageSnapshot < ApplicationRecord
   end
 
   def filename
-    filename = self.page.name.gsub(" ","-") + "-" + self.created_at.to_s.gsub(" ","-") + ".html"
+    self.page.name.gsub(" ", "-") + "-" + self.created_at.to_s.gsub(" ", "-") + ".html"
   end
 end

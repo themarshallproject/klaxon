@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :authorize
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [ :show, :edit, :update, :destroy ]
 
   # GET /users
   def index
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     if @user.save
       UserMailer.welcome_email(user: @user, invited_by: current_user).deliver_later
 
-      redirect_to users_url, notice: 'User was successfully created.'
+      redirect_to users_url, notice: "User was successfully created."
     else
       render :new
     end
@@ -39,12 +39,12 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     if user_params[:is_admin] && !@user.is_admin && !current_user.is_admin
-      redirect_to edit_user_url(@user), notice: 'You must be an admin to promote users.'
+      redirect_to edit_user_url(@user), notice: "You must be an admin to promote users."
       return false
     end
 
     if @user.update(user_params)
-      redirect_to users_url, notice: 'User was successfully updated.'
+      redirect_to users_url, notice: "User was successfully updated."
     else
       render :edit
     end
@@ -53,19 +53,19 @@ class UsersController < ApplicationController
   # DELETE /users/1
   def destroy
     unless current_user.is_admin
-      redirect_to edit_user_url(@user), notice: 'You must be an admin to delete users.'
+      redirect_to edit_user_url(@user), notice: "You must be an admin to delete users."
       return false
     end
 
     @user.subscriptions.destroy_all
     @user.destroy
-    redirect_to users_url, notice: 'User was successfully deleted.'
+    redirect_to users_url, notice: "User was successfully deleted."
   end
 
   # DELETE /users/1/pages/6-some-page-title
   def unsubscribe
     user = User.find(params[:user_id])
-    page_id = params[:page_id].split('-')[0].to_i
+    page_id = params[:page_id].split("-")[0].to_i
     page = Page.find(page_id)
 
 
@@ -78,7 +78,7 @@ class UsersController < ApplicationController
     end
 
     user.unsubscribe(page)
-    redirect_to edit_user_url(user), notice: 'Subscription successfully removed.'
+    redirect_to edit_user_url(user), notice: "Subscription successfully removed."
   end
 
   private

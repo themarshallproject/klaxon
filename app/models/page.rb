@@ -10,19 +10,19 @@ class Page < ApplicationRecord
   before_save :sanitize
 
   def to_param
-    [id, self.name.to_s.parameterize].join('-')
+    [ id, self.name.to_s.parameterize ].join("-")
   end
 
   def domain
     host = Addressable::URI.parse(self.url.to_s).host.to_s
-    host.gsub(/^www\./, '')
+    host.gsub(/^www\./, "")
   rescue
     self.url
   end
 
   def html
     if self.url.blank?
-      return ''
+      return ""
     end
 
     @html ||= begin
@@ -69,10 +69,10 @@ class Page < ApplicationRecord
       Subscription.where(watching: self).destroy_all
 
       subscriptions.to_a.each do |subscription|
-        model, id = subscription.split(':') # TODO
-        if model == 'user'
+        model, id = subscription.split(":") # TODO
+        if model == "user"
           User.find(id).subscribe(self)
-        elsif model == 'slack'
+        elsif model == "slack"
           SlackIntegration.find(id).subscribe(self)
         else
           raise "unknown subscription type"
@@ -82,7 +82,7 @@ class Page < ApplicationRecord
   end
 
   def latest_change
-    after, before = PageSnapshot.where(page: self).order('created_at DESC').first(2)
+    after, before = PageSnapshot.where(page: self).order("created_at DESC").first(2)
 
     if before.nil? or after.nil?
       return false
@@ -92,17 +92,17 @@ class Page < ApplicationRecord
   end
 
   def most_recent_snapshot
-    self.page_snapshots.order('created_at ASC').last
+    self.page_snapshots.order("created_at ASC").last
   end
 
   def snapshot_time_deltas
     # returns an array of ints. these are time deltas (in seconds) between snapshot creation
 
-    snapshots = self.page_snapshots.order('created_at ASC').select(:created_at)
+    snapshots = self.page_snapshots.order("created_at ASC").select(:created_at)
 
-    snapshots.map{ |snapshot|
+    snapshots.map { |snapshot|
       snapshot.created_at.utc.to_i
-    }.each_cons(2).map{ |before, after|
+    }.each_cons(2).map { |before, after|
       after - before
     }
   end
@@ -119,6 +119,6 @@ class Page < ApplicationRecord
   end
 
   def num_changes
-    [0, self.page_snapshots.count - 1].max
+    [ 0, self.page_snapshots.count - 1 ].max
   end
 end
