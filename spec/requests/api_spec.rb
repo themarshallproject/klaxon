@@ -32,28 +32,6 @@ RSpec.describe "API" do
     expect(JSON.parse(response.body).count).to be > 0
   end
 
-  it "creates a page by url and can update that page's selector" do
-    url = "http://www.nytimes.com/"
-    selector = ".first-column-region .story"
-
-    @user = current_user
-
-    # create the page
-    post embed_find_page_path, params: { url: url }
-    expect(response).to have_http_status(:success)
-    data = JSON.parse(response.body)
-    expect(data['url']).to eq url
-    expect(data['css_selector']).to be_nil
-    page = Page.find_by(url: url)
-    expect(page.user).to eq @user
-
-    # update the page
-    post embed_update_page_selector_path, params: { id: page.id, css_selector: selector }
-    data = JSON.parse(response.body)
-    expect(data['css_selector']).to eq selector
-    expect(data['user_id']).to eq @user.id
-  end
-
   it "has stats"
   it "has subscriptions"
   it "has pages"

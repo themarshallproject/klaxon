@@ -22,25 +22,6 @@ class ApiController < ApplicationController
     }
   end
 
-  def embed_find_page # POST request
-    page = Page.where(url: params[:url]).first_or_create do |page|
-      page.user = current_user
-    end
-
-    render json: page
-  end
-
-  def embed_update_page_selector  # POST request
-    page = Page.find_by(id: params[:id])
-
-    page.css_selector = params[:css_selector]
-    if page.save
-      render json: page
-    else
-      render json: {}, status: 422
-    end
-  end
-
   def page_preview
     page = Page.new(url: params[:url], css_selector: params[:css_selector])
     render json: {

@@ -7,11 +7,6 @@ Rails.application.routes.draw do
     get "pages" => "api#pages", as: :api_pages
     get "stats" => "api#stats", as: :api_stats
 
-    scope "embed" do
-      post "page" => "api#embed_find_page", as: :embed_find_page
-      post "page/update-selector" => "api#embed_update_page_selector", as: :embed_update_page_selector
-    end
-
     get "/page-preview" => "api#page_preview", as: :api_page_preview
   end
 
@@ -36,7 +31,6 @@ Rails.application.routes.draw do
 
   scope "/embed" do
     get "inject" => "embed#inject"
-    get "iframe" => "embed#iframe"
   end
 
   scope "/integrations" do
