@@ -1,6 +1,9 @@
 name: CI
 
-on: [push]
+on:
+  push:
+  release:
+    types: [published]
 
 jobs:
   test:
@@ -44,7 +47,7 @@ jobs:
 
   push-docker:
     needs: test
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' || github.event_name == 'release'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -66,6 +69,12 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ghcr.io/${{ github.repository }}
+          flavor: |
+            latest=false
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
