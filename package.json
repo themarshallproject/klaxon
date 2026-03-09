@@ -3,10 +3,14 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build": "npm run build:bookmarklet",
     "build:bookmarklet": "node config/esbuild.js",
     "build:bookmarklet:watch": "node config/esbuild.js --watch",
     "test:bookmarklet": "vitest run",
     "test:bookmarklet:watch": "vitest"
+  },
+  "engines": {
+    "node": "24.x"
   },
   "devDependencies": {
     "@preact/signals": "^2.8.1",

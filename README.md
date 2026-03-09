@@ -137,6 +137,8 @@ You should see three buttons. Click the one in the middle that says “GitHub Co
 
 On the Heroku page, in the “Connect to GitHub” section at the bottom, type ‘klaxon’ into the search box next to your GitHub username. Click the “Search” button. Next, click the “Connect” button next to the name of your forked repo that pops up below. Finally, select the 'main' branch from the dropdown and click “Enable Automatic Deploys” button in the “Automatic deploys” section. This ties your Heroku server to your GitHub account, so that every time you merge updates into your forked version of the Klaxon repository, they will automatically go live on your server with the latest updates. You'll only have to do all of this one time to set up the pipeline.
 
+If your Heroku app was created before Klaxon started building the bookmarklet with Node.js, add the Node.js buildpack once before your next deploy so Heroku can generate `public/bookmarklet.js`. In Heroku’s Settings tab, add `heroku/nodejs` above `heroku/ruby` in the Buildpacks section (or run `heroku buildpacks:add --index 1 heroku/nodejs` from the CLI). New apps created from the Deploy button already get both buildpacks via `app.json`.
+
 _Note: if you are upgrading from version 0.2.0 or lower, please follow the additional instructions in [migration_setup.md](migration_setup.md)_
 
 Finally, each time an update is announced on the Google Group, you can go to your forked version of the repo on GitHub and click the green “New Pull Request” button to pull the changes from our main repo.
