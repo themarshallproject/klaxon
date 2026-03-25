@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 ruby "3.4.8"
 
-gem "rails", "~> 8.1.2"
+gem "rails", "~> 8.1.3"
 
 # Framework
 gem "bootsnap", require: false
