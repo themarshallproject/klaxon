@@ -29,7 +29,7 @@ gem "kramdown"
 gem "premailer-rails"
 
 # Integrations
-gem "aws-sdk-sqs", "~> 1.117"
+gem "aws-sdk-sqs", "~> 1.118"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
