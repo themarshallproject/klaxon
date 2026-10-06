@@ -11,7 +11,7 @@ gem "puma", "~> 7.2"
 gem "dotenv"
 
 # Database
-gem "pg", "~> 1.6"
+gem "pg", "~> 1.7"
 
 # Assets
 gem "dartsass-rails", "~> 0.5.1"
