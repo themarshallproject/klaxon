@@ -79,8 +79,8 @@ GEM
       public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
     aws-eventstream (1.4.1)
-    aws-partitions (1.1300.0)
-    aws-sdk-core (3.263.0)
+    aws-partitions (1.1304.0)
+    aws-sdk-core (3.266.0)
       aws-eventstream (~> 1, >= 1.4.1)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
@@ -89,8 +89,8 @@ GEM
       jmespath (~> 1, >= 1.6.1)
       logger
       rexml (~> 3.4, >= 3.4.2)
-    aws-sdk-sqs (1.124.0)
-      aws-sdk-core (~> 3, >= 3.263.0)
+    aws-sdk-sqs (1.126.0)
+      aws-sdk-core (~> 3, >= 3.265.0)
       aws-sigv4 (~> 1.5)
     aws-sigv4 (1.12.1)
       aws-eventstream (~> 1, >= 1.0.2)
@@ -387,7 +387,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  aws-sdk-sqs (~> 1.124)
+  aws-sdk-sqs (~> 1.126)
   bootsnap
   brakeman
   bundler-audit
