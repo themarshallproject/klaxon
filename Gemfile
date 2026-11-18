@@ -5,7 +5,7 @@ gem "rails", "~> 8.1.4"
 
 # Framework
 gem "bootsnap", require: false
-gem "puma", "~> 7.2"
+gem "puma", "~> 8.1"
 
 # Configuration
 gem "dotenv"

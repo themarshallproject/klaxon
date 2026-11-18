@@ -233,7 +233,7 @@ GEM
       activesupport (>= 7.0.0)
       rack
     public_suffix (7.0.5)
-    puma (7.2.0)
+    puma (8.1.1)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.2.8)
@@ -406,7 +406,7 @@ DEPENDENCIES
   pg (~> 1.7)
   premailer-rails
   propshaft
-  puma (~> 7.2)
+  puma (~> 8.1)
   rails (~> 8.1.4)
   rspec-github
   rspec-rails
